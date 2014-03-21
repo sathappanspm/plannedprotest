@@ -1,0 +1,31 @@
+\begin{itemize}
+    \item
+        \textbf{HRL's Twitter Planned Protest Paper: Detecting future social unrest in unprocessed Twitter}: 
+
+        {\em keywords}: 335 keywords identified by domain experts, used to filter twitter stream.
+
+        {\em Date}: Quoting "Our future dates is done."Our future date filter searches first for month names and abbreviations in Spanish and Portuguese and second for numbers less than 31 within three whitespace separated tokens from each other. Thus, an example matching date pattern would be ”10 de enero”.
+
+
+        {\em Probability}: Posterior probability of tweet being Civil Unrest related Given User-type
+
+        {\em Event Geocoding}: If no location in Text then location of retweeter is used based on HRL's Geocoding methodology.
+
+        {\em EventType and Population}: Duplicate Forecasts for same date/location are combined into one and then tweet history of every tweeter/retweeter in the forecast are searched for keywords pertaining to particular classes identified by domain expert and then most commonly occuring class is assigned.
+        
+        {\em Results Provided}: Counts of Warnings provided and results of Manual examination of warning provided
+
+    \item \textbf{HRL's Tumblr Based Paper- Civil Unrest Prediction: A Tumblr-Based Exploration}
+
+        {\em keywords}: 59 keywords by domain experts.
+
+        {\em location}: Text Based filter for pre-defined locations(1022 in number)
+
+        {\em date}: Similar to the Twitter paper
+
+        {\em Dataset}: Full tumblr firehose of public post from 2013-04 to 2013-11. Evaluations from 2013-06 to 2013-08. Results presented in terms of Number Events Detected, Precision, Leadtime
+
+    \item \textbf{Identifying Content for Planned Events Across Social Media Sites - Luis Gravano-Columbia University}:
+            Not exactly related to ours. It deals with identifying user contributed content for future planned events that are already known like music concert etc.
+
+\end{itemize}

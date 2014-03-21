@@ -1,0 +1,10 @@
+\subsection{Learning of Phrases}
+\input{sections/phraselearning}
+
+
+\subsection{classification}
+    \sathappanc{Is this Needed? ..We have two classifiers -- Text Based Naive Bayes Classifier for RSS and Facebook. Location Based Classifier for Twitter}
+
+All News,Blogs and Tweets are first searched for the phrases learned. Then the filtered documents are searched for the presence of a reference to a Future Date. In case of News/blogs we search for the Presence of a reference to a Future Date only within the sentence where the phrase was found to reduce error. For tweets, we search the entire tweet for the reference to a future date.
+
+Then, finally, a warning/alert is issued for those documents which contains a location information. In the case of tweets, we found that issuing an alert from just one tweet lead to a lot of wrong alerts. We thus, further filter the tweets by setting a threshold (set to 5) on the number of re-tweets of the tweet under consideration.
