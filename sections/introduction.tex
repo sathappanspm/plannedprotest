@@ -1,25 +1,55 @@
-The \textit{proceedings} are the records of a conference.
-ACM seeks to give these conference by-products a uniform,
-high-quality appearance.  To do this, ACM has some rigid
-requirements for the format of the proceedings documents: there
-is a specified format (balanced  double columns), a specified
-set of fonts (Arial or Helvetica and Times Roman) in
-certain specified sizes (for instance, 9 point for body copy),
-a specified live area (18 $\times$ 23.5 cm [7" $\times$ 9.25"]) centered on
-the page, specified size of margins (1.9 cm [0.75"]) top, (2.54 cm [1"]) bottom
-and (1.9 cm [.75"]) left and right; specified column width
-(8.45 cm [3.33"]) and gutter size (.83 cm [.33"]).
+\sathappanc{write-up from KDD paper}
+Many civil unrest events are planned and organized through calls-for-action
+by opinion and community leaders who galvanize support for their case.
+The planned protest model aims
+at detecting such civil unrest events from
+traditional media (e.g., news pages, mailing
+lists, blogs) and from social media (e.g., Twitter, Facebook).
+The model filters the input streams by matching to a custom
+multi-lingual lexicon of expressions such as {\em preparación huelga},
+{\em llamó a acudir a dicha movilización} or {\em plan to strike}
+which are likely to indicate a planned unrest event.  The phrase
+matching is done in flexible manner making use of the lemmatized,
+tokenized output of the BASIS enrichment module, to allow for variation and
+approximations in the matching.  Messages that match are then screened
+for the mention of a future time/date occurring in the same sentence as the
+phrase. The event type and population are forecast using a multinomial naive
+Bayes classifier. Location information is determined using the enrichment geocoders.
+%\narenc{Give an example of a news article, highlighted boxes around phrases,
+%etc. and then show a warning record generated from it.}
+%\grahamc{Can we reuse the figure from enrichment (Fig 5) as a starting point for this?}
+The phrase dictionary is thus a crucial aspect of the planned protest
+model and was populated in a semi-automatic manner using
+both expert knowledge and a simple bootstrapping methodology.
 
-The good news is, with only a handful of manual
-settings\footnote{Two of these, the {\texttt{\char'134 numberofauthors}}
-and {\texttt{\char'134 alignauthor}} commands, you have
-already used; another, {\texttt{\char'134 balancecolumns}}, will
-be used in your very last run of \LaTeX\ to ensure
-balanced column heights on the last page.}, the \LaTeX\ document
-class file handles all of this for you.
+\iffalse
+Initially, a few seed phrases were obtained manually
+with the help of subject matter experts. These phrases were parsed
+using a dependency parser and the grammatical relationship between the
+core subject word---{\em protest}, {\em manifestación}, {\em Huelga},
+etc.---and any accompanying word was extracted. To extend the initial
+set of phrases, a set of sentences containing a subject word and a
+future time/date expression was collected and parsed.  This set of
+sentences was used to expand the set of planned protest phrases by
+extracting all keyword combinations that have the same grammatical
+relation with respect to the core subject word. The final set of
+planned protest phrases is then obtained after a manual revision of
+the phrases obtained in the last step. \narenc{It would be good to give
+an example of this phrase growing.}
+\fi
+The planned protest model reads three kinds of input messages:
+standard natural language text (RSS news and blog feeds, as well
+as the content of web pages mentioned in tweets), microblogging text
+(Twitter), and Facebook Events pages.
+The RSS feeds and web pages are processed as discussed above. For
+tweets, in addition to the above processing, we require that the tweet
+under consideration be retweeted a minimum number of
+times, to avoid erroneous alerts. (This value is set to 20
+in our system.) For Facebook, we use their public API to search
+for event pages containing the word protest or its synonyms.
+Most such Facebook event pages already
+provide significant information such as the
+planned date of protest, location (sometimes with resolution up to
+street level), and population/category of
+people involved.
 
-The remainder of this document is concerned with showing, in
-the context of an ``actual'' document, the \LaTeX\ commands
-specifically available for denoting the structure of a
-proceedings paper, rather than with giving rigorous descriptions
-or explanations of such commands.
