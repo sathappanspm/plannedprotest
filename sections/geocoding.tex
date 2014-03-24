@@ -1,6 +1,8 @@
 We make use of different geocoding methodologies for geo-coding news/blogs and twitter.
 \subsubsection{News/Blogs}
-Most news articles and blog posts mention multiple locations, e.g.,
+\input{sections/psl.tex}
+
+\iffalse Most news articles and blog posts mention multiple locations, e.g.,
 the location of reporting, the location of the incident, and locations corresponding
 to the hometown of the newspaper. We developed a probabilistic reasoning
 engine using probabilistic soft logic (PSL)
@@ -16,7 +18,8 @@ informative signals; the rules corresponding to these evidence types
 are weighted accordingly.
 
 The methodology is similar to {\em Web-a-where: Geo-Tagging Web Content}.
- 
+\fi 
+
 \subsubsection{Twitter}
 The Twitter geocoding is achieved by first
 considering the most reliable but least available source,
