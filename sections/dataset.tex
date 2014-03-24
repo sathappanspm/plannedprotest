@@ -1,0 +1,28 @@
+For our News/Blogs dataset, we subscribed to a list of RSS feeds from major Newspapers and Blogs identified by our domain experts. We also obtained lists of Newspapers to follow, from online resources such as {\em onlinenewspapers.com, w3newspapers.com} and from the {\em Latin American Network Information Center (LANIC)} at the University of Texas. The Subscribed RSS feeds were initially collected using the Google-Reader service until its closure on July 2013. From then we moved our collection engine to an in-house RSS-Reader service. Apart From the above, we also subscribed to Alerting Services like Google Alerts and Talkwalker alerts for the key-phrases in our dictionary.
+Together, we collect about 9000 individual feeds.
+
+\sathappanc{From KDD paper}
+For our twitter dataset, we  make use of Datasift’s
+Twitter collection engine. Datasift provides the ability to
+query and stream tweets in real time. These tweets are
+augmented with various types of metadata including the user
+profile of the tweeting user or geotagged attributes and the
+query can target any of these. Targeting tweets that come
+from a particular geographic area, e.g. Latin America, can
+be tricky. While some tweets use geotags to specify the
+location of the tweet, these tweets only comprise about 5%
+of the total number of tweets and may not be representative
+of the population overall (i.e. geotagged tweets come from
+people who have smart phones who also tend to be more
+affluent). Therefore, it is important to use other information
+to build a query that targets relevant tweets. In building
+our query we consider geotag bounding boxes (structured
+geographical coordinates), Twitter Places (structured data),
+user profile location (unstructured, unverified strings), and
+finally mentions of a location contained in the body of the
+tweet.
+
+For Facebook, we made use of the Facebook Graph-API and the Facebook Query Language(FQL). We searched Facebook events for the presence of certain keywords (single words and not Phrases, as facebook doesnt allow search for Multiple keywords) indentified by our domain experts by using the Graph-API. We then used FQL to get more details like Number of attendees, Number of Declinees, Unsure count, Invitees count .etc., about the events returned by Graph-API.
+
+
+Both the RSS Feeds (News/Blogs) and twitter feeds were collected from August 2012 and is being collected continuously.
