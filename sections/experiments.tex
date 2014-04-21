@@ -1,14 +1,80 @@
-\begin{itemize}
+\begin{enumerate}
 \item How Planned Protest model fared over the months?
 Evaluation of Planned Protest Over the months
 
 \item Contribution of Different Data Sources?
 Evaluation of Each Individual Data Source,
+    \begin{table*}[tb!]
+        \centering
+        \caption{\label{tb:sourcewisecomparison} Comparing forecasting accuracy of
+        RSS vs Twitter}
+        \begin{tabular}{|*{34}{c|}}
+            \hline
+            Data Source & \multicolumn{3}{ |c| }{AR} & \multicolumn{3}{ |c| }{BR} & \multicolumn{3}{ |c| }{CL} & \multicolumn{3}{ |c| }{CO} & \multicolumn{3}{ |c| }{EC} & \multicolumn{3}{ |c| }{SV} & \multicolumn{3}{ |c| }{MX} & \multicolumn{3}{ |c| }{PY} & \multicolumn{3}{ |c| }{UY} & \multicolumn{3}{ |c| }{VE} & \multicolumn{3}{ |c| }{ALL}\\
+            \hline
+            RSS &3.1&3.31&1.88&3.1&2.43&2.94&3.26&2.88&2.72&2.9&2.97\\
+            \hline
+            Twitter &3.0&3.11&-&2.9&-&-&3.15&-&1.72&2.9&2.88\\
+            \hline
+        \end{tabular}
+    \end{table*}
 
 \item Brazilian June Protests and Venezuelan February Protests 
-
+   
 \item Different Evaluation criteria
    1. Varying Time Constraint from 7 to 1
-   2. Distance Based Scoring
 
-\end{itemize}
+\end{enumerate}
+
+
+
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{venezuela}
+    \caption{Venezuelan Protests}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{gsr_distribution}
+    \caption{GSR Distribution From 2012-11 to 2014-03}
+\end{figure}
+
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{venezuela_violent}
+    \caption{Venezuelan Violent Protests}
+\end{figure}
+
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{brazil_june}
+    \caption{Brazil June Protests}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{../figures/eventDateVsDate_brazil.png}
+    \caption{Date of Prediction vs Forecasted Date Brazil}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{../figures/eventDateVsDate_venezuela.png}
+    \caption{Date of Prediction vs Forecasted Date Venezuela}
+\end{figure}
+
+
+
+
+
+%\begin{figure}
+%    \centering
+%    \begin{subfigure}[b][0.3\textwidth]
+%        \includegraphics[width=\textwidth]{venezuela.png}
+%        \caption{Venezuelan Protests}
+%        \label{fig:Venezuela_feb}
+%    \end{subfigure}
+%    \begin{subfigure}[b][0.3\textwidth]
+%        \includegraphics[width=\textwidth]{brazil_june.png}
+%        \caption{Brazilian Riots in June}
+%        \label{fig:Brazil_june}
+%    \end{subfigure}
+%\end{figure}

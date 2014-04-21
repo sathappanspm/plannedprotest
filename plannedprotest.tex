@@ -47,9 +47,14 @@
 % For tracking purposes - this is V2.0 - May 2012
 
 \documentclass{sig-alternate}
-
+\usepackage{caption}
+\DeclareCaptionType{copyrightbox}
+\graphicspath{{./figures/}}
+\usepackage{subcaption}
+\usepackage{url}
 \usepackage{graphicx}
 \usepackage{epstopdf}
+\usepackage{multirow}
 \graphicspath{{./figures/}}
 \usepackage{color}
 
@@ -162,7 +167,7 @@
 \section{Discussion}
 \input{sections/discussion}
 
-\nocite{*}
+%\nocite{*}
 \bibliographystyle{abbrv}
 \bibliography{references}  % sigproc.bib is the name of the Bibliography in this case
 \end{document}
