@@ -1,4 +1,4 @@
-We provide an elaborate analysis of the planned protest model as follows ~\ref{fig:venezuela}:
+We provide an elaborate analysis of the planned protest model as follows:
 \begin{itemize}
     \item {\bf Perfomance over the months}
 \end{itemize}
@@ -16,7 +16,7 @@ Twitter has an average precision of 0.81 while a max recall of 0.1.
 \begin{itemize}
     \item {\bf Case Study: Venezuelan and Brazilian Protests}
 \end{itemize}
-The recent Venezuelan protests against President Nicolas Maduro and the Brazilian Protests during June 2013 against Bus Fare Hike were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela} and Fig.~\ref{fig:brazil_june} show how well the planned protest model was able to predict the unfolding of events under both situations. Fig.~\ref{fig:venezuela_violent} showcases the ability of the model to forecast the violent events also.
+The recent Venezuelan protests against President Nicolas Maduro and the Brazilian Protests during June 2013 against Bus Fare Hike were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela_feb} and Fig.~\ref{fig:brazil_june} show how well the planned protest model was able to predict the unfolding of events under both situations. Fig.~\ref{fig:venezuela_violent} showcases the ability of the model to forecast the violent events also.
 
 \begin{itemize}
     \item {\bf Lead-Time vs Quality Trade-Off}
@@ -37,23 +37,23 @@ Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model incre
     \centering
     \caption{\label{tb:sourcewisecomparison} Comparing forecasting accuracy of
     RSS vs Twitter}
-    \begin{tabular}{|*{7}{c|}}
+    \begin{tabular}{|*{9}{c|}}
         \hline
-        & \multicolumn{3}{ |c| }{News/Blogs} & \multicolumn{3}{ |c| }{Twitter}\\
+        & \multicolumn{4}{ |c| }{News/Blogs} & \multicolumn{4}{ |c| }{Twitter}\\
         \hline
-        Country & QS & Precision & Recall & QS & Precision & Recall\\
+        Country & QS & Precision & Recall &Lead-Time & QS & Precision & Recall & Lead-Time\\
         \hline
-        AR &3.14&0.32&0.69&3.52&0.78&0.14\\
-        BR &3.14&0.48&0.54&0.00&0.00&0.00\\
-        CL &3.06&0.91&0.67&3.52&1.00&0.23\\
-        CO &2.74&0.90&0.56&3.30&1.00&0.15\\
-        EC &0.00&0.00&0.00&2.32&1.00&0.06\\
-        MX &2.96&0.88&0.25&3.14&1.00&0.02\\
-        SV &3.22&1.00&0.03&0.00&0.00&0.00\\
-        PY &3.38&1.00&0.16&3.84&1.00&0.04\\
-        UY &3.24&1.00&0.29&0.00&0.00&0.00\\
-        VE &3.80&1.00&0.36&3.68&0.97&0.33\\
-        ALL &3.34&0.69&0.35&3.62&0.97&0.15\\
+        AR &3.14&0.32&0.69&3.94&3.52&0.78&0.14&3.14\\
+        BR &3.14&0.48&0.54&5.85&0.00&0.00&0.00&0.00\\
+        CL &3.06&0.91&0.67&5.40&3.52&1.00&0.23&4.29\\
+        CO &2.74&0.90&0.56&7.44&3.30&1.00&0.15&2.43\\
+        EC &0.00&0.00&0.00&0.00&2.32&1.00&0.06&17.00\\
+        MX &2.96&0.88&0.25&3.69&3.14&1.00&0.02&1.43\\
+        SV &3.22&1.00&0.03&1.0&0.00&0.00&0.00&0.00\\
+        PY &3.38&1.00&0.16&9.11&3.84&1.00&0.04&11.40\\
+        UY &3.24&1.00&0.29&2.40&0.00&0.00&0.00&0.00\\
+        VE &3.80&1.00&0.36&3.27&3.68&0.97&0.33&2.39\\
+        ALL &3.34&0.69&0.35&4.57&3.62&0.97&0.15&2.82\\
         \hline
     \end{tabular}
 \end{table*}
@@ -102,7 +102,7 @@ Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model incre
 
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{venezuela}
-    \label{fig:venezuela}
+    \label{fig:venezuela_feb}
     \caption{Venezuelan Protests}
 \end{figure}
 
