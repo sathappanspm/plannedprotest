@@ -1,102 +1,120 @@
+We provide an elaborate analysis of the planned protest model as follows ~\ref{fig:venezuela}:
 \begin{itemize}
-We provide an elaborate analysis of the planned protest model as follows:
-\item{Perfomance over the months}
+    \item {\bf Perfomance over the months}
+\end{itemize}
     Fig.~\ref{fig:monthlyqs} provides the evaluation results of the model over the months with a breakdown of its sources. The QS reported is the weighted average of QS of all 10 countries.
     Twitter has a higher QS as multiple re-tweets of mention of future events in twitter is a direct indicator of the popularity of the event, the intent of people to join an event. While mention of Future events in News is simply a reporting of the event not much can be understood about the popularity of the event or about the people's support for the event. At the same time, twitter provides very little in terms of recall.
 RSS has an average precision of 0.66 and a maximum recall 0.30 while
 Twitter has an average precision of 0.81 while a max recall of 0.1.
 
-\item{Country-wise perfomance}
+\begin{itemize}
+    \item {\bf Country-wise perfomance}
+\end{itemize}
     Table~\ref{tb:sourcewisecomparison} presents the perfomance of the planned protest model (for March 2014) for each of the 10 countries of interest. It also presents a source wise breakdown of perfomance. 
+
+
+\begin{itemize}
+    \item {\bf Case Study: Venezuelan and Brazilian Protests}
+\end{itemize}
+The recent Venezuelan protests against President Nicolas Maduro and the Brazilian Protests during June 2013 against Bus Fare Hike were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela} and Fig.~\ref{fig:brazil_june} show how well the planned protest model was able to predict the unfolding of events under both situations. Fig.~\ref{fig:venezuela_violent} showcases the ability of the model to forecast the violent events also.
+
+\begin{itemize}
+    \item {\bf Lead-Time vs Quality Trade-Off}
 \end{itemize}
 
+Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model increases with time.
 
+\begin{itemize}
+    \item {Perfomance under stringent matching Criteria}
+\end{itemize}
 
+\begin{itemize}
+    \item {\bf Quality Score Distribution}
+\end{itemize}
 
-
-
-
-
-
-\begin{enumerate}
-
-\item How Planned Protest model fared over the months?
-Evaluation of Planned Protest Over the months
-
-\item Contribution of Different Data Sources?
-Evaluation of Each Individual Data Source,
-    \begin{table*}[tb!]
-        \small
-        \centering
-        \caption{\label{tb:sourcewisecomparison} Comparing forecasting accuracy of
-        RSS vs Twitter}
-        \begin{tabular}{|*{7}{c|}}
-            \hline
-            & \multicolumn{3}{ |c| }{News/Blogs} & \multicolumn{3}{ |c| }{Twitter}\\
-            \hline
-            Country & QS & Precision & Recall & QS & Precision & Recall\\
-            \hline
-            AR &3.14&0.32&0.69&3.52&0.78&0.14\\
-            BR &3.14&0.48&0.54&0.00&0.00&0.00\\
-            CL &3.06&0.91&0.67&3.52&1.00&0.23\\
-            CO &2.74&0.90&0.56&3.30&1.00&0.15\\
-            EC &0.00&0.00&0.00&2.32&1.00&0.06\\
-            MX &2.96&0.88&0.25&3.14&1.00&0.02\\
-            SV &3.22&1.00&0.03&0.00&0.00&0.00\\
-            PY &3.38&1.00&0.16&3.84&1.00&0.04\\
-            UY &3.24&1.00&0.29&0.00&0.00&0.00\\
-            VE &3.80&1.00&0.36&3.68&0.97&0.33\\
-            ALL &3.34&0.69&0.35&3.62&0.97&0.15\\
-            \hline
-        \end{tabular}
-    \end{table*}
-
-\item Brazilian June Protests and Venezuelan February Protests 
-   
-\item Different Evaluation criteria
-   1. Varying Time Constraint from 7 to 1
-
-\end{enumerate}
-
-
-
-
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{venezuela}
-    \caption{Venezuelan Protests}
-\end{figure}
+\begin{table*}[tb!]
+    \small
+    \centering
+    \caption{\label{tb:sourcewisecomparison} Comparing forecasting accuracy of
+    RSS vs Twitter}
+    \begin{tabular}{|*{7}{c|}}
+        \hline
+        & \multicolumn{3}{ |c| }{News/Blogs} & \multicolumn{3}{ |c| }{Twitter}\\
+        \hline
+        Country & QS & Precision & Recall & QS & Precision & Recall\\
+        \hline
+        AR &3.14&0.32&0.69&3.52&0.78&0.14\\
+        BR &3.14&0.48&0.54&0.00&0.00&0.00\\
+        CL &3.06&0.91&0.67&3.52&1.00&0.23\\
+        CO &2.74&0.90&0.56&3.30&1.00&0.15\\
+        EC &0.00&0.00&0.00&2.32&1.00&0.06\\
+        MX &2.96&0.88&0.25&3.14&1.00&0.02\\
+        SV &3.22&1.00&0.03&0.00&0.00&0.00\\
+        PY &3.38&1.00&0.16&3.84&1.00&0.04\\
+        UY &3.24&1.00&0.29&0.00&0.00&0.00\\
+        VE &3.80&1.00&0.36&3.68&0.97&0.33\\
+        ALL &3.34&0.69&0.35&3.62&0.97&0.15\\
+        \hline
+    \end{tabular}
+\end{table*}
 
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{gsr_distribution}
+    \label{fig:gsrdistribution}
     \caption{GSR Distribution From 2012-11 to 2014-03}
 \end{figure}
 
-
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{venezuela_violent}
-    \caption{Venezuelan Violent Protests}
-\end{figure}
-
-
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{brazil_june}
+    \label{fig:brazil_june}
     \caption{Brazil June Protests}
 \end{figure}
 
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{eventDateVsDate_brazil}
     \caption{Date of Prediction vs Forecasted Date Brazil}
+    \label{fig:leadtime_brazil}
 \end{figure}
 
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{eventDateVsDate_venezuela}
     \caption{Date of Prediction vs Forecasted Date Venezuela}
+    \label{fig:leadtime_venezuela}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.5\textwidth]{monthlyqs.pdf}
-    \caption{Date of Prediction vs Forecasted Date Venezuela}
+    \includegraphics[width=0.5\textwidth]{monthlyqs}
+    \caption{QS over the months}
+    \label{fig:monthlyqs}
 \end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{leadTimeVsQS}
+    \caption{Lead-Time vs Quality Score}
+    \label{fig:leadTimeVsQS}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{doubleHump}
+    \caption{QS Distribution}
+    \label{fig:doubleHump}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{venezuela}
+    \label{fig:venezuela}
+    \caption{Venezuelan Protests}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{venezuela_violent}
+    \label{fig:venezuela_violent}
+    \caption{Venezuelan Violent Protests}
+\end{figure}
+
+
+
+
 
 
 
