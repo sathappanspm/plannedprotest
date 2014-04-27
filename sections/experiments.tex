@@ -5,16 +5,27 @@ Evaluation of Planned Protest Over the months
 \item Contribution of Different Data Sources?
 Evaluation of Each Individual Data Source,
     \begin{table*}[tb!]
+        \small
         \centering
         \caption{\label{tb:sourcewisecomparison} Comparing forecasting accuracy of
         RSS vs Twitter}
-        \begin{tabular}{|*{34}{c|}}
+        \begin{tabular}{|*{7}{c|}}
             \hline
-            Data Source & \multicolumn{3}{ |c| }{AR} & \multicolumn{3}{ |c| }{BR} & \multicolumn{3}{ |c| }{CL} & \multicolumn{3}{ |c| }{CO} & \multicolumn{3}{ |c| }{EC} & \multicolumn{3}{ |c| }{SV} & \multicolumn{3}{ |c| }{MX} & \multicolumn{3}{ |c| }{PY} & \multicolumn{3}{ |c| }{UY} & \multicolumn{3}{ |c| }{VE} & \multicolumn{3}{ |c| }{ALL}\\
+            & \multicolumn{3}{ |c| }{News/Blogs} & \multicolumn{3}{ |c| }{Twitter}\\
             \hline
-            RSS &3.1&3.31&1.88&3.1&2.43&2.94&3.26&2.88&2.72&2.9&2.97\\
+            Country & QS & Recall & Precision & QS & Recall & Precision\\
             \hline
-            Twitter &3.0&3.11&-&2.9&-&-&3.15&-&1.72&2.9&2.88\\
+            AR &3.14&0.32&0.69&3.52&0.78&0.14\\
+            BR &3.14&0.48&0.54&0.00&0.00&0.00\\
+            CL &3.06&0.91&0.67&3.52&1.00&0.23\\
+            CO &2.74&0.90&0.56&3.30&1.00&0.15\\
+            EC &0.00&0.00&0.00&2.32&1.00&0.06\\
+            MX &2.96&0.88&0.25&3.14&1.00&0.02\\
+            SV &3.22&1.00&0.03&0.00&0.00&0.00\\
+            PY &3.38&1.00&0.16&3.84&1.00&0.04\\
+            UY &3.24&1.00&0.29&0.00&0.00&0.00\\
+            VE &3.80&1.00&0.36&3.68&0.97&0.33\\
+            ALL &3.34&0.69&0.35&3.62&0.97&0.15\\
             \hline
         \end{tabular}
     \end{table*}
@@ -52,12 +63,17 @@ Evaluation of Each Individual Data Source,
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.5\textwidth]{../figures/eventDateVsDate_brazil.png}
+    \includegraphics[width=0.5\textwidth]{eventDateVsDate_brazil}
     \caption{Date of Prediction vs Forecasted Date Brazil}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.5\textwidth]{../figures/eventDateVsDate_venezuela.png}
+    \includegraphics[width=0.5\textwidth]{eventDateVsDate_venezuela}
+    \caption{Date of Prediction vs Forecasted Date Venezuela}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{monthlyqs.pdf}
     \caption{Date of Prediction vs Forecasted Date Venezuela}
 \end{figure}
 
