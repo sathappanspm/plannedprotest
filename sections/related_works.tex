@@ -1,43 +1,48 @@
-Group related work into three parts.
+%Group related work into three parts.
+%
+%Protest detection and forecasting. Include HRL, both detection and 
+%forecasting. HRL has papers in ISI 2013. Add VT papers.
+%
+%Detecting planned events. Columbia work. Look at references in that
+%paper to identify more. Event detection research (cite 10-15 papers).
+%Oren Etzioni, his work.
+%
+%NEED ONE MORE SUBGROUP.
+%
+%
+%\begin{itemize}
+%    \item
+%        \textbf{HRL's Twitter Planned Protest Paper: Detecting future social unrest in unprocessed Twitter}: 
+%
+%        {\em keywords}: 335 keywords identified by domain experts, used to filter twitter stream.
+%
+%        {\em Date}: Quoting "Our future dates is done."Our future date filter searches first for month names and abbreviations in Spanish and Portuguese and second for numbers less than 31 within three whitespace separated tokens from each other. Thus, an example matching date pattern would be ”10 de enero”.
+%
+%
+%        {\em Probability}: Posterior probability of tweet being Civil Unrest related Given User-type
+%
+%        {\em Event Geocoding}: If no location in Text then location of retweeter is used based on HRL's Geocoding methodology.
+%
+%        {\em EventType and Population}: Duplicate Forecasts for same date/location are combined into one and then tweet history of every tweeter/retweeter in the forecast are searched for keywords pertaining to particular classes identified by domain expert and then most commonly occuring class is assigned.
+%        
+%        {\em Results Provided}: Counts of Warnings provided and results of Manual examination of warning provided
+%
+%    \item \textbf{HRL's Tumblr Based Paper- Civil Unrest Prediction: A Tumblr-Based Exploration}
+%
+%        {\em keywords}: 59 keywords by domain experts.
+%
+%        {\em location}: Text Based filter for pre-defined locations(1022 in number)
+%
+%        {\em date}: Similar to the Twitter paper
+%
+%        {\em Dataset}: Full tumblr firehose of public post from 2013-04 to 2013-11. Evaluations from 2013-06 to 2013-08. Results presented in terms of Number Events Detected, Precision, Leadtime
+%
+%    \item \textbf{Identifying Content for Planned Events Across Social Media Sites - Luis Gravano-Columbia University}:
+%            Not exactly related to ours. It deals with identifying user contributed content for future planned events that are already known like music concert etc.
+%
+%\end{itemize}
 
-Protest detection and forecasting. Include HRL, both detection and 
-forecasting. HRL has papers in ISI 2013. Add VT papers.
-
-Detecting planned events. Columbia work. Look at references in that
-paper to identify more. Event detection research (cite 10-15 papers).
-Oren Etzioni, his work.
-
-NEED ONE MORE SUBGROUP.
+Three different categories of related work - \emph{Event Detection, Event Forecasting, } is discussed. There has been a lot of work done in the field of Event Detection--Oren Etzioni, Online Event Detection. Most of these deal with detection of event from Multiple documents. But here, we deal with detection/identification of event reportings specially mentions of future events in particular. Some work has been done targeting planned Event detection like HRL's paper, Identifying Content for Online Events etc. In both the HRL papers they search for a single keyword to forecast events. Searching for one keyword can lead to false results. We propose a high precision event identification system through the use of phrases as opposed to keywords. We also provide a semi-automatic method to identify relevant key-phrases. 
+Thirdly, little work is done regarding forecasting civil unrest events {VT's paper, HRL paper, Nathan kallus's paper}. The planned Protest is a part of the EMBERS architecture and is discussed in detail here. It scours disparate social media sources on a real-time basis to identifying/detect mentions of future events. The Nathan Kallus's paper uses mentions of future events to forecast significant protests in a country. We deal with the problem identifying the future mentions of events.
 
 
-\begin{itemize}
-    \item
-        \textbf{HRL's Twitter Planned Protest Paper: Detecting future social unrest in unprocessed Twitter}: 
-
-        {\em keywords}: 335 keywords identified by domain experts, used to filter twitter stream.
-
-        {\em Date}: Quoting "Our future dates is done."Our future date filter searches first for month names and abbreviations in Spanish and Portuguese and second for numbers less than 31 within three whitespace separated tokens from each other. Thus, an example matching date pattern would be ”10 de enero”.
-
-
-        {\em Probability}: Posterior probability of tweet being Civil Unrest related Given User-type
-
-        {\em Event Geocoding}: If no location in Text then location of retweeter is used based on HRL's Geocoding methodology.
-
-        {\em EventType and Population}: Duplicate Forecasts for same date/location are combined into one and then tweet history of every tweeter/retweeter in the forecast are searched for keywords pertaining to particular classes identified by domain expert and then most commonly occuring class is assigned.
-        
-        {\em Results Provided}: Counts of Warnings provided and results of Manual examination of warning provided
-
-    \item \textbf{HRL's Tumblr Based Paper- Civil Unrest Prediction: A Tumblr-Based Exploration}
-
-        {\em keywords}: 59 keywords by domain experts.
-
-        {\em location}: Text Based filter for pre-defined locations(1022 in number)
-
-        {\em date}: Similar to the Twitter paper
-
-        {\em Dataset}: Full tumblr firehose of public post from 2013-04 to 2013-11. Evaluations from 2013-06 to 2013-08. Results presented in terms of Number Events Detected, Precision, Leadtime
-
-    \item \textbf{Identifying Content for Planned Events Across Social Media Sites - Luis Gravano-Columbia University}:
-            Not exactly related to ours. It deals with identifying user contributed content for future planned events that are already known like music concert etc.
-
-\end{itemize}

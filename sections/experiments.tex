@@ -1,4 +1,25 @@
+\begin{itemize}
+We provide an elaborate analysis of the planned protest model as follows:
+\item{Perfomance over the months}
+    Fig.~\ref{fig:monthlyqs} provides the evaluation results of the model over the months with a breakdown of its sources. The QS reported is the weighted average of QS of all 10 countries.
+    Twitter has a higher QS as multiple re-tweets of mention of future events in twitter is a direct indicator of the popularity of the event, the intent of people to join an event. While mention of Future events in News is simply a reporting of the event not much can be understood about the popularity of the event or about the people's support for the event. At the same time, twitter provides very little in terms of recall.
+RSS has an average precision of 0.66 and a maximum recall 0.30 while
+Twitter has an average precision of 0.81 while a max recall of 0.1.
+
+\item{Country-wise perfomance}
+    Table~\ref{tb:sourcewisecomparison} presents the perfomance of the planned protest model (for March 2014) for each of the 10 countries of interest. It also presents a source wise breakdown of perfomance. 
+\end{itemize}
+
+
+
+
+
+
+
+
+
 \begin{enumerate}
+
 \item How Planned Protest model fared over the months?
 Evaluation of Planned Protest Over the months
 
@@ -13,7 +34,7 @@ Evaluation of Each Individual Data Source,
             \hline
             & \multicolumn{3}{ |c| }{News/Blogs} & \multicolumn{3}{ |c| }{Twitter}\\
             \hline
-            Country & QS & Recall & Precision & QS & Recall & Precision\\
+            Country & QS & Precision & Recall & QS & Precision & Recall\\
             \hline
             AR &3.14&0.32&0.69&3.52&0.78&0.14\\
             BR &3.14&0.48&0.54&0.00&0.00&0.00\\
