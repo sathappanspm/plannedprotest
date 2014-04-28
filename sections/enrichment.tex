@@ -1,5 +1,41 @@
-\begin{itemize}
-\item \textbf{Basis Enrichment}: We make use of the Basis Rosette Language Processing tools to identify text language (spanish, portuguese etc.,), tokenize, lemmatize and identify named entities as well as classify them into Locations, Person and Organization.
 
-\item \textbf{TIMEN}: Date expressions are normalized and de-indexed using the TIMEN package -- {\em TIMEN: An Open Temporal Expression Normalisation Resource}.
-\end{itemize}
+\begin{table}
+\caption{EMBERS system statistics}
+ \centering
+ \begin{tabular}{|l|l|l|l|l|}
+ \hline
+ Archived data     & 12.4 TB                  \\ \hline
+ Archive size & ca. 3 billion messages   \\ \hline
+ Data throughput   & 200-2000 messages/sec  \\ \hline
+ Daily ingest & 15 GB \\ \hline
+ System memory & 50 GB \\ \hline
+ System core & 16 vCPUs \\ \hline
+ System output & ca. 40 warnings/day \\ \hline
+\end{tabular}
+\label{tab:stats}
+\end{table}
+
+
+\subsection{Enrichment}
+
+Messages with textual content (tweets, newsfeeds, blog postings, etc.)
+are subjected to shallow linguistic processing prior to analysis. Note that
+most of our content involves languages from the Latin American region, esp.
+Spanish, Portuguese, but also French (and of course, English). Applying
+BASIS technologies' Rosette Language Processing (RLP) tools, the language of
+the text is identified, the natural language content is tokenized and
+lemmatized and the named entities identified and classified. Date
+expressions are normalized and deindexed (using the
+TIMEN \cite{LlorensDGS12} package).  Finally, messages are geocoded with a specification
+of the location (city, state, country), being talked about in the message.
+An example of this enrichment processing can be seen in
+Fig.~\ref{fig:enrichment}.
+
+
+%\begin{itemize}
+%\item \textbf{Basis Enrichment}: We make use of the Basis Rosette Language Processing tools to identify text language (spanish, portuguese etc.,), tokenize, lemmatize and identify named entities as well as classify them into Locations, Person and Organization.
+%
+%\item \textbf{TIMEN}: Date expressions are normalized and de-indexed using the TIMEN package -- {\em TIMEN: An Open Temporal Expression Normalisation Resource}.
+%\end{itemize}
+%
+

@@ -21,7 +21,7 @@ The methodology is similar to {\em Web-a-where: Geo-Tagging Web Content}.
 \fi 
 
 \subsubsection{Twitter}
-The Twitter geocoding is achieved by first
+The Twitter\cite{twitter} geocoding is achieved by first
 considering the most reliable but least available source,
 viz. geotags, which give us exact geographic locations that can be
 reverse geocoded into place names.  Second, we consider Twitter places
@@ -32,4 +32,4 @@ tweet text itself to find mentions of relevant locations which can
 then be geocoded into geographical coordinates.
 
 \subsubsection{Facebook}
-We make use of only the facebook event data for our experiments. Almost, all of the Facebook event pages contain information about the venue of the event which includes latitude, longitude, country, state, city, street etc. Under cases where only latitude and longitude is given we do a reverse-geocoding by a KD-Tree lookup from the World Gazetteer to get the country, state, city information. A very few event pages do not have sufficient location info, we ignore such pages that do not even contain country information.
+We make use of only the facebook event data for our experiments. Almost, all of the Facebook event pages contain information about the venue of the event which includes latitude, longitude, country, state, city, street etc. Under cases where only latitude and longitude is given we do a reverse-geocoding by a KD-Tree lookup\cite{kd-tree} from the World Gazetteer to get the country, state, city information. A very few event pages do not have sufficient location info, we ignore such pages that do not even contain country information.
