@@ -1,15 +1,10 @@
 We make use of a semi-automated approach to identify key-phrases for the purpose of extracting events from our data feeds. We use different sets of phrases for News and Twitter. We found that key-phrases provide a more accurate extraction than individual keywords.
 
-
-\sathappanc{Intro written for KDD paper}
-
-{\em (Reference: Learning Extraction Patterns for Subjective expressions -- Ellen Riloff and Janyce Wiebe)}
-
 Initially, a few seed phrases were obtained manually
 with the help of subject matter experts. These phrases were parsed
 using a dependency parser and the grammatical relationship between the
 core subject word---{\em protest}, {\em manifestación}, {\em Huelga},
-etc.---and any accompanying word -- {\em plan}, {\em call}, {\em anunciar} --- was extracted. These grammatical relations serve as extraction patterns as in \cite{riloff}. Then, we build a corpora by finding out sentences that contain both a future date and the protest or its synonyms in any of the three languages. These sentences are then used as candidates for phrase list expansion. The phrase list is populated by finding phrases that follows the extraction pattern.
+etc.---and any accompanying word -- {\em plan}, {\em call}, {\em anunciar} --- was extracted. These grammatical relations serve as extraction patterns as in \cite{riloff2003learning}. Then, we build a corpora by finding out sentences that contain both a future date and the protest or its synonyms in any of the three languages. These sentences are then used as candidates for phrase list expansion. The phrase list is populated by finding phrases that follows the extraction pattern.
 The phrase learning is shown in Fig.~/ref{fig:phraselearning}
 
 This final set of phrases, is then cleansed by an expert to get the final set of phrases. Around 122 phrases were obtained for News/Blogs and 

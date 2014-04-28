@@ -2,16 +2,12 @@ We provide an elaborate analysis of the planned protest model as follows:
 \begin{itemize}
     \item {\bf Perfomance over the months}
 \end{itemize}
-    Fig.~\ref{fig:monthlyqs} provides the evaluation results of the model over the months with a breakdown of its sources. The QS reported is the weighted average of QS of all 10 countries.
-    Twitter has a higher QS as multiple re-tweets of mention of future events in twitter is a direct indicator of the popularity of the event, the intent of people to join an event. While mention of Future events in News is simply a reporting of the event not much can be understood about the popularity of the event or about the people's support for the event. At the same time, twitter provides very little in terms of recall.
-RSS has an average precision of 0.66 and a maximum recall 0.30 while
-Twitter has an average precision of 0.81 while a max recall of 0.1.
-
+    Fig.~\ref{fig:monthlyqs} provides the evaluation results of the model over the months with a source level breakdown. The QS reported is the weighted average of QS of all 10 countries where the weight for a country is the number of GSR events for that country.
+    Twitter has a higher QS as multiple re-tweets of mention of future events in twitter is a direct indicator of the popularity of an event as well as the intent of people to join an event. While mention of Future events in News is simply a reporting of the event not much can be understood about the popularity of the event or about the people's support for the event. 
 \begin{itemize}
     \item {\bf Country-wise perfomance}
 \end{itemize}
-    Table~\ref{tb:sourcewisecomparison} presents the perfomance of the planned protest model (for March 2014) for each of the 10 countries of interest. It also presents a source wise breakdown of perfomance. 
-
+    Table~\ref{tb:sourcewisecomparison} presents the perfomance of the planned protest model (for March 2014) for each of the 10 countries of interest. It also presents a source wise breakdown.From the table it is evident that different data source prefer different countries. The News/Blogs data source produces alerts for most countries and also provides much higher recall as opposed to twitter which provides High QS but very little recall.Also News/Blogs has a higher lead-time of 4.57 days as compared to twitters 2.82.
 
 \begin{itemize}
     \item {\bf Case Study: Venezuelan and Brazilian Protests}
@@ -22,15 +18,17 @@ The recent Venezuelan protests against President Nicolas Maduro and the Brazilia
     \item {\bf Lead-Time vs Quality Trade-Off}
 \end{itemize}
 
-Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model increases with time.
+Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model increases with time. 
 
 \begin{itemize}
     \item {Perfomance under stringent matching Criteria}
 \end{itemize}
+Fig.~\ref{fig:matchinginterval} shows the perfomance of the model when the matching window is reduced from 7 to 1 in steps. We can see that the model is not affected badly even under the strict matching interval of 1-day difference.
 
 \begin{itemize}
     \item {\bf Quality Score Distribution}
 \end{itemize}
+The hump on the right side of the Fig.~\ref{fig:doubleHump} signifies that a majority of the planned protest alerts are high quality.
 
 \begin{table*}[tb!]
     \small
@@ -132,12 +130,18 @@ Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model incre
     \label{fig:venezuela_violent}
     \caption{Venezuelan Violent Protests}
 \end{figure}
-
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{alertstructure}
+    \label{fig:alertstructure}
+    \caption{Structure of an Alert}
+\end{figure}
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{matchingwindow}
-    \label{fig:matchinginterval}
+    \label{fig:QS for Different Matching Window}
     \caption{QS vs Matching Interval Trade-Off}
 \end{figure}
+
+
 
 
 
