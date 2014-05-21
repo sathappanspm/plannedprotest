@@ -38,6 +38,13 @@ specification of the location (city, state, country), being talked
 about in the message.  An example of this enrichment processing can be
 seen in Fig.~\ref{fig:enrichment}.
 
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{enrichment}
+    \caption{Message Enrichment}
+    \label{fig:enrichment}
+\end{figure}
+
+
 
 %\begin{itemize}
 %
@@ -55,6 +62,11 @@ The primary rules in the model encode the effect that Basis-extracted location s
 The secondary rules, which are given half the weight of the primary rules, perform the same mapping of extracted strings to gazetteer aliases, but for extracted persons and organizations. Strings describing persons and organizations often include location clues (e.g., ``mayor of Buenos Aires''), but intuition suggests the correlation between the article's location and these clues may be lower than with location strings. 
 
 Finally, the model includes rules and constraints to require consistency between the different levels of geolocation, making the model place higher probability on states with its city contained in its state, which is contained in its country. As a post-processing step, we enforce this consistency explicitly by using the inferred city and its enclosing state and country, but adding these rules into the model makes the probabilistic inference prefer consistent predictions, enabling it to combine evidence at all levels.
+\begin{figure*}
+    \includegraphics[width=\textwidth]{psl_pipeline}
+    \caption{An Example of PSL based Geo-Coding}
+    \label{fig:psl_example}
+\end{figure*}
 %\input{sections/psl.tex}
 
 \iffalse Most news articles and blog posts mention multiple locations, e.g.,
@@ -74,6 +86,12 @@ are weighted accordingly.
 
 The methodology is similar to {\em Web-a-where: Geo-Tagging Web Content}.
 \fi 
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{rssdistribution}
+    \caption{Rate of Arrival of News/Blogs}
+    \label{fig:rssdistribution}
+\end{figure}
 
 \subsubsection{Twitter}
 The Twitter\cite{twitter} geocoding is achieved by first

@@ -1,0 +1,40 @@
+The problem we try to solve here is the identification of  'Calls for Protest/Strike or any Civil Disobedience movements' in Social Media like News, Blogs, Twitter, Facebook etc and trying to accurately predict the date of event and location with city level granularity.An accurately identified 'call for protest' is then sent out to an alerting system. An alert is structured as shown in Fig.~\ref{fig:alertstructure}. It is a structured record containing When/Where/Why/Who of the protest and the current date or date at which a forecast is made.
+The `when' is specified in granularities of days. 
+The {\bf where} provides a tiered description specifying the
+(country, state, city), e.g.,
+(Honduras, Francisco Morazan, Tegucigalpa).
+The {\bf why} (or event type)
+captures the main objective or reason for a civil unrest event,
+and is meant to come from 7 broad classes (e.g., `Employment \& Wages',
+`Housing', `Energy \& Resources' etc.) each of which is further categorized into
+whether the event is forecast to be violent or not.
+Finally, the {\bf who} (or population)
+denotes common categories of human populations
+used in event coding~\cite{philschrodt}
+such as
+Business, Ethnic, Legal (e.g. judges or lawyers), Education (e.g. teachers or students or parents of students), Religious (e.g. clergy), Medical (e.g., doctors or nurses), Media, Labor, Refugees/Displaced, Agricultural (e.g. farmers,
+or just General Population. 
+
+Concomitant with the definitions in the above section, a GSR event contains
+again the where/why/when/\hskip0ex who of a protest that has actually occurred and
+a {\it reported date} (the date a newspaper reports the protest as
+having happened).
+See Fig.~\ref{fig:alertstructure} (right).
+As described earlier, the GSR is organized by an
+independent third party (MITRE) and the authors of this study do not
+have any participation in this activity. 
+
+\subsection{Lead Time vs Accuracy of Forecast Date}
+Before we explain how alerts are matched to events, it is important to
+first understand which alerts {\it can} be matched to specific events.
+Note that there are four dates in an (alert,event) combination (see Fig.~\ref{fig:timeline}):
+\begin{enumerate}
+\item The date the forecast is made ({\it forecast date})
+\item The date the event is predicted to happen ({\it predicted event date})
+\item The date the event actually happens ({\it event date})
+\item The date the event is reported in a GSR source ({\it reported date})
+\end{enumerate}
+
+\subsection{Quality Score}
+The Quality score is defined as $$QS = (LS + DS)*2$$ where LS and DS denote location score and date score respectively. The location score is defined based on the kilometre distance between the predicted location and actual location. An alert can be matched to an event, if and only if it is within a 300km radius of the event location. The location score for an alert $Y$ with respect to an event $X$ is defined as $$LS=1 - min(dist(X,Y), 300) / 300 $$
+The date score is defined similarly as $$DS = 1 - min( (X-Y), MAXINTERVAL)/MAXINTERVAL$$ where MAXINTERVAL  can be anything. For our experiments, a MAXINTERVAL of 7 days is used. Again a matching cannot occur if $DS=0$

@@ -23,7 +23,7 @@ Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model incre
 \begin{itemize}
     \item {\bf Perfomance under stringent matching Criteria}
 \end{itemize}
-Fig.~\ref{fig:matchinginterval} shows the perfomance of the model when the matching window is reduced from 7 to 1 in steps. We can see that the model is not affected badly even under the strict matching interval of 1-day difference.
+Fig.~\ref{fig:matchinginterval} shows the perfomance of the model when the matching window is varied from 7 to 1 in steps. We can see that the model is not affected badly even under the strict matching interval of 1-day difference.
 
 \begin{itemize}
     \item {\bf Quality Score Distribution}
@@ -69,25 +69,86 @@ The hump on the right side of the Fig.~\ref{fig:doubleHump} signifies that a maj
 %        \caption{Alerts Distribution From 2012-11 to 2014-03}
 %    \end{subfigure}
 %\end{figure*}
+\begin{figure*}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{gsr_distribution}
+  \caption{GSR Distribution From 2012-11 to 2014-03}
+  \label{fig:gsrdistribution}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{pp_dist}
+  \caption{Alerts Distribution From 2012-11 to 2014-03}
+  \label{fig:ppdistribution}
+\end{subfigure}
+\caption{Distribution of Alerts and GSR}
+\label{fig:distribution}
+\end{figure*}
 
+%\begin{figure}
+%    \includegraphics[width=.5\textwidth]{gsr_distribution}
+%    \caption{}
+%    \label{fig:gsrdistribution}
+%\end{figure}
+%
+%\begin{figure}
+%    \includegraphics[width=.5\textwidth]{pp_dist}
+%    \caption{Alerts Distribution From 2012-11 to 2014-03}
+%    \label{fig:ppdistribution}
+%\end{figure}
+\begin{figure*}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{brazil_june}
+  \caption{System Performance during Brazilian Spring}
+  \label{fig:brazil_june}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{venezuela}
+  \caption{Venezuelan Protests}
+  \label{fig:venezuela_feb}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{venezuela_violent}
+  \caption{Venezuelan Violent Protests}
+  \label{fig:venezuela_violent}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{monthlyqs}
+  \caption{Quality Score over the months}
+  \label{fig:monthlyqs}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{leadTimeVsQS}
+  \caption{Lead-Time vs Quality Score}
+  \label{fig:leadTimeVsQS}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{doubleHump}
+  \caption{Quality Score Distribution}
+  \label{fig:doubleHump}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{matchingwindow}
+  \caption{QS vs Matching Interval Trade-Off}
+  \label{fig:matchinginterval}
+\end{subfigure}%
+\end{figure*}
 
-\begin{figure}
-    \includegraphics[width=.5\textwidth]{gsr_distribution}
-    \caption{GSR Distribution From 2012-11 to 2014-03}
-    \label{fig:gsrdistribution}
-\end{figure}
-
-\begin{figure}
-    \includegraphics[width=.5\textwidth]{pp_dist}
-    \caption{Alerts Distribution From 2012-11 to 2014-03}
-    \label{fig:ppdistribution}
-\end{figure}
-
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{brazil_june}
-    \caption{Brazil June Protests}
-    \label{fig:brazil_june}
-\end{figure}
+%\begin{figure}
+%    \includegraphics[width=0.5\textwidth]{brazil_june}
+%    \caption{Brazil June Protests}
+%    \label{fig:brazil_june}
+%\end{figure}
 
 %\begin{figure*}
 %    \includegraphics[width=\textwidth]{eventDateVsDate_brazil}
@@ -101,59 +162,49 @@ The hump on the right side of the Fig.~\ref{fig:doubleHump} signifies that a maj
 %    \label{fig:leadtime_venezuela}
 %\end{figure*}
 
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{monthlyqs}
-    \caption{QS over the months}
-    \label{fig:monthlyqs}
-\end{figure}
-
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{leadTimeVsQS}
-    \caption{Lead-Time vs Quality Score}
-    \label{fig:leadTimeVsQS}
-\end{figure}
-
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{doubleHump}
-    \caption{QS Distribution}
-    \label{fig:doubleHump}
-\end{figure}
-
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{venezuela}
-    \caption{Venezuelan Protests}
-    \label{fig:venezuela_feb}
-\end{figure}
-
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{venezuela_violent}
-    \caption{Venezuelan Violent Protests}
-    \label{fig:venezuela_violent}
-\end{figure}
+%\begin{figure}
+%    \includegraphics[width=0.5\textwidth]{monthlyqs}
+%    \caption{QS over the months}
+%    \label{fig:monthlyqs}
+%\end{figure}
+%
+%\begin{figure}
+%    \includegraphics[width=0.5\textwidth]{leadTimeVsQS}
+%    \caption{Lead-Time vs Quality Score}
+%    \label{fig:leadTimeVsQS}
+%\end{figure}
+%
+%\begin{figure}
+%    \includegraphics[width=0.5\textwidth]{doubleHump}
+%    \caption{QS Distribution}
+%    \label{fig:doubleHump}
+%\end{figure}
+%
+%\begin{figure}
+%    \includegraphics[width=0.5\textwidth]{venezuela}
+%    \caption{Venezuelan Protests}
+%    \label{fig:venezuela_feb}
+%\end{figure}
+%
+%\begin{figure}
+%    \includegraphics[width=0.5\textwidth]{venezuela_violent}
+%    \caption{Venezuelan Violent Protests}
+%    \label{fig:venezuela_violent}
+%\end{figure}
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{alertstructure}
     \caption{Structure of an Alert}
     \label{fig:alertstructure}
 \end{figure}
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{matchingwindow}
-    \caption{QS vs Matching Interval Trade-Off}
-    \label{fig:matchinginterval}
-\end{figure}
+%\begin{figure}
+%    \includegraphics[width=0.5\textwidth]{matchingwindow}
+%    \caption{QS vs Matching Interval Trade-Off}
+%    \label{fig:matchinginterval}
+%\end{figure}
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{timeline}
     \caption{Matching Timeline}
     \label{fig:timeline}
-\end{figure}
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{rssdistribution}
-    \caption{Rate of Arrival of Documents}
-    \label{fig:rssdistribution}
-\end{figure}
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{enrichment}
-    \caption{Message Enrichment}
-    \label{fig:enrichment}
 \end{figure}
 
 

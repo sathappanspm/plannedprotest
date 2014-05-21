@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1512.9921"
+   height="591.73224"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="phraseLearning.pdf">
+  <defs
+     id="defs2987">
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutM"
+       style="overflow:visible">
+      <path
+         id="path3963"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="scale(0.4,0.4)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutM-6"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3963-8"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="scale(0.4,0.4)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     inkscape:document-units="mm"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.43415836"
+     inkscape:cx="44.310091"
+     inkscape:cy="380"
+     inkscape:current-layer="layer1"
+     id="namedview2989"
+     showgrid="false"
+     units="mm"
+     inkscape:window-width="1918"
+     inkscape:window-height="1060"
+     inkscape:window-x="0"
+     inkscape:window-y="18"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata2991">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-152.36343)">
+    <g
+       id="g4282"
+       transform="matrix(0.79856748,0,0,1.028878,590.46405,157.93972)">
+      <text
+         sodipodi:linespacing="125%"
+         id="text2994"
+         y="166.57103"
+         x="-733.36157"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-weight:bold"
+           y="166.57103"
+           x="-733.36157"
+           id="tspan2996"
+           sodipodi:role="line">Dependency Tree</tspan><tspan
+           id="tspan2998"
+           y="216.57103"
+           x="-733.36157"
+           sodipodi:role="line">nsubj(Hold-2, Argentines-1)</tspan><tspan
+           id="tspan3000"
+           y="266.57104"
+           x="-733.36157"
+           sodipodi:role="line">root(ROOT-0, Hold-2)</tspan><tspan
+           id="tspan3002"
+           y="316.57104"
+           x="-733.36157"
+           sodipodi:role="line">dobj(Hold-2, Protests-3)</tspan><tspan
+           id="tspan3004"
+           y="366.57104"
+           x="-733.36157"
+           sodipodi:role="line">prep(Protests-3, Against-4)</tspan><tspan
+           id="tspan3006"
+           y="416.57104"
+           x="-733.36157"
+           sodipodi:role="line">pobj(Against-4, Government-5)</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3008"
+         y="261.61322"
+         x="68.312462"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-weight:bold"
+           y="261.61322"
+           x="68.312462"
+           id="tspan3010"
+           sodipodi:role="line">Learned Relation</tspan><tspan
+           style="font-weight:bold"
+           id="tspan3012"
+           y="311.61322"
+           x="68.312462"
+           sodipodi:role="line">dobj(____, Protests)</tspan><tspan
+           style="font-weight:bold"
+           id="tspan3014"
+           y="361.61322"
+           x="68.312462"
+           sodipodi:role="line" /></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3016"
+         y="-2.1769984"
+         x="677.17224"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-weight:bold"
+           y="-2.1769984"
+           x="677.17224"
+           id="tspan3018"
+           sodipodi:role="line"> </tspan><tspan
+           id="tspan3020"
+           y="47.823002"
+           x="677.17224"
+           sodipodi:role="line">Alistan Huelga</tspan><tspan
+           id="tspan3022"
+           y="97.822998"
+           x="677.17224"
+           sodipodi:role="line">Anunciar Greve</tspan><tspan
+           id="tspan3024"
+           y="147.823"
+           x="677.17224"
+           sodipodi:role="line">Convocar Protestar</tspan><tspan
+           id="tspan3026"
+           y="197.823"
+           x="677.17224"
+           sodipodi:role="line">Decretan Huelga</tspan><tspan
+           id="tspan3028"
+           y="247.823"
+           x="677.17224"
+           sodipodi:role="line">Empezaria Huelga</tspan><tspan
+           id="tspan3030"
+           y="297.823"
+           x="677.17224"
+           sodipodi:role="line">Emplazan Huelga</tspan><tspan
+           id="tspan3032"
+           y="347.823"
+           x="677.17224"
+           sodipodi:role="line">Escucho Huelga</tspan><tspan
+           id="tspan3034"
+           y="397.823"
+           x="677.17224"
+           sodipodi:role="line">Haber Huelga</tspan><tspan
+           id="tspan3036"
+           y="447.823"
+           x="677.17224"
+           sodipodi:role="line">Hacemos Huelga</tspan><tspan
+           id="tspan3038"
+           y="497.823"
+           x="677.17224"
+           sodipodi:role="line">Va Huelga</tspan><tspan
+           id="tspan3040"
+           y="547.823"
+           x="677.17224"
+           sodipodi:role="line">Responder Movilizacion</tspan><tspan
+           id="tspan3042"
+           y="597.823"
+           x="677.17224"
+           sodipodi:role="line" /></text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3044"
+         d="m -83.492945,278.82646 c 86.4879446,0 86.4879446,0 86.4879446,0"
+         style="fill:none;stroke:#000002;stroke-width:5.16638994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.99224806;stroke-dasharray:none;marker-end:url(#TriangleOutM)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3044-9"
+         d="m 547.99633,278.82646 c 86.48795,0 86.48795,0 86.48795,0"
+         style="fill:none;stroke:#000002;stroke-width:5.16638994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.99224806;stroke-dasharray:none;marker-end:url(#TriangleOutM)" />
+    </g>
+  </g>
+</svg>
