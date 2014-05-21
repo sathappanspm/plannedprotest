@@ -46,6 +46,8 @@ Note that there are four dates in an (alert,event) combination (see Fig.~\ref{fi
 \item The date the event is reported in a GSR source ({\it reported date})
 \end{enumerate}
 
+\iffalse
 \subsection{Quality Score}
 The Quality score is defined as $$QS = (LS + DS)*2$$ where LS and DS denote location score and date score respectively. The location score is defined based on the kilometre distance between the predicted location and actual location. An alert can be matched to an event, if and only if it is within a 300km radius of the event location. The location score for an alert $Y$ with respect to an event $X$ is defined as $$LS=1 - min(dist(X,Y), 300) / 300 $$
 The date score is defined similarly as $$DS = 1 - min( (X-Y), MAXINTERVAL)/MAXINTERVAL$$ where MAXINTERVAL  can be anything. For our experiments, a MAXINTERVAL of 7 days is used. Again a matching cannot occur if $DS=0$
+\fi
