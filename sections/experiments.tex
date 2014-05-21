@@ -1,4 +1,4 @@
-We provide an elaborate analysis of the planned protest model as follows:
+We evaluate the model under a strict and a relaxed condition. Under strict evaluation an alert can be matched to an event only if there is city level location match and the forecasted event date is same as the true event date. In the relaxed evaluation, we allow the matching to happen if the alert and the GSR event are within a 300 KM radius and the forecasted event date lies within a given interval of the true event date. We try different matching intervals ranging from 0 to 7. If $x$ is the allowed interval, then a matching can happen if an alert's forecasted event date is within $+x$(upper bound) days of the GSR event and with a lower bound of $min(x,GSR Event Date - Date of Forecast)$ :
 \begin{itemize}
     \item {\bf Perfomance over the months}
 \end{itemize}
