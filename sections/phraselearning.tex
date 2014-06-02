@@ -1,7 +1,15 @@
 We make use of a semi-automated approach to identify key-phrases for the purpose of extracting events from our data feeds. We use different sets of phrases for News and Twitter. We found that key-phrases provide a more accurate extraction than individual keywords.
 
 Initially, a few seed phrases were obtained manually
-with the help of subject matter experts. These phrases were parsed
+with the help of subject matter experts. 
+
+\sathappanc{Jaime's Text -->}
+
+The idea was to have a simple query list for future civic unrest actions, not trying to identify the type of protest. The analysis of news reports for planned protests on the printed media served as a model for a set of minimum words to use in the query.
+We choose four nouns from the basic query that would indicate a civil unrest in all Latin American countries: Demonstration, March, Protest and Strike. We translated them into Spanish and Portuguese, including synonyms.
+We then set some verbs that indicated a future action and included the proper future conjugations: to organize, to prepare, to plan, to announce.Shorter terms were also added to overcome the limitations of characters in twitter.These phrases had a more direct call for action, different from the ones chosen for RSS feeds. For example --{\em Marchar}, {\em manhã de mobilização}, {\em vamos  protestar}, {\em Huelga} -- was identified.
+
+These phrases were then parsed
 using a dependency parser and the grammatical relationship between the
 core subject word---{\em protest}, {\em manifestación}, {\em Huelga},
 etc.---and any accompanying word -- {\em plan}, {\em call}, {\em anunciar} --- was extracted. These grammatical relations serve as extraction patterns as in \cite{riloff2003learning}. Then, we build a corpora by finding out sentences that contain both a future date and the protest or its synonyms in any of the three languages. These sentences are then used as candidates for phrase list expansion. The phrase list is populated by finding phrases that follows the extraction pattern.

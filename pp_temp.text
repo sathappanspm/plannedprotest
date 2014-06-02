@@ -119,42 +119,51 @@
 %
 % 1st. author
 \alignauthor
-\affaddr{Sathappan Muthiah \\} 
-    \affaddr{Virginia Tech, Blacksburg, VA 24061}
-    \email{sathap1@cs.vt.edu}
-% 2nd. author
+\affaddr{Sathappan Muthiah}\\
+\affaddr{Virginia Tech, Blacksburg, VA 24061}
+\email{sathap1@cs.vt.edu}
+
 %\alignauthor
-%\affaddr{Bert Huang} \\
-%      \affaddr{University of Maryland, College Park, MD 20742}
-%      \email{bert@cs.umd.edu}
-% 3rd. author
-%\alignauthour
-%\affaddr{Jaime Arredondo}\\
-%\affaddr{University of California at San Diego, San Diego, CA 92093}
+%Bert Huang\footnotemark[2]
+%\email{bert@cs.umd.edu}
+%
+%\alignauthor
+%Jaime Arredondo\footnotemark[3]
 %\email{jarredon@ucsd.edu}
 %
-%\and
-%\alignauthour
-%\affaddr{David Mares}\\
-%\affaddr{University of California at San Diego, San Diego, CA 92093}
+%\alignauthor
+%David Mares\footnotemark[3]
 %\email{dmares@ucsd.edu}
 %
-%\alignauthour
-%\affaddr{Lise Getoor}\\
-%\affaddr{University of California at Santa Cruz, Santa Cruz, CA 95064}
-%\email{getoor@soa.ucsc.edu}
+%\alignauthor
+%Lise Getoor\footnotemark[4]
+%\email{getoor@soe.ucsc.edu}
 %
-%\alignauthour
-%\affaddr{Graham Katz}\\
-%\affaddr{CACI Inc., Lanham, MD 20706}
+%\alignauthor
+%Graham Katz\footnotemark[5]
 %\email{ekatz@caci.com}
 %
-%\alignauthour
-%\affaddr{Naren Ramakrishnan}\\
-%\affaddr{Virginia Tech, Blacksburg, VA 24061}
+%\alignauthor
+%Naren Ramakrishnan\footnotemark[1]
 %\email{naren@cs.vt.edu}
+%
+%\affaddr{\footnotemark[1]~~Virginia Tech, Blacksburg, VA 24061}\\
+%\affaddr{\footnotemark[2]~~University of Maryland, College Park, MD 20742}\\
+%\affaddr{\footnotemark[4]~~University of California at Santa Cruz, Santa Cruz, CA 95064}\\
+%\affaddr{\footnotemark[3]~~University of California at San Diego, San Diego, CA 92093}\\
+%\affaddr{\footnotemark[5]~~CACI Inc., Lanham, MD 20706}\\
 
-
+%\affaddr{\foot}
+%\affaddr{Author List TBD} \\  %\titlenote{Dr.~Trovato insisted his name be first.}\\
+%      \affaddr{Somewhere, Sometime}
+%      \email{some1@somewhere.edu}
+% 2nd. author
+%\alignauthor
+%\affaddr{Author} \\
+ %\titlenote{Dr.~Trovato insisted his name be first.}\\
+%      \affaddr{Somewhere}
+%      \email{someone@somewhere.edu}
+% 3rd. author
 %\and  % use '\and' if you need 'another row' of author names
 }
 
