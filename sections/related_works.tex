@@ -51,3 +51,17 @@ Second, some work has been done regarding extraction of planned/future mentions 
 Several work has been done on temporal information extraction from text.
 \cite{Kawai:2010:CSE} presents a search engine ChronoSeeker for searching future and past events.It makes use of an SVM Classifier to disambiguate between the various temporal expressions in a document. .\cite{baeza2005searching} and \cite{dias2011future} also try to extract future temporal references from text, with the latter using a classifier approach to differentiate between a planned event and a rumor.\iffalse \sathappanc{Also cite TEMPEX, TIMEN etc} \fi
 Third, few work has been done in the area of Event Forecasting. \cite{Radinsky:2013:MWP}, is one of the first papers in this category. The paper learns event sequences from a corpora spanning over 22 years and then uses these sequences to forecast events like disease outbreaks, deaths and riots.It only predicts if an event of interest will happen in the future given the sequence of events seen but it does not predict when/where(city level) that event will happen. In \cite{DBLP:journals/corr/Kallus14}, the author makes use of data from Recorded Future to find if a  significant protest event will occur in the next three days or not usig a random forest classifier.The author only focuses on prediction of significant events and also the forecast is limited to the next three days.\cite{compton2013detecting} and \cite{xu2014civil} are two pieces of research  that are very close to our line of work. Both papers follow similar methodologies but are based on different datasets--Twitter and Tumblr.In \cite{compton2013detecting}, a list of 335 keywords identified by experts is used to filter twitter stream and the filtered twitter streams are then searched for the presence of future dates in a naive manner by first searching for month names and then for a number less than 31. Such an approach, will not be capable of finding relative mentions of future dates like "tomorrow", "next tuesday" etc. If any location is mentioned in the text of the tweet it is used as the event location else the location is determined based on a in-house geocoder\cite{hrlgeocoder}.\cite{xu2014civil} works on Tumblr and makes uses of a fewer set of keywords(59) to filter the Tumblr feed. The filtered feed is further refined by searching for mentions of around 1022 different location names.Finally, the documents are searched for a future date in the same way as in \cite{compton2013detecting}.
+
+\begin{table*}
+    \centering
+    \caption{comparison of our approach with other future event detection methods}
+    \begin{tabular}{l c c c c c }
+        \hline
+            & Domain Specific & Multi-Source & Geo-Coding & Temporal Normalization & Feature 4 \\
+        \hline
+        ~\cite{Kawai:2010:CSE, bosch2013estm} & & & &\checkmark& \\
+        ~\cite{xu2014civil} &\checkmark & & \checkmark& &\\
+        reference set 3 & &\checkmark& & &\\
+        our method &\checkmark &\checkmark &\checkmark &\checkmark &\checkmark\\ 
+\end{tabular}
+\end{table*}
