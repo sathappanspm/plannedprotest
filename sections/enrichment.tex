@@ -55,7 +55,7 @@ seen in Fig.~\ref{fig:enrichment}.
 We make use of different geocoding methodologies for geo-coding news/blogs and twitter.
 
 \subsubsection{News/Blogs}
-
+\label{subsection:geocoding}
 To extract the protest location from news articles, we use \emph{probabilistic soft logic} (PSL) \cite{broecheler:uai10} to build a model that performs robust, probabilistic inference given noisy signals. PSL takes a set of weighted, logic-like rules and converts them into a continuous probability distribution over the unknown truth values of logical facts. These truth values in PSL are relaxed into the $[0,1]$ interval. We use this mechanism to build a model that infers the semantic location of an article by weighing evidence coming from the Basis entity extractions and information in the World Gazatteer. 
 
 The primary rules in the model encode the effect that Basis-extracted location strings that match to gazatteer aliases are indicators of the article's location, whether they be country, state, or city aliases. Each of these implications is conjuncted with an prior for ambiguous, overloaded aliases that is proportional to the population of the gazetteer location. For example, if the string ``Los Angeles'' appears in the article, it could refer to either Los Angeles, California, or Los \'{A}ngeles in Argentina or Chile. Given no other information, our model would infer a higher truth value for the article referring to Los Angeles, California, because it has a much higher population than the other options. 
@@ -169,4 +169,4 @@ tweet text itself to find mentions of relevant locations which can
 then be geocoded into geographical coordinates.
 
 \subsubsection{Facebook}
-We make use of only the facebook event data for our experiments. Almost, all of the Facebook event pages contain information about the venue of the event which includes latitude, longitude, country, state, city, street etc. Under cases where only latitude and longitude is given we do a reverse-geocoding by a KD-Tree lookup\cite{kd-tree} from the World Gazetteer to get the country, state, city information. A very few event pages do not have sufficient location info, we ignore such pages that do not even contain country information.
+We make use of only the facebook event data for our experiments. Facebook events that have a venue are only used. A venue of a facebook event generally contains a latitude, longitude, country, state, city, street, etc. Under cases where only latitude and longitude is given we do a reverse-geocoding by a KD-Tree lookup\cite{kd-tree} from the World Gazetteer to get the country, state, city information. 
