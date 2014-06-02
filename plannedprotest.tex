@@ -64,6 +64,15 @@
 \newcommand{\narenc}[1]{[{\color{red} Naren writes: \it #1}]}
 \newcommand{\sathappanc}[1]{[{\color{blue} Sathappan writes: \it #1}]}
 
+%symbols for psl rules 
+\newcommand{\then}{\Rightarrow}
+\newcommand{\softor}{\operatornamewithlimits{\tilde{\vee}}}
+\newcommand{\softand}{\operatornamewithlimits{\tilde{\wedge}}}
+\newcommand{\softthen}{\operatornamewithlimits{\tilde{\then}}}
+\newcommand{\softneg}{\operatornamewithlimits{\tilde{\neg}}}
+
+
+
 %
 % --- Author Metadata here ---
 %\conferenceinfo{WOODSTOCK}{'97 El Paso, Texas USA}
@@ -101,63 +110,47 @@
 % These 'additional authors' will be output/set for you
 % without further effort on your part as the last section in
 % the body of your article BEFORE References or any Appendices.
+\numberofauthors{7}
 
-\numberofauthors{1} %  in this sample file, there are a *total*
-% of EIGHT authors. SIX appear on the 'first-page' (for formatting
-% reasons) and the remaining two appear in the \additionalauthors section.
-%
 \author{
-% You can go ahead and credit any number of authors here,
-% e.g. one 'row of three' or two rows (consisting of one row of three
-% and a second row of one, two or three).
-%
-% The command \alignauthor (no curly braces needed) should
-% precede each author name, affiliation/snail-mail address and
-% e-mail address. Additionally, tag each line of
-% affiliation/address with \affaddr, and tag the
-% e-mail address with \email.
-%
 % 1st. author
 \alignauthor
-\affaddr{Sathappan Muthiah \\} 
-    \affaddr{Virginia Tech, Blacksburg, VA 24061}
-    \email{sathap1@cs.vt.edu}
+Sathappan Muthiah\\
+       \affaddr{Virginia Tech, Blacksburg, VA 24061}\\
+       \email{sathap1@cs.vt.edu}
 % 2nd. author
-%\alignauthor
-%\affaddr{Bert Huang} \\
-%      \affaddr{University of Maryland, College Park, MD 20742}
-%      \email{bert@cs.umd.edu}
+\alignauthor
+Bert Huang\\
+       \affaddr{University of Maryland, College Park, MD 20742}\\
+       \email{bert@cs.umd.edu}
 % 3rd. author
-%\alignauthour
-%\affaddr{Jaime Arredondo}\\
-%\affaddr{University of California at San Diego, San Diego, CA 92093}
-%\email{jarredon@ucsd.edu}
-%
-%\and
-%\alignauthour
-%\affaddr{David Mares}\\
-%\affaddr{University of California at San Diego, San Diego, CA 92093}
-%\email{dmares@ucsd.edu}
-%
-%\alignauthour
-%\affaddr{Lise Getoor}\\
-%\affaddr{University of California at Santa Cruz, Santa Cruz, CA 95064}
-%\email{getoor@soa.ucsc.edu}
-%
-%\alignauthour
-%\affaddr{Graham Katz}\\
-%\affaddr{CACI Inc., Lanham, MD 20706}
-%\email{ekatz@caci.com}
-%
-%\alignauthour
-%\affaddr{Naren Ramakrishnan}\\
-%\affaddr{Virginia Tech, Blacksburg, VA 24061}
-%\email{naren@cs.vt.edu}
-
-
-%\and  % use '\and' if you need 'another row' of author names
+\alignauthor
+Jaime Arredondo\\
+       \affaddr{University of California at San Diego, San Diego, CA 92093}\\
+       \email{jarredon@ucsd.edu}
+\and  % use '\and' if you need 'another row' of author names
+% 4th. author
+\alignauthor
+David Mares\\
+       \affaddr{University of California at San Diego, San Diego, CA 92093}\\
+       \email{dmares@ucsd.edu}
+% 5th. author
+\alignauthor
+Lise Getoor\\
+       \affaddr{University of California at Santa Cruz, Santa Cruz, CA 95064}\\
+       \email{getoor@soe.ucsc.edu}
+% 6th. author
+\alignauthor
+Graham Katz\\
+       \affaddr{CACI Inc., Lanham, MD 20706}\\
+       \email{ekatz@caci.com}
+\and
+% 7th. author
+\alignauthor
+Naren Ramakrishnan\\
+       \affaddr{Virginia Tech, Blacksburg, VA 24061}\\
+       \email{naren@cs.vt.edu}
 }
-
 \maketitle
 \begin{abstract}
 \input{sections/abstract.tex}
