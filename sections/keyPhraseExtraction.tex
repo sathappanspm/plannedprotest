@@ -1,0 +1,17 @@
+In Key Phrase Extraction, an input document is searched for the presence of one or more key phrases obtained in a semi-automatic manner as detailed in the following section. 
+
+Each key phrase mostly consists of atleast two words.
+The presence of a keyphrase is checked by searching for the presence of individual words of the keyphrase within the same sentence separated by utmost $n$ words, where $n$ is the average distance between the keyphrase words in the learning phase.
+
+
+
+\subsection{phraselearning}
+\label{sec:phraselearning}
+\input{sections/phraselearning}
+
+
+\subsection{classification}
+For News/Blogs and Facebook, we make use of Text Based Naive Bayes Classifier to identify the event-type and population. Unigram and Bi-gram word features are used for training the classifier.
+
+For Twitter, as we send alerts based on a single tweet, we chose the event-type and population based on prior likelihood for that location.
+

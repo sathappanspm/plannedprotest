@@ -164,7 +164,8 @@ The methodology is similar to {\em Web-a-where: Geo-Tagging Web Content}.
 The Twitter\cite{twitter} geocoding is achieved by first
 considering the most reliable but least available source,
 viz. geotags, which give us exact geographic locations that can be
-reverse geocoded into place names.  Second, we consider Twitter places
+reverse geocoded into place names. We make use of a KD-Tree build using
+World Gazetteer data for this purpose.Second, we consider Twitter places
 and use place names present in these fields to geocode the place names
 into geographical coordinates.  Finally, we consider the text fields
 contained in the user profile (location, description) as well as the
@@ -172,4 +173,7 @@ tweet text itself to find mentions of relevant locations which can
 then be geocoded into geographical coordinates.
 
 \subsubsection{Facebook}
-We make use of only the facebook event data for our experiments. Facebook events that have a venue are only used. A venue of a facebook event generally contains a latitude, longitude, country, state, city, street, etc. Under cases where only latitude and longitude is given we do a reverse-geocoding by a KD-Tree lookup\cite{kd-tree} from the World Gazetteer to get the country, state, city information. 
+We make use of only the Facebook Event data for our experiments. Facebook Events that have a venue are only used. A venue of a Facebook Event generally contains a latitude, longitude, country, state, city, street, etc. Under cases where only latitude and longitude is given we do a reverse-geocoding similar to what is used for Twitter to get the place names.
+
+We use a highly specific list of 15 keywords and their variants in the three languages English, Spanish, Portuguese to query the Facebook Graph Api for Events.The Facebook Graph Api returns a list of Event-IDs, which is then used in an FQL query to get all available details of that event from Event table.
+

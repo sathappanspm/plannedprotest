@@ -1,29 +1,16 @@
 
-All News,Blogs and Tweets are first searched for the phrases learned. Then the filtered documents are searched for the presence of a reference to a Future Date. In case of News/blogs we search for the Presence of a reference to a Future Date only within the sentence where the phrase was found to reduce error. For tweets, we search the entire tweet for the reference of a future date.
+All News,Blogs and Tweets are first filtered by searching for the 
+presence of atleast one key phrase. The filtered documents are 
+then searched for the mention of a future date. In case of News/blogs, 
+the search for future date mentions is restricted to the sentence in which the keyphrase was found.
+where the phrase was found to reduce error. For tweets, no such restriction is made.
 
-Then, finally, a warning/alert is issued for those documents which contains a location information. In the case of tweets, we found that issuing an alert from just one tweet lead to a lot of wrong alerts. We thus, further filter the tweets by setting a threshold (set to 5) on the number of re-tweets of the tweet under consideration.
+A warning/alert is then finally issued for those documents which also contain any location information.
+In the case of tweets, to avoid false alarms, we further filter the tweets by setting a threshold (set to 5) on the number of re-tweet of the tweet under consideration.
 
-Each Individual step is discussed in detail below.
+In the case of Facebook, a Facebook-Event is considered an alert if there are more number of attendees than number of rejects.
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{pp_pipeline}
 \caption{A diagram showing various steps of the Model}
 \end{figure*}
-
-\subsection{Key Phrase Extraction}
-In Key Phrase Extraction, an input document is searched for the presence of one or more key phrases obtained in semi-automatic approach as given in ~\ref{sec:phraselearning}. Each key phrase mostly consists of atleast two words. 
-For checking the presence of a keyphrase, we search each individual word of the keyphrase independently in the input document with the constraint that they have to be within the same sentence and separated by atmost $n$ words.
-$n$ is the average distance between the keyphrase words in the learning phase.
-
-
-
-\subsubsection{phraselearning}
-\label{sec:phraselearning}
-\input{sections/phraselearning}
-
-
-\subsection{classification}
-For News/Blogs and Facebook, we make use of Text Based Naive Bayes Classifier to identify the event-type and population. Unigram and Bi-gram word features are used for training the classifier.
-
-For Twitter, as we send alerts based on a single tweet, we chose the event-type and population based on prior likelihood for that location.
-
