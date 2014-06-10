@@ -10,9 +10,9 @@ We choose four nouns from the basic query that is used predominantly to indicate
 We then set some verbs that indicated a future action and included the proper future conjugations - to organize, to prepare, to plan, to announce, etc. For twitter, shorter terms were used to overcome its limitations of characters. These phrases had a more direct call for action, different from the ones chosen for RSS feeds. For example --{\em Marchar}, {\em manhã de mobilização}, {\em vamos  protestar}, {\em Huelga} -- was identified.
 
 These phrases were then parsed
-using a dependency parser and the grammatical relationship between the
+using a dependency parser \cite{freeling} and the grammatical relationship between the
 core subject word---{\em protest}, {\em manifestación}, {\em Huelga},
-etc.---and any accompanying word -- {\em plan}, {\em call}, {\em anunciar} --- was extracted \sathappanc{TODO: Cite Freeling parser}.These grammatical relations serve as extraction patterns as in \cite{riloff2003learning}. 
+etc.---and any accompanying word -- {\em plan}, {\em call}, {\em anunciar} --- was extracted.These grammatical relations serve as extraction patterns as in \cite{riloff2003learning}. 
 Extraction patterns identified in the last step is then used to learn more phrases from a corpora of filtered sentences extracted from the data stream of interest. Those sentences in a document that contained any one of the subject words and also had mentions of a future date was selected as part of the corpora on which the extraction patterns were used to learn more keyphrases.
 
 The phrase learning is shown in Fig.~\ref{fig:phraselearning}
