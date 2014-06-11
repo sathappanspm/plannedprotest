@@ -24,22 +24,30 @@ of upcoming planned civil unrest events automatically from openly
 available sources of information.  Detecting indicators for civil
 unrest planning activities might have application to a wide range of
 governmental and civil activity, from the issuance of travel warnings
-to rapid emergency response capabilities.  Our detection models 
+to rapid emergency response capabilities.  
+Our detection approach 
 combine shallow linguistic analysis to identify a corpus of relevant
 documents (articles, tweets) which are then subject to targeted deep semantic analysis.
-Despite their simplicity, the models are able to
+Despite its simplicity, we are able to
 detect indicators of event planning with surprisingly high
-accuracy. Our contributions are:
+accuracy. 
+Our contributions are:
+\begin{enumerate}
+\item We present a protest forecasting system that couples three key technical ideas:
+key phrase learning to identify what to look for, probabilistic soft logic to reason about location occurrences in extracted results, and 
+time normalization to resolve future tense mentions. We demonstrate how the integration of these ideas achieves objectives in precision,
+recall, and quality.
+\item one more needed
+\item We illustrate the application of our system to 10 countries in Latin America, viz. Argentina, Brazil, Chile, Colombia, Ecuador, El Salvador, Mexico, Paraguay, Uruguay, and Venezuela. This set of countries
+
+Unlike a retrospective analysis, we assess the lead time from when the forecast is made to
+the actual event date to assess the forecasting prowess of our approach. Our results demonstrate that we are able to 
+capture significant societal unrest in the above countries with an average lead time of 4.08 days. Our experiments also
+demonstrate the selective superiorities of news media versus social media (Twitter, Facebook) over these countries.
+\end{enumerate}
 
 
 
 Protest is especially important in democracies that are struggling to consolidate themselves, such as those in Latin America. The combination of weak channels of communication between citizen and government, and a citizenry that still has not grasped the desirability of elections as the means to affect politics means that public protest will be an especially attractive option. To illustrate the power of protest in Latin America we need only recall that between 1985 and 2011 17 Presidents resigned or were impeached under pressure from demonstrations, usually violent, in the streets. Protests have also resulted in the rollback of prices increases for public services, such as in Brazil in June 2013.
 
 
-Protest is a means by which citizens communicate their views and preferences to those in authority. Representative government is based upon communication between governed and governors; ideally, the channels for communication are open, transparent, credible and efficient. Governments, nevertheless, find it difficult to know on any one issue and at any one time how their constituencies value the available options. Elections are retrospective indicators and rarely issue specific; polling taps into sentiment, but is not a good indicator of priorities or strength of feeling because of the low cost associated with responding. Events, on the other hand, indicate a willingness to bear some costs (organization, mobilization, identification) in support of an issue and thus reveal not only preferences but provide some indication of priorities.
- 
- 
-
-
-
-{\em More here summarizing results}
