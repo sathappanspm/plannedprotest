@@ -10,18 +10,24 @@
 %Finally, the model includes rules and constraints to require consistency between the different levels of geolocation, making the model place higher probability on states with its city contained in its state, which is contained in its country. As a post-processing step, we enforce this consistency explicitly by using the inferred city and its enclosing state and country, but adding these rules into the model makes the probabilistic inference prefer consistent predictions, enabling it to combine evidence at all levels.
 %\fi
 
-
-In this section, we briefly describe Probabilistic Soft Logic (PSL) \cite{kimmig2012short} which is used to geo-code news/blogs described in section ~\ref{subsection:geocoding}.
-
-PSL is a framework for collective probabilistic reasoning on relational domains.PSL models have been developed in various domains, including collective classification ~\cite{broecheler2010computing}, ontology alignment ~\cite{brocheler2012probabilistic}, personalized medicine ~\cite{bach2010decision}, opinion diffusion ~\cite{bach2012scaling} , trust in social networks ~\cite{huang2012probabilistic}, and graph summarization ~\cite{memory2012graph}.PSL represents the domain of interest as logical atoms.
-It uses first order logic rules to capture the dependency structure of the domain, based on which it builds a joint probabilistic model over all atoms.Instead of hard truth values of $0$ (false) and $1$ (true), PSL uses soft truth values relaxing the truth vlaues to the interval $[0,1]$.The logical connectives are adapted accordingly.
+In this section, we briefly describe probabilistic soft logic (PSL)~\cite{kimmig2012short}, a key
+component of our geocoding strategy described later.
+PSL is a framework for collective probabilistic reasoning on relational domains.
+PSL models have been developed in various domains, including collective classification~\cite{broecheler2010computing}, 
+ontology alignment~\cite{brocheler2012probabilistic}, personalized medicine~\cite{bach2010decision}, 
+opinion diffusion~\cite{bach2012scaling} , trust in social networks~\cite{huang2012probabilistic}, and graph 
+summarization~\cite{memory2012graph}.
+PSL represents the domain of interest as logical atoms.
+It uses first order logic rules to capture the dependency structure of the domain, based on which it builds a joint probabilistic model over all atoms.
+Instead of hard truth values of $0$ (false) and $1$ (true), PSL uses soft truth values relaxing the truth vlaues to the interval $[0,1]$.
+The logical connectives are adapted accordingly.
 This makes it easy to incorporate similarity or distance functions.
-\newline
+
 User defined \emph{predicates} are used to encode the relationships and attributes and \emph{rules} capture the  dependencies and constraints.
 Each rule's antecedent is a conjunction of atoms and its consequent is a dis-junction. 
 The rules can also labeled with non negative weights which are used during the inference process.
 The set of predicates and weighted rules thus make up a PSL program where known truth values of ground atoms derived from observed data and unknown truth values for the remaining atoms are learned using the PSL inference.
-\newline
+
 Given a set of atoms 
 $\ell = \{\ell_1,\ldots,\ell_n\}$,
 an interpretation defined as 
@@ -57,6 +63,6 @@ the probability density function $\mathit{f}$ over $\mathit{I}$ is defined as
 \end{equation}
 where~$\lambda_r$ is the weight of the rule~$r$, $Z$ is the continuous version of the normalization constant used in discrete Markov random fields, and ~$p \in \{1, 2\}$ provides a choice between two different loss functions, linear and quadratic.
 The values of the atoms can be further restricted by providing linear equality and inequality constraints allowing one to encode functional constraints from the domain. 
-PSL provides for two kinds of inferences (a)most probable explanation and (b)calculation of the marginal distributions. 
+PSL provides for two kinds of inferences (a) most probable explanation and (b) calculation of the marginal distributions. 
 In the MPE inference given a partial interpretation with grounded atoms based on observed evidence, the PSL program infers the truth values for the unobserved atoms satisfying the most likely interpretation. 
 In the second setting, given ground truth data for all atoms we can learn the weights for the rules in our PSL program.
