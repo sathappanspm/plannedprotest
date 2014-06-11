@@ -1,4 +1,27 @@
-We evaluate the model under a strict and a relaxed condition. Under strict evaluation an alert can be matched to an event only if there is city level location match and the forecasted event date is same as the true event date. In the relaxed evaluation, we allow the matching to happen if the alert and the GSR event are within a 300 KM radius and the forecasted event date lies within a given interval of the true event date. We try different matching intervals ranging from 0 to 7. If $x$ is the allowed interval, then a matching can happen if an alert's forecasted event date is within $+x$(upper bound) days of the GSR event and within a lower bound of $min(x,GSR Event Date - Date of Forecast)$ 
+We evaluate the model using metrics as desccribed in our paper \cite{embersKDD}.In short, four our evaluation an event can be matched to an alert if the alert and the GSR event's locations are within a 300 KM radius and the forecasted event date lies within a given interval of the true event date. The Haversine Formula, is used to calculate the distance between two lat-lon points.
+$$\operatorname{haversine}\left(\frac{d}{r}\right) = \sin^2(\frac{\phi_2 - \phi_1}{2}) + \cos(\phi_1) \cos(\phi_2) \sin^2(\frac{\lambda_2-\lambda_1}{2}) $$
+
+
+We evaluate the model against different matching intervals ranging from 0 to 7. If $x$ is the allowed interval, then a matching can happen only if an alert's forecasted event date is within $+x$(upper bound) days of the GSR event and the lower bound is the minimum of the interval $x$ or the day difference between the two dates -\emph{GSR Event Date , Predicted Event Date}. A location score (LS), date score (DS) and an overall Quality Score (QS) is defined accordingly to establish the quality of date and location predictions and the combined quality of an alert. The definitions are outlined below,
+
+\begin{equation}
+    \operatorname{LS}=1 - min(|E_L-W_L|, 300)
+\end{equation}
+
+\begin{equation}
+    \operatorname{DS}=1 - min(|E_t-W_t|, \operatorname{INTERVAL})
+\end{equation}
+
+
+\begin{equation}
+    \operatorname{QS}= (LS + DS)*2
+\end{equation}
+
+where E denotes a GSR event and W denotes a warning/alert.
+
+%\text{$E_l$ is the Event location and $W_l$ is the warning location and their difference is the }
+
+
 \begin{itemize}
     \item {\bf Perfomance over the months}
 \end{itemize}
@@ -42,33 +65,44 @@ The hump on the right side of the Fig.~\ref{fig:doubleHump} signifies that a maj
          & QS & Pr. & Rec. &LT & QS & Pr. & Rec. & LT & QS & Pr. & Rec. & LT & QS & Pr. & Rec. & LT\\
         \hline
         AR &3.14&0.32&0.69&3.94&3.52&0.78&0.14&3.14&3.70&0.50&0.04&3.00&3.02&0.36&0.80&4.50\\
-        BR &3.14&0.48&0.54&5.85&0.00&0.00&0.00&0.00&3.62&0.76&0.18&2.46&3.28&0.49&0.65&5.15\\
-        CL &3.06&0.91&0.67&5.40&3.52&1.00&0.23&4.29&0.00&0.00&0.00&0.00&3.16&0.83&0.80&5.92\\
+        BR &3.14&0.48&0.54&5.85&-&-&-&-&3.62&0.76&0.18&2.46&3.28&0.49&0.65&5.15\\
+        CL &3.06&0.91&0.67&5.40&3.52&1.00&0.23&4.29&-&-&-&-&3.16&0.83&0.80&5.92\\
         CO &2.74&0.90&0.56&7.44&3.30&1.00&0.15&2.43&4.00&1.00&0.02&2.00&2.88&0.84&0.65&6.47\\
-        EC &0.00&0.00&0.00&0.00&2.32&1.00&0.06&17.00&0.00&0.00&0.00&0.00&2.32&0.50&0.06&17.00\\
+        EC &-&-&-&-&2.32&1.00&0.06&17.00&-&-&-&-&2.32&0.50&0.06&17.00\\
         MX &2.96&0.88&0.25&3.69&3.14&1.00&0.02&1.43&3.72&0.67&0.01&2.00&3.00&0.87&0.27&3.51\\
-        SV &3.22&1.00&0.03&1.0&0.00&0.00&0.00&0.00&0.00&0.00&0.00&0.00&3.22&1.0&0.03&1.0\\
+        SV &3.22&1.00&0.03&1.0&-&-&-&-&-&-&-&-&3.22&1.0&0.03&1.0\\
         PY &3.38&1.00&0.16&9.11&3.84&1.00&0.04&11.40&3.96&1.00&0.01&2.00&3.60&0.96&0.20&9.35\\
-        UY &3.24&1.00&0.29&2.40&0.00&0.00&0.00&0.00&0.00&0.00&0.00&0.00&3.24&1.00&0.29&3.24\\
-        VE &3.80&1.00&0.36&3.27&3.68&0.97&0.33&2.39&0.00&0.00&0.00&0.00&3.64&0.99&0.69&2.88\\
+        UY &3.24&1.00&0.29&2.40&-&-&-&-&-&-&-&-&3.24&1.00&0.29&3.24\\
+        VE &3.80&1.00&0.36&3.27&3.68&0.97&0.33&2.39&-&-&-&-&3.64&0.99&0.69&2.88\\
         ALL &3.34&0.69&0.35&4.57&3.62&0.97&0.15&2.82&3.66&0.74&0.03&2.44&3.36&0.73&0.51&4.08\\
         \hline
     \end{tabular}
 \end{table*}
 
-%\begin{figure*}[t]
-%    \begin{subfigure}[b]{0.3\textwidth}
-%        \includegraphics[width=\textwidth]{gsr_distribution}
-%        \label{fig:gsrdistribution}
-%        \caption{GSR Distribution From 2012-11 to 2014-03}
-%    \end{subfigure}
-%
-%    \begin{subfigure}[b]{0.3\textwidth}
-%        \includegraphics[width=\textwidth]{pp_dist}
-%        \label{fig:ppdistribution}
-%        \caption{Alerts Distribution From 2012-11 to 2014-03}
-%    \end{subfigure}
-%\end{figure*}
+\begin{table*} %[tb!]
+\centering
+\caption{Comparing the Location and Date Scores of different sources. AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
+\vspace{-2mm}
+\label{tb:modelwisecomparison}
+%\vspace{-1em}
+\begin{tabular}{||l|*{17}{c|}}
+\hline
+Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
+\hline
+\multirow{2}{*}{News/Blogs} &LS &3.1&3.31&1.88&3.1&2.43&2.94&3.26&2.88&2.72&2.9&2.97\\
+                            &DS&3.1&3.31&1.88&3.1&2.43&2.94&3.26&2.88&2.72&2.9&2.97\\
+\hline
+\multirow{2}{*}{Facebook} &LS &1.0&0.92&-&1.00&-&-&0.86&0.98&-&-&0.93\\
+                          &DS&0.85&0.89&-&1.00&-&-&1.00&1.00&-&-&0.90\\
+\hline
+\multirow{2}{*}{Twitter} &LS &0.88&-&0.84&0.81&0.45&-&0.71&0.98&-&0.91&0.89\\
+                         &DS&0.88&-&0.92&0.84&0.71&-&0.86&0.94&-&0.93&0.92\\
+\hline
+\end{tabular}
+\vspace{-4mm}
+\end{table*}
+
+
 \begin{figure*}
 \centering
 \begin{subfigure}{\columnwidth}
@@ -87,17 +121,6 @@ The hump on the right side of the Fig.~\ref{fig:doubleHump} signifies that a maj
 \label{fig:distribution}
 \end{figure*}
 
-%\begin{figure}
-%    \includegraphics[width=.5\textwidth]{gsr_distribution}
-%    \caption{}
-%    \label{fig:gsrdistribution}
-%\end{figure}
-%
-%\begin{figure}
-%    \includegraphics[width=.5\textwidth]{pp_dist}
-%    \caption{Alerts Distribution From 2012-11 to 2014-03}
-%    \label{fig:ppdistribution}
-%\end{figure}
 \begin{figure*}
 \centering
 \begin{subfigure}{\columnwidth}
@@ -145,94 +168,13 @@ The hump on the right side of the Fig.~\ref{fig:doubleHump} signifies that a maj
 \caption{Experiments}
 \end{figure*}
 
-%\begin{figure}
-%    \includegraphics[width=0.5\textwidth]{brazil_june}
-%    \caption{Brazil June Protests}
-%    \label{fig:brazil_june}
-%\end{figure}
-
-%\begin{figure*}
-%    \includegraphics[width=\textwidth]{eventDateVsDate_brazil}
-%    \caption{Date of Prediction vs Forecasted Date Brazil}
-%    \label{fig:leadtime_brazil}
-%\end{figure*}
-%
-%\begin{figure*}
-%    \includegraphics[width=\textwidth]{eventDateVsDate_venezuela}
-%    \caption{Date of Prediction vs Forecasted Date Venezuela}
-%    \label{fig:leadtime_venezuela}
-%\end{figure*}
-
-%\begin{figure}
-%    \includegraphics[width=0.5\textwidth]{monthlyqs}
-%    \caption{QS over the months}
-%    \label{fig:monthlyqs}
-%\end{figure}
-%
-%\begin{figure}
-%    \includegraphics[width=0.5\textwidth]{leadTimeVsQS}
-%    \caption{Lead-Time vs Quality Score}
-%    \label{fig:leadTimeVsQS}
-%\end{figure}
-%
-%\begin{figure}
-%    \includegraphics[width=0.5\textwidth]{doubleHump}
-%    \caption{QS Distribution}
-%    \label{fig:doubleHump}
-%\end{figure}
-%
-%\begin{figure}
-%    \includegraphics[width=0.5\textwidth]{venezuela}
-%    \caption{Venezuelan Protests}
-%    \label{fig:venezuela_feb}
-%\end{figure}
-%
-%\begin{figure}
-%    \includegraphics[width=0.5\textwidth]{venezuela_violent}
-%    \caption{Venezuelan Violent Protests}
-%    \label{fig:venezuela_violent}
-%\end{figure}
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{alertstructure}
     \caption{Structure of an Alert}
     \label{fig:alertstructure}
 \end{figure}
-%\begin{figure}
-%    \includegraphics[width=0.5\textwidth]{matchingwindow}
-%    \caption{QS vs Matching Interval Trade-Off}
-%    \label{fig:matchinginterval}
-%\end{figure}
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{timeline}
     \caption{Matching Timeline}
     \label{fig:timeline}
 \end{figure}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%\begin{figure}
-%    \centering
-%    \begin{subfigure}[b][0.3\textwidth]
-%        \includegraphics[width=\textwidth]{venezuela.png}
-%        \caption{Venezuelan Protests}
-%        \label{fig:Venezuela_feb}
-%    \end{subfigure}
-%    \begin{subfigure}[b][0.3\textwidth]
-%        \includegraphics[width=\textwidth]{brazil_june.png}
-%        \caption{Brazilian Riots in June}
-%        \label{fig:Brazil_june}
-%    \end{subfigure}
-%\end{figure}
