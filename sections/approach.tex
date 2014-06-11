@@ -23,12 +23,12 @@ The general approach we adopt is to identify open-source documents
 that appear to indicate civil-unrest event planning, to extract
 relevant information from identified documents and use that as the
 basis for a structured warning about the planned event.  We ingest a
-wide array of open-soucre textual documents, from news articles and
+wide array of textual documents, from news articles and
 blogs, to Twitter posting (tweets) as well as Facebook Event pages.
 The textual documents are subjected to linguistic analysis; candidate
 documents are identified using a a list of phrases associated with
 event planning; date and location information is extracted from the
-text and used as the basis for the warning.  Ecah of these processing
+text and used as the basis for the warning.  Each of these processing
 steps is outlined below.
 
 
@@ -47,7 +47,7 @@ predominating, we use a suite of multilingual commercial tools for
 this processing.\footnote{BASIS Technology's Rossette Linguistic Platform}
 
 This linguistic preprocessing serves as input to subsequent deeper semantic analysis in which 
-date expressions are normalized and deindexed, the geographic focus of the text identified.
+date expressions are normalized and the geographic focus of the text identified.
 This processing chain is illustrated in Fig.~\ref{fig:enrichment}.
 
 \begin{figure}
@@ -61,18 +61,24 @@ future oriented statements. We use the TIMEN \cite{LlorensDGS12} date
 normalization package to normalize and deindex expressions referring
 to days in English, Spanish and Portuguese.  This system makes use of
 meta-data, such as the day of publication, and other information about
-the linguistic context of the date expression to determine for each date expression,
-what day (or week, month or year) it refers to.  For example in a tweet produced on June 10, 2014, the occurrence of 
-the term {\em Friday} used in a future-tense sentence {\em We'll get together on Friday} will be interpreted as July 13, 2014.
-Each expression identified as a date by the RLP preprocessor is normalized in this way.
-
-Finally, messages are geocoded with a specification of the geographical focus of the text---specified as a city, state, country tripple.
-We make use of different geocoding methodologies for geo-coding news/blogs and for short messages such as twitter.
+the linguistic context of the date expression to determine for each
+date expression, what day (or week, month or year) it refers to.  For
+example in a tweet produced on June 10, 2014, the occurrence of the
+term {\em Friday} used in a future-tense sentence {\em We'll get
+  together on Friday} will be interpreted as July 13, 2014.  Each
+expression identified as a date by the RLP preprocessor is normalized
+in this way.
 
 
 \subsection{Geo-Coding}
 \label{subsection:geocoding}
 
+After linguistic preprocessing messages are geocoded with a
+specification of the geographical focus of the text---specified as a
+city, state, country tripple---that indicates the locality that the
+text is ``about.'' We make use of different geocoding methodologies
+for Twitter messages, for Facebook Events pages, and for news articles and blogs.
+These are described below.
 
 
 \subsubsection{Twitter}
@@ -200,18 +206,26 @@ The methodology is similar to {\em Web-a-where: Geo-Tagging Web Content}.
 
 \subsection{Phrase filtering}
 
-Each input message (document) is searched for the presence of one or
-more key phrases in a list of phrases indicative of an article's being
-about a planned civil unrest event.  Articles which do match are sent on for further processing,
-and those that do not are ignored, again, as part of the streaming infrastructure.
-
+In order to identify relevant documents, input documents are filtered on a set of key phrases, that is 
+the text of the document is searched for the presence of one or
+more key phrases in a list of phrases which are indicative of an article's being
+about a planned civil unrest event.  
 The list of key phrases indicating civil unrest planning was obtained
-in a semi-automatic manner, as detailed in the following section. The
-phrases are general rules for matching, rather than literal string
-sequences, typically consisting of two or more word lemmas, a language
-specification and a separation threshold. This separation threshhold is automatically learned
-in the learning phrase described below.  It was found that this kind of multi-word key phrases was found more accurate than simple
-keywords for extracting events of interest from the data stream.
+in a semi-automatic manner, as detailed in Section \ref{sec:phraselearning}.
+Articles which do match are processed further, those that do not are ignored.
+
+\subsubsection{Phrase matching}
+
+Our key phrase matching is highly general and linguistically
+sophisticated.  The phrases in our list are general rules for
+matching, rather than literal string sequences. Typically a phrase
+specification consisting of two or more word lemmas, a language
+specification and a separation threshold. This indicates that words -
+potentially inflected forms - in a given sequence potentially
+separated by one or more other words, should be taken to be a
+``match.''   It was found that this kind of
+multi-word key phrases was more accurate than simple keywords for
+extracting events of interest from the data stream.
 
 The presence of a keyphrase is checked by searching for the presence of
 individual lemmas of the keyphrase within the same sentence separated
@@ -251,13 +265,16 @@ extracted. These grammatical relations were used as extraction
 patterns as in \cite{riloff2003learning} to learn more phrases from a
 corpora of sentences extracted from the data stream of interest
 (either news/blogs or tweets). This corpus consists of sentences that
-contained any one of the nominal focus words and also had mentions of a
-future date.
+contained any one of the nominal focus words and also had mentions of
+a future date. The separation threshhold for a phrase was also
+learned, being set is set to the average number of words separating
+the nominal focus and the accompanying word.
 
-The phrase learning is shown in Fig.~\ref{fig:phraselearning}
+The set of learned phrases is then reviewed by a subject matter expert for quality contraol.  
+Using this approach, we learned 112 phrases for news articles and blogs and 156 for tweets.  
+This phrase learning process is illustrated in Fig.~\ref{fig:phraselearning}
 
-The set of learned phrases, is then cleansed by an expert to get the final set of key phrases.
-Using this approach, we learned 112 phrases for news articles andblogs and 156 for tweets.
+
 
 \begin{figure}
 \caption{An Example of Phrase Learning}
@@ -268,19 +285,19 @@ Using this approach, we learned 112 phrases for news articles andblogs and 156 f
 \subsection{Warning Generation}
 
 After being subject to the preprocessing steps, above, all documents
-that are identified as cointaning a key phrase are further filtered by
-searching for the presence a future date in the passage contaiing the
-key phrase and for the existence of an identified geographical focus for the document.
-Those documents that meet all these critera are used as the basis for a warning about a
-planned civil unrest event. Twitter postings are only used as the basis for a warning
-if the tweet is re-tweeted at least five times.
+that are identified as containing a key phrase are further filtered by
+searching for the presence a future date in the passage containing the
+key phrase and for the existence of an identified geographical focus for the text.
+Documents that meet all these critera are used as the basis for a warning about a
+planned civil unrest event (Twitter postings are only used as the basis for a warning
+if the tweet is re-tweeted at least five times). 
 
-The warning is generated for the date indicated by the future date
-expression, the location which is the geographical focus of the
-document.  In addition, for news articles and blog documents, the
-Event Type information and Population information is derived from the
+A warning is generated for the date indicated by the future date
+expression and the location which is the geographical focus of the
+document.  For news articles and blog documents, information about
+the event type and population for the event are derived from the
 use of a text-based Naive Bayes classifier.  This classifier is
-trained on the Gold Standard Resource and makes use of unigram and bi-gram word features.
+trained on the GSR and makes use of unigram and bi-gram word features.
 For Twitter, since there is very little text in an individual tweet, the
 event-type and population are based on based on prior likelihood for that location in the GSR.
 
