@@ -64,6 +64,7 @@ the probability density function $\mathit{f}$ over $\mathit{I}$ is defined as
 where~$\lambda_r$ is the weight of the rule~$r$, $Z$ is the continuous version of the normalization constant used in discrete Markov random fields, and ~$p \in \{1, 2\}$ provides a choice between two different loss functions, linear and quadratic.
 The values of the atoms can be further restricted by providing linear equality and inequality constraints allowing one to encode functional constraints from the domain. 
 
-PSL provides for two kinds of inferences (a) most probable explanation and (b) calculation of the marginal distributions. 
+PSL provides for two kinds of inferences:
+(a) most probable explanation and (b) calculation of the marginal distributions. 
 In the MPE inference given a partial interpretation with grounded atoms based on observed evidence, the PSL program infers the truth values for the unobserved atoms satisfying the most likely interpretation. 
 In the second setting, given ground truth data for all atoms we can learn the weights for the rules in our PSL program.
