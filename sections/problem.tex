@@ -8,6 +8,12 @@ only recall that between 1985 and 2011, 17 presidents resigned or were impeached
 demonstrations, usually violent, in the streets. Protests have also resulted 
 in the rollback of prices increases for public services, such as during the `Brazilian Spring' of June 2013.
 
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{alertstructure}
+    \caption{Warnings and GSR events. \narenc{Remove probability from the left picture.}}
+    \label{fig:alertstructure}
+\end{figure}
+
 Our goal is to identify calls for protests, strikes, or civil disobedience movements from news, blogs, Tweets, and Facebook
 pages, with a view toward predicting the {\bf when} (date of the event) and {\bf where}, i.e.,
 event location, upto a city level resolution, e.g., 
@@ -23,7 +29,20 @@ denotes common categories of human populations
 used in event coding~\cite{philschrodt}
 such as
 Business, Ethnic, Legal (e.g. judges or lawyers), Education (e.g. teachers or students or parents of students), Religious (e.g. clergy), Medical (e.g., doctors or nurses), Media, Labor, Refugees/Displaced, Agricultural (e.g. farmers,
-or just General Population. 
+or just General Population. We refer to our forecasts as alerts or warnings (see Fig.~\ref{alertstructure} (left)).
+In looking at the structure of the alert, it is important to distinguish between the forecast date (when the forecast is made)
+and the predicted event date (i.e., the {\bf when} of the event).
+
+To evaluate our alerts we have access to a database of protests organized by a third party (source and reference
+not provided due to double blind reviewing considerations, but will be added later). We refer to this database as the
+GSR (for Gold Standard Report). Human analysts scan newspapers of record in the countries of interest and catalog
+protests. The structure of a GSR event (see Fig.~\ref{fig:alertstructure} (right)) is similar to that of an alert with
+the only difference being that an event record captures both the reported date (i.e., the date of newspaper publication)
+and the event date (i.e., when the newspaper article reports the protest as having happened).
+The GSR is available from Nov 2012 \narenc{Confirm if this date is correct.} and is used in this paper primarily to 
+help evaluate the performance of our system. Anectodal evidence of GSR (as mentioned in Section~\ref{intro}) revealed
+that over 75\% of the protests were organized and had clear triggering circumstances with political entrepreneurs leading the
+charge to protest.
 
 %Concomitant with the definitions in the above section, a GSR event contains
 %again the where/why/when/\hskip0ex who of a protest that has actually occurred and
