@@ -6,7 +6,7 @@ are briefly discussed here.
 is an extensively studied topic in the literature. Document clustering techniques are used 
 in~\cite{Allan:2002:TDT, Yang:1998:SRO, Gabrilovich:2004:NPP} to identify events retrospectively or as the stories arrive.
 Works like~\cite{Chambers:2011:TIE, Banko07openinformation, riloff2003learning} focus on
-extraction patterns (templates) to extract information from text. Ritter et al.~\cite{Ritter:2012} shows that
+extraction patterns (templates) to extract information from text. Ritter et al.~\cite{Ritter:2012} show that
 it is possible to accurately extract a calendar of significant events from Twitter by training a tagger for recognizing event phrases.
 \iffalse 
 Sankaranarayanan et al.\cite{Sankaranarayanan:2009:TNT} captures tweet clusters of interest to identify late breaking News from twitter 
@@ -22,8 +22,20 @@ for temporal and event expressions in natural language text is described in~\cit
 Refs.~\cite{LlorensDGS12} and \cite{tempex} provide methods to resolve temporal expressions in text (our own
 work here uses the TIMEN package~\cite{LlorensDGS12}).
 
-{\bf Future retrieval} is an emerging topic with 
-Baeza-Yates\cite{baeza2005searching} providing one of the earliest discussions
+{\bf Event forecasting} is a burgeoning area. 
+Radinsky and Horvitz~\cite{Radinsky:2013:MWP} find event sequences from a corpora and then use these sequences to determine if 
+an event of interest (e.g., a disease outbreak, or a riot)
+will occur sometime in the future. This work predicts only if a potential event will happen given a historical event sequence
+but does not geolocate the event to a city-level resolution, as we do here.
+Kallus~\cite{nathankallus} makes use of event data from 
+RecordedFuture~\cite{recordedFuture} to determine if a  significant protest event will occur in 
+the subsequent three days and casts this as a classification problem.
+This work only focuses on prediction of significant events (suitably defined) and
+the forecast is limited to the next three days.
+
+Finally, the area of research most closely related to our work is the emerging topic of
+{\bf future retrieval}.
+Baeza-Yates~\cite{baeza2005searching} providing one of the earliest discussions
 of this topic; here future temporal information in text is found and used to retrieve content from search queries that 
 combine both text and time with a simple ranking scheme. Kawai et al.~\cite{Kawai:2010:CSE} present a search engine (ChronoSeeker) for searching 
 future and past events.
@@ -32,8 +44,9 @@ Dias et al.~\cite{dias2011future} classify web snippets into three classes depen
 from the snippet or if it is a rumor.
 %{\bf Extraction of planned or future mentions of events from social media} is a very popular topic in social media
 %analytics.
-The company 
-RecordedFuture~\cite{recordedFuture} real-time analysis of news and tweets to identify mentions of events along with associated times. Anectodally it is estimated that approximately (only) 5--7\% of events extracted 
+RecordedFuture~\cite{recordedFuture}, introduced earlier, conducts
+real-time analysis of news and tweets to identify mentions of events along with associated times. Anectodally it 
+is estimated that approximately (only) 5--7\% of events extracted 
 by RecordedFuture are about the future.
 Tops et al.~\cite{tops2013predicting} aim to classify a tweet talking about an event into discrete time segments and thereby predict the 
 `time to event'.
@@ -52,18 +65,7 @@ common way in which future dates are referenced, e.g., phrases like
 %Any location mentioned in the tweet text is used as the event location. If there are no location mentions then the location is determined based on \cite{hrlgeocoder}. 
 The work in~\cite{xu2014civil} by the same group of authors uses the Tumblr feed with a smaller set of keywords but
 again is restricted to the use of absolute time identifiers.
-Some work like Becker et al.~\cite{Becker:2012:ICP} try to identify more content about known planned events like a concert across social media.
-
-
-{\bf Event forecasting} is a burgeoning area. 
-Radinsky and Horvitz~\cite{Radinsky:2013:MWP} find event sequences from a corpora and then use these sequences to determine if 
-an event of interest (e.g., a disease outbreak, or a riot)
-will occur sometime in the future.
-\iffalse They only predict if an event of interest will happen in the future given the sequence of events seen but do not predict when/where(city level resolution) that event will happen \fi
-Kallus~\cite{nathankallus} makes use of data from RecordedFuture~\cite{recordedFuture} to find if a  significant protest event will occur in 
-the subsequent three days using a random forest classifier.
-The author only focuses on prediction of significant events (suitably defined) and
-the forecast is limited to the next three days.
+Some work like Becker et al.~\cite{Becker:2012:ICP} try to identify more content about known planned events (e.g., a concert) across social media.
 
 \begin{table*}
     \centering
