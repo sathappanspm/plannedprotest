@@ -39,7 +39,7 @@ Tops et al.~\cite{tops2013predicting} aim to classify a tweet talking about an e
 `time to event'.
 Bosch et al.~\cite{bosch2013estm} use regression techniques to identify the time to an event referred to by a tweet.
 Jatowt et al.~\cite{Jatowt:2011:ECE} provide a collective image of the future associated with an entity summarizing all future related information available.
-Becker et al.~\cite{Becker:2012:ICP} identify content about known planned events across social media.
+
 %\cite{baeza2005searching},\cite{dias2011future},\cite{tops2013predicting},\cite{Jatowt:2011:ECE},\cite{Kawai:2010:CSE} talk about future retrieval or extraction of mentions of Future events.
 Two publications --- Compton et al. ~\cite{compton2013detecting} and Xu et al.~\cite{xu2014civil} --- align very closely to our own work as their emphasis is on protest forecasting.
 Both works are aimed at forecasting protests
@@ -52,7 +52,7 @@ common way in which future dates are referenced, e.g., phrases like
 %Any location mentioned in the tweet text is used as the event location. If there are no location mentions then the location is determined based on \cite{hrlgeocoder}. 
 The work in~\cite{xu2014civil} by the same group of authors uses the Tumblr feed with a smaller set of keywords but
 again is restricted to the use of absolute time identifiers.
-
+Some work like Becker et al.~\cite{Becker:2012:ICP} try to identify more content about known planned events like a concert across social media.
 
 
 {\bf Event forecasting} is a burgeoning area. 
@@ -72,9 +72,9 @@ the forecast is limited to the next three days.
         \hline
         & Relative date extraction & Handle multiple sources & Reasoning about location & Learning keyword/phrase filters & \\
         \hline
-        Future Search Engines~\cite{Kawai:2010:CSE, bosch2013estm, Jatowt:2011:ECE, tops2013predicting}&\checkmark & & &\\
-        Time-to-Event Recognition&&&&\\
-        Early Planned Protest Detection ~\cite{xu2014civil,compton2013detecting} & &\checkmark& & \checkmark\\
+        Future Search Engines~\cite{Kawai:2010:CSE, Jatowt:2011:ECE}&\checkmark & & &\\
+        Time-to-Event Recognition\cite{tops2013predicting, bosch2013estm}&\checkmark & & &\\
+        Early Planned Protest Detection ~\cite{xu2014civil,compton2013detecting} & &\checkmark & &\\
         this paper &\checkmark &\checkmark &\checkmark&\checkmark\\ 
 \end{tabular}
 \end{table*}
