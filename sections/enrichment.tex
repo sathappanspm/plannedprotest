@@ -74,8 +74,7 @@ metadata and use place names present in these metadata fields to
 geocode the place names into geographical coordinates.  Finally, if
 none of this is available, we consider the text fields contained in
 the user profile (location, description) as well as the tweet text
-itself to find mentions of relevant locations.  A
-dditional toponym disambiguiation heuristics are used to
+itself to find mentions of relevant locations.  Additional toponym disambiguiation heuristics are used to
 identify the actual referent of the mention.
 
 This simple set of heuristics achieves accuracy of ... 
@@ -84,10 +83,10 @@ This simple set of heuristics achieves accuracy of ...
 \subsubsection{Facebook}
 Similar methods are used to geocode event data extracted from Facebook Events pages.   Since only Facebook Events that have a venue are used and a venue of a Facebook Event generally contains a latitude, longitude, and physical address information identifying the locatino is a fairly trivial task.  In cases where only latitude and longitude are given we apply reverse-geocoding mechanisms similar to those used for Twitter.
 
-For longer articles such as news articles, the geo-focus of the message is identified using much more complex methods
 
 \subsubsection{News/Blogs}
 
+For longer articles such as news articles, the geo-focus of the message is identified using much more complex methods
 To extract the protest location from news articles, we use \emph{probabilistic soft logic} (PSL) described in ~\ref{section:PSL} to build a model that performs robust, probabilistic inference given noisy signals. PSL takes a set of weighted, logic-like rules and converts them into a continuous probability distribution over the unknown truth values of logical facts. These truth values in PSL are relaxed into the $[0,1]$ interval. We use this mechanism to build a model that infers the semantic location of an article by weighing evidence coming from the Basis entity extractions and information in the World Gazatteer. 
 
 The primary rules in the model encode the effect that Basis-extracted location strings that match to gazatteer aliases are indicators of the article's location, whether they be country, state, or city aliases. Each of these implications is conjuncted with an prior for ambiguous, overloaded aliases that is proportional to the population of the gazetteer location. For example, if the string ``Los Angeles'' appears in the article, it could refer to either Los Angeles, California, or Los \'{A}ngeles in Argentina or Chile. Given no other information, our model would infer a higher truth value for the article referring to Los Angeles, California, because it has a much higher population than the other options. 
@@ -146,6 +145,9 @@ Finally, the model includes rules and constraints to require consistency between
     \caption{Red circles denote named entities identified as locations and blue denotes other types of entities. The article is reported from Weston Florida US and talks about the recent increase of venezuelan population in the US compared to other Latin American Nations like Cuba etc.\sathappanc{TODO: Replace with a better protest example}}
     \label{fig:psl_example}
 \end{figure*}
+
+(GRAHAM: DO WE WANT TO SUMMARIZE SOME RESULTS HERE TOO?)
+
 %\input{sections/psl.tex}
 
 \iffalse Most news articles and blog posts mention multiple locations, e.g.,
