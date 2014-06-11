@@ -1,54 +1,29 @@
-
-
-
-\iffalse
-\begin{table}
-\caption{EMBERS system statistics}
- \centering
- \begin{tabular}{|l|l|l|l|l|}
- \hline
- Archived data     & 12.4 TB                  \\ \hline
- Archive size & ca. 3 billion messages   \\ \hline
- Data throughput   & 200-2000 messages/sec  \\ \hline
- Daily ingest & 15 GB \\ \hline
- System memory & 50 GB \\ \hline
- System core & 16 vCPUs \\ \hline
- System output & ca. 40 warnings/day \\ \hline
-\end{tabular}
-\label{tab:stats}
-\end{table}
-\fi
-
-
 The general approach we adopt is to identify open-source documents
 that appear to indicate civil-unrest event planning, to extract
 relevant information from identified documents and use that as the
 basis for a structured warning about the planned event.  We ingest a
 wide array of textual documents, from news articles and
-blogs, to Twitter posting (tweets) as well as Facebook Event pages.
+blogs, to Twitter postings (tweets) as well as Facebook Event pages.
 The textual documents are subjected to linguistic analysis; candidate
 documents are identified using a a list of phrases associated with
 event planning; date and location information is extracted from the
 text and used as the basis for the warning.  Each of these processing
-steps is outlined below.
-
-
+steps (see Fig.~\ref{fig:enrichment}) is outlined below.
 
 \subsection{Linguistic Preprocessing}
-
 All textual input (e.g., tweets, news articles, blog postings) is
 subjected to shallow linguistic processing prior to analysis.  This
 involves identifying the language of the document, distinguishing the
 the words (tokenization), normalizing words for inflection
 (lemmatization), and identifying expressions referring to people,
-places, dates and other entities and classifying them (named entity extraction). As our
-data set is multilingual, with Spanish, Portuguese and English
-predominating, we use a suite of multilingual commercial tools for
-this processing.\footnote{BASIS Technology's Rossette Linguistic Platform}
-
-This linguistic preprocessing serves as input to subsequent deeper semantic analysis in which 
+places, dates and other entities and classifying them (named entity extraction). 
+Since our region of interest is Latin America, the collection of text
+harvested is inherently multilingual, with Spanish, Portugese, and English as
+the dominating languages;
+we use Basis Technology's Rosette Linguistics Platform (RLP) suite of multilingual commercial tools for
+this stage.
+The output of linguistic preprocessing serves as input to subsequent deeper semantic analysis in which 
 date expressions are normalized and the geographic focus of the text identified.
-This processing chain is illustrated in Fig.~\ref{fig:enrichment}.
 
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{enrichment}
@@ -69,8 +44,7 @@ term {\em Friday} used in a future-tense sentence {\em We'll get
 expression identified as a date by the RLP preprocessor is normalized
 in this way.
 
-
-\subsection{Geo-Coding}
+\subsection{Geocoding}
 \label{subsection:geocoding}
 
 After linguistic preprocessing messages are geocoded with a

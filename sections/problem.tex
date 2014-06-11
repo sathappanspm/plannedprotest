@@ -10,7 +10,8 @@ in the rollback of prices increases for public services, such as during the `Bra
 
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{alertstructure}
-    \caption{Warnings and GSR events. \narenc{Remove probability from the left picture.}}
+    \caption{Warnings and GSR events. \narenc{Remove probability from the left picture. Remove who and why
+from both pictures.}}
     \label{fig:alertstructure}
 \end{figure}
 
@@ -18,6 +19,7 @@ Our goal is to identify calls for protests, strikes, or civil disobedience movem
 pages, with a view toward predicting the {\bf when} (date of the event) and {\bf where}, i.e.,
 event location, upto a city level resolution, e.g., 
 the city of {\it Tegucigalpa} in the state of {\it Francisco Morazan} in the country of {\it Honduras}).
+\iffalse
 In addition we seek to forecast the `why' and `who' of the protest.
 The {\bf why} (or event type)
 captures the main objective or reason for a civil unrest event,
@@ -29,7 +31,9 @@ denotes common categories of human populations
 used in event coding~\cite{philschrodt}
 such as
 Business, Ethnic, Legal (e.g. judges or lawyers), Education (e.g. teachers or students or parents of students), Religious (e.g. clergy), Medical (e.g., doctors or nurses), Media, Labor, Refugees/Displaced, Agricultural (e.g. farmers,
-or just General Population. We refer to our forecasts as alerts or warnings (see Fig.~\ref{alertstructure} (left)).
+or just General Population. 
+\fi
+We refer to our forecasts as alerts or warnings (see Fig.~\ref{alertstructure} (left)).
 In looking at the structure of the alert, it is important to distinguish between the forecast date (when the forecast is made)
 and the predicted event date (i.e., the {\bf when} of the event).
 
