@@ -1,26 +1,26 @@
-We evaluate the model using metrics as desccribed in our paper \cite{emberskdd}.In short, four our evaluation an event can be matched to an alert if the alert and the GSR event's locations are within a 300 KM radius and the forecasted event date lies within a given interval of the true event date. The Haversine Formula, is used to calculate the distance between two lat-lon points.
-$$\operatorname{haversine}\left(\frac{d}{r}\right) = \sin^2(\frac{\phi_2 - \phi_1}{2}) + \cos(\phi_1) \cos(\phi_2) \sin^2(\frac{\lambda_2-\lambda_1}{2}) $$
-
-
-We evaluate the model against different matching intervals ranging from 0 to 7. If $x$ is the allowed interval, then a matching can happen only if an alert's forecasted event date is within $+x$(upper bound) days of the GSR event and the lower bound is the minimum of the interval $x$ or the day difference between the two dates -\emph{GSR Event Date , Predicted Event Date}. A location score (LS), date score (DS) and an overall Quality Score (QS) is defined accordingly to establish the quality of date and location predictions and the combined quality of an alert. The definitions are outlined below,
-
-\begin{equation}
-    \operatorname{LS}=1 - min(|E_L-W_L|, 300)
-\end{equation}
-
-\begin{equation}
-    \operatorname{DS}=1 - min(|E_t-W_t|, \operatorname{INTERVAL})
-\end{equation}
-
-
+We evaluate our planned protest detection system
+using metrics similar to those described by Ramakrishnan et al.~\cite{emberskdd} in evaluating their work.
+Given a set of alerts issued by the system and the GSR comprising actual protest incidents, we aim to identify
+a correspondence between the two sets via a bipartite matching.
+An alert can be matched to a GSR event only if i) they are both issued for the same country, 
+ii) the alert's predicted location and the event's reported location are within 300km of each
+other (the distance offset), and iii) the forecasted event date is within a given interval of the true event date (the date offset).
+Once these inclusion criteria apply, the quality score (QS) of the match is defined as a combination of the
+location score (LS) and date score (DS):
 \begin{equation}
     \operatorname{QS}= (LS + DS)*2
 \end{equation}
-
-where E denotes a GSR event and W denotes a warning/alert.
-
-%\text{$E_l$ is the Event location and $W_l$ is the warning location and their difference is the }
-
+\noindent
+where
+\narenc{equations are wrong! Need a scaling factor if LS and DS are supposed to lie in [0,1].}
+\begin{equation}
+    \operatorname{LS}=1 - \min(\textrm{distance offset}, 300)
+\end{equation}
+and 
+\begin{equation}
+    \operatorname{DS}=1 - \min(\textrm{date offset}, \operatorname{INTERVAL})
+\end{equation}
+Here, we explore $\operatorname{INTERVAL}$ values from $0$ to $7$.
 
 \begin{itemize}
     \item {\bf Perfomance over the months}
@@ -35,7 +35,8 @@ where E denotes a GSR event and W denotes a warning/alert.
 \begin{itemize}
     \item {\bf Case Study: Venezuelan and Brazilian Protests}
 \end{itemize}
-The recent Venezuelan protests against President Nicolas Maduro and the Brazilian Protests during June 2013 against bus fare hike were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela_feb}\ref{fig:brazil_june} show how well the planned protest model was able to predict the unfolding of events under both situations. Fig.~\ref{fig:venezuela_violent} showcases the ability of the model to forecast the violent events also.
+The recent Venezuelan protests against President Nicolas Maduro and the Brazilian Protests during June 2013 against bus fare hike were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela_feb}\ref{fig:brazil_june} show how well the planned protest model was able to predict the unfolding of events under both situations. 
+%Fig %.~\ref{fig:venezuela_violent} showcases the ability of the model to forecast the violent events also.
 
 \begin{itemize}
     \item {\bf Lead-Time vs Quality Trade-Off}
@@ -134,12 +135,12 @@ Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
   \caption{Venezuelan Protests}
   \label{fig:venezuela_feb}
 \end{subfigure}
-\begin{subfigure}{\columnwidth}
-  \centering
-  \includegraphics[width=\linewidth]{venezuela_violent}
-  \caption{Venezuelan Violent Protests}
-  \label{fig:venezuela_violent}
-\end{subfigure}%
+%\begin{subfigure}{\columnwidth}
+%  \centering
+%  \includegraphics[width=\linewidth]{venezuela_violent}
+%  \caption{Venezuelan Violent Protests}
+%  \label{fig:venezuela_violent}
+%\end{subfigure}%
 \begin{subfigure}{\columnwidth}
   \centering
   \includegraphics[width=\linewidth]{monthlyqs}
@@ -172,8 +173,8 @@ Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
 %    \caption{Structure of an Alert}
 %    \label{fig:alertstructure}
 %\end{figure}
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{timeline}
-    \caption{Matching Timeline}
-    \label{fig:timeline}
-\end{figure}
+%\begin{figure}
+%    \includegraphics[width=0.5\textwidth]{timeline}
+%    \caption{Matching Timeline}
+%    \label{fig:timeline}
+%\end{figure}
