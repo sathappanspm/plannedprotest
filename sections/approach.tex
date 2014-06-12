@@ -185,7 +185,7 @@ has a much higher population than the other options.
 
 \begin{flalign*}
     ENTITY&(S, location) \softand IsState(S)&\\
-                            &\rightarrow ArticleCountry(Article, S)&
+                            &\rightarrow ArticleState(Article, S)&
 \end{flalign*}
 
 \noindent
@@ -212,7 +212,7 @@ the correlation between the article's location and these clues may be lower than
 
 \begin{flalign*}
     ENTITY&(O, organization) \softand IsState(O)&\\
-          &\rightarrow ArticleCountry(Article, O) &
+          &\rightarrow ArticleState(Article, O) &
 \end{flalign*}
 Finally, the model includes rules and constraints to require consistency between the different levels of geolocation, 
 making the model place higher probability on states with its city contained in its state, which is 
