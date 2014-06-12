@@ -12,7 +12,6 @@ location score (LS) and date score (DS):
 \end{equation}
 \noindent
 where
-\narenc{equations are wrong! Need a scaling factor if LS and DS are supposed to lie in [0,1].}
 \begin{equation}
     \operatorname{LS}=1 - \frac{\min(\textrm{distance offset}, 300)}{300}
 \end{equation}
@@ -36,15 +35,18 @@ We conduct a series of experiments to evaluate the performance of our system.\\
 \begin{subfigure}{\columnwidth}
   \centering
   \includegraphics[width=\linewidth]{gsr_distribution}
+  \vspace{-4em}
   \caption{GSR distribution from 2012-11 to 2014-03.}
   \label{fig:gsrdistribution}
 \end{subfigure}%
 \begin{subfigure}{\columnwidth}
   \centering
   \includegraphics[width=\linewidth]{pp_dist}
+  \vspace{-4em}
   \caption{Alerts distribution from 2012-11 to 2014-03.}
   \label{fig:ppdistribution}
 \end{subfigure}
+  \vspace{-0.5em}
 \caption{Distribution of alerts and GSR events across the countries studied in this paper.}
 \label{fig:distribution}
 \end{figure*}
@@ -60,6 +62,7 @@ social media footprint (relative to countries like Brazil and Venezuela).\\
 \begin{table*}[tb!]
     \small
     \centering
+    \vspace{-2em}
     \caption{\label{tb:sourcewisecomparison} Country-wise breakdown of forecasting performance for different data sources.
 QS=Quality Score; Pr=Precision; Rec=Recall; LT=Lead Time.
 AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
@@ -108,11 +111,10 @@ support for the event's causes.\\
 
 \begin{table*} %[tb!]
 \centering
+\vspace{-2em}
 \caption{Comparing the location and date scores of different sources in specific countries.
 AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
-\vspace{-2mm}
 \label{tb:modelwisecomparison}
-%\vspace{-1em}
 \begin{tabular}{||l|*{17}{c|}}
 \hline
 Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
@@ -160,37 +162,43 @@ reasoning of locations and date normalization are crucial to achieving high qual
 \centering
 \begin{subfigure}{\columnwidth}
   \centering
-  \includegraphics[width=\linewidth]{monthlyqs}
+  \includegraphics[width=0.9\linewidth]{monthlyqs}
+  \vspace{-0.5em}
   \caption{Quality Score over the months}
   \label{fig:monthlyqs}
 \end{subfigure}
 \begin{subfigure}{\columnwidth}
   \centering
-  \includegraphics[width=\linewidth]{venezuela}
+  \includegraphics[width=0.9\linewidth]{venezuela}
+  \vspace{-0.5em}
   \caption{Venezuelan Protests}
   \label{fig:venezuela_feb}
 \end{subfigure}
 \begin{subfigure}{\columnwidth}
   \centering
-  \includegraphics[width=\linewidth]{brazil_june}
+  \includegraphics[width=0.9\linewidth]{brazil_june}
+  \vspace{-0.5em}
   \caption{System Performance during Brazilian Spring}
   \label{fig:brazil_june}
 \end{subfigure}
 \begin{subfigure}{\columnwidth}
   \centering
-  \includegraphics[width=\linewidth]{leadTimeVsQS}
+  \includegraphics[width=0.9\linewidth]{leadTimeVsQS}
+  \vspace{-0.5em}
   \caption{Lead-Time vs Quality Score}
   \label{fig:leadTimeVsQS}
 \end{subfigure}
 \begin{subfigure}{\columnwidth}
   \centering
-  \includegraphics[width=\linewidth]{matchingwindow}
+  \includegraphics[width=0.9\linewidth]{matchingwindow}
+  \vspace{-0.5em}
   \caption{QS vs Matching Interval Trade-Off}
   \label{fig:matchinginterval}
 \end{subfigure}
 \begin{subfigure}{\columnwidth}
   \centering
-  \includegraphics[width=\linewidth]{doubleHump}
+  \includegraphics[width=0.9\linewidth]{doubleHump}
+  \vspace{-1em}
   \caption{Quality Score Distribution}
   \label{fig:doubleHump}
 \end{subfigure}
