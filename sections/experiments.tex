@@ -21,44 +21,49 @@ and
     \operatorname{DS}=1 - \min(\textrm{date offset}, \operatorname{INTERVAL})
 \end{equation}
 Here, we explore $\operatorname{INTERVAL}$ values from $0$ to $7$.
+if an alert (conversely, GSR event) cannot be matched to any GSR event (alert, respectively), these unmatched
+alerts (and events) will negatively impact the precision (and recall) of the system. The lead time,
+for a matched alert-event pair,
+is calculated as the difference between the date on which the forecast was made and the date on which the event
+was reported (this should not be confused with the date score, which is the difference between the
+predicted event date and the actual event date). Lead time concerns itself with reporting and forecasting, whereas
+the date score is concerned with quality or accuracy.
 
-\begin{itemize}
-    \item {\bf Perfomance over the months}
-\end{itemize}
-    Fig.~\ref{fig:monthlyqs} provides the evaluation results of the model over the months with a source level breakdown. The QS reported is the weighted average of QS of all 10 countries where the weight for a country is the number of GSR events for that country.
-    Twitter has a higher QS as multiple re-tweets of mention of future events in twitter is a direct indicator of the popularity of an event as well as the intent of people to join an event. While mention of Future events in News is simply a reporting of the event not much can be understood about the popularity of the event or about the people's support for the event. 
-\begin{itemize}
-    \item {\bf Country-wise perfomance}
-\end{itemize}
-    Table~\ref{tb:sourcewisecomparison} presents the perfomance of the planned protest model (for March 2014) for each of the 10 countries of interest. It also presents a source wise breakdown.From the table it is evident that different data source prefer different countries. The News/Blogs data source produces alerts for most countries and also provides much higher recall as opposed to twitter which provides High QS but very little recall.Also News/Blogs has a higher lead-time of 4.57 days as compared to twitters 2.82.
+We conduct a series of experiments to evaluate the performance of our system.\\
 
-\begin{itemize}
-    \item {\bf Case Study: Venezuelan and Brazilian Protests}
-\end{itemize}
-The recent Venezuelan protests against President Nicolas Maduro and the Brazilian Protests during June 2013 against bus fare hike were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela_feb}\ref{fig:brazil_june} show how well the planned protest model was able to predict the unfolding of events under both situations. 
-%Fig %.~\ref{fig:venezuela_violent} showcases the ability of the model to forecast the violent events also.
+\begin{figure*}
+\centering
+\begin{subfigure}{\columnwidth}
+  \centering
+  \includegraphics[width=\linewidth]{gsr_distribution}
+  \caption{GSR distribution from 2012-11 to 2014-03.}
+  \label{fig:gsrdistribution}
+\end{subfigure}%
+\begin{subfigure}{\columnwidth}
+  \centering
+  \includegraphics[width=\linewidth]{pp_dist}
+  \caption{Alerts distribution from 2012-11 to 2014-03.}
+  \label{fig:ppdistribution}
+\end{subfigure}
+\caption{Distribution of alerts and GSR events across the countries studied in this paper.}
+\label{fig:distribution}
+\end{figure*}
 
-\begin{itemize}
-    \item {\bf Lead-Time vs Quality Trade-Off}
-\end{itemize}
-
-Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model increases with time. 
-
-\begin{itemize}
-    \item {\bf Perfomance under stringent matching Criteria}
-\end{itemize}
-Fig.~\ref{fig:matchinginterval} shows the perfomance of the model when the matching window is varied from 7 to 1 in steps. We can see that the model is not affected badly even under the strict matching interval of 1-day difference.
-
-\begin{itemize}
-    \item {\bf Quality Score Distribution}
-\end{itemize}
-The hump on the right side of the Fig.~\ref{fig:doubleHump} signifies that a majority of the planned protest alerts are high quality.
-
+\noindent
+{\bf How does the distribution of protests detected by the system compare with the
+actual distribution of protests in the GSR?}
+Fig.~\ref{fig:distribution} reveals pie charts of both distributions. As shown, Mexico, Brazil, and Venezuela
+experience the lion's share of protests in our region of interest, and the protests detected also match these modes
+although not the specific percentages. The smaller countries like Ecuador, El Salvador, and Uruguay do experience
+protests but which are not as prominently detected as those for other countries; we attribute this to their smaller
+social media footprint (relative to countries like Brazil and Venezuela).\\
 \begin{table*}[tb!]
     \small
     \centering
-    \caption{\label{tb:sourcewisecomparison} Comparing forecasting accuracy of
-    RSS vs Twitter}
+    \caption{\label{tb:sourcewisecomparison} Country-wise breakdown of forecasting performance for different data sources.
+QS=Quality Score; Pr=Precision; Rec=Recall; LT=Lead Time.
+AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
+\vspace{-2mm}
     \begin{tabular}{|*{17}{c|}}
         \hline
         & \multicolumn{4}{ |c| }{News/Blogs} & \multicolumn{4}{ |c| }{Twitter} & \multicolumn{4}{ |c| }{Facebook} & \multicolumn{4}{ |c| }{Combined}\\
@@ -80,9 +85,31 @@ The hump on the right side of the Fig.~\ref{fig:doubleHump} signifies that a maj
     \end{tabular}
 \end{table*}
 
+\noindent
+{\bf Are there country-specific selective superiorities for the different data sources considered here?}
+Table~\ref{tb:sourcewisecomparison} presents a breakdown of perfomance, country-wise and source-wise, of 
+of our approach for a recent month, viz. March 2014.
+It is clear that the multiple data sources are necessary to achieve a high recall and that by and large
+these sources are providing mutually exclusive alerts. (Note also that some data sources do not produce alerts for specific
+countries.) Between Twitter and Facebook, the former is a better
+source of alerts for countries like Chile and the latter is a better source for Argentina, Brazil, Colombia, and Mexico.
+News and blogs achieve higher recall than social media sources indicating that most plans for protests are announced
+in established media. They are also
+higher quality sources for alerts in countries like El Salvador, Paraguay, and Uruguay.
+Finally, note that news and blogs offer a much higher lead time (4.57 days) 
+as compared to that for Facebook (2.44 days) or for Twitter (2.82 days). The quality scores are
+further broken down in Table~\ref{tb:modelwisecomparison} into their date and location components.
+A longitudunal perspective on quality scores is
+given in Fig.~\ref{fig:monthlyqs}. Note that in general Twitter tends to have a higher quality score
+as multiple re-tweets of future event mentions is a direct indicator of the popularity of an event as 
+well as the intent of people to join an event. 
+In contrast, mentions of future events in news do not directly shed any insight into popularity or people's
+support for the event's causes.\\
+
 \begin{table*} %[tb!]
 \centering
-\caption{Comparing the Location and Date Scores of different sources. AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
+\caption{Comparing the location and date scores of different sources in specific countries.
+AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
 \vspace{-2mm}
 \label{tb:modelwisecomparison}
 %\vspace{-1em}
@@ -103,23 +130,31 @@ Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
 \vspace{-4mm}
 \end{table*}
 
-\begin{figure*}
-\centering
-\begin{subfigure}{\columnwidth}
-  \centering
-  \includegraphics[width=\linewidth]{gsr_distribution}
-  \caption{GSR Distribution From 2012-11 to 2014-03}
-  \label{fig:gsrdistribution}
-\end{subfigure}%
-\begin{subfigure}{\columnwidth}
-  \centering
-  \includegraphics[width=\linewidth]{pp_dist}
-  \caption{Alerts Distribution From 2012-11 to 2014-03}
-  \label{fig:ppdistribution}
-\end{subfigure}
-\caption{Distribution of Alerts and GSR}
-\label{fig:distribution}
-\end{figure*}
+\noindent
+{\bf How did our system fare in detecting key country-wide protests?}
+The recent Venezuelan protests against President Nicolas Maduro and the Brazilian Protests during June 2013 against bus fare hike were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela_feb} and
+Fig.~\ref{fig:brazil_june} describe our performance under these two situations illustrating the count
+of protests detected against the GSR. Notice that our system was able to 
+identify the Venezuelan protests much better than the Brazilian protests. This is because there was a significant amount
+of spontaineity to the Brazilian protests; they arose as discontent about bus fare increases but later morphed into a broader
+set of protests against government and most of these subsequent protests were not planned.\\
+
+\noindent
+{\bf What is the tradeoff between lead time and quality?}
+Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model decreases (as expected) with lead time, initially, but
+later rises again. The higher quality scores toward the right of Fig.~\ref{fig:leadTimeVsQS} are primarily due to
+Facebook event pages.\\
+
+\noindent
+{\bf How does the method perform under stringent matching criteria?}
+Fig.~\ref{fig:matchinginterval} shows the perfomance of the model when the matching window is varied from 7 to 1 in steps. 
+We can see that the performance degrades quite gracefully even under the strict matching interval of a 1-day difference.\\
+
+\noindent
+{\bf What is the distribution of quality scores?}
+The clear mode toward the right side of the Fig.~\ref{fig:doubleHump} signifies that a majority of the planned 
+protest alerts are of high quality. Further, the quality score distribution is unimodal suggesting that the careful
+reasoning of locations and date normalization are crucial to achieving high quality.
 
 \begin{figure*}
 \centering
