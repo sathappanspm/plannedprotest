@@ -16,7 +16,7 @@ All harvested documents are subjected to linguistic analysis; candidate
 documents are identified using a list of (learnt) phrases associated with
 protest event planning; date and location information is extracted from the
 text and reasoned about to generate a warning. Location information is standardized
-to conform to a standard (in our case, we use the World Gazeteer \narenc{give url}).
+to conform to a standard (in our case, we use the World Gazeteer).
 Each of these processing
 steps (see Fig.~\ref{flowchart}) is outlined next.
 
@@ -30,8 +30,7 @@ places, dates and other entities and classifying them (named entity extraction).
 Since our region of interest is Latin America, the collection of text
 harvested is inherently multilingual, with Spanish, Portugese, and English as
 the dominating languages;
-we use Basis Technology's Rosette Linguistics Platform (RLP) suite of multilingual commercial tools (\url{http://www.basistech.com/text-analytics/rosette/})\narenc{give URL}
-for this stage.
+we use Basis Technology's Rosette Linguistics Platform (RLP) suite of multilingual commercial tools (\url{http://www.basistech.com/text-analytics/rosette/})for this stage.
 The output of linguistic preprocessing serves as input to subsequent deeper analysis in which 
 date expressions are normalized and the geographic focus of the text identified.
 
@@ -186,7 +185,7 @@ has a much higher population than the other options.
 
 \begin{flalign*}
     ENTITY&(S, location) \softand IsState(S)&\\
-                            &\rightarrow ArticleCountry(Article, S)&
+                            &\rightarrow ArticleState(Article, S)&
 \end{flalign*}
 
 \noindent
@@ -213,7 +212,7 @@ the correlation between the article's location and these clues may be lower than
 
 \begin{flalign*}
     ENTITY&(O, organization) \softand IsState(O)&\\
-          &\rightarrow ArticleCountry(Article, O) &
+          &\rightarrow ArticleState(Article, O) &
 \end{flalign*}
 Finally, the model includes rules and constraints to require consistency between the different levels of geolocation, 
 making the model place higher probability on states with its city contained in its state, which is 
