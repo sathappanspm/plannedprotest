@@ -4,10 +4,10 @@ are briefly discussed here.
 
 \begin{table*}
     \centering
-    \caption{Comparison of our approach against other future retrieval techniques.\narenc{reorder citations so that when compiled they appear in ascending order.}}
+    \caption{Comparison of our approach against other future retrieval techniques.}
     \begin{tabular}{l p{1.5cm} p{1.5cm} p{1.5cm} p{1.5cm} p{3cm}}%{|*{17}{c|}}
         \hline
-        & Relative date extraction & Handle multiple sources? & Reasoning about location & Learning word/phrase filters \\
+        & Relative date resolution & Ingest multiple sources? & Reasoning about location & Learning word/phrase filters \\
         \hline
         `Future' Search Engines~\cite{Kawai:2010:CSE, Jatowt:2011:ECE,baeza2005searching}&\checkmark & & \\
         Time-to-Event Recognition~\cite{tops2013predicting, bosch2013estm}&\checkmark & & \\
@@ -85,15 +85,10 @@ common way in which future dates are referenced, e.g., phrases like
 The work in~\cite{xu2014civil} by the same group of authors uses the Tumblr feed with a smaller set of keywords but
 again is restricted to the use of absolute time identifiers.
 
-\narenc{Fix this para after Sathappan adds figure in intro.}
 In surveying the state-of-the-art, we arrived at desiderata for a planned protest forecasting system. As shown in Table~\ref{comp-table},
-we desire a system that is capable of i) ingesting a broad range of data sources from both popular news and social media,
-ii) handling relative mentions of dates, iii) learning relevant phrases for tracking protests, and iv) providing a rich representation
-and reasoning basis for location. Items i) and ii) have been discussed earlier. Item iii) refers to the ability to begin with
-a small set of seed words and expand them to a diverse collection of phrases that should be tracked in media. Finally,
-item iv) is important due to the vagaries and uncertainties of reporting locations in media. Consider an article that is published
-in {\it Caracas, Venezuela} about a protest that happened over the {\it Friendship bridge} in {\it Foz do Iguacu, Brazil} due to 
-some conflict with citizens of {\it Paraguay}
-across the border. A rich reasoning capability is needed to ensure that the correct location (i.e., {\it Foz do Iguacu}) is determined 
-as the protest location. As Table~\ref{comp-table} summarizes, current systems provide only partial solutions and the proposed
+we desire a system that is capable of: i) ingesting a broad range of data sources from both popular news and social media,
+ii) learning relevant phrases for tracking protests, 
+iii) handling relative mentions of dates, and
+iv) providing a rich representational and reasoning basis for location. 
+As Table~\ref{comp-table} summarizes, current systems provide only partial solutions and the proposed
 approach addresses all four desired criteria.

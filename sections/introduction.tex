@@ -1,6 +1,6 @@
 \begin{figure}
     \includegraphics[width=0.5\textwidth, height=0.4\textwidth]{pp_example}
-    \caption{An example of a planned protest article}
+    \caption{An example article describing plans for a future protest (Venezuela, June 11, 2014).}
     \label{pp_example}
 \end{figure}
 Civil unrest (protests, strikes, and ``occupy'' events) is a common happening in both democracies
@@ -18,29 +18,24 @@ protests that are larger will be more disruptive and communicate support for its
 Mobilizing large numbers of people is more likely to occur if a protest is organized and the time and place announced in
 advance. Because protest is costly and more likely to succeed if it is large, we should expect planned, rather than 
 spontaneous, protests to be the norm. Indeed, in a sample of 288 events from our study selected for qualitative review of their antecedents
-(more details later), for 225 we located communications regarding the upcoming occurrence of the event in media, and only 49 were classified as 
+(more details later), for 225 we located communications regarding the upcoming occurrence of the event in media, and only 49 could be classified as 
 spontaneous (we could not determine whether communications had or had not occurred in the remaining 14 cases).
 
-\narenc{fix this text after Sathappan adds a figure.}
-Our goal here thus is to develop a protest forecasting system by identifying and mining mentions of future planned events
-in (news and social) media. Why is this problem difficult? Consider the following situation:
-\begin{quote}
-An article is published in {\it El Universal}
-in {\it Caracas, Venezuela} about a protest that happened over the {\it Friendship bridge} in {\it Foz do Iguacu, Brazil} due to
-some conflict with citizens of {\it Paraguay}
-across the border.
-\end{quote}
-
-
 We sought to develop
-computational techniques for detecting overt direct indicators
-of upcoming planned civil unrest events automatically from openly
-available sources of information.  Detecting indicators for civil
-unrest planning activities might have application to a wide range of
+a computational protest forecasting system by
+identifying and mining mentions of future planned events
+in (news and social) media.  
+Why is this problem difficult? Consider the example article shown in Fig.~\ref{pp_example},
+covered in greater detail in Fig.~\ref{fig:psl_example}. Written in Spanish and published in Venezuela, it describes plans 
+to protest on `Sunday' and mentions at least five different locations: three in Venezuela, one in Colombia, and one in Cuba. 
+Significant reasoning is required to discern the correct protest location and to identify the intended date
+from the vague reference of `Sunday.' Once the location and time of the future
+protest are inferred, a suitably generated alert has applications to a wide range of 
 governmental and civil activity, from the issuance of travel warnings
 to rapid emergency response capabilities.  
+
 Our detection approach 
-combine shallow linguistic analysis to identify a corpus of relevant
+combines shallow linguistic analysis to identify a corpus of relevant
 documents (articles, tweets) which are then subject to targeted deep semantic analysis.
 Despite its simplicity, we are able to
 detect indicators of event planning with surprisingly high
@@ -55,7 +50,6 @@ recall, and quality (accuracy).
 We conduct ablation studies to identify the 
 relative contributions of news media (news + blogs) versus social media (Twitter, Facebook) to identify future happenings of
 civil unrest. Through these studies we illustrate the selective superiorities of different sources for specific countries.
-\narenc{Graham said to give some numerical values here.}
 \item Unlike many studies of retrospective forecasting of protests,
 we assess the lead time from when the forecast is made to
 the actual event date, to assess the forecasting prowess of our approach. 
