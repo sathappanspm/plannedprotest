@@ -35,11 +35,11 @@ for this stage.
 The output of linguistic preprocessing serves as input to subsequent deeper analysis in which 
 date expressions are normalized and the geographic focus of the text identified.
 
-\begin{figure*}
-    \includegraphics[width=\textwidth]{enrichment}
-    \caption{Message Enrichment}
-    \label{fig:enrichment}
-\end{figure*}
+%\begin{figure*}
+%    \includegraphics[width=\textwidth]{enrichment}
+%    \caption{Message Enrichment}
+%    \label{fig:enrichment}
+%\end{figure*}
 
 Date processing is particularly crucial to the identification of
 future oriented statements. We use the TIMEN~\cite{LlorensDGS12} date
@@ -54,9 +54,80 @@ term {\em Friday} used in a future-tense sentence {\em We'll get
 expression identified as a date by the RLP preprocessor is normalized
 in this way.
 
+\subsection{Phrase filtering}
+In order to identify relevant documents, input documents are filtered on a set of key phrases, i.e.,
+the text of the document is searched for the presence of one or
+more key phrases in a list of phrases which are indicative of an article's focus being
+a planned civil unrest event.  
+The list of key phrases indicating civil unrest planning was obtained
+in a semi-automatic manner, as detailed in Section \ref{sec:phraselearning}.
+Articles which do match are processed further, those that do not are ignored.
+
+\subsubsection{Phrase matching}
+Our key phrase matching is highly general and linguistically
+sophisticated.  The phrases in our list are general rules for
+matching, rather than literal string sequences. Typically a phrase
+specification comprises: two or more word lemmas, a language
+specification, and a separation threshold. This indicates that words---potentially inflected forms---in 
+a given sequence potentially separated by one or more other words, should be taken to be a
+match. We determined that this kind of
+multi-word key phrases was more accurate than simple keywords for
+extracting events of interest from the data stream.
+
+The presence of a keyphrase is checked by searching for the presence of
+individual lemmas of the keyphrase within the same sentence separated
+by at most a number of word that is fewer than the separation threshold.  
+This method allows for linguistically sophisticated and flexible matching, so, for example,
+they keyphrase {\bf [{\em plan protest}, 4, English]} would match the sentence
+{\em The students are planning a couple big protests tomorrow} in an input document.
+
+\subsubsection{Phrase list development}
+\label{sec:phraselearning}
+The set of key phrases was tailored (slightly) to the genre of the
+input. In particular different phrases were used to identify relevant
+news articles and blogs from those used to filter Tweets.  The lists
+themselves were generated semi-audomatically.
+
+Initially, a few seed phrases were obtained manually
+with the help of subject matter experts.
+An analysis of news reports for planned protests in the print media helped create a
+minimum set of words to use in the query.  We choose four nouns from
+the basic query that is used predominantly to indicate a civil unrest
+in the print media - {\em demonstration, march, protest} and
+{\it strike}. We translated them into Spanish and Portuguese, including
+synonyms.  We then combined these with future-oriented verbs, e.g., {\em to organize}, {\em to prepare}, {\em to
+plan}, and {\em to announce}. For twitter, shorter phrases were identified, and these had
+a more direct call for action, e.g., {\em marchar}, {\em manhã de mobilização}, {\em
+  vamos protestar}, {\em huelga}.
+
+To generalize this set of phrases, the phrases were then parsed
+using a dependency parser~\cite{freeling} and the grammatical
+relationship between the core the nominal focus word (e.g., {\em protest}, 
+{\em manifestación}, {\em huelga}) and any accompanying
+word (e.g., {\em plan}, {\em call}, {\em anunciar}) was
+extracted. These grammatical relations were used as extraction
+patterns as in~\cite{riloff2003learning} to learn more phrases from a
+corpora of sentences extracted from the data stream of interest
+(either news/blogs or tweets). This corpus consists of sentences that
+contained any one of the nominal focus words and also had mentions of
+a future date. The separation threshhold for a phrase was also
+learned, being set to the average number of words separating
+the nominal focus and the accompanying word.
+
+The set of learned phrases is then reviewed by a subject matter expert for quality contraol.  
+Using this approach, we learned 112 phrases for news articles and blogs and 156 for tweets.  
+This phrase learning process is illustrated in Fig.~\ref{fig:phraselearning}.
+
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{figures/phraseLearning}
+\caption{An example of phrase learning for detecting planned protests.}
+\label{fig:phraselearning}
+\end{figure}
+
 \subsection{Geocoding}
 \label{subsection:geocoding}
-After linguistic preprocessing messages are geocoded with a
+After linguistic preprocessing and suitable phrase filtering,
+messages are geocoded with a
 specification of the geographical focus of the text---specified as a
 city, state, country tripple---that indicates the locality that the
 text is about. We make use of different geocoding methodologies
@@ -97,8 +168,8 @@ The primary rules in the model encode the effect that Basis-extracted location s
 aliases are indicators of the article's location, whether they be country, state, or city aliases. 
 Each of these implications is conjuncted with an prior for ambiguous, overloaded aliases that is 
 proportional to the population of the gazetteer location. For example, if the string ``Los Angeles'' appears in the article, 
-it could refer to either Los Angeles, California, or Los \'{A}ngeles in Argentina or Chile. Given no other information
-, our model would infer a higher truth value for the article referring to Los Angeles, California, because it 
+it could refer to either Los Angeles, California, or Los \'{A}ngeles in Argentina or Chile. Given no other information,
+our model would infer a higher truth value for the article referring to Los Angeles, California, because it 
 has a much higher population than the other options. 
 
 \begin{flalign*}
@@ -117,6 +188,11 @@ has a much higher population than the other options.
     ENTITY&(S, location) \softand IsState(S)&\\
                             &\rightarrow ArticleCountry(Article, S)&
 \end{flalign*}
+
+\noindent
+(Note that the above are not deterministic rules; e.g., they do not use the logical conjunction $\wedge$ but rather the
+Lukasiewicz t-norm based relaxation $\softand$. Further, these rules do not fire deterministically but are instead
+simultaneously solved for satisfying assignments as described in Section~\ref{section:PSL}.)
 
 The secondary rules, which are given half the weight of the primary rules, perform the same mapping of extracted strings 
 to gazetteer aliases, but for extracted persons and organizations. Strings describing persons and 
@@ -163,8 +239,6 @@ probabilistic inference prefer consistent predictions, enabling it to combine ev
     \label{fig:psl_example}
 \end{figure*}
 
-(GRAHAM: DO WE WANT TO SUMMARIZE SOME RESULTS HERE TOO?)
-
 %\input{sections/psl.tex}
 
 \iffalse Most news articles and blog posts mention multiple locations, e.g.,
@@ -194,87 +268,7 @@ The methodology is similar to {\em Web-a-where: Geo-Tagging Web Content}.
 
 
 
-
-\subsection{Phrase filtering}
-
-In order to identify relevant documents, input documents are filtered on a set of key phrases, that is 
-the text of the document is searched for the presence of one or
-more key phrases in a list of phrases which are indicative of an article's being
-about a planned civil unrest event.  
-The list of key phrases indicating civil unrest planning was obtained
-in a semi-automatic manner, as detailed in Section \ref{sec:phraselearning}.
-Articles which do match are processed further, those that do not are ignored.
-
-\subsubsection{Phrase matching}
-
-Our key phrase matching is highly general and linguistically
-sophisticated.  The phrases in our list are general rules for
-matching, rather than literal string sequences. Typically a phrase
-specification consisting of two or more word lemmas, a language
-specification and a separation threshold. This indicates that words -
-potentially inflected forms - in a given sequence potentially
-separated by one or more other words, should be taken to be a
-``match.''   It was found that this kind of
-multi-word key phrases was more accurate than simple keywords for
-extracting events of interest from the data stream.
-
-The presence of a keyphrase is checked by searching for the presence of
-individual lemmas of the keyphrase within the same sentence separated
-by at most a number of word that is fewer than the separation threshold.  
-This method allows for linguistically sophisticated and flexible matching, so, for example,
-they keyphrase [{\em plan protest}, 4, English] would match the sentence
-{\em The students are planning a couple big protests tomorrow} in an input document.
-
-
-\subsubsection{Phrase list development}
-\label{sec:phraselearning}
-
-The set of key phrases was tailored (slightly) the the genre of the
-input. In particular different phrases were used to identify relevant
-news articles and blogs from those used to filter Tweets.  The lists
-themselves were generated semi-audomatically.
-
-Initially, a few seed phrases were obtained manually
-with the help of subject matter experts.
-\sathappanc{Jaime's Text --> edited by graham}
-An analysis of news reports for planned protests in the print media helped create a
-minimum set of words to use in the query.  We choose four nouns from
-the basic query that is used predominantly to indicate a civil unrest
-in the print media - {\em demonstration, march, protest and
-  strike}. We translated them into Spanish and Portuguese, including
-synonyms.  We then combined these with future-oriented verbs - {\em to organize}, {\em to prepare}, {\em to
-plan}, {\em to announce}, etc. For twitter, shorter phrases were identified, and these had
-a more direct call for action, for example, {\em marchar}, {\em manhã de mobilização}, {\em
-  vamos protestar}, {\em huelga}.
-
-To generalize this set of phrases, the the phrases were then parsed
-using a dependency parser \cite{freeling} and the grammatical
-relationship between the core the nominal focus word (e.g., {\em
-  protest}, {\em manifestación}, {\em huelga}) and any accompanying
-word (e.g., {\em plan}, {\em call}, {\em anunciar}) was
-extracted. These grammatical relations were used as extraction
-patterns as in \cite{riloff2003learning} to learn more phrases from a
-corpora of sentences extracted from the data stream of interest
-(either news/blogs or tweets). This corpus consists of sentences that
-contained any one of the nominal focus words and also had mentions of
-a future date. The separation threshhold for a phrase was also
-learned, being set is set to the average number of words separating
-the nominal focus and the accompanying word.
-
-The set of learned phrases is then reviewed by a subject matter expert for quality contraol.  
-Using this approach, we learned 112 phrases for news articles and blogs and 156 for tweets.  
-This phrase learning process is illustrated in Fig.~\ref{fig:phraselearning}
-
-
-
-\begin{figure}
-\caption{An Example of Phrase Learning}
-\includegraphics[width=0.5\textwidth]{figures/phraseLearning}
-\label{fig:phraselearning}
-\end{figure}
-
 \subsection{Warning Generation}
-
 After being subject to the preprocessing steps, above, all documents
 that are identified as containing a key phrase are further filtered by
 searching for the presence a future date in the passage containing the
@@ -282,19 +276,12 @@ key phrase and for the existence of an identified geographical focus for the tex
 Documents that meet all these critera are used as the basis for a warning about a
 planned civil unrest event (Twitter postings are only used as the basis for a warning
 if the tweet is re-tweeted at least five times). 
-
 A warning is generated for the date indicated by the future date
 expression and the location which is the geographical focus of the
-document.  For news articles and blog documents, information about
-the event type and population for the event are derived from the
-use of a text-based Naive Bayes classifier.  This classifier is
-trained on the GSR and makes use of unigram and bi-gram word features.
-For Twitter, since there is very little text in an individual tweet, the
-event-type and population are based on based on prior likelihood for that location in the GSR.
-
-In the case of Facebook, a Facebook-Event is considered to be good evidence for an alert if
+document.  
+In the case of Facebook, an event page is considered to be good evidence for an alert if
 there are more attendees for the event than rejects.  The date and
-location are read off the Event page itself, and the population and event type are also based on priors.
+location are read off from the event page directly.
 
 
 
