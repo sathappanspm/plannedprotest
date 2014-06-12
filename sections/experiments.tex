@@ -14,11 +14,11 @@ location score (LS) and date score (DS):
 where
 \narenc{equations are wrong! Need a scaling factor if LS and DS are supposed to lie in [0,1].}
 \begin{equation}
-    \operatorname{LS}=1 - \min(\textrm{distance offset}, 300)
+    \operatorname{LS}=1 - \frac{\min(\textrm{distance offset}, 300)}{300}
 \end{equation}
 and 
 \begin{equation}
-    \operatorname{DS}=1 - \min(\textrm{date offset}, \operatorname{INTERVAL})
+    \operatorname{DS}=1 - \frac{\min(\textrm{date offset}, \operatorname{INTERVAL})}{\operatorname{INTERVAL}}
 \end{equation}
 Here, we explore $\operatorname{INTERVAL}$ values from $0$ to $7$.
 if an alert (conversely, GSR event) cannot be matched to any GSR event (alert, respectively), these unmatched
