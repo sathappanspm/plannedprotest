@@ -1,0 +1,135 @@
+%File: formatting-instruction.tex
+\documentclass[letterpaper]{article}
+\usepackage{caption}
+\DeclareCaptionType{copyrightbox}
+%\graphicspath{{./figures/}}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{multirow}
+\usepackage{amsmath, amsfonts, amssymb}
+\graphicspath{{./figures/}}
+\usepackage{color}
+%package for proper unicode rendering
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{aaai}
+\usepackage{times}
+\usepackage{helvet}
+\usepackage{courier}
+
+\inputencoding{utf8}
+
+\frenchspacing
+\setlength{\pdfpagewidth}{8.5in}
+\setlength{\pdfpageheight}{11in}
+\pdfinfo{
+/Title (Insert Your Title Here)
+/Author (Put All Your Authors Here, Separated by Commas)}
+\setcounter{secnumdepth}{0}  
+ \begin{document}
+\newcommand{\narenc}[1]{[{\color{red} Naren writes: \it #1}]}
+\newcommand{\sathappanc}[1]{[{\color{blue} Sathappan writes: \it #1}]}
+%\newcommand{\grahamc}[1]{[\color{green} Graham writes: \it #1}]}
+%symbols for psl rules 
+\newcommand{\then}{\Rightarrow}
+\newcommand{\softor}{\operatornamewithlimits{\tilde{\vee}}}
+\newcommand{\softand}{\operatornamewithlimits{\tilde{\wedge}}}
+\newcommand{\softthen}{\operatornamewithlimits{\tilde{\then}}}
+\newcommand{\softneg}{\operatornamewithlimits{\tilde{\neg}}}
+
+
+
+% The file aaai.sty is the style file for AAAI Press 
+% proceedings, working notes, and technical reports.
+%
+\title{Forecasting Protests \\by Detecting Future Time Mentions \\in News and Social Media}
+
+%\author{
+%% 1st. author
+%\alignauthor
+%Sathappan Muthiah\\
+%       \affaddr{Virginia Tech, Blacksburg, VA 24061}\\
+%       \email{sathap1@cs.vt.edu}
+%% 2nd. author
+%\alignauthor
+%Bert Huang\\
+%       \affaddr{University of Maryland, College Park, MD 20742}\\
+%       \email{bert@cs.umd.edu}
+%% 3rd. author
+%\alignauthor
+%Jaime Arredondo\\
+%       \affaddr{University of California at San Diego, San Diego, CA 92093}\\
+%       \email{jarredon@ucsd.edu}
+%\and  % use '\and' if you need 'another row' of author names
+%% 4th. author
+%\alignauthor
+%David Mares\\
+%       \affaddr{University of California at San Diego, San Diego, CA 92093}\\
+%       \email{dmares@ucsd.edu}
+%% 5th. author
+%\alignauthor
+%Lise Getoor\\
+%       \affaddr{University of California at Santa Cruz, Santa Cruz, CA 95064}\\
+%       \email{getoor@soe.ucsc.edu}
+%% 6th. author
+%\alignauthor
+%Graham Katz\\
+%       \affaddr{CACI Inc., Lanham, MD 20706}\\
+%       \email{ekatz@caci.com}
+%\and
+%% 7th. author
+%\alignauthor
+%Naren Ramakrishnan\\
+%       \affaddr{Virginia Tech, Blacksburg, VA 24061}\\
+%       \email{naren@cs.vt.edu}
+%}
+%\author{AAAI Press\\
+%Association for the Advancement of Artificial Intelligence\\
+%2275 East Bayshore Road, Suite 160\\
+%Palo Alto, California 94303\\
+%}
+\maketitle
+\begin{abstract}
+\begin{quote}
+\input{sections/abstract.tex}
+\end{quote}
+\end{abstract}
+\input{sections/introduction}
+
+\section{Related Work}
+\input{sections/related_works}
+
+\section{Preliminaries}
+\input{sections/problem}
+
+\section{Probabilistic Soft Logic}
+\input{sections/psl}
+\label{section:PSL}
+
+\section{Approach}
+\input{sections/approach}
+
+\section{Experiments}
+\input{sections/experiments}
+
+\section{Discussion}
+We have described an approach to forecasting protests by detecting mentions of future events in news and social
+media. The two twin issues of i) resolving the date and ii) resolving the location have been addressed satisfactorily
+to realize an effective protest forecasting system. As different forms of communication media gain usage, systems
+like ours will be crucial to understanding the concerns of citizenry.
+
+Our future work is aimed at three aspects. First, to address situations such as nationwide protests and systems of protests,
+we must generalize our system from generating protests at a single article level to digesting groups of articles. This will
+require more sophisticated reasoning using PSL programs. 
+Second, we would like to generalize our approach that currently
+does detection of overt plans for protest to not-so-explicitly stated expressions of discontent. 
+Finally, we plan to consider other population-level events of interest than just civil unrest, e.g., domestic political crises,
+and design detectors to recognize the imminence of such events.
+
+%\nocite{*}
+\vspace{-1em}
+\bibliographystyle{ieeetr}
+\bibliography{references} 
+\end{document}
