@@ -5,23 +5,25 @@ are briefly discussed here.
 \begin{table*}
     \centering
     \vspace{-2em}
+    \resizebox{\textwidth}{!}{\begin{minipage}{\textwidth}
     \caption{Comparison of our approach against other future retrieval techniques.}
-    \begin{tabular}{l p{1.5cm} p{1.5cm} p{1.5cm} p{1.5cm} p{3cm}}%{|*{17}{c|}}
+    \begin{tabular}{l p{2cm} p{1.5cm} p{1.5cm} p{1.5cm} p{3cm}}%{|*{17}{c|}}
         \hline
         & Relative date resolution & Ingest multiple sources? & Reasoning about location & Learning word/phrase filters \\
         \hline
-        `Future' Search Engines~\cite{Kawai:2010:CSE, Jatowt:2011:ECE,baeza2005searching}&\checkmark & & \\
-        Time-to-Event Recognition~\cite{tops2013predicting, bosch2013estm}&\checkmark & & \\
+        `Future' Search Engines~\cite{Kawai:2010:CSE,Jatowt:2011:ECE,baeza2005searching}&\checkmark & & \\
+        Time-to-Event Recognition~\cite{tops2013predicting,bosch2013estm}&\checkmark & & \\
         Planned Protest Detection~\cite{xu2014civil,compton2013detecting} & &\checkmark & &\\ 
         This paper &\checkmark &\checkmark &\checkmark&\checkmark\\  \hline
-\end{tabular}
+    \end{tabular}
+\end{minipage}}
 \label{comp-table}
 \end{table*}
 
 {\bf Event detection via text extractions}
 is an extensively studied topic in the literature. Document clustering techniques are used 
-in~\cite{Allan:2002:TDT, Yang:1998:SRO, Gabrilovich:2004:NPP} to identify events retrospectively or as the stories arrive.
-Works like~\cite{Banko07openinformation, Chambers:2011:TIE, riloff2003learning} focus on
+in~\cite{Allan:2002:TDT,Yang:1998:SRO,Gabrilovich:2004:NPP} to identify events retrospectively or as the stories arrive.
+Works like~\cite{Banko07openinformation,Chambers:2011:TIE,riloff2003learning} focus on
 extraction patterns (templates) to extract information from text. Ritter et al.~\cite{Ritter:2012} show that
 it is possible to accurately extract a calendar of significant events from Twitter by training a tagger for recognizing event phrases.
 \iffalse 
