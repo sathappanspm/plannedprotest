@@ -1,11 +1,10 @@
-Four categories of related work 
-%-- \emph{Event Detection, Temporal Information Extraction, Future Retrieval, Extraction of Planned Events and Event Forecasting} -- 
-are briefly discussed here.
+Five categories of related work are briefly discussed here (see also
+Table~\ref{comp-table}).
 
 \begin{table*}
     \centering
     \vspace{-2em}
-    \caption{Comparison of our approach against other future retrieval techniques.}
+    \caption{Comparison of our approach against techniques.}
     \begin{tabular}{l p{2cm} p{1.5cm} p{1.5cm} p{1.5cm} p{3cm}}%{|*{17}{c|}}
         \hline
         & Relative date resolution & Ingest multiple sources? & Reasoning about location & Learning word/phrase filters \\
@@ -22,13 +21,14 @@ are briefly discussed here.
 is an extensively studied topic in the literature. Document clustering techniques are used 
 in~\cite{Allan:2002:TDT,Yang:1998:SRO,Gabrilovich:2004:NPP} to identify events retrospectively or as the stories arrive.
 Works like~\cite{Banko07openinformation,Chambers:2011:TIE,riloff2003learning} focus on
-extraction patterns (templates) to extract information from text. Ritter et al.~\cite{Ritter:2012} show that
+extraction patterns (templates) to extract information from text. 
+\iffalse
+Ritter et al.~\cite{Ritter:2012} show that
 it is possible to accurately extract a calendar of significant events from Twitter by training a tagger for recognizing event phrases.
-\iffalse 
 Sankaranarayanan et al.~\cite{Sankaranarayanan:2009:TNT} captures tweet clusters of interest to identify late breaking News from twitter 
-\fi
 Highly specialized applications
 also exist; e.g., Sakaki et al.~\cite{Sakaki:2010:EST} mine tweets to enable prompt detection of occurences of earthquakes.
+\fi
 
 {\bf Temporal information extraction} is another well studied topic.
 The TempEval challenge~\cite{tempeval} led to a significant amount of
@@ -38,7 +38,7 @@ for temporal and event expressions in natural language text is described in~\cit
 Refs.~\cite{LlorensDGS12} and~\cite{tempex} provide methods to resolve temporal expressions in text (our own
 work here uses the TIMEN package~\cite{LlorensDGS12}).
 
-{\bf Event forecasting} is a burgeoning area. 
+{\bf Event forecasting:} 
 Radinsky and Horvitz~\cite{Radinsky:2013:MWP} find event sequences from a corpora and then use these sequences to determine if 
 an event of interest (e.g., a disease outbreak, or a riot)
 will occur sometime in the future. This work predicts only if a potential event will happen given a historical event sequence
@@ -47,34 +47,40 @@ Kallus~\cite{nathankallus} makes use of event data from
 RecordedFuture~\cite{recordedFuture} to determine if a  significant protest event will occur in 
 the subsequent three days and casts this as a classification problem.
 This work only focuses on prediction of significant events (suitably defined) and
-the forecast is limited to the next three days. Ramakrishnan et al.~\cite{emberskdd} describe the EMBERS
-system for forecasting civil unrest using open source indicators but this work is primarily focused on shallow mining of
-a broad set of data sourceas in contrast to the focused analysis of planned protest announcements that we study here.
+the forecast is limited to a fixed time window
+of the next three days. 
+%Ramakrishnan et al.~\cite{emberskdd} describe the EMBERS
+%system for forecasting civil unrest using open source indicators but this work is primarily focused on shallow mining of
+%a broad set of data sourceas in contrast to the focused analysis of planned protest announcements that we study here.
+%
 
-Finally, the area of research most closely related to our work is the emerging topic of
-{\bf future retrieval}.
-Baeza-Yates~\cite{baeza2005searching} providing one of the earliest discussions
+{\bf Future retrieval:}
+Baeza-Yates~\cite{baeza2005searching} provides one of the earliest discussions
 of this topic; here future temporal information in text is found and used to retrieve content from search queries that 
-combine both text and time with a simple ranking scheme. Kawai et al.~\cite{Kawai:2010:CSE} present a search engine (ChronoSeeker) for searching 
+combine both text and time with a simple ranking scheme. 
+Kawai et al.~\cite{Kawai:2010:CSE} present a search engine (ChronoSeeker) for searching 
 future and past events.
-They make use of an SVM classifier to disambiguate between the various temporal expressions in a document.
-Dias et al.~\cite{dias2011future} classify web snippets into three classes depending on if a future date can/cannot be predicted 
-from the snippet or if it is a rumor.
+%They make use of an SVM classifier to disambiguate between the various temporal expressions in a document.
+%Dias et al.~\cite{dias2011future} classify web snippets into three classes depending on if a future date can/cannot be predicted 
+%from the snippet or if it is a rumor.
 %{\bf Extraction of planned or future mentions of events from social media} is a very popular topic in social media
 %analytics.
 RecordedFuture~\cite{recordedFuture}, introduced earlier, conducts
 real-time analysis of news and tweets to identify mentions of events along with associated times. Anectodally it 
 is estimated that approximately (only) 5--7\% of events extracted 
 by RecordedFuture are about the future.
+\iffalse
 Tops et al.~\cite{tops2013predicting} aim to classify a tweet talking about an event into discrete time segments and thereby predict the 
 `time to event'.
 Bosch et al.~\cite{bosch2013estm} use regression techniques to identify the time to an event referred to by a tweet.
 Jatowt et al.~\cite{Jatowt:2011:ECE} provide a collective image of the future associated with an entity summarizing all future related information available.
 Becker et al.~\cite{Becker:2012:ICP} try to identify more content about known planned events (e.g., a concert) across social media. This work
 for instance assumes that we know the event beforehand and aims to identify relevant details of the event.
+\fi
 
 %\cite{baeza2005searching},\cite{dias2011future},\cite{tops2013predicting},\cite{Jatowt:2011:ECE},\cite{Kawai:2010:CSE} talk about future retrieval or extraction of mentions of Future events.
-In particular, two publications---Compton et al. ~\cite{compton2013detecting} and Xu et al.~\cite{xu2014civil}---align very closely to our own work as their emphasis is on protest forecasting.
+{\bf Planned protest detection:}
+Two publications---Compton et al. ~\cite{compton2013detecting} and Xu et al.~\cite{xu2014civil}---align very closely to our own work as their emphasis is on protest forecasting.
 Both works are aimed at forecasting protests
 but emphasize different data sources and different methodologies. For instance, the work in~\cite{compton2013detecting} filters the Twitter stream for
 keywords of interest and searches for future date mentions in only absolute terms, i.e., explicit mentions of a month name and a number (date)
@@ -86,10 +92,12 @@ common way in which future dates are referenced, e.g., phrases like
 The work in~\cite{xu2014civil} by the same group of authors uses the Tumblr feed with a smaller set of keywords but
 again is restricted to the use of absolute time identifiers.
 
-In surveying the state-of-the-art, we arrived at desiderata for a planned protest forecasting system. As shown in Table~\ref{comp-table},
+\iffalse
+In surveying the state-of-the-art, we arrived at desiderata for a planned protest forecasting system. As shown in 
 we desire a system that is capable of: i) ingesting a broad range of data sources from both popular news and social media,
 ii) learning relevant phrases for tracking protests, 
 iii) handling relative mentions of dates, and
 iv) providing a rich representational and reasoning basis for location. 
 As Table~\ref{comp-table} summarizes, current systems provide only partial solutions and the proposed
 approach addresses all four desired criteria.
+\fi

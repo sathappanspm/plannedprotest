@@ -229,16 +229,16 @@ is revisited in Fig.~\ref{fig:psl_example}.
                &\rightarrow ArticleState(Article, S)&
 \end{flalign*}
 
-%\begin{figure*}
-%    \includegraphics[width=\textwidth]{psl_pipeline2}
-%    \vspace{-2em}
-%    \caption{An example of location inference using PSL. Red circles denote named entities identified as locations and blue denotes other types of entities. The 
-%article describes students planning a march on Sunday.
-%It identifies multiple locations, e.g., Chacao, El Roso, and the Francisco Fajardo highway where protests have been happening.
-%There is also a reference to a quote by the mayor of Baruto.
-%Mentions of such multiple locations are resolved using our PSL program to the intended location, here Caracas.}
-%    \label{fig:psl_example}
-%\end{figure*}
+\begin{figure*}
+    \includegraphics[width=\textwidth]{psl_pipeline2}
+    \vspace{-2em}
+    \caption{An example of location inference using PSL. Red circles denote named entities identified as locations and blue denotes other types of entities. The 
+article describes students planning a march on Sunday.
+It identifies multiple locations, e.g., Chacao, El Roso, and the Francisco Fajardo highway where protests have been happening.
+There is also a reference to a quote by the mayor of Baruto.
+Mentions of such multiple locations are resolved using our PSL program to the intended location, here Caracas.}
+    \label{fig:psl_example}
+\end{figure*}
 
 %\input{sections/psl.tex}
 \iffalse Most news articles and blog posts mention multiple locations, e.g.,
@@ -265,6 +265,7 @@ The methodology is similar to {\em Web-a-where: Geo-Tagging Web Content}.
 %    \label{fig:rssdistribution}
 %\end{figure}
 %
+\iffalse
 \vspace{-0.5em}
 \subsection{Warning Generation}
 After being subject to the preprocessing steps, above, all documents
@@ -280,3 +281,4 @@ document.
 In the case of Facebook, an event page is considered to be good evidence for an alert if
 there are more attendees for the event than rejects.  The date and
 location are read off from the event page directly.
+\fi
