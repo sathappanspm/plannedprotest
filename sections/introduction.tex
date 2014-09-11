@@ -22,16 +22,41 @@ spontaneous, protests to be the norm. Indeed, in a sample of 288 events from our
 (more details later), for 225 we located communications regarding the upcoming occurrence of the event in media, and only 49 could be classified as 
 spontaneous (we could not determine whether communications had or had not occurred in the remaining 14 cases).
 
-We sought to develop
-a computational protest forecasting system by
-identifying and mining mentions of future planned events
-in (news and social) media.  
-Why is this problem difficult? Consider the example article shown in Fig.~\ref{pp_example},
-covered in greater detail in Fig.~\ref{fig:psl_example}. Written in Spanish and published in Venezuela, it describes plans 
-to protest on `Sunday' and mentions at least five different locations -- of which at least two are ambiguous and can either be in Colombia, Cuba or Venezuela. 
-Significant reasoning is required to discern the correct protest location and to identify the intended date
-from the vague reference of `Sunday.' Once the location and time of the future
-protest are inferred, a suitably generated alert has applications to a wide range of 
+We are an industry-university partnership charged with developing an
+automatic protest forecasting system for 10 countries in
+Latin America. Our system, called EMBERS, has been
+deployed since Nov 2012 and has been generating forecasts (called
+warnings or alerts) automatically, without a human-in-the-loop. These forecasts are emailed to
+a third party (MITRE) for evaluation. Analysts at MITRE organize a reference
+database of protests (called the Gold Standard Report,
+or GSR) by surveying newspapers for reportings of protests, and
+compare our warnings against the GSR to generate a scoring report (evaluation
+criteria described later).
+
+The full EMBERS system has been described elsewhere~\cite{kdd2014}, including
+the overall system architecture, data sources used for analysis, and the
+various forecasting models in EMBERS. EMBERS adopts a multi-model approach,
+wherein different models are leveraged for their selective superiorities
+to generate a fused set of alerts. Arguably, one of the
+best performing models in EMBERS is the planned protest model that detects
+ongoing organizational activity and generates warnings accordingly. This paper
+is the first work to present this model in greater detail, including the 
+research issues involved, and how we addressed them in the larger EMBERS
+project.
+
+Fig.~\ref{pp_example} is an example article intended to
+illustrate why capturing mentions of protest planning and organization 
+is not as easy as it might appear. First, these articles are written in
+different languages (Spanish, Portugese, French, Dutch, and English). 
+Second, multiple locations are often mentioned in a given article, e.g.,
+the example in Fig.~\ref{pp_example}
+mentions at least five different locations -- of which at least two are ambiguous and can either be in Colombia, Cuba or Venezuela. 
+Significant reasoning is required to discern the correct protest location.
+Finally, dates are often described in relative terms, e.g., `Sunday' and 
+thus these vague references need to be transduced into absolute temporal
+information. 
+Once the reasoning about all these parts are complete,
+a suitably generated alert has applications to a wide range of 
 governmental and civil activity, from the issuance of travel warnings
 to rapid emergency response capabilities.  
 
@@ -55,7 +80,7 @@ civil unrest. Through these studies we illustrate the selective superiorities of
 we assess the lead time from when the forecast is made to
 the actual event date, to assess the forecasting prowess of our approach. 
 Our results demonstrate that we are able to 
-capture significant societal unrest in the above countries with an average lead time of 4.08 days. This illustrates that the
-approach here can be used in a practical protest forecasting system.
+capture significant societal unrest in the above countries with an average lead time of 4.08 days. 
+
 \end{enumerate}
 
