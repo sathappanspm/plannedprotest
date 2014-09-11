@@ -8,14 +8,11 @@ ii) the alert's predicted location and the event's reported location are within 
 other (the distance offset), and iii) the forecasted event date is within a given interval of the true event date (the date offset).
 Once these inclusion criteria apply, the quality score (QS) of the match is defined as a combination of the
 location score (LS) and date score (DS):
-\small
 \begin{equation}
     \operatorname{QS}= (LS + DS)*2
 \end{equation}
-\normalsize
 \noindent
 where
-\small
 \begin{equation}
     \operatorname{LS}=1 - \frac{\min(\textrm{distance offset}, 300)}{300}
 \end{equation}
@@ -23,7 +20,6 @@ and
 \begin{equation}
     \operatorname{DS}=1 - \frac{\min(\textrm{date offset}, \operatorname{INTERVAL})}{\operatorname{INTERVAL}}
 \end{equation}
-\normalsize
 Here, we explore $\operatorname{INTERVAL}$ values from $0$ to $7$.
 if an alert (conversely, GSR event) cannot be matched to any GSR event (alert, respectively), these unmatched
 alerts (and events) will negatively impact the precision (and recall) of the system. The lead time,
@@ -41,17 +37,17 @@ We conduct a series of experiments to evaluate the performance of our system.\\
   \centering
   \includegraphics[scale=0.4]{gsr_distribution}
   \vspace{-2em}
-  \caption{\scriptsize GSR distribution from 2012-11 to 2014-03.}
+  \caption{GSR distribution from 2012-11 to 2014-03.}
   \label{fig:gsrdistribution}
 \end{subfigure}%
 \begin{subfigure}{\columnwidth}
   \centering
   \includegraphics[scale=0.4]{pp_dist}
   \vspace{-2em}
-  \caption{\scriptsize Alerts distribution from 2012-11 to 2014-03.}
+  \caption{Alerts distribution from 2012-11 to 2014-03.}
   \label{fig:ppdistribution}
 \end{subfigure}
-  \vspace{-1em}
+  \vspace{-.5em}
 \caption{Distribution of alerts and GSR events across the countries studied in this paper.}
 \label{fig:distribution}
 \end{figure*}
@@ -64,7 +60,8 @@ experience the lion's share of protests in our region of interest, and the prote
 although not the specific percentages. The smaller countries like Ecuador, El Salvador, and Uruguay do experience
 protests but which are not as prominently detected as those for other countries; we attribute this to their smaller
 social media footprint (relative to countries like Brazil and Venezuela).\\
-\begin{table*}[tb!]
+
+\begin{table*}
     \small
     \centering
     %\vspace{-2em}
@@ -113,9 +110,10 @@ as multiple re-tweets of future event mentions is a direct indicator of the popu
 well as the intent of people to join an event. 
 In contrast, mentions of future events in news do not directly shed any insight into popularity or people's
 support for the event's causes.\\
-\small
+
 \begin{table*} %[tb!]
 \centering
+\small
 %\vspace{-2em}
 \caption{\small Comparing the location and date scores of different sources in specific countries.
 AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
@@ -136,8 +134,7 @@ Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
 \end{tabular}
 \vspace{-4mm}
 \end{table*}
-\normalsize
-\vspace{-0.5em}
+\vspace{-1em}
 \noindent
 {\bf How did our system fare in detecting key country-wide protests?}
 The recent Venezuelan protests against President Nicolas Maduro and the Brazilian Protests during June 2013 against bus fare hike were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela_feb} and

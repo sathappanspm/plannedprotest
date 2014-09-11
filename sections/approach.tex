@@ -168,6 +168,7 @@ proportional to the population of the gazetteer location. For example, if the st
 it could refer to either Los Angeles, California, or Los \'{A}ngeles in Argentina or Chile. Given no other information,
 our model would infer a higher truth value for the article referring to Los Angeles, California, because it 
 has a much higher population than the other options. 
+\small
 \begin{flalign*}
     ENTITY&(L, location) \softand REFERSTO(L, locID) &\\
                         &\rightarrow PSLLOCATION(Article, locID) &
@@ -184,7 +185,7 @@ has a much higher population than the other options.
     ENTITY&(S, location) \softand IsState(S)&\\
                             &\rightarrow ArticleState(Article, S)&
 \end{flalign*}
-
+\normalsize
 \noindent
 (Note that the above are not deterministic rules; e.g., they do not use the logical conjunction $\wedge$ but rather the
 Lukasiewicz t-norm based relaxation $\softand$. Further, these rules do not fire deterministically but are instead
@@ -194,6 +195,7 @@ The secondary rules, which are given half the weight of the primary rules, perfo
 to gazetteer aliases, but for extracted persons and organizations. Strings describing persons and 
 organizations often include location clues (e.g., ``mayor of Buenos Aires''), but intuition suggests 
 the correlation between the article's location and these clues may be lower than with location strings. 
+\small
 \begin{flalign*}
     ENTITY&(O, organization) \softand REFERSTO(O, locID)&\\
                             &\rightarrow PSLLOCATION(Article, locID) &
@@ -210,6 +212,7 @@ the correlation between the article's location and these clues may be lower than
     ENTITY&(O, organization) \softand IsState(O)&\\
           &\rightarrow ArticleState(Article, O) &
 \end{flalign*}
+\normalsize
 Finally, the model includes rules and constraints to require consistency between the different levels of geolocation, 
 making the model place higher probability on states with its city contained in its state, which is 
 contained in its country. As a post-processing step, we enforce this consistency explicitly by using the 
@@ -217,6 +220,7 @@ inferred city and its enclosing state and country, but adding these rules into t
 probabilistic inference prefer consistent predictions, enabling it to combine evidence at all levels.
 %As an example of how PSL aids in location identification, the example from Fig.~\ref{pp_example}
 %is revisited in Fig.~\ref{fig:psl_example}. 
+\small
 \begin{flalign*}
     PSLLOCATION&(Article, locID) \softand Country(locID, C)&\\
                &\rightarrow ArticleCountry(Article, C)&
@@ -227,7 +231,7 @@ probabilistic inference prefer consistent predictions, enabling it to combine ev
     PSLLOCATION&(Article, locID) \softand Admin1(locID, S)&\\
                &\rightarrow ArticleState(Article, S)&
 \end{flalign*}
-
+\normalsize
 %\begin{figure*}
 %    \includegraphics[width=\textwidth]{psl_pipeline2}
 %    \vspace{-2em}
