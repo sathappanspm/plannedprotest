@@ -168,19 +168,19 @@ proportional to the population of the gazetteer location. For example, if the st
 it could refer to either Los Angeles, California, or Los \'{A}ngeles in Argentina or Chile. Given no other information,
 our model would infer a higher truth value for the article referring to Los Angeles, California, because it 
 has a much higher population than the other options. 
-\small
+\scriptsize
 \begin{flalign*}
     ENTITY&(L, location) \softand REFERSTO(L, locID) &\\
                         &\rightarrow PSLLOCATION(Article, locID) &
 \end{flalign*}
 
-\vspace{-1em}
+\vspace{-2.5em}
 \begin{flalign*}
     ENTITY&(C, location) \softand IsCountry(C) &\\
                         &\rightarrow ArticleCountry(Article, C) &
 \end{flalign*}
 
-\vspace{-1em}
+\vspace{-2.5em}
 \begin{flalign*}
     ENTITY&(S, location) \softand IsState(S)&\\
                             &\rightarrow ArticleState(Article, S)&
@@ -195,19 +195,19 @@ The secondary rules, which are given half the weight of the primary rules, perfo
 to gazetteer aliases, but for extracted persons and organizations. Strings describing persons and 
 organizations often include location clues (e.g., ``mayor of Buenos Aires''), but intuition suggests 
 the correlation between the article's location and these clues may be lower than with location strings. 
-\small
+\scriptsize
 \begin{flalign*}
     ENTITY&(O, organization) \softand REFERSTO(O, locID)&\\
                             &\rightarrow PSLLOCATION(Article, locID) &
 \end{flalign*}
 
-\vspace{-1em}
+\vspace{-2.5em}
 \begin{flalign*}
     ENTITY&(O, organization) \softand IsCountry(O)&\\
         &\rightarrow ArticleCountry(Article, O)&
 \end{flalign*}
 
-\vspace{-1em}
+\vspace{-2.5em}
 \begin{flalign*}
     ENTITY&(O, organization) \softand IsState(O)&\\
           &\rightarrow ArticleState(Article, O) &
@@ -220,13 +220,13 @@ inferred city and its enclosing state and country, but adding these rules into t
 probabilistic inference prefer consistent predictions, enabling it to combine evidence at all levels.
 %As an example of how PSL aids in location identification, the example from Fig.~\ref{pp_example}
 %is revisited in Fig.~\ref{fig:psl_example}. 
-\small
+\scriptsize
 \begin{flalign*}
     PSLLOCATION&(Article, locID) \softand Country(locID, C)&\\
                &\rightarrow ArticleCountry(Article, C)&
 \end{flalign*}
 
-\vspace{-1em}
+\vspace{-2.5em}
 \begin{flalign*}
     PSLLOCATION&(Article, locID) \softand Admin1(locID, S)&\\
                &\rightarrow ArticleState(Article, S)&

@@ -8,11 +8,14 @@ ii) the alert's predicted location and the event's reported location are within 
 other (the distance offset), and iii) the forecasted event date is within a given interval of the true event date (the date offset).
 Once these inclusion criteria apply, the quality score (QS) of the match is defined as a combination of the
 location score (LS) and date score (DS):
+\small
 \begin{equation}
     \operatorname{QS}= (LS + DS)*2
 \end{equation}
+\normalsize
 \noindent
 where
+\small
 \begin{equation}
     \operatorname{LS}=1 - \frac{\min(\textrm{distance offset}, 300)}{300}
 \end{equation}
@@ -20,6 +23,7 @@ and
 \begin{equation}
     \operatorname{DS}=1 - \frac{\min(\textrm{date offset}, \operatorname{INTERVAL})}{\operatorname{INTERVAL}}
 \end{equation}
+\normalsize
 Here, we explore $\operatorname{INTERVAL}$ values from $0$ to $7$.
 if an alert (conversely, GSR event) cannot be matched to any GSR event (alert, respectively), these unmatched
 alerts (and events) will negatively impact the precision (and recall) of the system. The lead time,
@@ -51,7 +55,7 @@ We conduct a series of experiments to evaluate the performance of our system.\\
 \caption{Distribution of alerts and GSR events across the countries studied in this paper.}
 \label{fig:distribution}
 \end{figure*}
-
+\vspace{-1em}
 \noindent
 {\bf How does the distribution of protests detected by the system compare with the
 actual distribution of protests in the GSR?}
@@ -89,7 +93,7 @@ AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Me
         \hline
     \end{tabular}
 \end{table*}
-
+\vspace{-1em}
 \noindent
 {\bf Are there country-specific selective superiorities for the different data sources considered here?}
 Table~\ref{tb:sourcewisecomparison} presents a breakdown of perfomance, country-wise and source-wise, of 
@@ -144,20 +148,20 @@ identify the Venezuelan protests much better than the Brazilian protests. This i
 of spontaineity to the Brazilian protests; they arose as discontent about bus fare increases but later morphed into a broader
 set of protests against government and most of these subsequent protests were not planned.\\
 
-\vspace{-0.5em}
+\vspace{-1em}
 \noindent
 {\bf What is the tradeoff between lead time and quality?}
 Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model decreases (as expected) with lead time, initially, but
 later rises again. The higher quality scores toward the right of Fig.~\ref{fig:leadTimeVsQS} are primarily due to
 Facebook event pages.\\
 
-\vspace{-0.5em}
+\vspace{-1em}
 \noindent
 {\bf How does the method perform under stringent matching criteria?}
 Fig.~\ref{fig:matchinginterval} shows the perfomance of the model when the matching window is varied from 7 to 1 in steps. 
 We can see that the performance degrades quite gracefully even under the strict matching interval of a 1-day difference.\\
 
-\vspace{-0.5em}
+\vspace{-1em}
 \noindent
 {\bf What is the distribution of quality scores?}
 The clear mode toward the right side of the Fig.~\ref{fig:doubleHump} signifies that a majority of the planned 
