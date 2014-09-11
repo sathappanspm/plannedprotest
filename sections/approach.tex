@@ -9,6 +9,7 @@ The general approach we adopt is to identify open-source documents
 that appear to indicate civil unrest event planning, extract
 relevant information from identified documents and use that as the
 basis for a structured warning about the planned event (see Fig.~\ref{flowchart}).
+\iffalse
 We ingest a
 wide array of textual documents, including RSS feeds (news and blogs),
 mailing lists, URLs referenced in tweets, the contents of the tweets themselves,
@@ -20,10 +21,14 @@ text and reasoned about to generate a warning. Location information is standardi
 to conform to a standard (in our case, we use the World Gazeteer).
 Each of these processing
 steps (see Fig.~\ref{flowchart}) is outlined next.
+\fi
 
 \vspace{-0.5em}
 \subsection{Linguistic Preprocessing}
-All textual input (e.g., tweets, news articles, blog postings) is
+A
+wide array of textual documents---RSS feeds (news and blogs),
+mailing lists, URLs referenced in tweets, the contents of the tweets themselves,
+and Facebook event pages---are
 subjected to shallow linguistic processing prior to analysis.  This
 involves identifying the language of the document, distinguishing
 the words (tokenization), normalizing words for inflection
@@ -229,16 +234,16 @@ is revisited in Fig.~\ref{fig:psl_example}.
                &\rightarrow ArticleState(Article, S)&
 \end{flalign*}
 
-\begin{figure*}
-    \includegraphics[width=\textwidth]{psl_pipeline2}
-    \vspace{-2em}
-    \caption{An example of location inference using PSL. Red circles denote named entities identified as locations and blue denotes other types of entities. The 
-article describes students planning a march on Sunday.
-It identifies multiple locations, e.g., Chacao, El Roso, and the Francisco Fajardo highway where protests have been happening.
-There is also a reference to a quote by the mayor of Baruto.
-Mentions of such multiple locations are resolved using our PSL program to the intended location, here Caracas.}
-    \label{fig:psl_example}
-\end{figure*}
+%\begin{figure*}
+%    \includegraphics[width=\textwidth]{psl_pipeline2}
+%    \vspace{-2em}
+%    \caption{An example of location inference using PSL. Red circles denote named entities identified as locations and blue denotes other types of entities. The 
+%article describes students planning a march on Sunday.
+%It identifies multiple locations, e.g., Chacao, El Roso, and the Francisco Fajardo highway where protests have been happening.
+%There is also a reference to a quote by the mayor of Baruto.
+%Mentions of such multiple locations are resolved using our PSL program to the intended location, here Caracas.}
+%    \label{fig:psl_example}
+%\end{figure*}
 
 %\input{sections/psl.tex}
 \iffalse Most news articles and blog posts mention multiple locations, e.g.,
