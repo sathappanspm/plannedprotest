@@ -13,22 +13,23 @@
 In this section, we briefly describe probabilistic soft logic (PSL)~\cite{kimmig2012short}, a key
 component of our geocoding strategy described later.
 PSL is a framework for collective probabilistic reasoning on relational domains.
-PSL models have been developed in various domains, including 
-collective classification,
-ontology alignment,
-personalized medicine,
-opinion diffusion,
-trust in social networks, and graph
-summarization.
+%%PSL models have been developed in various domains, including 
+%collective classification,
+%ontology alignment,
+%personalized medicine,
+%opinion diffusion,
+%trust in social networks, and graph
+%summarization.
 PSL represents the domain of interest as logical atoms.
 It uses first order logic rules to capture the dependency structure of the domain, based on which it builds a joint probabilistic model over all atoms.
 Instead of hard truth values of $0$ (false) and $1$ (true), PSL uses soft truth values relaxing the truth vlaues to the interval $[0,1]$.
 The logical connectives are adapted accordingly.
-This makes it easy to incorporate similarity or distance functions.
+%This makes it easy to incorporate similarity or distance functions.
 
 User defined \emph{predicates} are used to encode the relationships and attributes and \emph{rules} capture the  dependencies and constraints.
-Each rule's antecedent is a conjunction of atoms and its consequent is a dis-junction. 
-The rules can also labeled with non negative weights which are used during the inference process.
+%Each rule's antecedent is a conjunction of atoms and its consequent is a dis-junction. 
+The rules can also be
+labeled with non-negative weights which are used during the inference process.
 The set of predicates and weighted rules thus make up a PSL program where known truth values of ground atoms derived from observed data and unknown truth values for the remaining atoms are learned using the PSL inference.
 
 Given a set of atoms 
