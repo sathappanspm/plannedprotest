@@ -36,23 +36,27 @@ is a mapping from atoms to soft truth values.
 PSL defines a probability distribution over all such interpretaions such that those that satisfy more ground rules are more probable.
 \emph{Lukasiewicz t-norm} and its corresponding co-norm are used for defining relaxations of the logical AND and OR respectively to determine the degree to which a ground rule is satisfied.
 Given an interpretation $\mathit{I}$, PSL defines the formulas for the relaxation of the logical conjunction ($\wedge$), disjunction ($\vee$), and negation ($\neg$) as follows:
-
+\small
 \begin{align*}
 \ell_1 \softand \ell_2 &= \max\{0, I(\ell_1) + I(\ell_2) - 1\},\\
 \ell_1 \softor \ell_2 &= \min\{I(\ell_1) + I(\ell_2), 1\},\\
 \softneg l_1 &= 1 - I(\ell_1),
 \end{align*}  
 
+\normalsize
 The interpretation $\mathit{I}$ determines whether the rules is satisfied, if not, the \emph{distance to satisfaction}.
 A rule $\mathit{r} \equiv \mathit{r_{body}} \rightarrow \mathit{r_{head}} $  is satisfied if and only if the truth value of head is at least that of the body. The rule's distance to satisfaction measures the degree to which this condition is violated.
  \newline
+ \small
 \begin{center} 
  $\mathit{d_r}(\mathit{I}) =$ max\{0,$\mathit{I(r_{body})} - \mathit{I(r_{head})}$\}
  \end{center}
 
+\normalsize
 PSL then induces a probability distribution over possible interpretations $\mathit{I}$ over the given set of ground atoms $\mathit{l} $ in the domain. 
 If $\mathit{R}$ is the set of all ground rules that are instances of a rule from the system and uses only the atoms in  $\mathit{I}$ then,
 the probability density function $\mathit{f}$ over $\mathit{I}$ is defined as
+\small
 \begin{equation}
 \label{eq:contimn1}
     f (I) = \frac{1}{Z} \text{exp}[-\sum_{r\in R} \lambda_r (d_r(I))^p]
@@ -61,6 +65,7 @@ the probability density function $\mathit{f}$ over $\mathit{I}$ is defined as
 \label{eq:contimn2}
 	Z = \int_{I} \text{exp} [ -\sum_{r\in R} \lambda_r (d_r(I))^p ]
 \end{equation}
+\normalsize
 where~$\lambda_r$ is the weight of the rule~$r$, $Z$ is the continuous version of the normalization constant used in discrete Markov random fields, and ~$p \in \{1, 2\}$ provides a choice between two different loss functions, linear and quadratic.
 The values of the atoms can be further restricted by providing linear equality and inequality constraints allowing one to encode functional constraints from the domain. 
 
