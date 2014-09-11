@@ -1,7 +1,7 @@
 %File: formatting-instruction.tex
 \documentclass[letterpaper]{article}
-\usepackage{caption}
-\DeclareCaptionType{copyrightbox}
+%\usepackage{caption}
+%\DeclareCaptionType{copyrightbox}
 %\graphicspath{{./figures/}}
 \usepackage{subcaption}
 \usepackage{url}
@@ -19,6 +19,7 @@
 \usepackage{helvet}
 \usepackage{courier}
 
+\setlength{\titlebox}{2.8in}
 \inputencoding{utf8}
 
 \frenchspacing
@@ -45,52 +46,63 @@
 % proceedings, working notes, and technical reports.
 %
 \title{Forecasting Protests \\by Detecting Future Time Mentions \\in News and Social Media}
-
-%\author{
-%% 1st. author
-%\alignauthor
-%Sathappan Muthiah\\
-%       \affaddr{Virginia Tech, Blacksburg, VA 24061}\\
-%       \email{sathap1@cs.vt.edu}
-%% 2nd. author
-%\alignauthor
-%Bert Huang\\
-%       \affaddr{University of Maryland, College Park, MD 20742}\\
-%       \email{bert@cs.umd.edu}
+\author{
+% 1st. author
+Sathappan Muthiah\\
+Virginia Tech\\
+Arlington, VA 22203\\
+sathap1@cs.vt.edu
+% 2nd. author
+\And
+Bert Huang\\
+       University of Maryland\\
+       College Park, MD 20742\\
+       bert@cs.umd.edu
 %% 3rd. author
-%\alignauthor
-%Jaime Arredondo\\
-%       \affaddr{University of California at San Diego, San Diego, CA 92093}\\
-%       \email{jarredon@ucsd.edu}
-%\and  % use '\and' if you need 'another row' of author names
+       \And
+Jaime Arredondo\\
+       University of California\\
+       San Diego, CA 92093\\
+       jarredon@ucsd.edu
+\AND 
+% use '\and' if you need 'another row' of author names
 %% 4th. author
-%\alignauthor
-%David Mares\\
-%       \affaddr{University of California at San Diego, San Diego, CA 92093}\\
-%       \email{dmares@ucsd.edu}
+David Mares\\
+       University of California\\
+       San Diego, CA 92093\\
+       dmares@ucsd.edu
 %% 5th. author
-%\alignauthor
-%Lise Getoor\\
-%       \affaddr{University of California at Santa Cruz, Santa Cruz, CA 95064}\\
-%       \email{getoor@soe.ucsc.edu}
+       \And
+Lise Getoor\\
+       University of California\\
+       Santa Cruz, CA 95064\\
+       getoor@soe.ucsc.edu
 %% 6th. author
-%\alignauthor
-%Graham Katz\\
-%       \affaddr{CACI Inc., Lanham, MD 20706}\\
-%       \email{ekatz@caci.com}
-%\and
+       \And
+Graham Katz\\
+       CACI Inc.\\
+       Lanham, MD 20706\\
+       ekatz@caci.com
+%\AND
+       \And
 %% 7th. author
-%\alignauthor
-%Naren Ramakrishnan\\
-%       \affaddr{Virginia Tech, Blacksburg, VA 24061}\\
-%       \email{naren@cs.vt.edu}
-%}
+Naren Ramakrishnan\\
+       Virginia Tech\\
+       Arlington, VA 22203\\
+       naren@cs.vt.edu
+}
+\maketitle
 %\author{AAAI Press\\
 %Association for the Advancement of Artificial Intelligence\\
 %2275 East Bayshore Road, Suite 160\\
 %Palo Alto, California 94303\\
 %}
-\maketitle
+
+\vspace{3cm}
+\vspace{3cm}
+\vspace{3cm}
+\vspace{3cm}
+\vspace{3cm}
 \begin{abstract}
 \begin{quote}
 \input{sections/abstract.tex}
