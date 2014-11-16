@@ -89,7 +89,7 @@ Naren Ramakrishnan\\
 Civil unrest (protests, strikes, and ``occupy'' events) is a common occurrence in both democracies and authoritarian regimes. The study of civil unrest is a key topic for political scientists as it helps capture an important mechanism by which citizenry express themselves. In countries where civil unrest is lawful, qualitative analysis has revealed that more than 75\% of the protests are planned, organized, and/or announced in advance; therefore detecting future time mentions in relevant news and social media is a direct way to develop a protest forecasting system. We develop such a system in this paper, using a combination of key phrase learning to identify what to look for, probabilistic soft logic to reason about location occurrences in extracted results, and time normalization to resolve future tense mentions. We illustrate the application of our system to 10 countries in Latin America, viz. Argentina, Brazil, Chile, Colombia, Ecuador, El Salvador, Mexico, Paraguay, Uruguay, and Venezuela. Results demonstrate our successes in capturing significant societal unrest in these countries with an average lead time of 4.08 days. We also study the selective superiorities of news media versus social media (Twitter, Facebook) to identify relevant tradeoffs.
 \end{quote}
 \end{abstract}
-\section{Introduction}
+%\section{Introduction}
 \label{intro}
 Civil unrest (protests, strikes, and ``occupy'' events) is a common happening in both democracies
 and authoritarian regimes.
@@ -200,7 +200,7 @@ capture significant societal unrest in the above countries with an average lead 
 
 \end{enumerate}
 
-\vspace{-0.5em}
+\vspace{-0.8em}
 \section{Related Work}
 Five categories of related work are briefly discussed here (see also
 Table~\ref{comp-table}).
@@ -277,7 +277,7 @@ The work in~\cite{xu2014civil} by the same group of authors uses the Tumblr feed
 again is restricted to the use of absolute time identifiers. 
 \textcolor{red}{Also in this work, the location is determined by filtering the tumblr feed for mentions of 1022 (only capital or big cities) pre-determined location names. Such an approach will not be able to extract events from smaller cities/locations and also under cases of multiple locations mentioned in a single feed, the location extracted by this approach may not be the location associated with the event.}
 
-\vspace{-0.5em}
+\vspace{-0.8em}
 \section{Probabilistic Soft Logic}
 \label{sectionPSL}
 In this section, we briefly describe probabilistic soft logic (PSL)~\cite{kimmig2012short}, a key
@@ -335,7 +335,7 @@ The values of the atoms can be further restricted by providing linear equality a
 
 PSL enables fast inference of the most probable explanation, i.e., the interpretation that is most likely in the PSL distribution given a partial interpretation with grounded atoms based on observed evidence. Because of the structure of PSL rules and their distances to satisfaction, this inference is always solvable via a convex optimization. Further, the structure of the probabilistic model enables this convex optimization to be solved very quickly using the alternating direction method of multipliers (ADMM) \cite{boyd:ftml11,bach2012scaling,bach:uai13}. Using this approach, PSL enables our system to easily define a rich probabilistic model and perform inference with a lightweight computational cost. 
 
-\vspace{-0.5em}
+\vspace{-0.8em}
 \section{Approach}
 \begin{figure*}
 \includegraphics[width=\textwidth]{pipeline}
@@ -553,7 +553,7 @@ probabilistic inference prefer consistent predictions, enabling it to combine ev
 \end{flalign*}
 \normalsize
 
-\vspace{-0.5em}
+\vspace{-0.8em}
 \section{Experiments}
 We evaluate our planned protest detection system
 using metrics similar to those described in 
@@ -772,7 +772,7 @@ The clear mode toward the right side of the Fig.~\ref{fig:doubleHump} signifies 
 protest alerts are of high quality. Further, the quality score distribution is unimodal suggesting that the careful
 reasoning of locations and date normalization are crucial to achieving high quality.
 
-\vspace{-0.5em}
+\vspace{-0.8em}
 \section{Development and Maintenance}
 The core algorithms behind the
 planned protest detector were implemented in Python. The PSL geocoder was
@@ -787,7 +787,7 @@ made to the system over time was to increase the sources used for data ingest
 and supporting the inclusion of additional phrases. Agile software
 engineering methods were used for project management.
 
-\vspace{-0.5em}
+\vspace{-0.8em}
 \section{Discussion}
 We have described an approach to forecasting protests by detecting mentions of future events in news and social
 media. The two twin issues of i) resolving the date and ii) resolving the location have been addressed satisfactorily
