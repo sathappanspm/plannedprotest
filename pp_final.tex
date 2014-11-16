@@ -297,9 +297,9 @@ $\ell = \{\ell_1,\ldots,\ell_n\}$,
 an interpretation defined as 
 $I : \ell \rightarrow [0,1]^n$
 is a mapping from atoms to soft truth values.
-PSL defines a probability distribution over all such interpretaions such that those that satisfy more ground rules are more probable.
-\emph{Lukasiewicz t-norm} and its corresponding co-norm are used for defining relaxations of the logical AND and OR respectively to determine the degree to which a ground rule is satisfied.
-Given an interpretation $\mathit{I}$, PSL defines the formulas for the relaxation of the logical conjunction ($\wedge$), disjunction ($\vee$), and negation ($\neg$) as follows:
+PSL defines a probability distribution over all such interpretations such that those that satisfy more ground rules are more probable.
+PSL uses the \emph{Lukasiewicz t-norm} and its corresponding co-norm as relaxations of the logical AND and OR respectively to determine the degree to which a ground rule is satisfied.
+Given an interpretation $\mathit{I}$, these relaxations of logical conjunction ($\wedge$), disjunction ($\vee$), and negation ($\neg$) are
 \small
 \begin{align*}
 \ell_1 \softand \ell_2 &= \max\{0, I(\ell_1) + I(\ell_2) - 1\},\\
@@ -308,8 +308,8 @@ Given an interpretation $\mathit{I}$, PSL defines the formulas for the relaxatio
 \end{align*}  
 
 \normalsize
-The interpretation $\mathit{I}$ determines whether the rules is satisfied, if not, the \emph{distance to satisfaction}.
-A rule $\mathit{r} \equiv \mathit{r_{body}} \rightarrow \mathit{r_{head}} $  is satisfied if and only if the truth value of head is at least that of the body. The rule's distance to satisfaction measures the degree to which this condition is violated.
+The probability distribution over interpretations is log linear with features defined by \emph{distances to satisfaction}, which follows the Lukasiewicz t-norm to relax the fact that
+a rule $\mathit{r} \equiv \mathit{r_{body}} \rightarrow \mathit{r_{head}} $  is satisfied if and only if the truth value of head is at least that of the body. The rule's distance to satisfaction measures the degree to which this condition is violated.
  \newline
  \small
 \begin{center} 
@@ -323,20 +323,17 @@ the probability density function $\mathit{f}$ over $\mathit{I}$ is defined as
 \small
 \begin{equation}
 \label{eq:contimn1}
-    f (I) = \frac{1}{Z} \text{exp}[-\sum_{r\in R} \lambda_r (d_r(I))^p]
+    f (I) = \frac{1}{Z} \text{exp}\left(-\sum_{r\in R} \lambda_r (d_r(I))^p\right)
 \end{equation}
 \begin{equation}
 \label{eq:contimn2}
-	Z = \int_{I} \text{exp} [ -\sum_{r\in R} \lambda_r (d_r(I))^p ]
+	Z = \int_{I} \text{exp} \left( -\sum_{r\in R} \lambda_r (d_r(I))^p \right)
 \end{equation}
 \normalsize
 where~$\lambda_r$ is the weight of the rule~$r$, $Z$ is the continuous version of the normalization constant used in discrete Markov random fields, and ~$p \in \{1, 2\}$ provides a choice between two different loss functions, linear and quadratic.
 The values of the atoms can be further restricted by providing linear equality and inequality constraints allowing one to encode functional constraints from the domain. 
 
-PSL provides for two kinds of inferences:
-(a) most probable explanation and (b) calculation of the marginal distributions. 
-In the MPE inference given a partial interpretation with grounded atoms based on observed evidence, the PSL program infers the truth values for the unobserved atoms satisfying the most likely interpretation. 
-In the second setting, given ground truth data for all atoms we can learn the weights for the rules in our PSL program.
+PSL enables fast inference of the most probable explanation, i.e., the interpretation that is most likely in the PSL distribution given a partial interpretation with grounded atoms based on observed evidence. Because of the structure of PSL rules and their distances to satisfaction, this inference is always solvable via a convex optimization. Further, the structure of the probabilistic model enables this convex optimization to be solved very quickly using the alternating direction method of multipliers (ADMM) \cite{boyd:ftml11,bach2012scaling,bach:uai13}. Using this approach, PSL enables our system to easily define a rich probabilistic model and perform inference with a lightweight computational cost. 
 
 \vspace{-0.5em}
 \section{Approach}
