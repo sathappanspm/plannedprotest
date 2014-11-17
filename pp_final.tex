@@ -37,7 +37,8 @@
 \newcommand{\softand}{\operatornamewithlimits{\tilde{\wedge}}}
 \newcommand{\softthen}{\operatornamewithlimits{\tilde{\then}}}
 \newcommand{\softneg}{\operatornamewithlimits{\tilde{\neg}}}
-\title{Forecasting Protests \\by Detecting Future Time Mentions \\in News and Social Media}
+%\title{Forecasting Protests \\by Detecting Future Time Mentions \\in News and Social Media}
+\title{Planned Protest Modeling in News and Social Media}
 \author{
 % 1st. author
 Sathappan Muthiah\\
@@ -275,8 +276,7 @@ common way in which future dates are referenced, e.g., phrases like
 ``tomorrow,'' ``next tuesday.'' 
 The work in~\cite{xu2014civil} by the same group of authors uses the Tumblr feed with a smaller set of keywords but
 again is restricted to the use of absolute time identifiers. 
-\textcolor{red}{Also in this work, the location is determined by filtering the tumblr feed for mentions of 1022 (only capital or big cities) pre-determined location names. Such an approach will not be able to extract events from smaller cities/locations and also under cases of multiple locations mentioned in a single feed, the location extracted by this approach may not be the location associated with the event.}
-
+Furthermore, in this work, location is restricted to membership in a whitelist of 1022 entries which would not be able to capture the diversity of location identifiers at the city level; the system is also unable to reason about the presence of multiple location names.
 \vspace{-0.8em}
 \section{Probabilistic Soft Logic}
 \label{sectionPSL}
@@ -338,7 +338,7 @@ PSL enables fast inference of the most probable explanation, i.e., the interpret
 \vspace{-0.8em}
 \section{Approach}
 \begin{figure*}
-\includegraphics[width=\textwidth]{pipeline}
+\includegraphics[width=\textwidth]{pipeline2}
 \vspace{-2em}
 \caption{Schematic of the planned protest detector that ingests five
 different types of data sources.}
@@ -511,7 +511,7 @@ has a much higher population than the other options.
 \noindent
 (Note that the above are not deterministic rules; e.g., they do not use the logical conjunction $\wedge$ but rather the
 Lukasiewicz t-norm based relaxation $\softand$. Further, these rules do not fire deterministically but are instead
-simultaneously solved for satisfying assignments as described in Section~\ref{sectionPSL}.)
+simultaneously solved for satisfying assignments as described in the previos section)
 
 The secondary rules, which are given half the weight of the primary rules, perform the same mapping of extracted strings 
 to gazetteer aliases, but for extracted persons and organizations. Strings describing persons and 
@@ -661,8 +661,7 @@ We conduct a series of experiments to evaluate the performance of our system.\\
 \caption{Evaluation of planned protest forecasting system}
 \end{figure*}
 
-
-
+\vspace{-0.8em}
 \noindent
 {\bf How does the distribution of protests detected by the system compare with the
 actual distribution of protests in the GSR?}
@@ -701,6 +700,7 @@ AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Me
     \end{tabular}
 \end{table*}
 
+\vspace{-0.8em}
 \noindent
 {\bf Are there country-specific selective superiorities for the different data sources considered here?}
 Table~\ref{tb:sourcewisecomparison} presents a breakdown of perfomance, country-wise and source-wise, of 
@@ -746,6 +746,7 @@ Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
 \vspace{-4mm}
 \end{table*}
 
+\vspace{-0.8em}
 \noindent
 {\bf How did our system fare in detecting key country-wide protests?}
 The recent Venezuelan protests against President Nicolas Maduro and the Brazilian Protests during June 2013 against bus fare hike were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela_feb} and
@@ -755,17 +756,20 @@ identify the Venezuelan protests much better than the Brazilian protests. This i
 of spontaineity to the Brazilian protests; they arose as discontent about bus fare increases but later morphed into a broader
 set of protests against government and most of these subsequent protests were not planned.\\
 
+\vspace{-0.8em}
 \noindent
 {\bf What is the tradeoff between lead time and quality?}
 Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model decreases (as expected) with lead time, initially, but
 later rises again. The higher quality scores toward the right of Fig.~\ref{fig:leadTimeVsQS} are primarily due to
 Facebook event pages.\\
 
+\vspace{-0.8em}
 \noindent
 {\bf How does the method perform under stringent matching criteria?}
 Fig.~\ref{fig:matchinginterval} shows the perfomance of the model when the matching window is varied from 7 to 1 in steps. 
 We can see that the performance degrades quite gracefully even under the strict matching interval of a 1-day difference.\\
 
+\vspace{-0.8em}
 \noindent
 {\bf What is the distribution of quality scores?}
 The clear mode toward the right side of the Fig.~\ref{fig:doubleHump} signifies that a majority of the planned 
@@ -788,11 +792,12 @@ and supporting the inclusion of additional phrases. Agile software
 engineering methods were used for project management.
 
 \vspace{-0.8em}
+{\small
 \section{Discussion}
 We have described an approach to forecasting protests by detecting mentions of future events in news and social
 media. The two twin issues of i) resolving the date and ii) resolving the location have been addressed satisfactorily
 to realize an effective protest forecasting system. As different forms of communication media gain usage, systems
-like ours will be crucial to understanding the concerns of citizenry.
+like ours will be crucial to understanding the concerns of citizenry.As stated in the introduction, there are many legitimate applications of a protest forecasting system such as ours; our goal is to provide advance warnings of protest occurrences to all relevant stakeholders.
 
 Our future work is aimed at three aspects. First, to address situations such as nationwide protests and systems of protests,
 we must generalize our system from generating protests at a single article level to digesting groups of articles. This will
@@ -802,7 +807,6 @@ does detection of overt plans for protest to not-so-explicitly stated expression
 Finally, we plan to consider other population-level events of interest than just civil unrest, e.g., domestic political crises,
 and design detectors to recognize the imminence of such events.
 
-{\small
 \vspace{-0.8em}
 \section*{Acknowledgments}
 Supported by the Intelligence Advanced Research Projects Activity (IARPA) via
