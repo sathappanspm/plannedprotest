@@ -5,8 +5,8 @@
 %    \vspace{-2em}
 %    \label{pp_example}
 %\end{figure}
-Civil unrest (protests, strikes, and ``occupy'' events) is a common happening in both democracies
-and authoritarian regimes.
+Civil unrest events (protests, strikes, and ``occupy'' events) are common occurrences in both democracies
+and in authoritarian regimes.
 Although we typically associate civil unrest with disruptions and instability, for a social scientist
 civil unrest reflects the democratic process by 
 which citizenry communicate their views and preferences to those in authority. 
@@ -17,8 +17,7 @@ can provide a window into civil unrest happenings in a particular country.
 
 \vspace{-.5em}
 \subsubsection{Why study and forecast protests?}
-Our region of interest is Latin America and protest
-is an important topic of study here,
+Our primary region of interest is Latin America (a secondary region of interest is the Middle East and Northern Africa), and protest is an important topic of study in this region, 
 as many countries here are democracies struggling to consolidate themselves. The combination of weak channels of communication 
 between citizen and government, and a citizenry that still has not grasped the desirability of elections as the means to affect politics 
 means that public protest will be an especially attractive option. To 
@@ -51,18 +50,18 @@ spontaneous (we could not determine whether communications had or had not occurr
 \subsubsection{EMBERS}
 We are an industry-university partnership charged with developing an
 automatic protest forecasting system for 10 countries in
-Latin America. Our system, called EMBERS, has been
+Latin America and 7 countries in the Middle East and North Africa. Our system, called EMBERS, has been
 deployed since Nov 2012 and has been generating forecasts (called
-warnings or alerts) automatically, without a human-in-the-loop. These forecasts are emailed to
+warnings or alerts) automatically, without a human-in-the-loop, since then (the MENA region was added in July 2014). These forecasts are emailed to
 a third party (MITRE) for evaluation. Analysts at MITRE organize a reference
 database of protests (called the Gold Standard Report,
 or GSR) by surveying newspapers for reportings of protests, and
 compare our warnings against the GSR to generate a scoring report (evaluation
 criteria described later).
 
-The full EMBERS system has been described elsewhere~\cite{emberskdd}, including
+The full EMBERS system has been described elsewhere~\cite{emberskdd,DBLP:conf/bigdataconf/DoyleKSAZLMZLBKFR14}, including
 the overall system architecture, data sources used for analysis, and the
-various forecasting models in EMBERS. EMBERS adopts a multi-model approach,
+various forecasting models that makes up the system. EMBERS adopts a multi-model approach,
 wherein different models are leveraged for their selective superiorities
 to generate a fused set of alerts. Arguably, one of the
 best performing models in EMBERS is the planned protest model that detects
@@ -80,11 +79,9 @@ Finally, dates are often described in relative terms, e.g., `Sunday' and
 thus these vague references need to be resolved into absolute temporal
 information. 
 
-Our detection approach 
-combines shallow linguistic analysis to identify a corpus of relevant
+Our detection approach combines shallow linguistic analysis to identify relevant
 documents (articles, tweets) which are then subject to targeted deep semantic analysis.
-Despite its simplicity, we are able to
-detect indicators of event planning with surprisingly high
+Despite its simplicity, we are able to detect indicators of event planning with surprisingly high
 accuracy. Our contributions are:
 
 \iffalse
