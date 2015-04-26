@@ -221,8 +221,8 @@ making the model place higher probability on states with its city contained in i
 contained in its country. As a post-processing step, we enforce this consistency explicitly by using the 
 inferred city and its enclosing state and country, but adding these rules into the model makes the 
 probabilistic inference prefer consistent predictions, enabling it to combine evidence at all levels.
-%As an example of how PSL aids in location identification, the example from Fig.~\ref{pp_example}
-%is revisited in Fig.~\ref{fig:psl_example}. 
+As an example of how PSL aids in location identification, the example from Fig.~\ref{pp_example}
+is revisited in Fig.~\ref{fig:psl_example}. 
 \scriptsize
 \begin{flalign*}
     PSLLOCATION&(Article, locID) \softand Country(locID, C)&\\
@@ -235,16 +235,16 @@ probabilistic inference prefer consistent predictions, enabling it to combine ev
                &\rightarrow ArticleState(Article, S)&
 \end{flalign*}
 \normalsize
-%\begin{figure*}
-%    \includegraphics[width=\textwidth]{psl_pipeline2}
-%    \vspace{-2em}
-%    \caption{An example of location inference using PSL. Red circles denote named entities identified as locations and blue denotes other types of entities. The 
-%article describes students planning a march on Sunday.
-%It identifies multiple locations, e.g., Chacao, El Roso, and the Francisco Fajardo highway where protests have been happening.
-%There is also a reference to a quote by the mayor of Baruto.
-%Mentions of such multiple locations are resolved using our PSL program to the intended location, here Caracas.}
-%    \label{fig:psl_example}
-%\end{figure*}
+\begin{figure*}
+    \includegraphics[width=\textwidth]{psl_pipeline2}
+    \vspace{-2em}
+    \caption{An example of location inference using PSL. Red circles denote named entities identified as locations and blue denotes other types of entities. The 
+article describes students planning a march on Sunday.
+It identifies multiple locations, e.g., Chacao, El Roso, and the Francisco Fajardo highway where protests have been happening.
+There is also a reference to a quote by the mayor of Baruto.
+Mentions of such multiple locations are resolved using our PSL program to the intended location, here Caracas.}
+    \label{fig:psl_example}
+\end{figure*}
 
 %\input{sections/psl.tex}
 \iffalse Most news articles and blog posts mention multiple locations, e.g.,
