@@ -1,3 +1,24 @@
+\begin{figure*}
+\centering
+\begin{subfigure}{\columnwidth}
+  \centering
+  \includegraphics[scale=0.5]{gsr_distribution} 
+  \vspace{-1em}
+  \caption{GSR distribution from 2012-11 to 2014-03.}
+  \label{fig:gsrdistribution}
+\end{subfigure}%
+\begin{subfigure}{\columnwidth}
+  \centering
+  \includegraphics[scale=0.5]{pp_dist}
+  \vspace{-1em}
+  \caption{Alerts distribution from 2012-11 to 2014-03.}
+  \label{fig:ppdistribution}
+\end{subfigure}
+\vspace{-1em}
+\caption{Distribution of alerts and GSR events across the Latin American countries studied in this paper.}
+\label{fig:distribution}
+\end{figure*}
+
 We evaluate our planned protest detection system for Latin America using metrics similar to those described in 
 Ramakrishnan et al.~\cite{emberskdd}.
 Given a set of alerts issued by the system and the GSR comprising actual protest incidents, we aim to identify
@@ -34,26 +55,6 @@ the date score is concerned with quality or accuracy.
 
 We conduct a series of experiments to evaluate the performance of our system.\\
 
-\begin{figure*}
-\centering
-\begin{subfigure}{\columnwidth}
-  \centering
-  \includegraphics[scale=0.5]{gsr_distribution} 
-  \vspace{-1em}
-  \caption{GSR distribution from 2012-11 to 2014-03.}
-  \label{fig:gsrdistribution}
-\end{subfigure}%
-\begin{subfigure}{\columnwidth}
-  \centering
-  \includegraphics[scale=0.5]{pp_dist}
-  \vspace{-1em}
-  \caption{Alerts distribution from 2012-11 to 2014-03.}
-  \label{fig:ppdistribution}
-\end{subfigure}
-\vspace{-1em}
-\caption{Distribution of alerts and GSR events across the Latin American countries studied in this paper.}
-\label{fig:distribution}
-\end{figure*}
 \noindent
 {\bf How does the distribution of protests detected by the system compare with the
 actual distribution of protests in the GSR?}
@@ -104,10 +105,12 @@ as compared to that for Facebook (2.44 days) or for Twitter (2.82 days). The qua
 further broken down in Table~\ref{tb:modelwisecomparison} into their date and location components.
 
 \begin{figure}[!ht]
+    \vspace{-1em}
     \centering
     \includegraphics[scale=0.3]{monthlyqs}
     \caption{Quality Score over the months}
     \label{fig:monthlyqs}
+    \vspace{-1em}
 \end{figure}
 A longitudunal perspective on quality scores is
 given in Fig.~\ref{fig:monthlyqs}. Note that in general Twitter tends to have a higher quality score
@@ -166,10 +169,12 @@ set of protests against government and most of these subsequent protests were no
 {\bf What is the tradeoff between lead time and quality?}
 
 \begin{figure}[h!]
+    \vspace{-1em}
     \centering
     \includegraphics[scale=0.3]{leadTimeVsQS}
     \caption{Lead-Time vs Quality Score}
     \label{fig:leadTimeVsQS}
+    \vspace{-1em}
 \end{figure}
 
 Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model decreases (as expected) with lead time, initially, but
@@ -181,10 +186,12 @@ Facebook event pages.\\
 Fig.~\ref{fig:matchinginterval} shows the perfomance of the model when the matching window is varied from 7 to 1 in steps. 
 We can see that the performance degrades quite gracefully even under the strict matching interval of a 1-day difference.\\
 \begin{figure}[h!]
+    \vspace{-1em}
     \centering
   \includegraphics[scale=0.3]{matchingwindow}
-  \caption{\scriptsize QS vs Matching Interval Trade-Off}
+  \caption{QS vs Matching Interval Trade-Off}
   \label{fig:matchinginterval}
+    \vspace{-1em}
 \end{figure}
 
 \noindent
@@ -194,8 +201,9 @@ protest alerts are of high quality. Further, the quality score distribution is u
 \begin{figure}[h!]
     \centering
   \includegraphics[scale=0.4]{doubleHump}
-  \caption{\scriptsize Quality Score Distribution}
+  \caption{Quality Score Distribution}
   \label{fig:doubleHump}
+    \vspace{-1em}
 \end{figure}
 %\begin{figure*}
 %\begin{subfigure}{.70\columnwidth}
