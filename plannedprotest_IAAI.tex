@@ -21,7 +21,8 @@
 
 \setlength{\titlebox}{2.8in}
 \inputencoding{utf8}
-
+\usepackage{tikz}
+\usetikzlibrary{positioning}
 \frenchspacing
 \setlength{\pdfpagewidth}{8.5in}
 \setlength{\pdfpageheight}{11in}
@@ -90,28 +91,22 @@ Naren Ramakrishnan\\
 \input{sections/abstract.tex}
 \end{quote}
 \end{abstract}
-\vspace{-1em}
 \label{intro}
 \input{sections/introduction}
 
-\vspace{-1em}
 \section{Related Work}
 \input{sections/related_works}
 
-\vspace{-1em}
 \section{Probabilistic Soft Logic}
 \input{sections/psl}
 \label{section:PSL}
 
-\vspace{-1em}
 \section{Approach}
 \input{sections/approach}
 
-\vspace{-1em}
 \section{Experiments}
 \input{sections/experiments}
 
-\vspace{-1em}
 \section{Development and Maintenance}
 The core algorithms behind the
 planned protest detector were implemented in Python. The PSL geocoder was
@@ -126,7 +121,6 @@ made to the system over time was to increase the sources used for data ingest
 and supporting the inclusion of additional phrases. Agile software
 engineering methods were used for project management.
 
-\vspace{-1em}
 \section{Discussion}
 We have described an approach to forecasting protests by detecting mentions of future events in news and social
 media. The two twin issues of i) resolving the date and ii) resolving the location have been addressed satisfactorily
@@ -141,8 +135,6 @@ does detection of overt plans for protest to not-so-explicitly stated expression
 Finally, we plan to consider other population-level events of interest than just civil unrest, e.g., domestic political crises,
 and design detectors to recognize the imminence of such events.
 
-\vspace{-0.8em}
-{\small
 \section*{Acknowledgments}
 Supported by the Intelligence Advanced Research Projects Activity (IARPA) via
 DoI/NBC contract number D12PC000337, the US Government is authorized to
@@ -151,8 +143,6 @@ notwithstanding any copyright annotation thereon.  Disclaimer: The views and
 conclusions contained herein are those of the authors and should not be
 interpreted as necessarily representing the official policies or endorsements,
 either expressed or implied, of IARPA, DoI/NBC, or the US Government.
-}\vspace{-1em}
-\small
 \bibliographystyle{aaai}
 \bibliography{references}
 \end{document}

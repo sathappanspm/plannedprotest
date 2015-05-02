@@ -38,23 +38,22 @@ We conduct a series of experiments to evaluate the performance of our system.\\
 \centering
 \begin{subfigure}{\columnwidth}
   \centering
-  \includegraphics[scale=0.4]{gsr_distribution}
-  \vspace{-2em}
+  \includegraphics[scale=0.5]{gsr_distribution} 
+  \vspace{-1em}
   \caption{GSR distribution from 2012-11 to 2014-03.}
   \label{fig:gsrdistribution}
 \end{subfigure}%
 \begin{subfigure}{\columnwidth}
   \centering
-  \includegraphics[scale=0.4]{pp_dist}
-  \vspace{-2em}
+  \includegraphics[scale=0.5]{pp_dist}
+  \vspace{-1em}
   \caption{Alerts distribution from 2012-11 to 2014-03.}
   \label{fig:ppdistribution}
 \end{subfigure}
-  \vspace{-.5em}
+\vspace{-1em}
 \caption{Distribution of alerts and GSR events across the Latin American countries studied in this paper.}
 \label{fig:distribution}
 \end{figure*}
-\vspace{-1em}
 \noindent
 {\bf How does the distribution of protests detected by the system compare with the
 actual distribution of protests in the GSR?}
@@ -65,13 +64,10 @@ protests but which are not as prominently detected as those for other countries;
 social media footprint (relative to countries like Brazil and Venezuela).\\
 
 \begin{table*}
-    \small
     \centering
-    %\vspace{-2em}
-    \caption{\label{tb:sourcewisecomparison} \small Country-wise breakdown of forecasting performance for different data sources.
+    \caption{\label{tb:sourcewisecomparison} Country-wise breakdown of forecasting performance for different data sources.
 QS=Quality Score; Pr=Precision; Rec=Recall; LT=Lead Time.
 AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
-\vspace{-2mm}
     \begin{tabular}{|*{17}{c|}}
         \hline
         & \multicolumn{4}{ |c| }{News/Blogs} & \multicolumn{4}{ |c| }{Twitter} & \multicolumn{4}{ |c| }{Facebook} & \multicolumn{4}{ |c| }{Combined}\\
@@ -92,7 +88,6 @@ AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Me
         \hline
     \end{tabular}
 \end{table*}
-\vspace{-1em}
 \noindent
 {\bf Are there country-specific selective superiorities for the different data sources considered here?}
 Table~\ref{tb:sourcewisecomparison} presents a breakdown of perfomance, country-wise and source-wise, of 
@@ -107,6 +102,13 @@ higher quality sources for alerts in countries like El Salvador, Paraguay, and U
 Finally, note that news and blogs offer a much higher lead time (4.57 days) 
 as compared to that for Facebook (2.44 days) or for Twitter (2.82 days). The quality scores are
 further broken down in Table~\ref{tb:modelwisecomparison} into their date and location components.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.3]{monthlyqs}
+    \caption{Quality Score over the months}
+    \label{fig:monthlyqs}
+\end{figure}
 A longitudunal perspective on quality scores is
 given in Fig.~\ref{fig:monthlyqs}. Note that in general Twitter tends to have a higher quality score
 as multiple re-tweets of future event mentions is a direct indicator of the popularity of an event as 
@@ -116,9 +118,7 @@ support for the event's causes.\\
 
 \begin{table*} %[tb!]
 \centering
-\small
-%\vspace{-2em}
-\caption{\small Comparing the location and date scores of different sources in specific countries.
+\caption{Comparing the location and date scores of different sources in specific countries.
 AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
 \label{tb:modelwisecomparison}
 \begin{tabular}{||l|*{17}{c|}}
@@ -135,11 +135,26 @@ Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
                          &DS&{\bf0.88}&-&{\bf0.92}&0.84&{\bf0.71}&-&0.86&0.94&-&0.93&{\bf0.92}\\
 \hline
 \end{tabular}
-\vspace{-4mm}
 \end{table*}
-\vspace{-1em}
+
 \noindent
 {\bf How did our system fare in detecting key country-wide protests?}
+\begin{figure*}
+  \begin{subfigure}{\columnwidth}
+    \centering
+    \includegraphics[scale=0.3]{venezuela}
+    \caption{Venezuelan Protests}
+    \label{fig:venezuela_feb}
+\end{subfigure}
+\begin{subfigure}{\columnwidth}
+    \centering
+    \includegraphics[scale=0.3]{brazil_june}
+    \caption{Brazilian Spring}
+    \label{fig:brazil_june}
+\end{subfigure}
+\caption{Mass Protests forecasted by our system}
+\end{figure*}
+
 The recent Venezuelan protests against President Nicolas Maduro and the Brazilian Protests during June 2013 against bus fare hike were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela_feb} and
 Fig.~\ref{fig:brazil_june} describe our performance under these two situations illustrating the count
 of protests detected against the GSR. Notice that our system was able to 
@@ -147,71 +162,81 @@ identify the Venezuelan protests much better than the Brazilian protests. This i
 of spontaineity to the Brazilian protests; they arose as discontent about bus fare increases but later morphed into a broader
 set of protests against government and most of these subsequent protests were not planned.\\
 
-\vspace{-1em}
 \noindent
 {\bf What is the tradeoff between lead time and quality?}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.3]{leadTimeVsQS}
+    \caption{Lead-Time vs Quality Score}
+    \label{fig:leadTimeVsQS}
+\end{figure}
+
 Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model decreases (as expected) with lead time, initially, but
 later rises again. The higher quality scores toward the right of Fig.~\ref{fig:leadTimeVsQS} are primarily due to
 Facebook event pages.\\
 
-\vspace{-1em}
 \noindent
 {\bf How does the method perform under stringent matching criteria?}
 Fig.~\ref{fig:matchinginterval} shows the perfomance of the model when the matching window is varied from 7 to 1 in steps. 
 We can see that the performance degrades quite gracefully even under the strict matching interval of a 1-day difference.\\
+\begin{figure}[h!]
+    \centering
+  \includegraphics[scale=0.3]{matchingwindow}
+  \caption{\scriptsize QS vs Matching Interval Trade-Off}
+  \label{fig:matchinginterval}
+\end{figure}
 
-\vspace{-1em}
 \noindent
 {\bf What is the distribution of quality scores?}
 The clear mode toward the right side of the Fig.~\ref{fig:doubleHump} signifies that a majority of the planned 
-protest alerts are of high quality. Further, the quality score distribution is unimodal suggesting that the careful
-reasoning of locations and date normalization are crucial to achieving high quality.
-\begin{figure*}
-\begin{subfigure}{.70\columnwidth}
+protest alerts are of high quality. Further, the quality score distribution is unimodal suggesting that the careful reasoning of locations and date normalization are crucial to achieving high quality.
+\begin{figure}[h!]
     \centering
-  \includegraphics[scale=0.2]{monthlyqs}
-  \vspace{-0.5em}
-  \caption{\scriptsize Quality Score over the months}
-  \label{fig:monthlyqs}
-\end{subfigure}\hspace{.5pt}
-\begin{subfigure}{.70\columnwidth}
-    \centering
-  \includegraphics[scale=0.2]{venezuela}
-  \vspace{-0.5em}
-  \caption{\scriptsize Venezuelan Protests}
-  \label{fig:venezuela_feb}
-\end{subfigure}\hspace{.5pt}
-\begin{subfigure}{.70\columnwidth}
-    \centering
-  \includegraphics[scale=0.2]{leadTimeVsQS}
-  \vspace{-0.5em}
-  \caption{\scriptsize Lead-Time vs Quality Score}
-  \label{fig:leadTimeVsQS}
-\end{subfigure}
-
-\begin{subfigure}{.70\columnwidth}
-    \centering
-  \includegraphics[scale=0.2]{matchingwindow}
-  \vspace{-0.5em}
-  \caption{\scriptsize QS vs Matching Interval Trade-Off}
-  \label{fig:matchinginterval}
-\end{subfigure}\hspace{.5pt}
-\begin{subfigure}{.70\columnwidth}
-    \centering
-  \includegraphics[scale=0.33]{doubleHump}
-  \vspace{-1em}
+  \includegraphics[scale=0.4]{doubleHump}
   \caption{\scriptsize Quality Score Distribution}
   \label{fig:doubleHump}
-\end{subfigure}\hspace{.5pt}
-\begin{subfigure}{.70\columnwidth}
-    \centering
-  \includegraphics[scale=0.2]{brazil_june}
-  \vspace{-0.5em}
-  \caption{\scriptsize System Performance during Brazilian Spring}
-  \label{fig:brazil_june}
-\end{subfigure}\hspace{.5pt}
-\caption{Evaluation of planned protest forecasting system}
-\end{figure*}
+\end{figure}
+%\begin{figure*}
+%\begin{subfigure}{.70\columnwidth}
+%    \centering
+%  \includegraphics[scale=0.2]{monthlyqs}
+%  \caption{\scriptsize Quality Score over the months}
+%  \label{fig:monthlyqs}
+%\end{subfigure}\hspace{.5pt}
+%\begin{subfigure}{.70\columnwidth}
+%    \centering
+%  \includegraphics[scale=0.2]{venezuela}
+%  \caption{\scriptsize Venezuelan Protests}
+%  \label{fig:venezuela_feb}
+%\end{subfigure}\hspace{.5pt}
+%\begin{subfigure}{.70\columnwidth}
+%    \centering
+%  \includegraphics[scale=0.2]{leadTimeVsQS}
+%  \caption{\scriptsize Lead-Time vs Quality Score}
+%  \label{fig:leadTimeVsQS}
+%\end{subfigure}
+%
+%\begin{subfigure}{.70\columnwidth}
+%    \centering
+%  \includegraphics[scale=0.2]{matchingwindow}
+%  \caption{\scriptsize QS vs Matching Interval Trade-Off}
+%  \label{fig:matchinginterval}
+%\end{subfigure}\hspace{.5pt}
+%\begin{subfigure}{.70\columnwidth}
+%    \centering
+%  \includegraphics[scale=0.33]{doubleHump}
+%  \caption{\scriptsize Quality Score Distribution}
+%  \label{fig:doubleHump}
+%\end{subfigure}\hspace{.5pt}
+%\begin{subfigure}{.70\columnwidth}
+%    \centering
+%  \includegraphics[scale=0.2]{brazil_june}
+%  \caption{\scriptsize System Performance during Brazilian Spring}
+%  \label{fig:brazil_june}
+%\end{subfigure}\hspace{.5pt}
+%\caption{Evaluation of planned protest forecasting system}
+%\end{figure*}
 
 %\begin{subfigure}{\columnwidth}
 %  \centering

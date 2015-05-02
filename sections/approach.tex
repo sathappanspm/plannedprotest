@@ -1,6 +1,5 @@
 \begin{figure*}
 \includegraphics[width=\textwidth]{pipeline}
-\vspace{-2em}
 \caption{Schematic of the planned protest detector that ingests five
 different types of data sources.}
 \label{flowchart}
@@ -8,10 +7,8 @@ different types of data sources.}
 The general approach we adopt is to identify open-source documents
 that appear to indicate civil unrest event planning, extract
 relevant information from identified documents and use that as the
-basis for a structured warning about the planned event (see Fig.~\ref{flowchart}).
-\iffalse
-We ingest a
-wide array of textual documents, including RSS feeds (news and blogs),
+basis for a structured warning about the planned event. 
+We ingest a wide array of textual documents, including RSS feeds (news and blogs),
 mailing lists, URLs referenced in tweets, the contents of the tweets themselves,
 and Facebook event pages.
 All harvested documents are subjected to linguistic analysis; candidate
@@ -21,9 +18,8 @@ text and reasoned about to generate a warning. Location information is standardi
 to conform to a standard (in our case, we use the World Gazeteer).
 Each of these processing
 steps (see Fig.~\ref{flowchart}) is outlined next.
-\fi
 
-\vspace{-0.5em}
+
 \subsection{Linguistic Preprocessing}
 
 A wide array of textual documents---RSS feeds (news and blogs),
@@ -57,7 +53,6 @@ term {\em Friday} used in a future-tense sentence {\em We'll get
 expression identified as a date by the RLP preprocessor is normalized
 in this way.
 
-\vspace{-0.5em}
 \subsection{Phrase filtering}
 In order to identify relevant documents, input documents are filtered on a set of key phrases, i.e.,
 the text of the document is searched for the presence of one or
@@ -124,12 +119,10 @@ This phrase learning process is illustrated in Fig.~\ref{fig:phraselearning}.
 
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{figures/phraseLearning}
-\vspace{-2em}
 \caption{An example of phrase learning for detecting planned protests.}
 \label{fig:phraselearning}
 \end{figure}
 
-\vspace{-0.5em}
 \subsection{Geocoding}
 \label{subsection:geocoding}
 After linguistic preprocessing and suitable phrase filtering,
@@ -171,24 +164,20 @@ proportional to the population of the gazetteer location. For example, if the st
 it could refer to either Los Angeles, California, or Los \'{A}ngeles in Argentina or Chile. Given no other information,
 our model would infer a higher truth value for the article referring to Los Angeles, California, because it 
 has a much higher population than the other options. 
-\scriptsize
 \begin{flalign*}
     ENTITY&(L, location) \softand REFERSTO(L, locID) &\\
                         &\rightarrow PSLLOCATION(Article, locID) &
 \end{flalign*}
 
-\vspace{-2.5em}
 \begin{flalign*}
     ENTITY&(C, location) \softand IsCountry(C) &\\
                         &\rightarrow ArticleCountry(Article, C) &
 \end{flalign*}
 
-\vspace{-2.5em}
 \begin{flalign*}
     ENTITY&(S, location) \softand IsState(S)&\\
                             &\rightarrow ArticleState(Article, S)&
 \end{flalign*}
-\normalsize
 \noindent
 (Note that the above are not deterministic rules; e.g., they do not use the logical conjunction $\wedge$ but rather the
 Lukasiewicz t-norm based relaxation $\softand$. Further, these rules do not fire deterministically but are instead
@@ -198,24 +187,20 @@ The secondary rules, which are given half the weight of the primary rules, perfo
 to gazetteer aliases, but for extracted persons and organizations. Strings describing persons and 
 organizations often include location clues (e.g., ``mayor of Buenos Aires''), but intuition suggests 
 the correlation between the article's location and these clues may be lower than with location strings. 
-\scriptsize
 \begin{flalign*}
     ENTITY&(O, organization) \softand REFERSTO(O, locID)&\\
                             &\rightarrow PSLLOCATION(Article, locID) &
 \end{flalign*}
 
-\vspace{-2.5em}
 \begin{flalign*}
     ENTITY&(O, organization) \softand IsCountry(O)&\\
         &\rightarrow ArticleCountry(Article, O)&
 \end{flalign*}
 
-\vspace{-2.5em}
 \begin{flalign*}
     ENTITY&(O, organization) \softand IsState(O)&\\
           &\rightarrow ArticleState(Article, O) &
 \end{flalign*}
-\normalsize
 Finally, the model includes rules and constraints to require consistency between the different levels of geolocation, 
 making the model place higher probability on states with its city contained in its state, which is 
 contained in its country. As a post-processing step, we enforce this consistency explicitly by using the 
@@ -223,28 +208,26 @@ inferred city and its enclosing state and country, but adding these rules into t
 probabilistic inference prefer consistent predictions, enabling it to combine evidence at all levels.
 As an example of how PSL aids in location identification, the example from Fig.~\ref{pp_example}
 is revisited in Fig.~\ref{fig:psl_example}. 
-\scriptsize
 \begin{flalign*}
     PSLLOCATION&(Article, locID) \softand Country(locID, C)&\\
                &\rightarrow ArticleCountry(Article, C)&
 \end{flalign*}
 
-\vspace{-2.5em}
 \begin{flalign*}
     PSLLOCATION&(Article, locID) \softand Admin1(locID, S)&\\
                &\rightarrow ArticleState(Article, S)&
 \end{flalign*}
-\normalsize
-\begin{figure*}
-    \includegraphics[width=\textwidth]{psl_pipeline2}
-    \vspace{-2em}
-    \caption{An example of location inference using PSL. Red circles denote named entities identified as locations and blue denotes other types of entities. The 
-article describes students planning a march on Sunday.
-It identifies multiple locations, e.g., Chacao, El Roso, and the Francisco Fajardo highway where protests have been happening.
-There is also a reference to a quote by the mayor of Baruto.
-Mentions of such multiple locations are resolved using our PSL program to the intended location, here Caracas.}
-    \label{fig:psl_example}
-\end{figure*}
+\input{figures/psl_pipeline_tikz.tex}
+%\begin{figure*}
+%    \includegraphics[width=\textwidth]{psl_pipeline2}
+%    \caption{\small An example of location inference using PSL. Red circles denote named entities identified as locations and blue denotes other types of entities. The 
+%article describes students planning a march on Sunday.
+%It identifies multiple locations, e.g., Chacao, El Roso, and the Francisco Fajardo highway where protests have been happening.
+%There is also a reference to a quote by the mayor of Baruto.
+%Mentions of such multiple locations are resolved using our PSL program to the intended location, here Caracas.}
+%    \label{fig:psl_example}
+%    \vspace{-2em}
+%\end{figure*}
 
 %\input{sections/psl.tex}
 \iffalse Most news articles and blog posts mention multiple locations, e.g.,
@@ -272,7 +255,6 @@ The methodology is similar to {\em Web-a-where: Geo-Tagging Web Content}.
 %\end{figure}
 %
 \iffalse
-\vspace{-0.5em}
 \subsection{Warning Generation}
 After being subject to the preprocessing steps, above, all documents
 that are identified as containing a key phrase are further filtered by
