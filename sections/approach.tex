@@ -1,3 +1,5 @@
+%!TEX root = ../plannedprotest_IAAI.tex
+
 \begin{figure*}
 \includegraphics[width=\textwidth]{pipeline}
 \caption{Schematic of the planned protest detector that ingests five
@@ -169,7 +171,7 @@ it could refer to either Los Angeles, California, or Los \'{A}ngeles in Argentin
 our model would infer a higher truth value for the article referring to Los Angeles, California, because it 
 has a much higher population than the other options. 
 \begin{flalign*}
-  \textsc{Entity}&(L, location) \softand \textsc{RefersTo}(L,\textrm{locID}) &\\
+  \textsc{Entity}&(L, \textrm{location}) \softand \textsc{RefersTo}(L,\textrm{locID}) &\\
   &\rightarrow \textsc{PSLLocation}(\textrm{Article}, \textrm{locID}) &
 \end{flalign*}
 
@@ -219,7 +221,7 @@ probabilistic inference prefer consistent predictions, enabling it to combine ev
 
 \begin{flalign*}
   \textsc{PSLLocation}&(\textrm{Article}, \textrm{locID}) \softand \textsc{Admin1}(\textrm{locID}, S)&\\
-    &\rightarrow \textsc{ArticleState}(Article, S)&
+    &\rightarrow \textsc{ArticleState}(\textrm{Article}, S)&
 \end{flalign*}
 \input{figures/psl_pipeline_tikz.tex}
 
