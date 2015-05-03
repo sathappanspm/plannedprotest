@@ -20,7 +20,7 @@
 \end{figure*}
 
 We evaluate our planned protest detection system for Latin America using metrics similar to those described in 
-Ramakrishnan et al.~\cite{emberskdd}.
+~\cite{emberskdd}.
 Given a set of alerts issued by the system and the GSR comprising actual protest incidents, we aim to identify
 a correspondence between the two sets via a bipartite matching.
 An alert can be matched to a GSR event only if i) they are both issued for the same country, 
@@ -66,15 +66,19 @@ social media footprint (relative to countries like Brazil and Venezuela).\\
 
 \begin{table*}
     \centering
-    \caption{\label{tb:sourcewisecomparison} Country-wise breakdown of forecasting performance for different data sources.
+    \caption{\label{tb:sourcewisecomparison} 
+    Country-wise breakdown of forecasting performance for different data sources.
 QS=Quality Score; Pr=Precision; Rec=Recall; LT=Lead Time.
-AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
-    \begin{tabular}{|*{17}{c|}}
-        \hline
+AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; 
+MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$
+indicates that the source did not produce any warnings for that country
+in the studied period.}
+\begin{tabular}{*{17}{|c}|}
+        \toprule
         & \multicolumn{4}{ |c| }{News/Blogs} & \multicolumn{4}{ |c| }{Twitter} & \multicolumn{4}{ |c| }{Facebook} & \multicolumn{4}{ |c| }{Combined}\\
-        \hline
+        \midrule
          & QS & Pr. & Rec. &LT & QS & Pr. & Rec. & LT & QS & Pr. & Rec. & LT & QS & Pr. & Rec. & LT\\
-        \hline
+        \midrule
         AR &3.14&0.32&0.69&3.94&3.52&{\bf0.78}&0.14&3.14&{\bf3.70}&0.50&0.04&3.00&3.02&0.36&{\bf0.80}&{\bf4.50}\\
         BR &3.14&0.48&0.54&{\bf5.85}&-&-&-&-&{\bf3.62}&{\bf0.76}&0.18&2.46&3.28&0.49&{\bf0.65}&5.15\\
         CL &3.06&0.91&0.67&5.40&{\bf3.52}&{\bf1.00}&0.23&4.29&-&-&-&-&3.16&0.83&{\bf0.80}&{\bf5.92}\\
@@ -86,7 +90,7 @@ AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Me
         UY &{\bf3.24}&{\bf1.00}&{\bf0.29}&{\bf2.40}&-&-&-&-&-&-&-&-&3.24&{\bf1.00}&{\bf0.29}&3.24\\
         VE &{\bf3.80}&{\bf1.00}&0.36&{\bf3.27}&3.68&0.97&0.33&2.39&-&-&-&-&3.64&0.99&{\bf0.69}&2.88\\
         ALL &3.34&0.69&0.35&{\bf4.57}&3.62&{\bf0.97}&0.15&2.82&3.66&0.74&0.03&2.44&3.36&0.73&{\bf0.51}&4.08\\
-        \hline
+        \bottomrule
     \end{tabular}
 \end{table*}
 \noindent
@@ -124,19 +128,19 @@ support for the event's causes.\\
 \caption{Comparing the location and date scores of different sources in specific countries.
 AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
 \label{tb:modelwisecomparison}
-\begin{tabular}{||l|*{17}{c|}}
-\hline
+\begin{tabular}{|l|*{17}{c|}}
+\toprule
 Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
-\hline
+\toprule
 \multirow{2}{*}{News/Blogs} &LS &0.82&0.76&0.75&0.60&-&{\bf0.75}&0.66&0.79&{\bf0.79}&{\bf0.95}&0.81\\
                             &DS&0.75&0.81&0.78&0.77&-&{\bf0.86}&0.82&0.90&{\bf0.83}&{\bf0.95}&0.86\\
-\hline
+\midrule
 \multirow{2}{*}{Facebook} &LS &{\bf1.0}&{\bf0.92}&-&{\bf1.00}&-&-&{\bf0.86}&{\bf0.98}&-&-&{\bf0.93}\\
                           &DS&0.85&{\bf0.89}&-&{\bf1.00}&-&-&{\bf1.00}&{\bf1.00}&-&-&0.90\\
-\hline
+\midrule
 \multirow{2}{*}{Twitter} &LS &0.88&-&{\bf0.84}&0.81&{\bf0.45}&-&0.71&{\bf0.98}&-&0.91&0.89\\
                          &DS&{\bf0.88}&-&{\bf0.92}&0.84&{\bf0.71}&-&0.86&0.94&-&0.93&{\bf0.92}\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -146,7 +150,7 @@ Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
   \begin{subfigure}{\columnwidth}
     \centering
     \includegraphics[scale=0.3]{venezuela}
-    \caption{Venezuelan Protests}
+    \caption{Venezuelan protests}
     \label{fig:venezuela_feb}
 \end{subfigure}
 \begin{subfigure}{\columnwidth}
@@ -155,10 +159,10 @@ Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
     \caption{Brazilian Spring}
     \label{fig:brazil_june}
 \end{subfigure}
-\caption{Mass Protests forecasted by our system}
+\caption{Mass protests forecasted by our system}
 \end{figure*}
 
-The recent Venezuelan protests against President Nicolas Maduro and the Brazilian Protests during June 2013 against bus fare hike were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela_feb} and
+The recent Venezuelan protests against President Nicolas Maduro and the Brazilian protests during June 2013 against bus fare hike were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela_feb} and
 Fig.~\ref{fig:brazil_june} describe our performance under these two situations illustrating the count
 of protests detected against the GSR. Notice that our system was able to 
 identify the Venezuelan protests much better than the Brazilian protests. This is because there was a significant amount

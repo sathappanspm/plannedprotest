@@ -16,7 +16,7 @@ All harvested documents are subjected to linguistic analysis; candidate
 documents are identified using a list of (learned) phrases associated with
 protest event planning; date and location information is extracted from the
 text and reasoned about to generate a warning. Location information is standardized
-to conform to a standard (in our case, we use the World Gazeteer).
+to conform to a standard (in our case, we use the World Gazetteer).
 Each of these processing
 steps} (see Fig.~\ref{flowchart}) is outlined next.
 
@@ -158,7 +158,8 @@ Facebook event pages.
 For longer articles such as news articles, the geo-focus of the message is identified using much more complex methods
 To extract the protest location from news articles, we use PSL to build probabilistic models that infer the intended
 location of a protest by 
-weighing evidence coming from the Basis entity extractions and information in the World Gazeteer. 
+weighing evidence coming from the Basis entity extractions and
+information in the World Gazetteer. 
 
 The primary rules in the model encode the effect that Basis-extracted location strings that match to gazatteer 
 aliases are indicators of the article's location, whether they be country, state, or city aliases. 
@@ -168,18 +169,18 @@ it could refer to either Los Angeles, California, or Los \'{A}ngeles in Argentin
 our model would infer a higher truth value for the article referring to Los Angeles, California, because it 
 has a much higher population than the other options. 
 \begin{flalign*}
-    ENTITY&(L, location) \softand REFERSTO(L, locID) &\\
-                        &\rightarrow PSLLOCATION(Article, locID) &
+  \textsc{Entity}&(L, location) \softand \textsc{RefersTo}(L,\textrm{locID}) &\\
+  &\rightarrow \textsc{PSLLocation}(\textrm{Article}, \textrm{locID}) &
 \end{flalign*}
 
 \begin{flalign*}
-    ENTITY&(C, location) \softand IsCountry(C) &\\
-                        &\rightarrow ArticleCountry(Article, C) &
+  \textsc{Entity}&(C, \textrm{location}) \softand \textsc{IsCountry}(C) &\\
+  &\rightarrow \textsc{ArticleCountry}(\textrm{Article}, C) &
 \end{flalign*}
 
 \begin{flalign*}
-    ENTITY&(S, location) \softand IsState(S)&\\
-                            &\rightarrow ArticleState(Article, S)&
+  \textsc{Entity}&(S, \textrm{location}) \softand \textsc{IsState}(S)&\\
+  &\rightarrow \textsc{ArticleState}(\textrm{Article}, S)&
 \end{flalign*}
 \noindent
 (Note that the above are not deterministic rules; e.g., they do not use the logical conjunction $\wedge$ but rather the
@@ -191,85 +192,40 @@ to gazetteer aliases, but for extracted persons and organizations. Strings descr
 organizations often include location clues (e.g., ``mayor of Buenos Aires''), but intuition suggests 
 the correlation between the article's location and these clues may be lower than with location strings. 
 \begin{flalign*}
-    ENTITY&(O, organization) \softand REFERSTO(O, locID)&\\
-                            &\rightarrow PSLLOCATION(Article, locID) &
+  \textsc{Entity}&(O, \textrm{organization}) \softand \textsc{RefersTo}(O, \textrm{locID})&\\
+                            &\rightarrow \textsc{PSLLocation}(\textrm{Article},\textrm{locID}) &
 \end{flalign*}
 
 \begin{flalign*}
-    ENTITY&(O, organization) \softand IsCountry(O)&\\
-        &\rightarrow ArticleCountry(Article, O)&
+  \textsc{Entity}&(O, \textrm{organization}) \softand \textsc{IsCountry}(O)&\\
+  &\rightarrow \textsc{ArticleCountry}(\textrm{Article}, O)&
 \end{flalign*}
 
 \begin{flalign*}
-    ENTITY&(O, organization) \softand IsState(O)&\\
-          &\rightarrow ArticleState(Article, O) &
+  \textsc{Entity}&(O, \textrm{organization}) \softand \textsc{IsState}(O)&\\
+  &\rightarrow \textsc{ArticleState}(\textrm{Article}, O) &
 \end{flalign*}
 Finally, the model includes rules and constraints to require consistency between the different levels of geolocation, 
 making the model place higher probability on states with its city contained in its state, which is 
 contained in its country. As a post-processing step, we enforce this consistency explicitly by using the 
 inferred city and its enclosing state and country, but adding these rules into the model makes the 
 probabilistic inference prefer consistent predictions, enabling it to combine evidence at all levels.
-{\color{red} As an example of how PSL aids in location identification, the example from Fig.~\ref{pp_example}
-is revisited in Fig.~\ref{fig:psl_example}. }
+%{\color{red} As an example of how PSL aids in location identification, the example from Fig.~\ref{pp_example}
+%is revisited in Fig.~\ref{fig:psl_example}. }
 \begin{flalign*}
-    PSLLOCATION&(Article, locID) \softand Country(locID, C)&\\
-               &\rightarrow ArticleCountry(Article, C)&
+  \textsc{PSLLocation}&(\textrm{Article}, \textrm{locID}) \softand \textsc{Country}(\textrm{locID}, C)&\\
+  &\rightarrow \textsc{ArticleCountry}(\textrm{Article}, C)&
 \end{flalign*}
 
 \begin{flalign*}
-    PSLLOCATION&(Article, locID) \softand Admin1(locID, S)&\\
-               &\rightarrow ArticleState(Article, S)&
+  \textsc{PSLLocation}&(\textrm{Article}, \textrm{locID}) \softand \textsc{Admin1}(\textrm{locID}, S)&\\
+    &\rightarrow \textsc{ArticleState}(Article, S)&
 \end{flalign*}
 \input{figures/psl_pipeline_tikz.tex}
-%\begin{figure*}
-%    \includegraphics[width=\textwidth]{psl_pipeline2}
-%    \caption{\small An example of location inference using PSL. Red circles denote named entities identified as locations and blue denotes other types of entities. The 
-%article describes students planning a march on Sunday.
-%It identifies multiple locations, e.g., Chacao, El Roso, and the Francisco Fajardo highway where protests have been happening.
-%There is also a reference to a quote by the mayor of Baruto.
-%Mentions of such multiple locations are resolved using our PSL program to the intended location, here Caracas.}
-%    \label{fig:psl_example}
-%    \vspace{-2em}
-%\end{figure*}
 
-%\input{sections/psl.tex}
-\iffalse Most news articles and blog posts mention multiple locations, e.g.,
-the location of reporting, the location of the incident, and locations corresponding
-to the hometown of the newspaper. We developed a probabilistic reasoning
-engine using probabilistic soft logic (PSL)
-to infer the most likely city, state and country which is the main geographic focus the article.The PSL geocoder combines various types of evidence, such as named entities
-such as locations, persons, and organizations identified by RLP, as
-well as common names and aliases and populations of known
-locations. These diverse types of evidence are used in weighted rules
-that prioritize their influence on the PSL model's location
-prediction. For example, extracted location tokens are strong
-indicators of the content location of an article, while organization
-and person names containing location names are weaker but still
-informative signals; the rules corresponding to these evidence types
-are weighted accordingly.
+{\color{red} As an example of how PSL aids in location identification,
+the protest from Fig.~\ref{pp_example} is revisited in
+Fig.~\ref{fig:psl_example}, which illustrates
+the evidence that the PSL model gathers from the news article and the
+inferred locations.}
 
-The methodology is similar to {\em Web-a-where: Geo-Tagging Web Content}.
-\fi 
-
-%\begin{figure}
-%    \includegraphics[width=0.5\textwidth]{rssdistribution}
-%    \caption{Rate of Arrival of News/Blogs}
-%    \label{fig:rssdistribution}
-%\end{figure}
-%
-\iffalse
-\subsection{Warning Generation}
-After being subject to the preprocessing steps, above, all documents
-that are identified as containing a key phrase are further filtered by
-searching for the presence a future date in the passage containing the
-key phrase and for the existence of an identified geographical focus for the text.
-Documents that meet all these critera are used as the basis for a warning about a
-planned civil unrest event (Twitter postings are only used as the basis for a warning
-if the tweet is re-tweeted at least five times). 
-A warning is generated for the date indicated by the future date
-expression and the location which is the geographical focus of the
-document.  
-In the case of Facebook, an event page is considered to be good evidence for an alert if
-there are more attendees for the event than rejects.  The date and
-location are read off from the event page directly.
-\fi

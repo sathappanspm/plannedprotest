@@ -18,7 +18,7 @@
 \usepackage{times}
 \usepackage{helvet}
 \usepackage{courier}
-
+\usepackage{booktabs}
 \setlength{\titlebox}{2.8in}
 \inputencoding{utf8}
 \usepackage{tikz}
@@ -49,9 +49,9 @@ sathap1@cs.vt.edu
 % 2nd. author
 \And
 Bert Huang\\
-       University of Maryland\\
-       College Park, MD 20742\\
-       bert@cs.umd.edu
+       Virginia Tech\\
+       Blacksburg, VA 24061\\
+       bhuang@vt.edu
 %% 3rd. author
        \And
 Jaime Arredondo\\
@@ -122,18 +122,24 @@ and supporting the inclusion of additional phrases. Agile software
 engineering methods were used for project management.
 
 \section{Discussion}
-We have described an approach to forecasting protests by detecting mentions of future events in news and social
-media. The two twin issues of i) resolving the date and ii) resolving the location have been addressed satisfactorily
-to realize an effective protest forecasting system. As different forms of communication media gain usage, systems
+We have described an approach to forecasting protests by detecting
+mentions of future events in news and social media. The two twin issues
+of i) resolving the date and ii) resolving the location have been
+addressed satisfactorily to realize an effective protest forecasting
+system. As different forms of communication media gain usage, systems
 like ours will be crucial to understanding the concerns of citizenry.
 
-Our future work is aimed at three aspects. First, to address situations such as nationwide protests and systems of protests,
-we must generalize our system from generating protests at a single article level to digesting groups of articles. This will
-require more sophisticated reasoning using PSL programs. 
-Second, we would like to generalize our approach that currently
-does detection of overt plans for protest to not-so-explicitly stated expressions of discontent. 
-Finally, we plan to consider other population-level events of interest than just civil unrest, e.g., domestic political crises,
-and design detectors to recognize the imminence of such events.
+Our future work is aimed at three aspects. First, to address situations
+such as nationwide protests and systems of protests, we must generalize
+our system from generating protests at a single article level to
+digesting groups of articles. Doing so would require more sophisticated
+probabilistic reasoning, which we believe can be done using PSL.
+Second, we would like to generalize our
+approach that currently does detection of overt plans for protest to
+not-so-explicitly stated expressions of discontent.  Finally, we plan to
+consider other population-level events of interest than just civil
+unrest, e.g., domestic political crises, and design detectors to
+recognize the imminence of such events.
 
 \section*{Acknowledgments}
 Supported by the Intelligence Advanced Research Projects Activity (IARPA) via

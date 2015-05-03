@@ -46,8 +46,13 @@ Given an interpretation $\mathit{I}$, PSL defines the formulas for the relaxatio
 \softneg l_1 &= 1 - I(\ell_1),
 \end{align*}  
 
-The interpretation $\mathit{I}$ determines whether the rules is satisfied, if not, the \emph{distance to satisfaction}.
-A rule $\mathit{r} \equiv \mathit{r_{body}} \rightarrow \mathit{r_{head}} $  is satisfied if and only if the truth value of head is at least that of the body. The rule's distance to satisfaction measures the degree to which this condition is violated.
+{\color{red}
+The interpretation $\mathit{I}$ determines whether the rules are
+satisfied. A rule $\mathit{r} \equiv \mathit{r_{body}} \rightarrow
+\mathit{r_{head}} $  is satisfied if and only if the truth value of head
+is at least that of the body. Otherwise, PSL uses a \emph{distance to
+satisfaction}, which measures the degree to which this condition is
+violated.}
  \newline
 \begin{center} 
  $\mathit{d_r}(\mathit{I}) =$ max\{0,$\mathit{I(r_{body})} - \mathit{I(r_{head})}$\}
@@ -58,16 +63,41 @@ If $\mathit{R}$ is the set of all ground rules that are instances of a rule from
 the probability density function $\mathit{f}$ over $\mathit{I}$ is defined as
 \begin{equation}
 \label{eq:contimn1}
-    f (I) = \frac{1}{Z} \text{exp}[-\sum_{r\in R} \lambda_r (d_r(I))^p]
+    f (I) = \frac{1}{Z} \text{exp}(-\sum_{r\in R} \lambda_r (d_r(I))^p)
 \end{equation}
 \begin{equation}
 \label{eq:contimn2}
-	Z = \int_{I} \text{exp} [ -\sum_{r\in R} \lambda_r (d_r(I))^p ]
+	Z = \int_{I} \text{exp} ( -\sum_{r\in R} \lambda_r (d_r(I))^p )
 \end{equation}
-where~$\lambda_r$ is the weight of the rule~$r$, $Z$ is the continuous version of the normalization constant used in discrete Markov random fields, and ~$p \in \{1, 2\}$ provides a choice between two different loss functions, linear and quadratic.
-The values of the atoms can be further restricted by providing linear equality and inequality constraints allowing one to encode functional constraints from the domain. 
+{\color{red}
+where $\lambda_r$ is the weight of the rule $r$, $Z$ is a normalization
+constant, and $p \in {1, 2}$ provides a choice between linear or
+quadratic loss functions, which produce different modeling behavior. PSL
+further allows inclusion of linear equality and inequality constraints,
+which enable modeling of functional constraints on the domains and
+ranges of predicates. 
 
-PSL provides for two kinds of inferences:
-(a) most probable explanation and (b) calculation of the marginal distributions. 
-In the MPE inference given a partial interpretation with grounded atoms based on observed evidence, the PSL program infers the truth values for the unobserved atoms satisfying the most likely interpretation. 
-In the second setting, given ground truth data for all atoms we can learn the weights for the rules in our PSL program.
+The probability distribution in Equation (1) is an example of a
+\emph{hinge-loss Markov random field} \cite{bach:uai13}, which has a
+form of energy function that makes inference of the most probable
+explanation an efficient convex optimization. The expressiveness of PSL
+and the efficiency of inference in its models allows us to encode
+dependencies between various aspects of geolocation that are jointly
+inferred.
+}
+%where~$\lambda_r$ is the weight of the rule~$r$, $Z$ is the continuous
+%version of the normalization constant used in discrete Markov random
+%fields, and ~$p \in \{1, 2\}$ provides a choice between two different
+%loss functions, linear and quadratic.  The values of the atoms can be
+%further restricted by providing linear equality and inequality
+%constraints allowing one to encode functional constraints from the
+%domain. 
+%
+%PSL provides for two kinds of inferences: (a) most probable explanation
+%and (b) calculation of the marginal distributions.  In the MPE
+%inference given a partial interpretation with grounded atoms based on
+%observed evidence, the PSL program infers the truth values for the
+%unobserved atoms satisfying the most likely interpretation.  In the
+%second setting, given ground truth data for all atoms we can learn the
+
+%weights for the rules in our PSL program.
