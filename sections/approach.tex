@@ -10,7 +10,7 @@ The general approach we adopt is to identify open-source documents
 that appear to indicate civil unrest event planning, extract
 relevant information from identified documents and use that as the
 basis for a structured warning about the planned event. 
-{\color{red} We ingest a wide array of textual documents, including RSS feeds (news and blogs),
+We ingest a wide array of textual documents, including RSS feeds (news and blogs),
 mailing lists, contents of
 URLs referenced in tweets, the contents of the tweets themselves,
 and Facebook event pages.
@@ -20,7 +20,7 @@ protest event planning; date and location information is extracted from the
 text and reasoned about to generate a warning. Location information is standardized
 to conform to a standard (in our case, we use the World Gazetteer).
 Each of these processing
-steps} (see Fig.~\ref{flowchart}) is outlined next.
+steps (see Fig.~\ref{flowchart}) is outlined next.
 
 
 \subsection{Linguistic Preprocessing}
@@ -32,10 +32,10 @@ linguistic processing prior to analysis.  This involves identifying
 the language of the document, distinguishing the words (tokenization),
 normalizing words for inflection (lemmatization), and identifying
 expressions referring to people, places, dates and other entities and
-classifying them (named entity extraction).  {\color{red} Since our region of
+classifying them (named entity extraction). Since our region of
 interest is Latin America as well as the Middle East and North Africa, the collection of text harvested is
 inherently multilingual, with Spanish, Portugese, Arabic, and English as the
-dominating languages.} We use Basis Technology's Rosette Linguistics
+dominating languages. We use Basis Technology's Rosette Linguistics
 Platform (RLP) suite of multilingual commercial tools
 (\url{http://www.basistech.com/text-analytics/rosette/}) for this
 processing.  The output of this linguistic preprocessing serves as input to
@@ -45,10 +45,10 @@ and the geographic focus of the text computed.\\
 
 \noindent
 {\bf Date Normalization:} Date processing is particularly crucial to the identification of
-future oriented statements. {\color{red} We have used the TIMEN~\cite{LlorensDGS12} date
+future oriented statements. We have used the TIMEN~\cite{LlorensDGS12} date
 normalization package to normalize and deindex expressions referring
 to days in English, Spanish, and Portuguese; and
-HeidelTime~\cite{strotgen2014time} to do the same for Arabic.} This system makes use of
+HeidelTime~\cite{strotgen2014time} to do the same for Arabic. This system makes use of
 meta-data such as the day of publication, and other information about
 the linguistic context of the date expression to determine for each
 date expression, what day (or week, month or year) it refers to. For
@@ -225,9 +225,9 @@ probabilistic inference prefer consistent predictions, enabling it to combine ev
 \end{flalign*}
 \input{figures/psl_pipeline_tikz.tex}
 
-{\color{red} As an example of how PSL aids in location identification,
+As an example of how PSL aids in location identification,
 the protest from Fig.~\ref{pp_example} is revisited in
 Fig.~\ref{fig:psl_example}, which illustrates
 the evidence that the PSL model gathers from the news article and the
-inferred locations.}
+inferred locations.
 
