@@ -37,13 +37,11 @@ and thus a protest forecasting system can aid in planning and design
 of alternative travel and shipping routes.
 
 \subsubsection{Planned protests}
-Our basic hypothesis is that
-protests that are larger will be more disruptive and communicate support for its cause better than smaller protests. 
-Mobilizing large numbers of people is more likely to occur if a protest is organized and the time and place announced in
-advance. Because protest is costly and more likely to succeed if it is large, we should expect planned, rather than 
-spontaneous, protests to be the norm. Indeed, in a sample of 288 events from our study selected for qualitative review of their antecedents,
-for 225 we located communications regarding the upcoming occurrence of the event in media, and only 49 could be classified as 
-spontaneous (we could not determine whether communications had or had not occurred in the remaining 14 cases).
+It is natural to assume that a larger protest will be more disruptive and garner attention ore effectively a smaller protest. 
+Mobilizing large numbers of people to protest together involves significant planning activity, with the date, time and place announced in
+advance and so we might expect that a large number of protests would be plannedand announced in advance. Indeed we found planned protests to be the norm. In a sample of 288 protest events selected for a qualitative study of the apparent antecedednts to the event, fully 225 were found to be planned, meaning we located communications regarding the upcoming occurrence of the event in media. Only 49 could be clearly classified as spontaneous (we could not determine whether communications had or had not occurred in the remaining 14 cases).
+
+Our hypothesis, then, is that a system for identifying event-planning communications will be able to contribute significantly to a system for predicting upcoming civil-unrest events.
 
 \subsubsection{EMBERS}
 We are an industry-university partnership charged with developing an
@@ -62,7 +60,7 @@ The full EMBERS system has been described elsewhere~\cite{emberskdd,DBLP:conf/bi
 the overall system architecture, data sources used for analysis, and the
 various forecasting models that makes up the system. EMBERS adopts a multi-model approach,
 wherein different models are leveraged for their selective superiorities
-to generate a fused set of alerts. Arguably, one of the
+to generate a fused set of alerts. One of the
 best performing models in EMBERS is the planned protest model that detects
 ongoing organizational activity and generates warnings accordingly. This paper
 is the first to present this model in detail, including the 
@@ -74,14 +72,13 @@ different languages (Spanish, Portugese, French, Dutch, and English).
 Second, multiple locations are often mentioned in a given article, leading
 to (natural language) ambiguity about the intended location of the event.
 Significant reasoning is required to discern the correct protest location.
-Finally, dates are often described in relative terms, e.g., `Sunday' and 
-thus these vague references need to be resolved into absolute temporal
-information. 
+Finally, identifying the date of a planned event in Latin America involves significant milti-lingual temporal-semantic natural language processing as dates are often described with vague or context-dependent expressions (e.g., {\em Sunday} or {\em in two days}).
+
 
 Our detection approach combines shallow linguistic analysis to identify relevant
-documents (articles, tweets) which are then subject to targeted deep semantic analysis.
-Despite its simplicity, we are able to detect indicators of event planning with surprisingly high
-accuracy. Our contributions are:
+documents (articles, tweets) with targeted deep semantic analysis of the selected documents. Despite its simplicity, this approach is capable of detecting indicators of event planning with surprisingly high accuracy.
+
+Our contributions are:
 
 \iffalse
 \begin{figure}

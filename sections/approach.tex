@@ -17,46 +17,42 @@ and Facebook event pages.
 All harvested documents are subjected to linguistic analysis; candidate
 documents are identified using a list of (learned) phrases associated with
 protest event planning; date and location information is extracted from the
-text and reasoned about to generate a warning. Location information is standardized
-to conform to a standard (in our case, we use the World Gazetteer).
+text and reasoned about to generate a warning. Location information is normalized to conform to a standard (in our case, we use the World Gazetteer).
 Each of these processing
 steps (see Fig.~\ref{flowchart}) is outlined next.
 
 
 \subsection{Linguistic Preprocessing}
 
-A wide array of textual documents---RSS feeds (news and blogs),
-mailing lists, URLs referenced in tweets, the contents of the tweets
-themselves, and Facebook event pages---are subjected to shallow
-linguistic processing prior to analysis.  This involves identifying
-the language of the document, distinguishing the words (tokenization),
-normalizing words for inflection (lemmatization), and identifying
-expressions referring to people, places, dates and other entities and
-classifying them (named entity extraction). Since our region of
+Since our region of
 interest is Latin America as well as the Middle East and North Africa, the collection of text harvested is
 inherently multilingual, with Spanish, Portugese, Arabic, and English as the
-dominating languages. We use Basis Technology's Rosette Linguistics
+dominating languages. Ingested documents are subjected to shallow
+linguistic processing prior to analysis.
+This initial processing involves identifying
+the language of the document, distinguishing the words (tokenization),
+normalizing words for inflection (lemmatization), and identifying
+expressions referring to people, places, dates and other entities.
+We use Basis Technology's Rosette Linguistics
 Platform (RLP) suite of multilingual commercial tools
 (\url{http://www.basistech.com/text-analytics/rosette/}) for this
 processing.  The output of this linguistic preprocessing serves as input to
-subsequent deeper analysis in which date expressions are normalized, sentences that
-appear to be describing protest planning are identified, 
-and the geographic focus of the text computed.\\
+subsequent deeper analysis in which date expressions are normalized, sentences that appear to be describing protest planning are identified, 
+and the geographic focus of the text computed.
 
-\noindent
-{\bf Date Normalization:} Date processing is particularly crucial to the identification of
-future oriented statements. We have used the TIMEN~\cite{LlorensDGS12} date
-normalization package to normalize and deindex expressions referring
-to days in English, Spanish, and Portuguese; and
-HeidelTime~\cite{strotgen2014time} to do the same for Arabic. This system makes use of
-meta-data such as the day of publication, and other information about
-the linguistic context of the date expression to determine for each
+\subsection{Date Normalization}
+Date processing is particularly crucial to the identification and interpretation of statements about future events. We used the TIMEN~\cite{LlorensDGS12} date
+normalization package to normalize date expressions 
+in English, Spanish and Portuguese (extended the system to cover Portuguese) and the HeidelTime~\cite{strotgen2014time} to do the same for Arabic (extending the set of rules to handle Hijri dates).  Both systems rules were extended to improve coverage and accuracy on our document collection.
+
+The systems makes use of meta-data such as the day of publication and
+other information about the linguistic context to determine for each
 date expression, what day (or week, month or year) it refers to. For
 example in a tweet produced on June 10, 2014, the occurrence of the
 term {\em Friday} used in a future-tense sentence {\em We'll get
   together on Friday} will be interpreted as June 13, 2014.  Each
 expression identified as a date by the RLP preprocessor is normalized
-in this way.
+in this way, with accuracy of just over 80% on our data set.
 
 \subsection{Phrase filtering}
 In order to identify relevant documents, input documents are filtered on a set of key phrases, i.e.,
@@ -64,7 +60,7 @@ the text of the document is searched for the presence of one or
 more key phrases in a list of phrases which are indicative of an article's focus being
 a planned civil unrest event.  
 The list of key phrases indicating civil unrest planning was obtained
-in a semi-automatic manner, as detailed in Section \ref{sec:phraselearning}.
+in a semi-automatic manner, as detailed below.
 Articles which do match are processed further, those that do not are ignored.
 
 \subsubsection{Phrase matching}
@@ -94,31 +90,29 @@ themselves were generated semi-automatically.
 
 Initially, a few seed phrases were obtained manually
 with the help of subject matter experts.
-An analysis of news reports for planned protests in the print media helped create a
-minimum set of words to use in the query.  We choose four nouns from
-the basic query that is used predominantly to indicate a civil unrest
+An analysis of news reports for planned protests in the print media helped create a small set of words that are frequently used in such articles.  We choose four nouns from are used predominantly to indicate a civil unrest
 in the print media - {\em demonstration, march, protest} and
-{\it strike}. We translated them into Spanish and Portuguese, including
-synonyms.  We then combined these with future-oriented verbs, e.g., {\em to organize}, {\em to prepare}, {\em to
-plan}, and {\em to announce}. For twitter, shorter phrases were identified, and these had
+{\it strike} and translated them into Spanish and Portuguese (including
+synonyms).  We then combined these with future-oriented verbs, e.g., {\em to organize}, {\em to prepare}, {\em to
+plan}, and {\em to announce}, to form proto-planned-protest phrases. For twitter, shorter phrases were identified; these had
 a more direct call for action, e.g., {\em marchar}, {\em manhã de mobilização}, {\em
   vamos protestar}, {\em huelga}.
 
-To generalize this set of phrases, the phrases were then parsed
+To generalize this set of phrases, they were parsed
 using a dependency parser~\cite{freeling} and the grammatical
 relationship between the core nominal focus word (e.g., {\em protest}, 
 {\em manifestación}, {\em huelga}) and any accompanying
 word (e.g., {\em plan}, {\em call}, {\em anunciar}) was
 extracted. These grammatical relations were used as extraction
 patterns as in~\cite{riloff2003learning} to learn more phrases from a
-corpora of sentences extracted from the data stream of interest
-(either news/blogs or tweets). This corpus consists of sentences that
+corpus of sentences extracted from the data stream of interest
+(either news/blogs or tweets). This corpus consisted of sentences that
 contained any one of the nominal focus words and also had mentions of
 a future date. The separation threshold for a phrase was also
 learned, being set to the average number of words separating
 the nominal focus and the accompanying word.
 
-The set of learned phrases is then reviewed by a subject matter expert for quality contraol.  
+The set of learned phrases was then reviewed by a subject matter expert for quality contraol.  
 Using this approach, we learned 112 phrases for news articles and blogs and 156 for tweets.  
 This phrase learning process is illustrated in Fig.~\ref{fig:phraselearning}.
 
