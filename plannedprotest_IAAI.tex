@@ -8,7 +8,7 @@
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage{multirow}
-\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
 \graphicspath{{./figures/}}
 \usepackage{color}
 %package for proper unicode rendering
@@ -34,10 +34,13 @@
 \newcommand{\narenc}[1]{[{\color{red} Naren writes: \it #1}]}
 \newcommand{\sathappanc}[1]{[{\color{blue} Sathappan writes: \it #1}]}
 \newcommand{\then}{\Rightarrow}
-\newcommand{\softor}{\operatornamewithlimits{\tilde{\vee}}}
-\newcommand{\softand}{\operatornamewithlimits{\tilde{\wedge}}}
-\newcommand{\softthen}{\operatornamewithlimits{\tilde{\then}}}
-\newcommand{\softneg}{\operatornamewithlimits{\tilde{\neg}}}
+\newcommand{\softor}{\operatornamewithlimits{{\vee}}}
+\newcommand{\softand}{\operatornamewithlimits{{\wedge}}}
+\newcommand{\softthen}{\operatornamewithlimits{{\then}}}
+\newcommand{\softneg}{\operatornamewithlimits{{\neg}}}
+\theoremstyle{plain}
+\newtheorem{exmp}{Example}
+
 %\title{Forecasting Protests \\by Detecting Future Time Mentions \\in News and Social Media}
 \title{Capturing Planned Protests from Open Source Indicators}
 \author{

@@ -22,7 +22,7 @@ PSL is a framework for collective probabilistic reasoning on relational domains.
 %summarization.
 PSL represents the domain of interest as logical atoms.
 It uses first order logic rules to capture the dependency structure of the domain, based on which it builds a joint probabilistic model over all atoms.
-Instead of hard truth values of $0$ (false) and $1$ (true), PSL uses soft truth values relaxing the truth vlaues to the interval $[0,1]$.
+Instead of hard truth values of $0$ (false) and $1$ (true), PSL uses soft truth values relaxing the truth values to the interval $[0,1]$.
 The logical connectives are adapted accordingly.
 %This makes it easy to incorporate similarity or distance functions.
 
@@ -32,18 +32,27 @@ The rules can also be
 labeled with non-negative weights which are used during the inference process.
 The set of predicates and weighted rules thus make up a PSL program where known truth values of ground atoms derived from observed data and unknown truth values for the remaining atoms are learned using the PSL inference.
 
+\begin{exmp}
+We will follow a running example throughout this section. In our geolocation subtask, we create a PSL program that reasons about the predicate \textsc{RefersTo}, which maps a text string to real-world locations. For example, $\textsc{RefersTo}(\textrm{``DC''}, \textrm{washingtonDC})$ evaluates to true if the knowledge base believes that articles refer to Washington D.C.~as ``DC.'' This predicate gets used in rules that define dependencies between predicates, such as the rule
+\begin{flalign*}
+  \textsc{Entity}&(L, \textrm{location}) \wedge \textsc{RefersTo}(L,\textrm{locID}) &\\
+  &\rightarrow \textsc{PSLLocation}(\textrm{Article}, \textrm{locID}), &
+\end{flalign*}
+which states that an entity extracted from an article text that matches a known \textsc{RefersTo} mapping implies that the PSL program's predicted location will follow that mapping. Some of these logical atoms will be known as parts of a knowledge base, while others will be unknown and will be inferred by PSL.
+\end{exmp}
+
 Given a set of atoms 
 $\ell = \{\ell_1,\ldots,\ell_n\}$,
 an interpretation defined as 
 $I : \ell \rightarrow [0,1]^n$
 is a mapping from atoms to soft truth values.
-PSL defines a probability distribution over all such interpretaions such that those that satisfy more ground rules are more probable.
+PSL defines a probability distribution over all such interpretations such that those that satisfy more ground rules are more probable.
 \emph{Lukasiewicz t-norm} and its corresponding co-norm are used for defining relaxations of the logical AND and OR respectively to determine the degree to which a ground rule is satisfied.
 Given an interpretation $\mathit{I}$, PSL defines the formulas for the relaxation of the logical conjunction ($\wedge$), disjunction ($\vee$), and negation ($\neg$) as follows:
 \begin{align*}
-\ell_1 \softand \ell_2 &= \max\{0, I(\ell_1) + I(\ell_2) - 1\},\\
-\ell_1 \softor \ell_2 &= \min\{I(\ell_1) + I(\ell_2), 1\},\\
-\softneg l_1 &= 1 - I(\ell_1),
+\ell_1 \wedge \ell_2 &= \max\{0, I(\ell_1) + I(\ell_2) - 1\},\\
+\ell_1 \vee \ell_2 &= \min\{I(\ell_1) + I(\ell_2), 1\},\\
+\neg l_1 &= 1 - I(\ell_1),
 \end{align*}  
 
 The interpretation $\mathit{I}$ determines whether the rules are
@@ -55,6 +64,24 @@ violated
 \begin{center} 
  $\mathit{d_r}(\mathit{I}) =$ max\{0,$\mathit{I(r_{body})} - \mathit{I(r_{head})}$\}.
  \end{center}
+ 
+\begin{exmp}
+Continuing the previous example, if we have the rule
+\begin{flalign*}
+  \textsc{Entity}&(\textrm{``Washington''}, \textrm{location}) ~ \wedge\\
+  & \textsc{RefersTo}(\textrm{``Washington''}, \textrm{washingtonDC}) &\\
+  &~~~\rightarrow \textsc{PSLLocation}(\textrm{Article}, \textrm{``Washington''}), &
+\end{flalign*}
+and the truth values of these known atoms are 
+\[
+\mbox{\textsc{Entity} (``Washington'', location): 1.0} 
+\]
+and
+\[
+\mbox{\textsc{RefersTo}(\textrm{``Washington''}, \textrm{washingtonDC}): 0.6},
+\]
+then following the relaxation of logical AND, the truth value of the antecedant is $\max\{0, 1.0 + 0.6 - 1\} = 0.6$. Moreover, if the truth value of the atom to be inferred, \textsc{PSLLocation}(\textrm{Article}, \textrm{``Washington''}), is 0.1, then the distance to satisfaction of this rule is $\max\{0, 0.6 - 0.1\} = 0.5$. On the other hand, if the truth value of the head is 0.7, then the distance to satisfaction is $\max\{0, 0.6 - 0.7\} = 0$, meaning the rule is satisfied.
+\end{exmp}
 
 PSL then induces a probability distribution over possible interpretations $\mathit{I}$ over the given set of ground atoms $\mathit{l} $ in the domain. 
 If $\mathit{R}$ is the set of all ground rules that are instances of a rule from the system and uses only the atoms in  $\mathit{I}$ then,
@@ -82,6 +109,15 @@ explanation an efficient convex optimization. The expressiveness of PSL
 and the efficiency of inference in its models allows us to encode
 dependencies between various aspects of geolocation that are jointly
 inferred.
+
+\begin{exmp}
+The joint probability distribution enables PSL to reason about conflicting evidence,
+for example if we additionally have the atom \mbox{\textsc{RefersTo}(``Washington'', washingtonState)} in our 
+knowledge base with truth value 0.2, we would have two conflicting \textsc{PSLLocation} implications.
+The probabilistic, weighted rules, as well as the soft truth values of known atoms control how much PSL considers each piece
+of evidence, and additional corroborating or conflicting evidence would also be incorporated into the
+final joint inference.
+\end{exmp}
 
 %where~$\lambda_r$ is the weight of the rule~$r$, $Z$ is the continuous
 %version of the normalization constant used in discrete Markov random
