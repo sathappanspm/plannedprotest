@@ -6,44 +6,39 @@
 different types of data sources.}
 \label{flowchart}
 \end{figure*}
-The general approach we adopt is to identify open-source documents
-that appear to indicate civil unrest event planning, extract
-relevant information from identified documents and use that as the
-basis for a structured warning about the planned event. 
-We ingest a wide array of textual documents, including RSS feeds (news and blogs),
-mailing lists, contents of
-URLs referenced in tweets, the contents of the tweets themselves,
-and Facebook event pages.
-All harvested documents are subjected to linguistic analysis; candidate
-documents are identified using a list of (learned) phrases associated with
-protest event planning; date and location information is extracted from the
-text and reasoned about to generate a warning. Location information is normalized to conform to a standard (in our case, we use the World Gazetteer).
-Each of these processing
-steps (see Fig.~\ref{flowchart}) is outlined next.
-
+The general approach we adopt is to identify open-source documents that
+appear to indicate civil unrest event planning, extract relevant
+information from identified documents and use that as the basis for a
+structured warning about the planned event. 
+Each of these processing steps (see Fig.~\ref{flowchart}) is outlined
+next.
 
 \subsection{Linguistic Preprocessing}
-
-Since our region of
-interest is Latin America as well as the Middle East and North Africa, the collection of text harvested is
-inherently multilingual, with Spanish, Portugese, Arabic, and English as the
+Since our region of interest is Latin America as well as the Middle East
+and North Africa, the collection of text harvested is inherently
+multilingual, with Spanish, Portuguese, Arabic, and English as the
 dominating languages. Ingested documents are subjected to shallow
-linguistic processing prior to analysis.
-This initial processing involves identifying
-the language of the document, distinguishing the words (tokenization),
-normalizing words for inflection (lemmatization), and identifying
-expressions referring to people, places, dates and other entities.
-We use Basis Technology's Rosette Linguistics
-Platform (RLP) suite of multilingual commercial tools
+linguistic processing prior to analysis.  This initial processing
+involves identifying the language of the document, distinguishing the
+words (tokenization), normalizing words for inflection (lemmatization),
+and identifying expressions referring to people, places, dates and other
+entities.  We use Basis Technology's Rosette Linguistics Platform (RLP)
+suite of multilingual commercial tools
 (\url{http://www.basistech.com/text-analytics/rosette/}) for this
-processing.  The output of this linguistic preprocessing serves as input to
-subsequent deeper analysis in which date expressions are normalized, sentences that appear to be describing protest planning are identified, 
+processing.  The output of this linguistic preprocessing serves as input
+to subsequent deeper analysis in which date expressions are normalized,
+sentences that appear to be describing protest planning are identified,
 and the geographic focus of the text computed.
 
 \subsection{Date Normalization}
-Date processing is particularly crucial to the identification and interpretation of statements about future events. We used the TIMEN~\cite{LlorensDGS12} date
-normalization package to normalize date expressions 
-in English, Spanish and Portuguese (extended the system to cover Portuguese) and the HeidelTime~\cite{strotgen2014time} to do the same for Arabic (extending the set of rules to handle Hijri dates).  Both systems rules were extended to improve coverage and accuracy on our document collection.
+Date processing is particularly crucial to the identification and
+interpretation of statements about future events. We used the
+TIMEN~\cite{LlorensDGS12} date normalization package to normalize date
+expressions in English, Spanish and Portuguese (extended the system to
+cover Portuguese) and the HeidelTime~\cite{strotgen2014time} to do the
+same for Arabic (extending the set of rules to handle Hijri dates).
+Both systems rules were extended to improve coverage and accuracy on our
+document collection.
 
 The systems makes use of meta-data such as the day of publication and
 other information about the linguistic context to determine for each
@@ -55,66 +50,72 @@ expression identified as a date by the RLP preprocessor is normalized
 in this way, with accuracy of just over 80% on our data set.
 
 \subsection{Phrase filtering}
-In order to identify relevant documents, input documents are filtered on a set of key phrases, i.e.,
-the text of the document is searched for the presence of one or
-more key phrases in a list of phrases which are indicative of an article's focus being
-a planned civil unrest event.  
-The list of key phrases indicating civil unrest planning was obtained
-in a semi-automatic manner, as detailed below.
-Articles which do match are processed further, those that do not are ignored.
+In order to identify relevant documents, input documents are filtered on
+a set of keyphrases, i.e., the text of the document is searched for the
+presence of one or more keyphrases in a list of phrases which are
+indicative of an article's focus being a planned civil unrest event.
+The list of keyphrases indicating civil unrest planning was obtained in
+a semi-automatic manner, as detailed below.  Articles which do match are
+processed further, those that do not are ignored.
 
 \subsubsection{Phrase matching}
-Our key phrase matching is highly general and linguistically
-sophisticated.  The phrases in our list are general rules for
-matching, rather than literal string sequences. Typically a phrase
-specification comprises: two or more word lemmas, a language
-specification, and a separation threshold. This indicates that words---potentially inflected forms---in 
-a given sequence potentially separated by one or more other words, should be taken to be a
-match. We determined that this kind of
-multi-word key phrases was more accurate than simple keywords for
+Our keyphrase matching is highly general and linguistically
+sophisticated.  The phrases in our list are general rules for matching,
+rather than literal string sequences. Typically a phrase specification
+comprises: two or more word lemmas, a language specification, and a
+separation threshold. This indicates that words---potentially inflected
+forms---in a given sequence potentially separated by one or more other
+words, should be taken to be a match. We determined that this kind of
+multi-word keyphrases was more accurate than simple keywords for
 extracting events of interest from the data stream.
 
 The presence of a keyphrase is checked by searching for the presence of
 individual lemmas of the keyphrase within the same sentence separated
-by at most a number of words that is fewer than the separation threshold.  
-This method allows for linguistically sophisticated and flexible matching, so, for example,
-the keyphrase {\bf [{\em plan protest}, 4, English]} would match the sentence
-{\em The students are planning a couple big protests tomorrow} in an input document.
+by at most a number of words that is fewer than the separation
+threshold.  This method allows for linguistically sophisticated and
+flexible matching, so, for example, the keyphrase {\bf [{\em plan
+protest}, 4, English]} would match the sentence {\em The students are
+planning a couple big protests tomorrow} in an input document.
 
 \subsubsection{Phrase list development}
 \label{sec:phraselearning}
-The set of key phrases was tailored (slightly) to the genre of the
+The set of keyphrases was tailored (slightly) to the genre of the
 input. In particular different phrases were used to identify relevant
 news articles and blogs from those used to filter Tweets.  The lists
 themselves were generated semi-automatically.
 
-Initially, a few seed phrases were obtained manually
-with the help of subject matter experts.
-An analysis of news reports for planned protests in the print media helped create a small set of words that are frequently used in such articles.  We choose four nouns from are used predominantly to indicate a civil unrest
-in the print media - {\em demonstration, march, protest} and
-{\it strike} and translated them into Spanish and Portuguese (including
-synonyms).  We then combined these with future-oriented verbs, e.g., {\em to organize}, {\em to prepare}, {\em to
-plan}, and {\em to announce}, to form proto-planned-protest phrases. For twitter, shorter phrases were identified; these had
-a more direct call for action, e.g., {\em marchar}, {\em manhã de mobilização}, {\em
-  vamos protestar}, {\em huelga}.
+Initially, a few seed phrases were obtained manually with the help of
+subject matter experts.  An analysis of news reports for planned
+protests in the print media helped create a minimum set of words to use
+in the query.  We choose four nouns from the basic query that is used
+predominantly to indicate a civil unrest in the print media - {\em
+demonstration, march, protest} and {\it strike}. We translated them into
+Spanish and Portuguese, including synonyms.  We then combined these with
+future-oriented verbs, e.g., {\em to organize}, {\em to prepare}, {\em
+to plan}, and {\em to announce}. For twitter, shorter phrases were
+identified, and these had a more direct call for action, e.g., {\em
+marchar}, {\em manhã de mobilização}, {\em vamos protestar}, {\em
+huelga}.
 
-To generalize this set of phrases, they were parsed
+To generalize this set of phrases, the phrases were then parsed
 using a dependency parser~\cite{freeling} and the grammatical
 relationship between the core nominal focus word (e.g., {\em protest}, 
 {\em manifestación}, {\em huelga}) and any accompanying
 word (e.g., {\em plan}, {\em call}, {\em anunciar}) was
 extracted. These grammatical relations were used as extraction
 patterns as in~\cite{riloff2003learning} to learn more phrases from a
-corpus of sentences extracted from the data stream of interest
-(either news/blogs or tweets). This corpus consisted of sentences that
+corpora of sentences extracted from the data stream of interest
+(either news/blogs or tweets). This corpus consists of sentences that
 contained any one of the nominal focus words and also had mentions of
 a future date. The separation threshold for a phrase was also
 learned, being set to the average number of words separating
 the nominal focus and the accompanying word.
 
-The set of learned phrases was then reviewed by a subject matter expert for quality contraol.  
+The set of learned phrases is then reviewed by a subject matter expert for quality control.  
 Using this approach, we learned 112 phrases for news articles and blogs and 156 for tweets.  
 This phrase learning process is illustrated in Fig.~\ref{fig:phraselearning}.
+
+
 
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{figures/phraseLearning}
@@ -133,86 +134,85 @@ for Twitter messages, for Facebook Events pages, and for news articles and blogs
 These are described below.
 
 \subsubsection{Twitter and Facebook}
-For tweets, the geo-focus of the message is generated by a fairly
-simple set of heuristics involving i)
-the most reliable but least
-available source, i.e., the geotag (latitude, longitude) of the tweet itself,
-ii) Twitter {\it places} metadata, and iii) if the above are not
-available, the text fields 
-contained in
-the user profile (location, description) as well as the tweet text
-itself to find mentions of relevant locations.  Additional toponym disambiguiation heuristics are used to
-identify the actual referent of the mention.
-Similar methods are used to geocode event data extracted from 
-Facebook event pages.  
-%Since only Facebook events that have a venue are used and since the
-% venue of a Facebook event generally specifies a latitude, longitude, and physical address information, 
-%identifying the location is a fairly trivial task.  In cases where only latitude and longitude are given, 
-%we apply reverse-geocoding mechanisms similar to those used for Twitter.
+For tweets, the geographic focus of the message is generated by a fairly simple
+set of heuristics involving i) the most reliable but least available
+source, i.e., the geotag (latitude, longitude) of the tweet itself, ii)
+Twitter {\it places} metadata, and iii) if the above are not available,
+the text fields contained in the user profile (location, description) as
+well as the tweet text itself to find mentions of relevant locations.
+Additional toponym disambiguation heuristics are used to identify the
+actual referent of the mention.  Similar methods are used to geocode
+event data extracted from Facebook event pages.  
 
 \subsubsection{News and Blogs}
-For longer articles such as news articles, the geo-focus of the message is identified using much more complex methods
-To extract the protest location from news articles, we use PSL to build probabilistic models that infer the intended
-location of a protest by 
-weighing evidence coming from the Basis entity extractions and
-information in the World Gazetteer. 
+For longer articles such as news articles, the geographic focus of the message
+is identified using much more complex metho to extract the protest
+location from news articles. We use PSL to build a probabilistic model
+that infers the intended location of a protest by weighing evidence
+coming from entities extracted by the RLP preprocessor and information in the World
+Gazetteer. 
 
-The primary rules in the model encode the effect that Basis-extracted location strings that match to gazatteer 
-aliases are indicators of the article's location, whether they be country, state, or city aliases. 
-Each of these implications is conjuncted with an prior for ambiguous, overloaded aliases that is 
-proportional to the population of the gazetteer location. For example, if the string ``Los Angeles'' appears in the article, 
-it could refer to either Los Angeles, California, or Los \'{A}ngeles in Argentina or Chile. Given no other information,
-our model would infer a higher truth value for the article referring to Los Angeles, California, because it 
-has a much higher population than the other options. 
+The primary rules in the model encode the effect that RLP extracted
+location strings that match to gazetteer aliases are indicators of the
+article's location, whether they be country, state, or city aliases.
+Each of these implications is conjuncted with a prior for ambiguous,
+overloaded aliases that is proportional to the population of the
+gazetteer location. For example, if the string ``Los Angeles'' appears
+in the article, it could refer to either Los Angeles, California, or Los
+\'{A}ngeles in Argentina or Chile. Given no other information, our model
+would infer a higher truth value for the article referring to Los
+Angeles, California, because it has a much higher population than the
+other options. 
 \begin{flalign*}
   \textsc{Entity}&(L, \textrm{location}) \softand \textsc{RefersTo}(L,\textrm{locID}) &\\
   &\rightarrow \textsc{PSLLocation}(\textrm{Article}, \textrm{locID}) &
 \end{flalign*}
-
 \begin{flalign*}
   \textsc{Entity}&(C, \textrm{location}) \softand \textsc{IsCountry}(C) &\\
   &\rightarrow \textsc{ArticleCountry}(\textrm{Article}, C) &
 \end{flalign*}
-
 \begin{flalign*}
   \textsc{Entity}&(S, \textrm{location}) \softand \textsc{IsState}(S)&\\
   &\rightarrow \textsc{ArticleState}(\textrm{Article}, S)&
 \end{flalign*}
 \noindent
-(Note that the above are not deterministic rules; e.g., they do not use the logical conjunction but rather the
-Lukasiewicz t-norm based relaxation. Further, these rules do not fire deterministically but are instead
-simultaneously solved for satisfying assignments as described in Section~\ref{section:PSL}.)
+(Note that the above are not deterministic rules; e.g., they do not use
+the logical conjunction but rather the Lukasiewicz t-norm based
+relaxation. Further, these rules do not fire deterministically but are
+instead simultaneously solved for satisfying assignments as described in
+Section~\ref{section:PSL}.)
 
-The secondary rules, which are given half the weight of the primary rules, perform the same mapping of extracted strings 
-to gazetteer aliases, but for extracted persons and organizations. Strings describing persons and 
-organizations often include location clues (e.g., ``mayor of Buenos Aires''), but intuition suggests 
-the correlation between the article's location and these clues may be lower than with location strings. 
+The secondary rules, which are given half the weight of the primary
+rules, perform the same mapping of extracted strings to gazetteer
+aliases, but for extracted persons and organizations. Strings describing
+persons and organizations often include location clues (e.g., ``mayor of
+Buenos Aires''), but intuition suggests the correlation between the
+article's location and these clues may be lower than with location
+strings. 
 \begin{flalign*}
   \textsc{Entity}&(O, \textrm{organization}) \softand \textsc{RefersTo}(O, \textrm{locID})&\\
                             &\rightarrow \textsc{PSLLocation}(\textrm{Article},\textrm{locID}) &
 \end{flalign*}
-
 \begin{flalign*}
   \textsc{Entity}&(O, \textrm{organization}) \softand \textsc{IsCountry}(O)&\\
   &\rightarrow \textsc{ArticleCountry}(\textrm{Article}, O)&
 \end{flalign*}
-
 \begin{flalign*}
   \textsc{Entity}&(O, \textrm{organization}) \softand \textsc{IsState}(O)&\\
   &\rightarrow \textsc{ArticleState}(\textrm{Article}, O) &
 \end{flalign*}
-Finally, the model includes rules and constraints to require consistency between the different levels of geolocation, 
-making the model place higher probability on states with its city contained in its state, which is 
-contained in its country. As a post-processing step, we enforce this consistency explicitly by using the 
-inferred city and its enclosing state and country, but adding these rules into the model makes the 
-probabilistic inference prefer consistent predictions, enabling it to combine evidence at all levels.
-%{\color{red} As an example of how PSL aids in location identification, the example from Fig.~\ref{pp_example}
-%is revisited in Fig.~\ref{fig:psl_example}. }
+Finally, the model includes rules and constraints to require consistency
+between the different levels of geolocation, making the model place
+higher probability on states with its city contained in its state, which
+is contained in its country. As a post-processing step, we enforce this
+consistency explicitly by using the inferred city and its enclosing
+state and country, but adding these rules into the model makes the
+probabilistic inference prefer consistent predictions, enabling it to
+combine evidence at all levels.
 \begin{flalign*}
   \textsc{PSLLocation}&(\textrm{Article}, \textrm{locID}) \softand \textsc{Country}(\textrm{locID}, C)&\\
   &\rightarrow \textsc{ArticleCountry}(\textrm{Article}, C)&
 \end{flalign*}
-
 \begin{flalign*}
   \textsc{PSLLocation}&(\textrm{Article}, \textrm{locID}) \softand \textsc{Admin1}(\textrm{locID}, S)&\\
     &\rightarrow \textsc{ArticleState}(\textrm{Article}, S)&

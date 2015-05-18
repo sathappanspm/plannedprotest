@@ -1,9 +1,9 @@
 \section{Introduction}
-\begin{figure}
+\begin{figure}[ht]
     \includegraphics[width=0.5\textwidth, height=0.4\textwidth]{pp_example}
     \caption{An example article describing plans for a future protest (Venezuela, June 11, 2014).}
     \label{pp_example}
-    \vspace{-2em}
+    %\vspace{-2em}
 \end{figure}
 Civil unrest events (protests, strikes, and ``occupy'' events) are common occurrences in both democracies
 and in authoritarian regimes.
@@ -37,13 +37,21 @@ and thus a protest forecasting system can aid in planning and design
 of alternative travel and shipping routes.
 
 \subsubsection{Planned protests}
-It is natural to assume that a larger protest will be more disruptive and garner attention ore effectively a smaller protest. 
-Mobilizing large numbers of people to protest together involves significant planning activity, with the date, time and place announced in
-advance and so we might expect that a large number of protests would be plannedand announced in advance. Indeed we found planned protests to be the norm. In a sample of 288 protest events selected for a qualitative study of the apparent antecedednts to the event, fully 225 were found to be planned, meaning we located communications regarding the upcoming occurrence of the event in media. Only 49 could be clearly classified as spontaneous (we could not determine whether communications had or had not occurred in the remaining 14 cases).
+Our basic hypothesis is that protests that are larger will be more
+disruptive and communicate support for its cause better than smaller
+protests.  Mobilizing large numbers of people is more likely to occur if
+a protest is organized and the time and place announced in advance.
+Because protest is costly and more likely to succeed if it is large, we
+should expect planned, rather than spontaneous, protests to be the norm.
+Indeed, in a sample of 288 events from our study selected for
+qualitative review of their antecedents, for 225 we located
+communications regarding the upcoming occurrence of the event in media,
+and only 49 could be classified as spontaneous (we could not determine
+whether communications had or had not occurred in the remaining 14
+cases).
 
-Our hypothesis, then, is that a system for identifying event-planning communications will be able to contribute significantly to a system for predicting upcoming civil-unrest events.
-
-\subsubsection{EMBERS}
+\subsubsection{EMBERS(Early Model Based Event Recognition using
+Surrogates)}
 We are an industry-university partnership charged with developing an
 automatic protest forecasting system for 10 countries in
 Latin America (LA) and 7 countries in the Middle East and North
@@ -52,13 +60,13 @@ deployed since Nov 2012 and has been generating forecasts (called
 warnings or alerts) automatically, without a human-in-the-loop, since then (the MENA region was added in July 2014). These forecasts are emailed to
 a third party (MITRE) for evaluation. Analysts at MITRE organize a reference
 database of protests (called the Gold Standard Report,
-or GSR) by surveying newspapers for reportings of protests, and
+or GSR) by surveying newspapers for report's of protests, and
 compare our warnings against the GSR to generate a scoring report, using evaluation
 criteria described later.
 
 The full EMBERS system has been described elsewhere~\cite{emberskdd,DBLP:conf/bigdataconf/DoyleKSAZLMZLBKFR14}, including
 the overall system architecture, data sources used for analysis, and the
-various forecasting models that makes up the system. EMBERS adopts a multi-model approach,
+various forecasting models that make up the system. EMBERS adopts a multi-model approach,
 wherein different models are leveraged for their selective superiorities
 to generate a fused set of alerts. One of the
 best performing models in EMBERS is the planned protest model that detects
@@ -68,11 +76,11 @@ research issues involved, and how we addressed them in EMBERS.
 
 Capturing mentions of protest planning and organization 
 is not as easy as it might appear. First, articles of interest are written in
-different languages (Spanish, Portugese, French, Dutch, and English). 
+different languages (Spanish, Portuguese, French, Dutch, and English). 
 Second, multiple locations are often mentioned in a given article, leading
 to (natural language) ambiguity about the intended location of the event.
 Significant reasoning is required to discern the correct protest location.
-Finally, identifying the date of a planned event in Latin America involves significant milti-lingual temporal-semantic natural language processing as dates are often described with vague or context-dependent expressions (e.g., {\em Sunday} or {\em in two days}).
+Finally, identifying the date of a planned event in Latin America involves significant multi-lingual temporal-semantic natural language processing as dates are often described with vague or context-dependent expressions (e.g., {\em Sunday} or {\em in two days}).
 
 
 Our detection approach combines shallow linguistic analysis to identify relevant
@@ -83,7 +91,7 @@ Our contributions are:
 \iffalse
 \begin{figure}
     \includegraphics[width=0.5\textwidth]{alertstructure}
-    \vspace{-2em}
+    %\vspace{-2em}
     \caption{An example warning (left) and GSR event (right).}
     \label{fig:alertstructure}
 \end{figure}
@@ -91,7 +99,7 @@ Our contributions are:
 
 \begin{enumerate}
 \item We present a protest forecasting system that couples three key technical ideas:
-key phrase learning to identify what to look for, probabilistic soft logic to reason about location occurrences in extracted results, and 
+keyphrase learning to identify what to look for, probabilistic soft logic to reason about location occurrences in extracted results, and 
 date normalization to resolve future tense mentions. We demonstrate how the integration of these ideas achieves objectives in precision,
 recall, and quality (accuracy).
 \item We illustrate the application of our system to 10 countries in Latin America, viz. Argentina, Brazil, Chile, Colombia, Ecuador, El Salvador, Mexico, Paraguay, Uruguay, and Venezuela. Our system predicts the {\it when} of the protest

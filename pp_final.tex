@@ -104,14 +104,17 @@ can provide a window into civil unrest happenings in a particular country.
 
 \vspace{-0.5em}
 \subsubsection{Why study and forecast protests?}
-Our region of interest is Latin America and protest
-is an important topic of study here,
-as many countries here are democracies struggling to consolidate themselves. The combination of weak channels of communication 
-between citizen and government, and a citizenry that still has not grasped the desirability of elections as the means to affect politics 
-means that public protest will be an especially attractive option. To 
-illustrate the power of protest in Latin America we need only recall 
-that between 1985 and 2011, 17 presidents resigned or were impeached under pressure from demonstrations, usually violent, in the streets. Protests have 
-also resulted in the rollback of price increases for public services, such as during the ‘Brazilian Spring’ of June 2013.
+Our region of interest is Latin America and protest is an important
+topic of study here, as many countries here are democracies struggling
+to consolidate themselves. The combination of weak channels of
+communication between citizen and government, and a citizenry that still
+has not grasped the desirability of elections as the means to affect
+politics means that public protest will be an especially attractive
+option. To illustrate the power of protest in Latin America we need only
+recall that between 1985 and 2011, 17 presidents resigned or were
+impeached under pressure from demonstrations, usually violent, in the
+streets. Protests have also resulted in the rollback of price increases
+for public services, such as during the ‘Brazilian Spring’ of June 2013.
 
 Forecasting protests is an important capability in many domains.
 For the tourism industry, forecasting protests can
@@ -126,16 +129,22 @@ of alternative travel and shipping routes.
 
 \vspace{-0.5em}
 \subsubsection{Planned protests}
-Our basic hypothesis is that
-protests that are larger will be more disruptive and communicate support for its cause better than smaller protests. 
-Mobilizing large numbers of people is more likely to occur if a protest is organized and the time and place announced in
-advance. Because protest is costly and more likely to succeed if it is large, we should expect planned, rather than 
-spontaneous, protests to be the norm. Indeed, in a sample of 288 events from our study selected for qualitative review of their antecedents,
-for 225 we located communications regarding the upcoming occurrence of the event in media, and only 49 could be classified as 
-spontaneous (we could not determine whether communications had or had not occurred in the remaining 14 cases).
+Our basic hypothesis is that protests that are larger will be more
+disruptive and communicate support for its cause better than smaller
+protests.  Mobilizing large numbers of people is more likely to occur if
+a protest is organized and the time and place announced in advance.
+Because protest is costly and more likely to succeed if it is large, we
+should expect planned, rather than spontaneous, protests to be the norm.
+Indeed, in a sample of 288 events from our study selected for
+qualitative review of their antecedents, for 225 we located
+communications regarding the upcoming occurrence of the event in media,
+and only 49 could be classified as spontaneous (we could not determine
+whether communications had or had not occurred in the remaining 14
+cases).
 
 \vspace{-0.5em}
-\subsubsection{EMBERS}
+\subsubsection{EMBERS(Early Model Based Event Recognition using
+Surrogates)}
 We are an industry-university partnership charged with developing an
 automatic protest forecasting system for 10 countries in
 Latin America. Our system, called EMBERS, has been
@@ -184,20 +193,27 @@ accuracy. Our contributions are:
 \fi
 
 \begin{enumerate}
-\item We present a protest forecasting system that couples three key technical ideas:
-key phrase learning to identify what to look for, probabilistic soft logic to reason about location occurrences in extracted results, and 
-date normalization to resolve future tense mentions. We demonstrate how the integration of these ideas achieves objectives in precision,
-recall, and quality (accuracy).
-\item We illustrate the application of our system to 10 countries in Latin America, viz. Argentina, Brazil, Chile, Colombia, Ecuador, El Salvador, Mexico, Paraguay, Uruguay, and Venezuela. Our system predicts the {\it when} of the protest
-as well as {\it where} of the protest (down to a city level granularity).
-We conduct ablation studies to identify the 
-relative contributions of news media (news + blogs) versus social media (Twitter, Facebook) to identify future happenings of
-civil unrest. Through these studies we illustrate the selective superiorities of different sources for specific countries.
-\item Unlike many studies of retrospective forecasting of protests,
-our system has been {\bf deployed and in operation for nearly two years.}
-The end consumers of our alerts are analysts studying Latin America.
-Our results demonstrate that we are able to 
-capture significant societal unrest in the above countries with an average lead time of 4.08 days. 
+\item We present a protest forecasting system that couples three key
+  technical ideas: key phrase learning to identify what to look for,
+  probabilistic soft logic to reason about location occurrences in
+  extracted results, and date normalization to resolve future tense
+  mentions. We demonstrate how the integration of these ideas achieves
+  objectives in precision, recall, and quality (accuracy).
+\item We illustrate the application of our system to 10 countries in
+  Latin America, viz. Argentina, Brazil, Chile, Colombia, Ecuador, El
+  Salvador, Mexico, Paraguay, Uruguay, and Venezuela. Our system
+  predicts the {\it when} of the protest as well as {\it where} of the
+  protest (down to a city level granularity).  We conduct ablation
+  studies to identify the relative contributions of news media (news +
+  blogs) versus social media (Twitter, Facebook) to identify future
+  happenings of civil unrest. Through these studies we illustrate the
+  selective superiorities of different sources for specific countries.
+\item Unlike many studies of retrospective forecasting of protests, our
+  system has been {\bf deployed and in operation for nearly two years.}
+  The end consumers of our alerts are analysts studying Latin America.
+  Our results demonstrate that we are able to capture significant
+  societal unrest in the above countries with an average lead time of
+  4.08 days. 
 
 \end{enumerate}
 
@@ -223,83 +239,103 @@ Table~\ref{comp-table}).
 \end{table*}
 
 {\bf Event detection via text extractions}
-is an extensively studied topic in the literature. Document clustering techniques are used 
-in, e.g.,~\cite{Gabrilovich:2004:NPP} to identify events retrospectively or as the stories arrive.
-Works like~\cite{Banko07openinformation,Chambers:2011:TIE,riloff2003learning} focus on
-extraction patterns (templates) to extract information from text. 
-\iffalse
-Ritter et al.~\cite{Ritter:2012} show that
-it is possible to accurately extract a calendar of significant events from Twitter by training a tagger for recognizing event phrases.
-Sankaranarayanan et al.~\cite{Sankaranarayanan:2009:TNT} captures tweet clusters of interest to identify late breaking News from twitter 
-Highly specialized applications
-also exist; e.g., Sakaki et al.~\cite{Sakaki:2010:EST} mine tweets to enable prompt detection of occurences of earthquakes.
+is an extensively studied topic in the literature. Document clustering
+techniques are used in, e.g.,~\cite{Gabrilovich:2004:NPP} to identify
+events retrospectively or as the stories arrive.  Works
+like~\cite{Banko07openinformation,Chambers:2011:TIE,riloff2003learning}
+focus on extraction patterns (templates) to extract information from
+text.
+
+\iffalse Ritter et al.~\cite{Ritter:2012} show that it is
+possible to accurately extract a calendar of significant events from
+Twitter by training a tagger for recognizing event phrases.
+Sankaranarayanan et al.~\cite{Sankaranarayanan:2009:TNT} captures tweet
+clusters of interest to identify late breaking News from twitter Highly
+specialized applications also exist; e.g., Sakaki et
+al.~\cite{Sakaki:2010:EST} mine tweets to enable prompt detection of
+occurences of earthquakes.
 \fi
 
 {\bf Temporal information extraction} is another well studied topic.
 The TempEval challenge~\cite{tempeval} led to a significant amount of
-algorithmic development for temporal NLP.
-For instance, a specification language
-for temporal and event expressions in natural language text is described in~\cite{timeml}.
-Refs.~\cite{LlorensDGS12} and~\cite{tempex} provide methods to resolve temporal expressions in text (our own
-work here uses the TIMEN package~\cite{LlorensDGS12}).
+algorithmic development for temporal NLP.  For instance, a specification
+language for temporal and event expressions in natural language text is
+described in~\cite{timeml}.  Refs.~\cite{LlorensDGS12} and~\cite{tempex}
+provide methods to resolve temporal expressions in text (our own work
+here uses the TIMEN package~\cite{LlorensDGS12}).
 
 {\bf Event forecasting:} 
-Radinsky and Horvitz~\cite{Radinsky:2013:MWP} find event sequences from a corpora and then use these sequences to determine if 
-an event of interest (e.g., a disease outbreak, or a riot)
-will occur sometime in the future. This work predicts only if a potential event will happen given a historical event sequence
-but does not geolocate the event to a city-level resolution, as we do here.
-Kallus~\cite{nathankallus} makes use of event data from 
-RecordedFuture~\cite{recordedFuture} to determine if a  significant protest event will occur in 
-the subsequent three days and casts this as a classification problem.
-This work only focuses on prediction of significant events (suitably defined) and
-the forecast is limited to a fixed time window
-of the next three days. 
+Radinsky and Horvitz~\cite{Radinsky:2013:MWP} find event sequences from
+a corpora and then use these sequences to determine if an event of
+interest (e.g., a disease outbreak, or a riot) will occur sometime in
+the future. This work predicts only if a potential event will happen
+given a historical event sequence but does not geolocate the event to a
+city-level resolution, as we do here.  Kallus~\cite{nathankallus} makes
+use of event data from RecordedFuture~\cite{recordedFuture} to determine
+if a  significant protest event will occur in the subsequent three days
+and casts this as a classification problem.  This work only focuses on
+prediction of significant events (suitably defined) and the forecast is
+limited to a fixed time window of the next three days. 
 
 {\bf Future retrieval:}
-Baeza-Yates~\cite{baeza2005searching} provides one of the earliest discussions
-of this topic; here future temporal information in text is found and used to retrieve content from search queries that 
-combine both text and time with a simple ranking scheme. 
-Kawai et al.~\cite{Kawai:2010:CSE} present a search engine (ChronoSeeker) for searching 
-future and past events.
-RecordedFuture~\cite{recordedFuture}, introduced earlier, conducts
-real-time analysis of news and tweets to identify mentions of events along with associated times. Anectodally it 
-is estimated that approximately (only) 5--7\% of events extracted 
-by RecordedFuture are about the future.
-{\bf Planned protest detection:}
-Two publications---Compton et al. ~\cite{compton2013detecting} and Xu et al.~\cite{xu2014civil}---align very closely to our own work as their emphasis is on protest forecasting.
-Both works are aimed at forecasting protests
-but emphasize different data sources and different methodologies. For instance, the work in~\cite{compton2013detecting} filters the Twitter stream for
-keywords of interest and searches for future date mentions in only absolute terms, i.e., explicit mentions of a month name and a number (date)
-less than 31. 
-Such an approach will not be capable of extracting the more
-common way in which future dates are referenced, e.g., phrases like
-``tomorrow,'' ``next tuesday.'' 
-The work in~\cite{xu2014civil} by the same group of authors uses the Tumblr feed with a smaller set of keywords but
-again is restricted to the use of absolute time identifiers. 
-Furthermore, in this work, location is restricted to membership in a whitelist of 1022 entries which would not be able to capture the diversity of location identifiers at the city level; the system is also unable to reason about the presence of multiple location names.
+Baeza-Yates~\cite{baeza2005searching} provides one of the earliest
+discussions of this topic; here future temporal information in text is
+found and used to retrieve content from search queries that combine both
+text and time with a simple ranking scheme.  Kawai et
+al.~\cite{Kawai:2010:CSE} present a search engine (ChronoSeeker) for
+searching future and past events.  RecordedFuture~\cite{recordedFuture},
+introduced earlier, conducts real-time analysis of news and tweets to
+identify mentions of events along with associated times. Anectodally it
+is estimated that approximately (only) 5--7\% of events extracted by
+RecordedFuture are about the future.  {\bf Planned protest detection:}
+Two publications---Compton et al. ~\cite{compton2013detecting} and Xu et
+al.~\cite{xu2014civil}---align very closely to our own work as their
+emphasis is on protest forecasting.  Both works are aimed at forecasting
+protests but emphasize different data sources and different
+methodologies. For instance, the work in~\cite{compton2013detecting}
+filters the Twitter stream for keywords of interest and searches for
+future date mentions in only absolute terms, i.e., explicit mentions of
+a month name and a number (date) less than 31.  Such an approach will
+not be capable of extracting the more common way in which future dates
+are referenced, e.g., phrases like ``tomorrow,'' ``next tuesday.'' The
+work in~\cite{xu2014civil} by the same group of authors uses the Tumblr
+feed with a smaller set of keywords but again is restricted to the use
+of absolute time identifiers.  Furthermore, in this work, location is
+restricted to membership in a whitelist of 1022 entries which would not
+be able to capture the diversity of location identifiers at the city
+level; the system is also unable to reason about the presence of
+multiple location names.
 \vspace{-0.8em}
 \section{Probabilistic Soft Logic}
 \label{sectionPSL}
-In this section, we briefly describe probabilistic soft logic (PSL)~\cite{kimmig2012short}, a key
-component of our geocoding strategy described later.
-PSL is a framework for collective probabilistic reasoning on relational domains.
-PSL represents the domain of interest as logical atoms.
-It uses first order logic rules to capture the dependency structure of the domain, based on which it builds a joint probabilistic model over all atoms.
-Instead of hard truth values of $0$ (false) and $1$ (true), PSL uses soft truth values relaxing the truth vlaues to the interval $[0,1]$.
-The logical connectives are adapted accordingly.
-User defined \emph{predicates} are used to encode the relationships and attributes and \emph{rules} capture the  dependencies and constraints.
-The rules can also be
-labeled with non-negative weights which are used during the inference process.
-The set of predicates and weighted rules thus make up a PSL program where known truth values of ground atoms derived from observed data and unknown truth values for the remaining atoms are learned using the PSL inference.
+In this section, we briefly describe probabilistic soft logic
+(PSL)~\cite{kimmig2012short}, a key component of our geocoding strategy
+described later.  PSL is a framework for collective probabilistic
+reasoning on relational domains.  PSL represents the domain of interest
+as logical atoms.  It uses first order logic rules to capture the
+dependency structure of the domain, based on which it builds a joint
+probabilistic model over all atoms.  Instead of hard truth values of $0$
+(false) and $1$ (true), PSL uses soft truth values relaxing the truth
+vlaues to the interval $[0,1]$.  The logical connectives are adapted
+accordingly.  User defined \emph{predicates} are used to encode the
+relationships and attributes and \emph{rules} capture the  dependencies
+and constraints.  The rules can also be labeled with non-negative
+weights which are used during the inference process.  The set of
+predicates and weighted rules thus make up a PSL program where known
+truth values of ground atoms derived from observed data and unknown
+truth values for the remaining atoms are learned using the PSL
+inference.
 
-Given a set of atoms 
-$\ell = \{\ell_1,\ldots,\ell_n\}$,
-an interpretation defined as 
-$I : \ell \rightarrow [0,1]^n$
-is a mapping from atoms to soft truth values.
-PSL defines a probability distribution over all such interpretations such that those that satisfy more ground rules are more probable.
-PSL uses the \emph{Lukasiewicz t-norm} and its corresponding co-norm as relaxations of the logical AND and OR respectively to determine the degree to which a ground rule is satisfied.
-Given an interpretation $\mathit{I}$, these relaxations of logical conjunction ($\wedge$), disjunction ($\vee$), and negation ($\neg$) are
+Given a set of atoms $\ell = \{\ell_1,\ldots,\ell_n\}$, an
+interpretation defined as $I : \ell \rightarrow [0,1]^n$ is a mapping
+from atoms to soft truth values.  PSL defines a probability distribution
+over all such interpretations such that those that satisfy more ground
+rules are more probable.  PSL uses the \emph{Lukasiewicz t-norm} and its
+corresponding co-norm as relaxations of the logical AND and OR
+respectively to determine the degree to which a ground rule is
+satisfied.  Given an interpretation $\mathit{I}$, these relaxations of
+logical conjunction ($\wedge$), disjunction ($\vee$), and negation
+($\neg$) are
 \small
 \begin{align*}
 \ell_1 \softand \ell_2 &= \max\{0, I(\ell_1) + I(\ell_2) - 1\},\\
@@ -308,32 +344,48 @@ Given an interpretation $\mathit{I}$, these relaxations of logical conjunction (
 \end{align*}  
 
 \normalsize
-The probability distribution over interpretations is log linear with features defined by \emph{distances to satisfaction}, which follows the Lukasiewicz t-norm to relax the fact that
-a rule $\mathit{r} \equiv \mathit{r_{body}} \rightarrow \mathit{r_{head}} $  is satisfied if and only if the truth value of head is at least that of the body. The rule's distance to satisfaction measures the degree to which this condition is violated.
- \newline
- \small
-\begin{center} 
- $\mathit{d_r}(\mathit{I}) =$ max\{0,$\mathit{I(r_{body})} - \mathit{I(r_{head})}$\}
- \end{center}
+The probability distribution over interpretations is log linear with
+features defined by \emph{distances to satisfaction}, which follows the
+Lukasiewicz t-norm to relax the fact that a rule $\mathit{r} \equiv
+\mathit{r_{body}} \rightarrow \mathit{r_{head}} $  is satisfied if and
+only if the truth value of head is at least that of the body. The rule's
+distance to satisfaction measures the degree to which this condition is
+violated.  \newline \small \begin{center} $\mathit{d_r}(\mathit{I}) =$
+max\{0,$\mathit{I(r_{body})} - \mathit{I(r_{head})}$\} \end{center}
 
-\normalsize
-PSL then induces a probability distribution over possible interpretations $\mathit{I}$ over the given set of ground atoms $\mathit{l} $ in the domain. 
-If $\mathit{R}$ is the set of all ground rules that are instances of a rule from the system and uses only the atoms in  $\mathit{I}$ then,
-the probability density function $\mathit{f}$ over $\mathit{I}$ is defined as
-\small
+\normalsize PSL then induces a probability distribution over possible
+interpretations $\mathit{I}$ over the given set of ground atoms
+$\mathit{l} $ in the domain.  If $\mathit{R}$ is the set of all ground
+rules that are instances of a rule from the system and uses only the
+atoms in  $\mathit{I}$ then, the probability density function
+$\mathit{f}$ over $\mathit{I}$ is defined as 
+\small 
 \begin{equation}
-\label{eq:contimn1}
-    f (I) = \frac{1}{Z} \text{exp}\left(-\sum_{r\in R} \lambda_r (d_r(I))^p\right)
-\end{equation}
-\begin{equation}
-\label{eq:contimn2}
-	Z = \int_{I} \text{exp} \left( -\sum_{r\in R} \lambda_r (d_r(I))^p \right)
+  \label{eq:contimn1} f (I) = \frac{1}{Z} \text{exp}\left(-\sum_{r\in R}
+  \lambda_r (d_r(I))^p\right) \end{equation} \begin{equation}
+  \label{eq:contimn2} Z = \int_{I} \text{exp} \left( -\sum_{r\in R}
+\lambda_r (d_r(I))^p \right)
 \end{equation}
 \normalsize
-where~$\lambda_r$ is the weight of the rule~$r$, $Z$ is the continuous version of the normalization constant used in discrete Markov random fields, and ~$p \in \{1, 2\}$ provides a choice between two different loss functions, linear and quadratic.
-The values of the atoms can be further restricted by providing linear equality and inequality constraints allowing one to encode functional constraints from the domain. 
+where~$\lambda_r$ is the weight of the rule~$r$, $Z$ is the continuous
+version of the normalization constant used in discrete Markov random
+fields, and ~$p \in \{1, 2\}$ provides a choice between two different
+loss functions, linear and quadratic.  The values of the atoms can be
+further restricted by providing linear equality and inequality
+constraints allowing one to encode functional constraints from the
+domain. 
 
-PSL enables fast inference of the most probable explanation, i.e., the interpretation that is most likely in the PSL distribution given a partial interpretation with grounded atoms based on observed evidence. Because of the structure of PSL rules and their distances to satisfaction, this inference is always solvable via a convex optimization. Further, the structure of the probabilistic model enables this convex optimization to be solved very quickly using the alternating direction method of multipliers (ADMM) \cite{boyd:ftml11,bach2012scaling,bach:uai13}. Using this approach, PSL enables our system to easily define a rich probabilistic model and perform inference with a lightweight computational cost. 
+PSL enables fast inference of the most probable explanation, i.e., the
+interpretation that is most likely in the PSL distribution given a
+partial interpretation with grounded atoms based on observed evidence.
+Because of the structure of PSL rules and their distances to
+satisfaction, this inference is always solvable via a convex
+optimization. Further, the structure of the probabilistic model enables
+this convex optimization to be solved very quickly using the alternating
+direction method of multipliers (ADMM)
+\cite{boyd:ftml11,bach2012scaling,bach:uai13}. Using this approach, PSL
+enables our system to easily define a rich probabilistic model and
+perform inference with a lightweight computational cost. 
 
 \vspace{-0.8em}
 \section{Approach}
@@ -361,7 +413,9 @@ places, dates and other entities and classifying them (named entity extraction).
 Since our region of interest is Latin America, the collection of text
 harvested is inherently multilingual, with Spanish, Portugese, and English as
 the dominating languages;
-we use Basis Technology's Rosette Linguistics Platform (RLP) suite of multilingual commercial tools (\url{http://www.basistech.com/text-analytics/rosette/}) for this stage.
+we use Basis Technology's Rosette Linguistics Platform (RLP) suite of
+multilingual commercial tools
+(\url{http://www.basistech.com/text-analytics/rosette/}) for this stage.
 The output of linguistic preprocessing serves as input to subsequent deeper analysis in which 
 date expressions are normalized and the geographic focus of the text identified.
 
@@ -478,18 +532,24 @@ Facebook event pages.
 
 \vspace{-0.5em}
 \subsubsection{News and Blogs}
-For longer articles such as news articles, the geo-focus of the message is identified using much more complex methods
-to extract the protest location from news articles, we use PSL to build probabilistic models that infer the intended
-location of a protest by 
-weighing evidence coming from the Basis entity extractions and information in the World Gazeteer. 
+For longer articles such as news articles, the geo-focus of the message
+is identified using much more complex methods to extract the protest
+location from news articles, we use PSL to build probabilistic models
+that infer the intended location of a protest by weighing evidence
+coming from the Basis entity extractions and information in the World
+Gazeteer. 
 
-The primary rules in the model encode the effect that Basis-extracted location strings that match to gazatteer 
-aliases are indicators of the article's location, whether they be country, state, or city aliases. 
-Each of these implications is conjuncted with a prior for ambiguous, overloaded aliases that is 
-proportional to the population of the gazetteer location. For example, if the string ``Los Angeles'' appears in the article, 
-it could refer to either Los Angeles, California, or Los \'{A}ngeles in Argentina or Chile. Given no other information,
-our model would infer a higher truth value for the article referring to Los Angeles, California, because it 
-has a much higher population than the other options. 
+The primary rules in the model encode the effect that Basis-extracted
+location strings that match to gazatteer aliases are indicators of the
+article's location, whether they be country, state, or city aliases.
+Each of these implications is conjuncted with a prior for ambiguous,
+overloaded aliases that is proportional to the population of the
+gazetteer location. For example, if the string ``Los Angeles'' appears
+in the article, it could refer to either Los Angeles, California, or Los
+\'{A}ngeles in Argentina or Chile. Given no other information, our model
+would infer a higher truth value for the article referring to Los
+Angeles, California, because it has a much higher population than the
+other options. 
 \scriptsize
 \begin{flalign*}
     ENTITY&(L, location) \softand REFERSTO(L, locID) &\\
@@ -509,11 +569,14 @@ has a much higher population than the other options.
 \end{flalign*}
 \normalsize
 \noindent
-(Note that the above are not deterministic rules; e.g., they do not use the logical conjunction $\wedge$ but rather the
-Lukasiewicz t-norm based relaxation $\softand$. Further, these rules do not fire deterministically but are instead
-simultaneously solved for satisfying assignments as described in the previos section)
+(Note that the above are not deterministic rules; e.g., they do not use
+the logical conjunction $\wedge$ but rather the Lukasiewicz t-norm based
+relaxation $\softand$. Further, these rules do not fire
+deterministically but are instead simultaneously solved for satisfying
+assignments as described in the previos section)
 
-The secondary rules, which are given half the weight of the primary rules, perform the same mapping of extracted strings 
+The secondary rules, which are given half the weight of the primary
+rules, perform the same mapping of extracted strings 
 to gazetteer aliases, but for extracted persons and organizations. Strings describing persons and 
 organizations often include location clues (e.g., ``mayor of Buenos Aires''), but intuition suggests 
 the correlation between the article's location and these clues may be lower than with location strings. 
