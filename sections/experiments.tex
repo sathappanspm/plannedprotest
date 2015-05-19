@@ -93,7 +93,7 @@ in the studied period.}
 \end{table*}
 \noindent
 {\bf Are there country-specific selective superiorities for the different data sources considered here?}
-Table~\ref{tb:sourcewisecomparison} presents a breakdown of perfomance, country-wise and source-wise, of 
+Table~\ref{tb:sourcewisecomparison} presents a breakdown of performance, country-wise and source-wise, of 
 our approach for a particular month, viz. March 2014.
 It is clear that the multiple data sources are necessary to achieve a high recall and that by and large
 these sources are providing mutually exclusive alerts. (Note also that some data sources do not produce alerts for specific
@@ -106,16 +106,7 @@ Finally, note that news and blogs offer a much higher lead time (4.57 days)
 as compared to that for Facebook (2.44 days) or for Twitter (2.82 days). The quality scores are
 further broken down in Table~\ref{tb:modelwisecomparison} into their date and location components.
 
-%\begin{figure}[!ht]
-%    \vspace{-1em}
-%    \centering
-%    \includegraphics[scale=0.3]{monthlyqs}
-%    \vspace{-.5em}
-%    \caption{Quality Score over the months}
-%    \label{fig:monthlyqs}
-%    \vspace{-1.5em}
-%\end{figure}
-A longitudunal perspective on quality scores is
+A longitudinal perspective on quality scores is
 given in Fig.~\ref{fig:monthlyqs}. Note that in general Twitter tends to have a higher quality score
 as multiple re-tweets of future event mentions is a direct indicator of the popularity of an event as 
 well as the intent of people to join an event. 
@@ -146,69 +137,30 @@ Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
 
 \noindent
 {\bf How did our system fare in detecting key country-wide protests?}
-%\begin{figure*}
-%  \begin{subfigure}{\columnwidth}
-%    \centering
-%    \includegraphics[scale=0.3]{venezuela_new}
-%    \caption{Venezuelan protests}
-%    \label{fig:venezuela_feb}
-%\end{subfigure}
-%\begin{subfigure}{\columnwidth}
-%    \centering
-%    \includegraphics[scale=0.3]{brazil_june_new}
-%    \caption{Brazilian Spring}
-%    \label{fig:brazil_june}
-%\end{subfigure}
-%\caption{Mass protests forecast by our system}
-%\end{figure*}
+
 The recent Venezuelan protests against President Nicolas Maduro and the Brazilian protests during June 2013 against bus fare hikes were two significant protests during our period of evaluation. Fig.~\ref{fig:venezuela_feb} and
 Fig.~\ref{fig:brazil_june} describe our performance under these two situations illustrating the count
 of protests detected against the GSR. Notice that our system was able to 
 identify the Venezuelan protests much better than the Brazilian protests. This is because there was a significant amount
-of spontaineity to the Brazilian protests; they arose as discontent about bus fare increases but later morphed into a broader
+of spontaneity to the Brazilian protests; they arose as discontent about bus fare increases but later morphed into a broader
 set of protests against government and most of these subsequent protests were not planned.\\
 
 \noindent
-{\bf What is the tradeoff between lead time and quality?}
-%\begin{figure}[h!]
-%    \vspace{-1em}
-%    \centering
-%    \includegraphics[scale=0.3]{leadTimeVsQS}
-%    \caption{Lead-Time vs Quality Score}
-%    \label{fig:leadTimeVsQS}
-%    \vspace{-1em}
-%\end{figure}
+{\bf What is the trade-off between lead time and quality?}
+
 Fig.~\ref{fig:leadTimeVsQS} shows that the QS of the planned protest model decreases (as expected) with lead time, initially, but
 later rises again. The higher quality scores toward the right of Fig.~\ref{fig:leadTimeVsQS} are primarily due to
 Facebook event pages.\\
 
 \noindent
 {\bf How does the method perform under stringent matching criteria?}
-Fig.~\ref{fig:matchinginterval} shows the perfomance of the model when the matching window is varied from 7 to 1 in steps. 
+Fig.~\ref{fig:matchinginterval} shows the performance of the model when the matching window is varied from 7 to 1 in steps. 
 We can see that the performance degrades quite gracefully even under the strict matching interval of a 1-day difference.\\
-%\begin{figure}[h!]
-%    \vspace{-1em}
-%    \centering
-%  \includegraphics[scale=0.3]{matchingwindow}
-%    \vspace{-.5em}
-%  \caption{QS vs Matching Interval Trade-Off}
-%  \label{fig:matchinginterval}
-%    \vspace{-1.5em}
-%\end{figure}
 
 \noindent
 {\bf What is the distribution of quality scores?}
 The clear mode toward the right side of the Fig.~\ref{fig:doubleHump} signifies that a majority of the planned 
 protest alerts are of high quality. Further, the quality score distribution is unimodal suggesting that the careful reasoning of locations and date normalization are crucial to achieving high quality.
-%\begin{figure}[h!]
-%    \centering
-%  \includegraphics[scale=1]{doubleHump_new3}
-%    \vspace{-.5em}
-%  \caption{Quality Score Distribution}
-%  \label{fig:doubleHump}
-%    \vspace{-1.5em}
-%\end{figure}
-
 
 \begin{figure*}
 \begin{subfigure}{.70\columnwidth}
@@ -250,22 +202,3 @@ protest alerts are of high quality. Further, the quality score distribution is u
 \end{subfigure}\hspace{.5pt}
 \caption{Evaluation of planned protest forecasting system}
 \end{figure*}
-
-%\begin{subfigure}{\columnwidth}
-%  \centering
-%  \includegraphics[width=\linewidth]{venezuela_violent}
-%  \caption{Venezuelan Violent Protests}
-%  \label{fig:venezuela_violent}
-%\end{subfigure}%
-
-
-%\begin{figure}
-%    \includegraphics[width=0.5\textwidth]{alertstructure}
-%    \caption{Structure of an Alert}
-%    \label{fig:alertstructure}
-%\end{figure}
-%\begin{figure}
-%    \includegraphics[width=0.5\textwidth]{timeline}
-%    \caption{Matching Timeline}
-%    \label{fig:timeline}
-%\end{figure}
