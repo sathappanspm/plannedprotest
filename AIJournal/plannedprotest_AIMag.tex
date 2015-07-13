@@ -6,7 +6,7 @@
 \usepackage{palatino}
 \usepackage[utf8]{inputenc}
 \usepackage{helvet}
-\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{epstopdf}
@@ -14,10 +14,12 @@
 \usepackage{color}
 \graphicspath{{./figures/}}
 \usepackage{courier}
+\usepackage{tabulary}
 \usepackage{endnotes}
 \usepackage{booktabs}
 \usepackage{url}
 \usepackage{tikz}
+\usepackage{wrapfig}
 \usetikzlibrary{positioning}
 \makeatletter
 \def\url@leostyle{%
@@ -203,21 +205,23 @@ unrest in the above countries with an average lead time of 4.08 days.
 Five categories of related work are briefly discussed here (see also
 Table~\ref{comp-table}).
 
-\begin{table*}
+\begin{table}
     \centering
     %\vspace{-2em}
+    \small
     \caption{Comparison of our approach against other techniques.}
-    \begin{tabular}{l p{2cm} p{1.5cm} p{1.5cm} p{1.5cm} p{3cm}}%{|*{17}{c|}}
-        \hline
+    \begin{tabular}{l p{1.6cm} p{1.4cm} p{1.4cm} p{1.4cm} p{3cm}}%{|*{17}{c|}}
+        \toprule
         & Relative date resolution & Ingest multiple sources? & Reasoning about location & Learning word/phrase filters \\
-        \hline
+        \midrule
         `Future' Search Engines~\shortcite{Kawai:2010:CSE,Jatowt:2011:ECE,baeza2005searching}&\checkmark & & \\
         Time-to-Event Recognition~\shortcite{tops2013predicting,bosch2013estm}&\checkmark & & \\
         Planned Protest Detection~\shortcite{xu2014civil,compton2013detecting} & &\checkmark & &\\ 
-        This paper &\checkmark &\checkmark &\checkmark&\checkmark\\  \hline
+        This paper &\checkmark &\checkmark &\checkmark&\checkmark\\
+        \bottomrule
     \end{tabular}
 \label{comp-table}
-\end{table*}
+\end{table}
 
 {\bf Event detection via text extractions}
 is an extensively studied topic in the literature. Document clustering techniques are used 
@@ -534,7 +538,7 @@ This phrase learning process is illustrated in Fig.~\ref{fig:phraselearning}.
 
 \begin{figure*}
   \centering
-\includegraphics[scale=0.2]{figures/phraseLearning}
+\includegraphics[scale=0.3]{figures/phraseLearning}
 \caption{An example of phrase learning for detecting planned protests.}
 \label{fig:phraselearning}
 \end{figure*}
@@ -644,15 +648,15 @@ inferred locations.
 %######################EXPERIMENTS#####################################
 \begin{figure*}
 \centering
-\begin{subfigure}{.7\columnwidth}
+\begin{subfigure}{0.5\columnwidth}
   \centering
-  \includegraphics[scale=0.2]{gsr_distribution} 
+  \includegraphics[scale=0.25]{gsr_distribution} 
   \caption{GSR distribution from 2012-11 to 2014-03.}
   \label{fig:gsrdistribution}
 \end{subfigure}%
 \begin{subfigure}{.7\columnwidth}
   \centering
-  \includegraphics[scale=0.2]{pp_dist}
+  \includegraphics[scale=0.25]{pp_dist}
   \caption{Alerts distribution from 2012-11 to 2014-03.}
   \label{fig:ppdistribution}
 \end{subfigure}
@@ -714,7 +718,7 @@ are not as prominently detected as those for other countries; we
 attribute this to their smaller social media footprint (relative to
 countries like Brazil and Venezuela).\\
 
-\begin{table*}
+\begin{table}
     \small
     \centering
     \caption{\label{tb:sourcewisecomparison} 
@@ -724,12 +728,12 @@ AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador;
 MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$
 indicates that the source did not produce any warnings for that country
 in the studied period.}
-\begin{tabular}{*{17}{|c}|}
-        \hline
+\begin{tabular}{@{}rrrrrrrrrrrrrrrrr@{}}
+        \toprule
         & \multicolumn{4}{ |c| }{News/Blogs} & \multicolumn{4}{ |c| }{Twitter} & \multicolumn{4}{ |c| }{Facebook} & \multicolumn{4}{ |c| }{Combined}\\
-        \hline
+        \midrule
          & QS & Pr. & Rec. &LT & QS & Pr. & Rec. & LT & QS & Pr. & Rec. & LT & QS & Pr. & Rec. & LT\\
-        \hline
+        \midrule
         AR &3.14&0.32&0.69&3.94&3.52&{\bf0.78}&0.14&3.14&{\bf3.70}&0.50&0.04&3.00&3.02&0.36&{\bf0.80}&{\bf4.50}\\
         BR &3.14&0.48&0.54&{\bf5.85}&-&-&-&-&{\bf3.62}&{\bf0.76}&0.18&2.46&3.28&0.49&{\bf0.65}&5.15\\
         CL &3.06&0.91&0.67&5.40&{\bf3.52}&{\bf1.00}&0.23&4.29&-&-&-&-&3.16&0.83&{\bf0.80}&{\bf5.92}\\
@@ -741,9 +745,9 @@ in the studied period.}
         UY &{\bf3.24}&{\bf1.00}&{\bf0.29}&{\bf2.40}&-&-&-&-&-&-&-&-&3.24&{\bf1.00}&{\bf0.29}&3.24\\
         VE &{\bf3.80}&{\bf1.00}&0.36&{\bf3.27}&3.68&0.97&0.33&2.39&-&-&-&-&3.64&0.99&{\bf0.69}&2.88\\
         ALL &3.34&0.69&0.35&{\bf4.57}&3.62&{\bf0.97}&0.15&2.82&3.66&0.74&0.03&2.44&3.36&0.73&{\bf0.51}&4.08\\
-        \hline
+        \bottomrule
     \end{tabular}
-\end{table*}
+\end{table}
 \noindent
 {\bf Are there country-specific selective superiorities for the
 different data sources considered here?}
@@ -780,19 +784,20 @@ AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El
 Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$
 indicates that the source did not produce any warnings for that country
 in the studied period.} \label{tb:modelwisecomparison}
-\begin{tabular}{|l|*{17}{c|}}
-\hline
+%\begin{tabular}{@{}ccccccccccccccccc{}@}
+\begin{tabular}{@{}rrrrrrrrrrrrrrrrr@{}}
+\toprule
 Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
-\hline
+\midrule
 \multirow{2}{*}{News/Blogs} &LS &0.82&0.76&0.75&0.60&-&{\bf0.75}&0.66&0.79&{\bf0.79}&{\bf0.95}&0.81\\
                             &DS&0.75&0.81&0.78&0.77&-&{\bf0.86}&0.82&0.90&{\bf0.83}&{\bf0.95}&0.86\\
-\hline
+\midrule
 \multirow{2}{*}{Facebook} &LS &{\bf1.0}&{\bf0.92}&-&{\bf1.00}&-&-&{\bf0.86}&{\bf0.98}&-&-&{\bf0.93}\\
                           &DS&0.85&{\bf0.89}&-&{\bf1.00}&-&-&{\bf1.00}&{\bf1.00}&-&-&0.90\\
-\hline
+\midrule
 \multirow{2}{*}{Twitter} &LS &0.88&-&{\bf0.84}&0.81&{\bf0.45}&-&0.71&{\bf0.98}&-&0.91&0.89\\
                          &DS&{\bf0.88}&-&{\bf0.92}&0.84&{\bf0.71}&-&0.86&0.94&-&0.93&{\bf0.92}\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -835,41 +840,42 @@ achieving high quality.
 \begin{figure*}
 \begin{subfigure}{0.40\columnwidth}
     \centering
-  \includegraphics[scale=0.2]{monthlyqs}
+  \includegraphics[width=0.8\columnwidth]{monthlyqs}
   \caption{\scriptsize Quality Score over the months}
   \label{fig:monthlyqs}
 \end{subfigure}\hspace{.5pt}
 \begin{subfigure}{0.40\columnwidth}
     \centering
-  \includegraphics[scale=0.2]{venezuela_new}
+  \includegraphics[width=0.8\columnwidth]{venezuela_new}
   \caption{\scriptsize Venezuelan Protests}
   \label{fig:venezuela_feb}
-\end{subfigure}\hspace{.5pt}
-\begin{subfigure}{0.40\columnwidth}
-    \centering
-  \includegraphics[scale=0.2]{leadTimeVsQS}
-  \caption{\scriptsize Lead-Time vs Quality Score}
-  \label{fig:leadTimeVsQS}
 \end{subfigure}
 
 \begin{subfigure}{0.40\columnwidth}
     \centering
-  \includegraphics[scale=0.2]{matchingwindow}
-  \caption{\scriptsize QS vs Matching Interval Trade-Off}
-  \label{fig:matchinginterval}
+  \includegraphics[width=0.8\columnwidth]{leadTimeVsQS}
+  \caption{\scriptsize Lead-Time vs Quality Score}
+  \label{fig:leadTimeVsQS}
 \end{subfigure}\hspace{.5pt}
 \begin{subfigure}{0.40\columnwidth}
     \centering
-  \includegraphics[scale=.75]{doubleHump_new3}
+  \includegraphics[width=0.8\columnwidth]{matchingwindow}
+  \caption{\scriptsize QS vs Matching Interval Trade-Off}
+  \label{fig:matchinginterval}
+\end{subfigure}
+
+\begin{subfigure}{0.40\columnwidth}
+    \centering
+  \includegraphics[width=0.8\columnwidth]{doubleHump_new3}
   \caption{\scriptsize Quality Score Distribution}
   \label{fig:doubleHump}
 \end{subfigure}\hspace{.5pt}
 \begin{subfigure}{0.40\columnwidth}
     \centering
-  \includegraphics[scale=0.2]{brazil_june_new}
+  \includegraphics[width=0.8\columnwidth]{brazil_june_new}
   \caption{\scriptsize Brazilian Spring}
   \label{fig:brazil_june}
-\end{subfigure}\hspace{.5pt}
+\end{subfigure}
 \caption{Evaluation of planned protest forecasting system}
 \end{figure*}%###############Development and Maintenance################
 
@@ -1126,6 +1132,66 @@ Xu, J.; Lu, T.-C.; Compton, R.; and Allen, D.
 
 % Include the bbl file in the final LaTeX Source file
 \end{thebibliography}
+
+{\bf Sathappan Muthiah} is a Ph.D student in Computer Science at
+Virginia Tech. He is a research assistant at the Discovery Analytics
+Center.His research interests include spatial and temporal event
+detection, text mining and information retrieval.He recieved his B.Tech
+in Information Technology from National Institute of Technology, Bhopal,
+India.
+
+{\bf Bert Huang} is an assistant professor in the Department of Computer
+Science at Virginia Tech. He earned his Ph.D.~from Columbia University
+in 2011, and he was a postdoctoral research associate at the University
+of Maryland, College Park. Bert’s research investigates machine
+learning, with a focus on topics including structured prediction,
+statistical relational learning, and computational social science. He is
+an action editor for the Journal of Machine Learning Research, and his
+papers have been published at conferences including NIPS, ICML, UAI, and
+AISTATS.
+
+{\bf Jaime Arredondo} is a Ph.D. candidate in global public health at UC San
+Diego. His research centers on developing more sophisticated analytical
+skills and research techniques to analyze the effect of policing
+practices as a major driver of HIV transmission, particularly in the
+U.S.–Mexico border region.He is collaborating with the UC San Diego Division of Global
+Public Health on its El Cuete, Phase IV project. Funded by the National
+Institute of Health, the project aims to identify how formal law
+enforcement policies can affect HIV risk behavior among injection drug
+users (IDU) amid improving occupational safety of police officers in
+Tijuana, Mexico.
+
+{\bf David Mares} is a professor of Political Science at UCSD.
+He holds the Institute of the Americas Chair for Inter-American Affairs at UCSD.
+He is the author or editor of ten books
+and his publications have appeared in English, Spanish, French,
+Portuguese, Italian and Chinese. His research and teaching interests
+include international conflict, Latin American energy politics, the
+political economy of drug policy, and civil-military relations.
+
+{\bf Lise Getoor} is a professor in the Computer Science Department at the
+University of California, Santa Cruz.   Her research areas include
+machine learning, data integration, and reasoning under uncertainty,
+with an emphasis on graph and network data. She has over 200
+publications and extensive experience with machine learning and
+probabilistic modeling methods.  She is a Fellow of the Association for
+Artificial Intelligence, an elected board member of the International
+Machine Learning Society, serves on the board of the Computing Research
+Association (CRA), and was co-chair for ICML 2011.  She is a recipient
+of an NSF Career Award and nine best paper and best student paper
+awards.  She received her PhD from Stanford University in 2001, her MS
+from UC Berkeley, and her BS from UC Santa Barbara, and was a professor
+in the Computer Science Department at the University of Maryland,
+College Park from 2001-2013.
+
+{\bf Naren Ramakrishnan} is the Thomas L. Phillips Professor of Engineering at
+Virginia Tech. He directs the Discovery Analytics Center, a university
+center pursuing advanced research in data mining and knowledge discovery
+with applications to important areas of national interest. Ramakrishnan
+is the principal investigator of the ongoing IARPA OSI (Open Source
+Indicators) project aimed at forecasting significant societal events
+(disease outbreaks, civil unrest, elections) from open source datasets.
+He received his PhD in Computer Sciences from Purdue University.
 
 \end{document}
 

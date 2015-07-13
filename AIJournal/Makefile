@@ -15,6 +15,6 @@ all:
 
 
 clean:
-	rm *.aux, *.blg, *.bbl, *.log, *.pdf, *.toc. *.snm, *.out, *.nav
+	rm *.aux *.blg *.bbl *.log *.pdf *.toc *.snm *.out *.nav
 
 
