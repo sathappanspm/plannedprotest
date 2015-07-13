@@ -70,11 +70,12 @@ versus social media (Twitter, Facebook) to identify relevant trade-offs.
 \end{quote}
 
 %############INTRODUCTION##################################
-\begin{figure}[ht]
+\begin{figure*}
+  \centering
     \includegraphics[width=0.5\textwidth, height=0.4\textwidth]{pp_example}
     \caption{An example article describing plans for a future protest (Venezuela, June 11, 2014).}
     \label{pp_example}
-\end{figure}
+\end{figure*}
 Civil unrest events (protests, strikes, and ``occupy'' events) are
 common occurrences in both democracies and in authoritarian regimes.
 Although we typically associate civil unrest with disruptions and
@@ -170,14 +171,6 @@ approach is capable of detecting indicators of event planning with
 surprisingly high accuracy.
 
 Our contributions are:
-
-\iffalse
-\begin{figure}
-    \includegraphics[width=0.5\textwidth]{alertstructure}
-    \caption{An example warning (left) and GSR event (right).}
-    \label{fig:alertstructure}
-\end{figure}
-\fi
 
 \begin{enumerate}
 \item We present a protest forecasting system that couples three key
@@ -536,11 +529,12 @@ The set of learned phrases is then reviewed by a subject matter expert for quali
 Using this approach, we learned 112 phrases for news articles and blogs and 156 for tweets.  
 This phrase learning process is illustrated in Fig.~\ref{fig:phraselearning}.
 
-\begin{figure}
+\begin{figure*}
+  \centering
 \includegraphics[scale=0.2]{figures/phraseLearning}
 \caption{An example of phrase learning for detecting planned protests.}
 \label{fig:phraselearning}
-\end{figure}
+\end{figure*}
 
 \subsection{Geocoding}
 \label{subsection:geocoding}
@@ -647,15 +641,15 @@ inferred locations.
 %######################EXPERIMENTS#####################################
 \begin{figure*}
 \centering
-\begin{subfigure}{1.05\columnwidth}
+\begin{subfigure}{.7\columnwidth}
   \centering
-  \includegraphics[scale=0.3]{gsr_distribution} 
+  \includegraphics[scale=0.2]{gsr_distribution} 
   \caption{GSR distribution from 2012-11 to 2014-03.}
   \label{fig:gsrdistribution}
 \end{subfigure}%
-\begin{subfigure}{\columnwidth}
+\begin{subfigure}{.7\columnwidth}
   \centering
-  \includegraphics[scale=0.3]{pp_dist}
+  \includegraphics[scale=0.2]{pp_dist}
   \caption{Alerts distribution from 2012-11 to 2014-03.}
   \label{fig:ppdistribution}
 \end{subfigure}
@@ -836,38 +830,38 @@ careful reasoning of locations and date normalization are crucial to
 achieving high quality.
 
 \begin{figure*}
-\begin{subfigure}{.70\columnwidth}
+\begin{subfigure}{0.40\columnwidth}
     \centering
   \includegraphics[scale=0.2]{monthlyqs}
   \caption{\scriptsize Quality Score over the months}
   \label{fig:monthlyqs}
 \end{subfigure}\hspace{.5pt}
-\begin{subfigure}{.70\columnwidth}
+\begin{subfigure}{0.40\columnwidth}
     \centering
   \includegraphics[scale=0.2]{venezuela_new}
   \caption{\scriptsize Venezuelan Protests}
   \label{fig:venezuela_feb}
 \end{subfigure}\hspace{.5pt}
-\begin{subfigure}{.70\columnwidth}
+\begin{subfigure}{0.40\columnwidth}
     \centering
   \includegraphics[scale=0.2]{leadTimeVsQS}
   \caption{\scriptsize Lead-Time vs Quality Score}
   \label{fig:leadTimeVsQS}
 \end{subfigure}
 
-\begin{subfigure}{.70\columnwidth}
+\begin{subfigure}{0.40\columnwidth}
     \centering
   \includegraphics[scale=0.2]{matchingwindow}
   \caption{\scriptsize QS vs Matching Interval Trade-Off}
   \label{fig:matchinginterval}
 \end{subfigure}\hspace{.5pt}
-\begin{subfigure}{.70\columnwidth}
+\begin{subfigure}{0.40\columnwidth}
     \centering
   \includegraphics[scale=.75]{doubleHump_new3}
   \caption{\scriptsize Quality Score Distribution}
   \label{fig:doubleHump}
 \end{subfigure}\hspace{.5pt}
-\begin{subfigure}{.70\columnwidth}
+\begin{subfigure}{0.40\columnwidth}
     \centering
   \includegraphics[scale=0.2]{brazil_june_new}
   \caption{\scriptsize Brazilian Spring}
