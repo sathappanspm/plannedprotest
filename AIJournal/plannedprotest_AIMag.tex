@@ -8,13 +8,14 @@
 \usepackage{helvet}
 \usepackage{amsmath, amsfonts, amssymb, amsthm}
 \usepackage{graphicx}
+\usepackage[center]{caption}
 \usepackage{subcaption}
 \usepackage{epstopdf}
 \usepackage{multirow}
 \usepackage{color}
 \graphicspath{{./figures/}}
 \usepackage{courier}
-\usepackage{tabulary}
+\usepackage{tabularx}
 \usepackage{endnotes}
 \usepackage{booktabs}
 \usepackage{url}
@@ -74,12 +75,7 @@ versus social media (Twitter, Facebook) to identify relevant trade-offs.
 \end{quote}
 
 %############INTRODUCTION##################################
-\begin{figure*}
-  \centering
-    \includegraphics[width=0.5\textwidth, height=0.4\textwidth]{pp_example}
-    \caption{An example article describing plans for a future protest (Venezuela, June 11, 2014).}
-    \label{pp_example}
-\end{figure*}
+
 Civil unrest events (protests, strikes, and ``occupy'' events) are
 common occurrences in both democracies and in authoritarian regimes.
 Although we typically associate civil unrest with disruptions and
@@ -90,6 +86,15 @@ afforded citizenry new mechanisms for organization and mobilization, and
 online news sources and social networking sites like Facebook and
 Twitter can provide a window into civil unrest happenings in a
 particular country.
+
+%\begin{figure*}
+\begin{wrapfigure}{r}{.4\textwidth}
+  \centering
+    \includegraphics[width=.4\textwidth]{pp_AIMag_screenshot}
+    \caption{An example article describing plans for a future protest (Venezuela, June 11, 2014).}
+    \label{pp_example}
+\end{wrapfigure}
+%\end{figure*}
 
 \subsubsection{Why study and forecast protests?}
 Our primary region of interest is Latin America (secondary regions of
@@ -207,10 +212,9 @@ Table~\ref{comp-table}).
 
 \begin{table}
     \centering
-    %\vspace{-2em}
-    \small
+    \footnotesize
     \caption{Comparison of our approach against other techniques.}
-    \begin{tabular}{l p{1.6cm} p{1.4cm} p{1.4cm} p{1.4cm} p{3cm}}%{|*{17}{c|}}
+    \begin{tabularx}{\textwidth}{p{5cm} XXXX}%{|*{17}{c|}}
         \toprule
         & Relative date resolution & Ingest multiple sources? & Reasoning about location & Learning word/phrase filters \\
         \midrule
@@ -219,7 +223,7 @@ Table~\ref{comp-table}).
         Planned Protest Detection~\shortcite{xu2014civil,compton2013detecting} & &\checkmark & &\\ 
         This paper &\checkmark &\checkmark &\checkmark&\checkmark\\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
 \label{comp-table}
 \end{table}
 
@@ -538,7 +542,7 @@ This phrase learning process is illustrated in Fig.~\ref{fig:phraselearning}.
 
 \begin{figure*}
   \centering
-\includegraphics[scale=0.3]{figures/phraseLearning}
+\includegraphics[width=.9\textwidth]{figures/phraseLearning}
 \caption{An example of phrase learning for detecting planned protests.}
 \label{fig:phraselearning}
 \end{figure*}
@@ -647,17 +651,17 @@ inferred locations.
 
 %######################EXPERIMENTS#####################################
 \begin{figure*}
-\centering
-\begin{subfigure}{0.5\columnwidth}
-  \centering
-  \includegraphics[scale=0.25]{gsr_distribution} 
-  \caption{GSR distribution from 2012-11 to 2014-03.}
+%\centering
+\begin{subfigure}{0.4\columnwidth}
+  \raggedleft
+  \includegraphics[height=.2\textheight]{gsr_distribution} 
+  \caption{\scriptsize GSR distribution from 2012-11 to 2014-03.}
   \label{fig:gsrdistribution}
-\end{subfigure}%
-\begin{subfigure}{.7\columnwidth}
-  \centering
-  \includegraphics[scale=0.25]{pp_dist}
-  \caption{Alerts distribution from 2012-11 to 2014-03.}
+\end{subfigure}\hspace{3.2em}%
+\begin{subfigure}{.4\columnwidth}
+  \raggedright
+  \includegraphics[height=.2\textheight]{pp_dist}
+  \caption{\scriptsize Alerts distribution from 2012-11 to 2014-03.}
   \label{fig:ppdistribution}
 \end{subfigure}
 \caption{Distribution of alerts and GSR events across the Latin American countries studied in this paper.}
@@ -719,7 +723,7 @@ attribute this to their smaller social media footprint (relative to
 countries like Brazil and Venezuela).\\
 
 \begin{table}
-    \small
+    \scriptsize
     \centering
     \caption{\label{tb:sourcewisecomparison} 
     \small Country-wise breakdown of forecasting performance for different data sources.
@@ -728,9 +732,9 @@ AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador;
 MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$
 indicates that the source did not produce any warnings for that country
 in the studied period.}
-\begin{tabular}{@{}rrrrrrrrrrrrrrrrr@{}}
+\begin{tabularx}{.9\textwidth}{*{17}{X}} %{@{}rrrrrrrrrrrrrrrrr@{}}
         \toprule
-        & \multicolumn{4}{ |c| }{News/Blogs} & \multicolumn{4}{ |c| }{Twitter} & \multicolumn{4}{ |c| }{Facebook} & \multicolumn{4}{ |c| }{Combined}\\
+        & \multicolumn{4}{c}{News/Blogs} & \multicolumn{4}{c}{Twitter} & \multicolumn{4}{c}{Facebook} & \multicolumn{4}{c}{Combined}\\
         \midrule
          & QS & Pr. & Rec. &LT & QS & Pr. & Rec. & LT & QS & Pr. & Rec. & LT & QS & Pr. & Rec. & LT\\
         \midrule
@@ -740,13 +744,13 @@ in the studied period.}
         CO &2.74&0.90&0.56&{\bf7.44}&3.30&{\bf1.00}&0.15&2.43&{\bf4.00}&{\bf1.00}&0.02&2.00&2.88&0.84&{\bf0.65}&6.47\\
         EC &-&-&-&-&{\bf2.32}&{\bf1.00}&{\bf0.06}&{\bf17.00}&-&-&-&-&{\bf2.32}&{\bf0.50}&{\bf0.06}&{\bf17.00}\\
         MX &2.96&0.88&0.25&{\bf3.69}&3.14&{\bf1.00}&0.02&1.43&{\bf3.72}&0.67&0.01&2.00&3.00&0.87&{\bf0.27}&3.51\\
-        SV &{\bf3.22}&{\bf1.00}&{\bf0.03}&{\bf1.0}&-&-&-&-&-&-&-&-&{\bf3.22}&{\bf1.0}&{\bf0.03}&{\bf1.0}\\
+        SV &{\bf3.22}&{\bf1.00}&{\bf0.03}&{\bf1.00}&-&-&-&-&-&-&-&-&{\bf3.22}&{\bf1.00}&{\bf0.03}&{\bf1.00}\\
         PY &3.38&{\bf1.00}&{\bf0.16}&9.11&3.84&{\bf1.00}&0.04&{\bf11.40}&3.96&{\bf1.00}&0.01&2.00&3.60&0.96&{\bf0.20}&9.35\\
         UY &{\bf3.24}&{\bf1.00}&{\bf0.29}&{\bf2.40}&-&-&-&-&-&-&-&-&3.24&{\bf1.00}&{\bf0.29}&3.24\\
         VE &{\bf3.80}&{\bf1.00}&0.36&{\bf3.27}&3.68&0.97&0.33&2.39&-&-&-&-&3.64&0.99&{\bf0.69}&2.88\\
         ALL &3.34&0.69&0.35&{\bf4.57}&3.62&{\bf0.97}&0.15&2.82&3.66&0.74&0.03&2.44&3.36&0.73&{\bf0.51}&4.08\\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
 \end{table}
 \noindent
 {\bf Are there country-specific selective superiorities for the
@@ -777,7 +781,7 @@ do not directly shed any insight into popularity or people's support for
 the event's causes.\\
 
 \begin{table*} %[tb!]
-  \small
+  \footnotesize
 \centering
 \caption{\small Comparing the location and date scores of different sources in specific countries.
 AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El
@@ -785,7 +789,7 @@ Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$
 indicates that the source did not produce any warnings for that country
 in the studied period.} \label{tb:modelwisecomparison}
 %\begin{tabular}{@{}ccccccccccccccccc{}@}
-\begin{tabular}{@{}rrrrrrrrrrrrrrrrr@{}}
+\begin{tabularx}{.9\textwidth}{p{1.7cm}*{16}{X}}
 \toprule
 Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
 \midrule
@@ -798,7 +802,7 @@ Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
 \multirow{2}{*}{Twitter} &LS &0.88&-&{\bf0.84}&0.81&{\bf0.45}&-&0.71&{\bf0.98}&-&0.91&0.89\\
                          &DS&{\bf0.88}&-&{\bf0.92}&0.84&{\bf0.71}&-&0.86&0.94&-&0.93&{\bf0.92}\\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table*}
 
 \noindent
@@ -838,41 +842,40 @@ careful reasoning of locations and date normalization are crucial to
 achieving high quality.
 
 \begin{figure*}
-\begin{subfigure}{0.40\columnwidth}
+\begin{subfigure}{0.33\columnwidth}
     \centering
-  \includegraphics[width=0.8\columnwidth]{monthlyqs}
+  \includegraphics[width=0.85\columnwidth]{monthlyqs}
   \caption{\scriptsize Quality Score over the months}
   \label{fig:monthlyqs}
-\end{subfigure}\hspace{.5pt}
-\begin{subfigure}{0.40\columnwidth}
+\end{subfigure}%\hspace{.5pt}
+\begin{subfigure}{0.33\columnwidth}
     \centering
-  \includegraphics[width=0.8\columnwidth]{venezuela_new}
+  \includegraphics[width=0.85\columnwidth]{venezuela_new}
   \caption{\scriptsize Venezuelan Protests}
   \label{fig:venezuela_feb}
-\end{subfigure}
-
-\begin{subfigure}{0.40\columnwidth}
+\end{subfigure}%\hspace{.5pt}
+\begin{subfigure}{0.33\columnwidth}
     \centering
-  \includegraphics[width=0.8\columnwidth]{leadTimeVsQS}
+  \includegraphics[width=0.85\columnwidth]{leadTimeVsQS}
   \caption{\scriptsize Lead-Time vs Quality Score}
   \label{fig:leadTimeVsQS}
-\end{subfigure}\hspace{.5pt}
-\begin{subfigure}{0.40\columnwidth}
-    \centering
-  \includegraphics[width=0.8\columnwidth]{matchingwindow}
-  \caption{\scriptsize QS vs Matching Interval Trade-Off}
-  \label{fig:matchinginterval}
 \end{subfigure}
 
-\begin{subfigure}{0.40\columnwidth}
+\begin{subfigure}{0.33\columnwidth}
     \centering
-  \includegraphics[width=0.8\columnwidth]{doubleHump_new3}
+  \includegraphics[width=0.85\columnwidth]{matchingwindow}
+  \caption{\scriptsize QS vs Matching Interval Trade-Off}
+  \label{fig:matchinginterval}
+\end{subfigure}%\hspace{.5pt}
+\begin{subfigure}{0.33\columnwidth}
+    \centering
+  \includegraphics[width=0.85\columnwidth]{doubleHump_new3}
   \caption{\scriptsize Quality Score Distribution}
   \label{fig:doubleHump}
-\end{subfigure}\hspace{.5pt}
-\begin{subfigure}{0.40\columnwidth}
+\end{subfigure}%\hspace{.5pt}
+\begin{subfigure}{0.33\columnwidth}
     \centering
-  \includegraphics[width=0.8\columnwidth]{brazil_june_new}
+  \includegraphics[width=0.85\columnwidth]{brazil_june_new}
   \caption{\scriptsize Brazilian Spring}
   \label{fig:brazil_june}
 \end{subfigure}
@@ -935,220 +938,28 @@ conclusions contained herein are those of the authors and should not be
 interpreted as necessarily representing the official policies or endorsements,
 either expressed or implied, of IARPA, DoI/NBC, or the US Government.
 
-%\bibliographystyle{aaai}
-\begin{thebibliography}{}
+\bibliographystyle{aaai}
+\bibliography{references}
 
-\bibitem[\protect\citeauthoryear{Bach \bgroup et al\mbox.\egroup
-  }{2013}]{bach:uai13}
-Bach, S.~H.; Huang, B.; London, B.; and Getoor, L.
-\newblock 2013.
-\newblock Hinge-loss {M}arkov random fields: Convex inference for structured
-  prediction.
-\newblock In {\em Uncertainty in Artificial Intelligence}.
-
-\bibitem[\protect\citeauthoryear{Baeza-Yates}{2005}]{baeza2005searching}
-Baeza-Yates, R.
-\newblock 2005.
-\newblock Searching the future.
-\newblock In {\em SIGIR Workshop on Mathematical/Formal Methods in Information
-  Retrieval}.
-
-\bibitem[\protect\citeauthoryear{Banko \bgroup et al\mbox.\egroup
-  }{2007}]{Banko07openinformation}
-Banko, M.; Cafarella, M.~J.; Soderland, S.; Broadhead, M.; and Etzioni, O.
-\newblock 2007.
-\newblock Open information extraction from the web.
-\newblock In {\em International Joint Conferences on Artificial Intelligence},
-  IJCAI.
-
-\bibitem[\protect\citeauthoryear{Chambers and
-  Jurafsky}{2011}]{Chambers:2011:TIE}
-Chambers, N., and Jurafsky, D.
-\newblock 2011.
-\newblock Template-based information extraction without the templates.
-\newblock In {\em Proceedings of the 49th Annual Meeting of the Association for
-  Computational Linguistics: Human Language Technologies}, HLT.
-
-\bibitem[\protect\citeauthoryear{Compton \bgroup et al\mbox.\egroup
-  }{2013}]{compton2013detecting}
-Compton, R.; Lee, C.; Lu, T.-C.; De~Silva, L.; and Macy, M.
-\newblock 2013.
-\newblock Detecting future social unrest in unprocessed twitter
-  data:“emerging phenomena and big data”.
-\newblock In {\em IEEE International Conference on Intelligence and Security
-  Informatics}, ISI.
-
-\bibitem[\protect\citeauthoryear{Doyle \bgroup et al\mbox.\egroup
-  }{2014}]{DBLP:conf/bigdataconf/DoyleKSAZLMZLBKFR14}
-Doyle, A.; Katz, G.; Summers, K.~M.; Ackermann, C.; Zavorin, I.; Lim, Z.;
-  Muthiah, S.; Zhao, L.; Lu, C.; Butler, P.; Khandpur, R.~P.; Fayed, Y.; and
-  Ramakrishnan, N.
-\newblock 2014.
-\newblock The {EMBERS} architecture for streaming predictive analytics.
-\newblock In {\em 2014 {IEEE} International Conference on Big Data, Big Data
-  2014}.
-
-\bibitem[\protect\citeauthoryear{Gabrilovich, Dumais, and
-  Horvitz}{2004}]{Gabrilovich:2004:NPP}
-Gabrilovich, E.; Dumais, S.; and Horvitz, E.
-\newblock 2004.
-\newblock Newsjunkie: Providing personalized newsfeeds via analysis of
-  information novelty.
-\newblock In {\em Proceedings of the 13th International Conference on World
-  Wide Web}, WWW.
-
-\bibitem[\protect\citeauthoryear{Hurriyetoglu, Kunneman, and van~den
-  Bosch}{2013}]{bosch2013estm}
-Hurriyetoglu, A.~H.; Kunneman, F.; and van~den Bosch, A.
-\newblock 2013.
-\newblock Estimating the time between twitter messages and future events.
-\newblock In {\em Proceedings of the 13th Dutch-Belgian Workshop on Information
-  Retrieval}, DIR.
-
-\bibitem[\protect\citeauthoryear{Jatowt and Au~Yeung}{2011}]{Jatowt:2011:ECE}
-Jatowt, A., and Au~Yeung, C.~m.
-\newblock 2011.
-\newblock Extracting collective expectations about the future from large text
-  collections.
-\newblock In {\em Proceedings of the 20th ACM International Conference on
-  Information and Knowledge Management}, CIKM.
-
-\bibitem[\protect\citeauthoryear{Kallus}{2014}]{nathankallus}
-Kallus, N.
-\newblock 2014.
-\newblock Predicting crowd behavior with big public data.
-\newblock In {\em Proceedings of the 23rd international conference on World
-  wide web}, WWW.
-
-\bibitem[\protect\citeauthoryear{Kawai \bgroup et al\mbox.\egroup
-  }{2010}]{Kawai:2010:CSE}
-Kawai, H.; Jatowt, A.; Tanaka, K.; Kunieda, K.; and Yamada, K.
-\newblock 2010.
-\newblock Chronoseeker: Search engine for future and past events.
-\newblock In {\em Proceedings of the 4th International Conference on Uniquitous
-  Information Management and Communication}, ICUIMC.
-
-\bibitem[\protect\citeauthoryear{Kimmig \bgroup et al\mbox.\egroup
-  }{2012}]{kimmig2012short}
-Kimmig, A.; Bach, S.; Broecheler, M.; Huang, B.; and Getoor, L.
-\newblock 2012.
-\newblock A short introduction to probabilistic soft logic.
-\newblock In {\em Proceedings of the NIPS Workshop on Probabilistic
-  Programming: Foundations and Applications}.
-
-\bibitem[\protect\citeauthoryear{Llorens \bgroup et al\mbox.\egroup
-  }{2012}]{LlorensDGS12}
-Llorens, H.; Derczynski, L.; Gaizauskas, R.~J.; and Saquete, E.
-\newblock 2012.
-\newblock {\sc TIMEN}: An open temporal expression normalisation resource.
-\newblock In {\em Proceedings of Language Resources and evaluation}, LREC.
-
-\bibitem[\protect\citeauthoryear{Mani and Wilson}{2000}]{tempex}
-Mani, I., and Wilson, G.
-\newblock 2000.
-\newblock Robust temporal processing of news.
-\newblock In {\em Proceedings of the 38th Annual Meeting on Association for
-  Computational Linguistics}, ACL.
-
-\bibitem[\protect\citeauthoryear{Padró and Stanilovsky}{2012}]{freeling}
-Padró, L., and Stanilovsky, E.
-\newblock 2012.
-\newblock Freeling 3.0: Towards wider multilinguality.
-\newblock In {\em Proceedings of the Language Resources and Evaluation
-  Conference}, LREC.
-
-\bibitem[\protect\citeauthoryear{Pustejovsky \bgroup et al\mbox.\egroup
-  }{2003}]{timeml}
-Pustejovsky, J.; Castano, J.~M.; Ingria, R.; Sauri, R.; Gaizauskas, R.~J.;
-  Setzer, A.; Katz, G.; and Radev, D.~R.
-\newblock 2003.
-\newblock Timeml: Robust specification of event and temporal expressions in
-  text.
-\newblock {\em New directions in question answering}.
-
-\bibitem[\protect\citeauthoryear{Radinsky and
-  Horvitz}{2013}]{Radinsky:2013:MWP}
-Radinsky, K., and Horvitz, E.
-\newblock 2013.
-\newblock Mining the web to predict future events.
-\newblock In {\em Proceedings of the Sixth ACM International Conference on Web
-  Search and Data Mining}, WSDM.
-
-\bibitem[\protect\citeauthoryear{Ramakrishnan \bgroup et al\mbox.\egroup
-  }{2014}]{emberskdd}
-Ramakrishnan, N.; Butler, P.; Muthiah, S.; Self, N.; Khandpur, R.; Saraf, P.;
-  Wang, W.; Cadena, J.; Vullikanti, A.; Korkmaz, G.; et~al.
-\newblock 2014.
-\newblock 'beating the news' with embers: Forecasting civil unrest using open
-  source indicators.
-\newblock In {\em Proceedings of the 20th ACM SIGKDD International Conference
-  on Knowledge Discovery and Data Mining}.
-
-\bibitem[\protect\citeauthoryear{Riloff and Wiebe}{2003}]{riloff2003learning}
-Riloff, E., and Wiebe, J.
-\newblock 2003.
-\newblock Learning extraction patterns for subjective expressions.
-\newblock In {\em Proceedings of the conference on Empirical methods in natural
-  language processing}, EMNLP.
-
-\bibitem[\protect\citeauthoryear{Str{\"o}tgen \bgroup et al\mbox.\egroup
-  }{2014}]{strotgen2014time}
-Str{\"o}tgen, J.; Armiti, A.; Van~Canh, T.; Zell, J.; and Gertz, M.
-\newblock 2014.
-\newblock Time for more languages: Temporal tagging of arabic, italian,
-  spanish, and vietnamese.
-\newblock {\em ACM Transactions on Asian Language Information Processing
-  (TALIP)} 13(1):1.
-
-\bibitem[\protect\citeauthoryear{Tops, van~den Bosch, and
-  Kunneman}{2013}]{tops2013predicting}
-Tops, H.; van~den Bosch, A.; and Kunneman, F.
-\newblock 2013.
-\newblock Predicting time-to-event from twitter messages.
-\newblock In {\em Proceedings of the 25th Benelux Conference on Artificial
-  Intelligence}, BNAIC.
-
-\bibitem[\protect\citeauthoryear{Truv{\'e}}{2011}]{recordedFuture}
-Truv{\'e}, S.
-\newblock 2011.
-\newblock Big data for the future: Unlocking the predictive power of the web.
-\newblock {\em Recorded Future, Cambridge, MA, Tech. Rep}.
-
-\bibitem[\protect\citeauthoryear{Verhagen \bgroup et al\mbox.\egroup
-  }{2009}]{tempeval}
-Verhagen, M.; Gaizauskas, R.; Schilder, F.; Hepple, M.; Moszkowicz, J.; and
-  Pustejovsky, J.
-\newblock 2009.
-\newblock The tempeval challenge: identifying temporal relations in text.
-\newblock {\em Language Resources and Evaluation}.
-
-\bibitem[\protect\citeauthoryear{Xu \bgroup et al\mbox.\egroup
-  }{2014}]{xu2014civil}
-Xu, J.; Lu, T.-C.; Compton, R.; and Allen, D.
-\newblock 2014.
-\newblock Civil unrest prediction: A tumblr-based exploration.
-\newblock In {\em Social Computing, Behavioral-Cultural Modeling and
-  Prediction}.
-
-% Include the bbl file in the final LaTeX Source file
-\end{thebibliography}
-
+\par
 {\bf Sathappan Muthiah} is a Ph.D student in Computer Science at
 Virginia Tech. He is a research assistant at the Discovery Analytics
 Center.His research interests include spatial and temporal event
-detection, text mining and information retrieval.He recieved his B.Tech
+detection, text mining and information retrieval. He recieved his B.Tech
 in Information Technology from National Institute of Technology, Bhopal,
 India.
+\par
 
 {\bf Bert Huang} is an assistant professor in the Department of Computer
-Science at Virginia Tech. He earned his Ph.D.~from Columbia University
-in 2011, and he was a postdoctoral research associate at the University
-of Maryland, College Park. Bert’s research investigates machine
+Science at Virginia Tech. Bert’s research investigates machine
 learning, with a focus on topics including structured prediction,
 statistical relational learning, and computational social science. He is
 an action editor for the Journal of Machine Learning Research, and his
 papers have been published at conferences including NIPS, ICML, UAI, and
-AISTATS.
+AISTATS. He earned his Ph.D.~from Columbia University
+in 2011, and he was a postdoctoral research associate at the University
+of Maryland, College Park.
+\par
 
 {\bf Jaime Arredondo} is a Ph.D. candidate in global public health at UC San
 Diego. His research centers on developing more sophisticated analytical
@@ -1160,7 +971,7 @@ Institute of Health, the project aims to identify how formal law
 enforcement policies can affect HIV risk behavior among injection drug
 users (IDU) amid improving occupational safety of police officers in
 Tijuana, Mexico.
-
+\par
 {\bf David Mares} is a professor of Political Science at UCSD.
 He holds the Institute of the Americas Chair for Inter-American Affairs at UCSD.
 He is the author or editor of ten books
@@ -1168,6 +979,7 @@ and his publications have appeared in English, Spanish, French,
 Portuguese, Italian and Chinese. His research and teaching interests
 include international conflict, Latin American energy politics, the
 political economy of drug policy, and civil-military relations.
+\par
 
 {\bf Lise Getoor} is a professor in the Computer Science Department at the
 University of California, Santa Cruz.   Her research areas include
@@ -1183,6 +995,7 @@ awards.  She received her PhD from Stanford University in 2001, her MS
 from UC Berkeley, and her BS from UC Santa Barbara, and was a professor
 in the Computer Science Department at the University of Maryland,
 College Park from 2001-2013.
+\par
 
 {\bf Naren Ramakrishnan} is the Thomas L. Phillips Professor of Engineering at
 Virginia Tech. He directs the Discovery Analytics Center, a university
