@@ -7,21 +7,19 @@
 \usepackage[utf8]{inputenc}
 \usepackage{helvet}
 \usepackage{amsmath, amsfonts, amssymb, amsthm}
-\usepackage{graphicx}
+%\usepackage{graphicx}
 \usepackage[center]{caption}
 \usepackage{subcaption}
-\usepackage{epstopdf}
+%\usepackage{epstopdf}
 \usepackage{multirow}
-\usepackage{color}
-\graphicspath{{./figures/}}
+%\usepackage{color}
+%\graphicspath{{./figures/}}
 \usepackage{courier}
 \usepackage{tabularx}
 \usepackage{endnotes}
 \usepackage{booktabs}
 \usepackage{url}
-\usepackage{tikz}
 \usepackage{wrapfig}
-\usetikzlibrary{positioning}
 \makeatletter
 \def\url@leostyle{%
   \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\rmfamily}}}
@@ -90,7 +88,7 @@ particular country.
 %\begin{figure*}
 \begin{wrapfigure}{r}{.4\textwidth}
   \centering
-    \includegraphics[width=.4\textwidth]{pp_AIMag_screenshot}
+    %\includegraphics[width=.4\textwidth]{pp_AIMag_screenshot}
     \caption{An example article describing plans for a future protest (Venezuela, June 11, 2014).}
     \label{pp_example}
 \end{wrapfigure}
@@ -210,23 +208,6 @@ unrest in the above countries with an average lead time of 4.08 days.
 Five categories of related work are briefly discussed here (see also
 Table~\ref{comp-table}).
 
-\begin{table}
-    \centering
-    \footnotesize
-    \caption{Comparison of our approach against other techniques.}
-    \begin{tabularx}{\textwidth}{p{5cm} XXXX}%{|*{17}{c|}}
-        \toprule
-        & Relative date resolution & Ingest multiple sources? & Reasoning about location & Learning word/phrase filters \\
-        \midrule
-        `Future' Search Engines~\cite{Kawai:2010:CSE,Jatowt:2011:ECE,baeza2005searching}&\checkmark & & \\
-        Time-to-Event Recognition~\cite{tops2013predicting,bosch2013estm}&\checkmark & & \\
-        Planned Protest Detection~\cite{xu2014civil,compton2013detecting} & &\checkmark & &\\ 
-        This paper &\checkmark &\checkmark &\checkmark&\checkmark\\
-        \bottomrule
-    \end{tabularx}
-\label{comp-table}
-\end{table}
-
 {\bf Event detection via text extractions}
 is an extensively studied topic in the literature. Document clustering techniques are used 
 in, e.g.,~\cite{Gabrilovich:2004:NPP} to identify events retrospectively or as the stories arrive.
@@ -284,6 +265,27 @@ work in~\cite{xu2014civil} by the same group of authors uses the Tumblr
 feed with a smaller set of keywords but again is restricted to the use
 of absolute time identifiers.
 
+\newpage
+\begin{table}
+    \centering
+    \footnotesize
+    \caption{Comparison of our approach against other techniques.}
+    \begin{tabularx}{\textwidth}{p{5cm} XXXX}%{|*{17}{c|}}
+        \toprule
+        & Relative date resolution & Ingest multiple sources? & Reasoning about location & Learning word/phrase filters \\
+        \midrule
+        `Future' Search Engines~\cite{Kawai:2010:CSE,Jatowt:2011:ECE,baeza2005searching}&\checkmark & & \\
+        Time-to-Event Recognition~\cite{tops2013predicting,bosch2013estm}&\checkmark & & \\
+        Planned Protest Detection~\cite{xu2014civil,compton2013detecting} & &\checkmark & &\\ 
+        This paper &\checkmark &\checkmark &\checkmark&\checkmark\\
+        \bottomrule
+    \end{tabularx}
+\label{comp-table}
+\end{table}
+\newpage
+~
+\newpage
+
 %#####################PSL####################################
 \section{Probabilistic Soft Logic}
   \label{section:PSL}
@@ -293,9 +295,10 @@ PSL is a framework for collective probabilistic reasoning on relational
 domains.  PSL represents the domain of interest as logical atoms.  It
 uses first order logic rules to capture the dependency structure of the
 domain, based on which it builds a joint probabilistic model over all
-atoms.  Instead of hard truth values of $0$ (false) and $1$ (true), PSL
+atoms.  Instead of hard truth values of \textrm{0} (false) and
+\textrm{1} (true), PSL
 uses soft truth values relaxing the truth values to the interval
-$[0,1]$.  The logical connectives are adapted accordingly.
+\textrm{[0,1]}.  The logical connectives are adapted accordingly.
 
 User defined \emph{predicates} are used to encode the relationships and
 attributes and \emph{rules} capture the  dependencies and constraints.
@@ -309,8 +312,8 @@ atoms are learned using the PSL inference.
 We will follow a running example throughout this section. In our
 geocoding subtask, we create a PSL program that reasons about the
 predicate \textsc{RefersTo}, which maps a text string to real-world
-locations. For example, $\textsc{RefersTo}(\textrm{``DC''},
-\textrm{washingtonDC})$ evaluates to true if the knowledge base believes
+locations. For example, \textsc{RefersTo}(\textrm{``DC''},
+\textrm{washingtonDC}) evaluates to true if the knowledge base believes
 that  the article refers to Washington D.C.~as ``DC.'' This predicate gets
 used in rules that define dependencies between predicates, such as the
 rule
@@ -336,7 +339,7 @@ more ground rules are more probable.
 \emph{Lukasiewicz t-norm} and its corresponding co-norm are used for
 defining relaxations of the logical AND and OR respectively to determine
 the degree to which a ground rule is satisfied.  Given an interpretation
-$\mathit{I}$, PSL defines the formulas for the relaxation of the logical
+\textit{I}, PSL defines the formulas for the relaxation of the logical
 conjunction ($\wedge$), disjunction ($\vee$), and negation ($\neg$) as
 follows:
 \begin{align*}
@@ -345,7 +348,7 @@ follows:
 \neg l_1 &= 1 - I(\ell_1),
 \end{align*}  
 
-The interpretation $\mathit{I}$ determines whether the rules are
+The interpretation \textit{I} determines whether the rules are
 satisfied. A rule $\mathit{r} \equiv \mathit{r_{body}} \rightarrow
 \mathit{r_{head}} $  is satisfied if and only if the truth value of head
 is at least that of the body. Otherwise, PSL uses a \emph{distance to
@@ -382,11 +385,11 @@ $\max\{0, 0.6 - 0.7\} = 0$, meaning the rule is satisfied.
 \end{exmp}
 
 PSL then induces a probability distribution over possible
-interpretations $\mathit{I}$ over the given set of ground atoms
-$\mathit{l} $ in the domain.  If $\mathit{R}$ is the set of all ground
+interpretations \textit{I} over the given set of ground atoms
+\textit{l} in the domain.  If \textit{R} is the set of all ground
 rules that are instances of a rule from the system and uses only the
-atoms in  $\mathit{I}$ then, the probability density function
-$\mathit{f}$ over $\mathit{I}$ is defined as
+atoms in  \textit{I} then, the probability density function
+\textit{f} over \textit{I} is defined as
 \begin{equation}
 \label{eq:contimn1}
     f (I) = \frac{1}{Z} \exp \left(-\sum_{r\in R} \lambda_r (d_r(I))^p \right)
@@ -396,7 +399,7 @@ $\mathit{f}$ over $\mathit{I}$ is defined as
 	Z = \int_{I} \exp \left( -\sum_{r\in R} \lambda_r (d_r(I))^p \right)
 \end{equation}
 
-where $\lambda_r$ is the weight of the rule $r$, $Z$ is a normalization
+where $\lambda_r$ is the weight of the rule \textit{r}, \textit{Z} is a normalization
 constant, and $p \in {1, 2}$ provides a choice between linear or
 quadratic loss functions, which produce different modeling behavior. PSL
 further allows inclusion of linear equality and inequality constraints,
@@ -425,18 +428,19 @@ inference.
 
 %##################APPROACH ################
 \section{Approach}
-\begin{figure*}
-\includegraphics[width=\textwidth]{pipeline}
-\caption{Schematic of the planned protest detector that ingests five
-different types of data sources.}
-\label{flowchart}
-\end{figure*}
 The general approach we adopt is to identify open-source documents that
 appear to indicate civil unrest event planning, extract relevant
 information from identified documents and use that as the basis for a
 structured warning about the planned event. 
 Each of these processing steps (see Fig.~\ref{flowchart}) is outlined
 next.
+
+\begin{figure*}
+%\includegraphics[width=\textwidth]{pipeline}
+\caption{Schematic of the planned protest detector that ingests five
+different types of data sources.}
+\label{flowchart}
+\end{figure*}
 
 \subsection{Linguistic Preprocessing}
 Since our region of interest is Latin America as well as the Middle East
@@ -542,7 +546,7 @@ This phrase learning process is illustrated in Fig.~\ref{fig:phraselearning}.
 
 \begin{figure*}
   \centering
-\includegraphics[width=.9\textwidth]{figures/phraseLearning}
+%\includegraphics[width=.9\textwidth]{figures/phraseLearning}
 \caption{An example of phrase learning for detecting planned protests.}
 \label{fig:phraselearning}
 \end{figure*}
@@ -641,7 +645,6 @@ combine evidence at all levels.
   \textsc{PSLLocation}&(\textrm{Article}, \textrm{locID}) \softand \textsc{Admin1}(\textrm{locID}, S)&\\
     &\rightarrow \textsc{ArticleState}(\textrm{Article}, S)&
 \end{flalign*}
-\input{figures/psl_pipeline_tikz.tex}
 
 As an example of how PSL aids in location identification,
 the protest from Fig.~\ref{pp_example} is revisited in
@@ -649,25 +652,20 @@ Fig.~\ref{fig:psl_example}, which illustrates
 the evidence that the PSL model gathers from the news article and the
 inferred locations.
 
-%######################EXPERIMENTS#####################################
 \begin{figure*}
-%\centering
-\begin{subfigure}{0.4\columnwidth}
-  \raggedleft
-  \includegraphics[height=.2\textheight]{gsr_distribution} 
-  \caption{\scriptsize GSR distribution from 2012-11 to 2014-03.}
-  \label{fig:gsrdistribution}
-\end{subfigure}\hspace{3.2em}%
-\begin{subfigure}{.4\columnwidth}
-  \raggedright
-  \includegraphics[height=.2\textheight]{pp_dist}
-  \caption{\scriptsize Alerts distribution from 2012-11 to 2014-03.}
-  \label{fig:ppdistribution}
-\end{subfigure}
-\caption{Distribution of alerts and GSR events across the Latin American countries studied in this paper.}
-\label{fig:distribution}
+  \centering
+%\includegraphics[width=\textwidth]{figures/psl_pipeline_tikz}
+\caption{An example of location inference using PSL. Red circles
+   denote named entities identified as locations and blue denotes other
+   types of entities. The article describes students planning a march on
+   Sunday.  It identifies multiple locations, e.g., Chacao, El Roso, and
+   the Francisco Fajardo highway where protests have been happening.
+   There is also a reference to a quote by the mayor of Baruto.
+   Mentions of such multiple locations are resolved using our PSL
+   program to the intended location, here Caracas.}
+\label{fig:psl_example}
 \end{figure*}
-
+%######################EXPERIMENTS#####################################
 We evaluate our planned protest detection system for Latin America using
 metrics similar to those described in Ramakrishnan et
 al.~\shortcite{emberskdd}.  Given a set of alerts issued by the system
@@ -696,7 +694,8 @@ and
     \operatorname{DS}=1 - \frac{\min(\textrm{date offset}, \operatorname{INTERVAL})}{\operatorname{INTERVAL}}
 \end{equation}
 \normalsize
-Here, we explore $\operatorname{INTERVAL}$ values from $0$ to $7$.  If
+Here, we explore $\operatorname{INTERVAL}$ values from \textsc{0} to
+\textsc{7}.  If
 an alert (conversely, GSR event) cannot be matched to any GSR event
 (alert, respectively), these unmatched alerts (and events) will
 negatively impact the precision (and recall) of the system. The lead
@@ -721,7 +720,25 @@ like Ecuador, El Salvador, and Uruguay do experience protests but which
 are not as prominently detected as those for other countries; we
 attribute this to their smaller social media footprint (relative to
 countries like Brazil and Venezuela).\\
+\begin{figure*}
+%\centering
+\begin{subfigure}{0.4\columnwidth}
+  \raggedleft
+  %\includegraphics[height=.2\textheight]{gsr_distribution} 
+  \caption{\scriptsize GSR distribution from 2012-11 to 2014-03.}
+  \label{fig:gsrdistribution}
+\end{subfigure}\hspace{3.2em}%
+\begin{subfigure}{.4\columnwidth}
+  \raggedright
+  %\includegraphics[height=.2\textheight]{pp_dist}
+  \caption{\scriptsize Alerts distribution from 2012-11 to 2014-03.}
+  \label{fig:ppdistribution}
+\end{subfigure}
+\caption{Distribution of alerts and GSR events across the Latin American countries studied in this paper.}
+\label{fig:distribution}
+\end{figure*}
 
+\newpage
 \begin{table}
     \scriptsize
     \centering
@@ -752,6 +769,39 @@ in the studied period.}
         \bottomrule
     \end{tabularx}
 \end{table}
+\newpage
+~
+\newpage
+
+\newpage
+\begin{table*} %[tb!]
+  \footnotesize
+\centering
+\caption{\small Comparing the location and date scores of different sources in specific countries.
+AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El
+Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$
+indicates that the source did not produce any warnings for that country
+in the studied period.} \label{tb:modelwisecomparison}
+%\begin{tabular}{@{}ccccccccccccccccc{}@}
+\begin{tabularx}{.9\textwidth}{p{1.7cm}*{16}{X}}
+\toprule
+Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
+\midrule
+\multirow{2}{*}{News/Blogs} &LS &0.82&0.76&0.75&0.60&-&{\bf0.75}&0.66&0.79&{\bf0.79}&{\bf0.95}&0.81\\
+                            &DS&0.75&0.81&0.78&0.77&-&{\bf0.86}&0.82&0.90&{\bf0.83}&{\bf0.95}&0.86\\
+\midrule
+\multirow{2}{*}{Facebook} &LS &{\bf1.0}&{\bf0.92}&-&{\bf1.00}&-&-&{\bf0.86}&{\bf0.98}&-&-&{\bf0.93}\\
+                          &DS&0.85&{\bf0.89}&-&{\bf1.00}&-&-&{\bf1.00}&{\bf1.00}&-&-&0.90\\
+\midrule
+\multirow{2}{*}{Twitter} &LS &0.88&-&{\bf0.84}&0.81&{\bf0.45}&-&0.71&{\bf0.98}&-&0.91&0.89\\
+                         &DS&{\bf0.88}&-&{\bf0.92}&0.84&{\bf0.71}&-&0.86&0.94&-&0.93&{\bf0.92}\\
+\bottomrule
+\end{tabularx}
+\end{table*}
+\newpage
+~
+\newpage
+
 \noindent
 {\bf Are there country-specific selective superiorities for the
 different data sources considered here?}
@@ -779,31 +829,6 @@ direct indicator of the popularity of an event as well as the intent of
 people to join an event.  In contrast, mentions of future events in news
 do not directly shed any insight into popularity or people's support for
 the event's causes.\\
-
-\begin{table*} %[tb!]
-  \footnotesize
-\centering
-\caption{\small Comparing the location and date scores of different sources in specific countries.
-AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El
-Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$
-indicates that the source did not produce any warnings for that country
-in the studied period.} \label{tb:modelwisecomparison}
-%\begin{tabular}{@{}ccccccccccccccccc{}@}
-\begin{tabularx}{.9\textwidth}{p{1.7cm}*{16}{X}}
-\toprule
-Source& & AR & BR & CL & CO & EC & SV & MX & PY & UY & VE & All\\
-\midrule
-\multirow{2}{*}{News/Blogs} &LS &0.82&0.76&0.75&0.60&-&{\bf0.75}&0.66&0.79&{\bf0.79}&{\bf0.95}&0.81\\
-                            &DS&0.75&0.81&0.78&0.77&-&{\bf0.86}&0.82&0.90&{\bf0.83}&{\bf0.95}&0.86\\
-\midrule
-\multirow{2}{*}{Facebook} &LS &{\bf1.0}&{\bf0.92}&-&{\bf1.00}&-&-&{\bf0.86}&{\bf0.98}&-&-&{\bf0.93}\\
-                          &DS&0.85&{\bf0.89}&-&{\bf1.00}&-&-&{\bf1.00}&{\bf1.00}&-&-&0.90\\
-\midrule
-\multirow{2}{*}{Twitter} &LS &0.88&-&{\bf0.84}&0.81&{\bf0.45}&-&0.71&{\bf0.98}&-&0.91&0.89\\
-                         &DS&{\bf0.88}&-&{\bf0.92}&0.84&{\bf0.71}&-&0.86&0.94&-&0.93&{\bf0.92}\\
-\bottomrule
-\end{tabularx}
-\end{table*}
 
 \noindent
 {\bf How did our system fare in detecting key country-wide protests?}
@@ -844,38 +869,38 @@ achieving high quality.
 \begin{figure*}
 \begin{subfigure}{0.33\columnwidth}
     \centering
-  \includegraphics[width=0.85\columnwidth]{monthlyqs}
+  %\includegraphics[width=0.85\columnwidth]{monthlyqs}
   \caption{\scriptsize Quality Score over the months}
   \label{fig:monthlyqs}
 \end{subfigure}%\hspace{.5pt}
 \begin{subfigure}{0.33\columnwidth}
     \centering
-  \includegraphics[width=0.85\columnwidth]{venezuela_new}
+  %\includegraphics[width=0.85\columnwidth]{venezuela_new}
   \caption{\scriptsize Venezuelan Protests}
   \label{fig:venezuela_feb}
 \end{subfigure}%\hspace{.5pt}
 \begin{subfigure}{0.33\columnwidth}
     \centering
-  \includegraphics[width=0.85\columnwidth]{leadTimeVsQS}
+  %\includegraphics[width=0.85\columnwidth]{leadTimeVsQS}
   \caption{\scriptsize Lead-Time vs Quality Score}
   \label{fig:leadTimeVsQS}
 \end{subfigure}
 
 \begin{subfigure}{0.33\columnwidth}
     \centering
-  \includegraphics[width=0.85\columnwidth]{matchingwindow}
+  %\includegraphics[width=0.85\columnwidth]{matchingwindow}
   \caption{\scriptsize QS vs Matching Interval Trade-Off}
   \label{fig:matchinginterval}
 \end{subfigure}%\hspace{.5pt}
 \begin{subfigure}{0.33\columnwidth}
     \centering
-  \includegraphics[width=0.85\columnwidth]{doubleHump_new3}
+  %\includegraphics[width=0.85\columnwidth]{doubleHump_new3}
   \caption{\scriptsize Quality Score Distribution}
   \label{fig:doubleHump}
 \end{subfigure}%\hspace{.5pt}
 \begin{subfigure}{0.33\columnwidth}
     \centering
-  \includegraphics[width=0.85\columnwidth]{brazil_june_new}
+  %\includegraphics[width=0.85\columnwidth]{brazil_june_new}
   \caption{\scriptsize Brazilian Spring}
   \label{fig:brazil_june}
 \end{subfigure}
