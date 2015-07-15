@@ -7,7 +7,7 @@
 all:
 	pdflatex -shell-escape ./plannedprotest_AIMag.tex 
 	pdflatex -shell-escape ./plannedprotest_AIMag.tex
-	bibtex ./plannedprotest_AIMag
+	#bibtex ./plannedprotest_AIMag
 	pdflatex ./plannedprotest_AIMag
 	grep --color=auto  "LaTeX Warning" plannedprotest_IAAI.log || true
 
