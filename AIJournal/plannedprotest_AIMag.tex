@@ -107,7 +107,7 @@ Latin America we need only recall that between 1985 and 2011, 17
 presidents resigned or were impeached under pressure from
 demonstrations, usually violent, in the streets. Protests have also
 resulted in the rollback of price increases for public services, such as
-during the ‘Brazilian Spring’ of June 2013.
+during the Brazilian Spring of June 2013.
 
 Forecasting protests is an important capability in many domains.  For
 the tourism industry, forecasting protests can support the issuance of
@@ -319,8 +319,8 @@ used in rules that define dependencies between predicates, such as the
 rule
 \begin{flalign*}
   \centering
-  \textsc{Entity}&(L, \textrm{location}) \wedge \textsc{RefersTo}(L,\textrm{locID}) &\\
-  &\rightarrow \textsc{PSLLocation}(\textrm{Article}, \textrm{locID}), &
+  \textsc{Entity}&(L, \textrm{location}) \wedge \textsc{RefersTo}(L,\textrm{locID})
+  \rightarrow \textsc{PSLLocation}(\textrm{Article}, \textrm{locID}), &
 \end{flalign*}
 which states that an entity extracted from an article text that matches
 a known \textsc{RefersTo} mapping implies that the PSL program's
@@ -362,19 +362,19 @@ violated
 Continuing the previous example, if we have the rule
 \begin{flalign*}
   \centering
-  \textsc{Entity}&(\textrm{``Washington''}, \textrm{location}) ~ \wedge\\
-  & \textsc{RefersTo}(\textrm{``Washington''}, \textrm{washingtonDC}) &\\
-  &~~~\rightarrow \textsc{PSLLocation}(\textrm{Article},
-  \textrm{washingtonDC}), &
+  \textsc{Entity}&(\textrm{``Washington''}, \textrm{location}) ~ \wedge
+  ~\textsc{RefersTo}(\textrm{``Washington''}, \textrm{washingtonDC}) &\\
+  &\qquad \qquad\qquad \qquad \qquad ~~~~~~~\rightarrow
+  \textsc{PSLLocation}(\textrm{Article},
+  \textrm{washingtonDC}) &
 \end{flalign*}
 and the truth values of the known atoms are 
-\[
-\mbox{\textsc{Entity} (``Washington'', location): 1.0} 
-\]
-and
-\[
-\mbox{\textsc{RefersTo}(\textrm{``Washington''}, \textrm{washingtonDC}): 0.6},
-\]
+\begin{equation*}
+  \begin{array}{rcl}
+    \mbox{\textsc{Entity} (``Washington'', location)}                       & : & 1.0\\
+    \mbox{\textsc{RefersTo}(\textrm{``Washington''},\textrm{washingtonDC})} & : & 0.6\\
+  \end{array}
+\end{equation*}
 then following the relaxation of logical AND, the truth value of the
 antecedent is $\max\{0, 1.0 + 0.6 - 1\} = 0.6$. Moreover, if the truth
 value of the atom to be inferred, \textsc{PSLLocation}(\textrm{Article},
@@ -591,18 +591,17 @@ in the article, it could refer to either Los Angeles, California, or Los
 would infer a higher truth value for the article referring to Los
 Angeles, California, because it has a much higher population than the
 other options. 
-\begin{flalign*}
-  \textsc{Entity}&(L, \textrm{location}) \softand \textsc{RefersTo}(L,\textrm{locID}) &\\
-  &\rightarrow \textsc{PSLLocation}(\textrm{Article}, \textrm{locID}) &
-\end{flalign*}
-\begin{flalign*}
-  \textsc{Entity}&(C, \textrm{location}) \softand \textsc{IsCountry}(C) &\\
-  &\rightarrow \textsc{ArticleCountry}(\textrm{Article}, C) &
-\end{flalign*}
-\begin{flalign*}
-  \textsc{Entity}&(S, \textrm{location}) \softand \textsc{IsState}(S)&\\
-  &\rightarrow \textsc{ArticleState}(\textrm{Article}, S)&
-\end{flalign*}
+\begin{equation*}
+  \begin{array}{rcl}
+  \textsc{Entity}(L, \textrm{location}) \softand \textsc{RefersTo}(L,\textrm{locID}) & \rightarrow & \textsc{PSLLocation}(\textrm{Article}, \textrm{locID})\\
+  \\
+  \textsc{Entity}(C, \textrm{location}) \softand \textsc{IsCountry}(C)               & \rightarrow & \textsc{ArticleCountry}(\textrm{Article}, C)\\
+  \\
+  \textsc{Entity}(S, \textrm{location}) \softand \textsc{IsState}(S)                 & \rightarrow & \textsc{ArticleState}(\textrm{Article}, S)\\
+  \\
+  \end{array}
+\end{equation*}
+
 \noindent
 (Note that the above are not deterministic rules; e.g., they do not use
 the logical conjunction but rather the Lukasiewicz t-norm based
@@ -617,18 +616,16 @@ persons and organizations often include location clues (e.g., ``mayor of
 Buenos Aires''), but intuition suggests the correlation between the
 article's location and these clues may be lower than with location
 strings. 
-\begin{flalign*}
-  \textsc{Entity}&(O, \textrm{organization}) \softand \textsc{RefersTo}(O, \textrm{locID})&\\
-                            &\rightarrow \textsc{PSLLocation}(\textrm{Article},\textrm{locID}) &
-\end{flalign*}
-\begin{flalign*}
-  \textsc{Entity}&(O, \textrm{organization}) \softand \textsc{IsCountry}(O)&\\
-  &\rightarrow \textsc{ArticleCountry}(\textrm{Article}, O)&
-\end{flalign*}
-\begin{flalign*}
-  \textsc{Entity}&(O, \textrm{organization}) \softand \textsc{IsState}(O)&\\
-  &\rightarrow \textsc{ArticleState}(\textrm{Article}, O) &
-\end{flalign*}
+\begin{equation*}
+  \begin{array}{rcl}
+  \textsc{Entity}(O, \textrm{organization})  \softand  \textsc{RefersTo}(O, \textrm{locID}) & \rightarrow &  \textsc{PSLLocation}(\textrm{Article},\textrm{locID})\\
+  \\
+  \textsc{Entity}(O, \textrm{organization}) \softand   \textsc{IsCountry}(O)                & \rightarrow &  \textsc{ArticleCountry}(\textrm{Article}, O)\\
+  \\
+  \textsc{Entity}(O, \textrm{organization}) \softand \textsc{IsState}(O)                    & \rightarrow & \textsc{ArticleState}(\textrm{Article}, O)\\
+  \end{array}
+\end{equation*}
+
 Finally, the model includes rules and constraints to require consistency
 between the different levels of geolocation, making the model place
 higher probability on states with its city contained in its state, which
@@ -637,14 +634,13 @@ consistency explicitly by using the inferred city and its enclosing
 state and country, but adding these rules into the model make the
 probabilistic inference prefer consistent predictions, enabling it to
 combine evidence at all levels.
-\begin{flalign*}
-  \textsc{PSLLocation}&(\textrm{Article}, \textrm{locID}) \softand \textsc{Country}(\textrm{locID}, C)&\\
-  &\rightarrow \textsc{ArticleCountry}(\textrm{Article}, C)&
-\end{flalign*}
-\begin{flalign*}
-  \textsc{PSLLocation}&(\textrm{Article}, \textrm{locID}) \softand \textsc{Admin1}(\textrm{locID}, S)&\\
-    &\rightarrow \textsc{ArticleState}(\textrm{Article}, S)&
-\end{flalign*}
+\begin{equation*}
+  \begin{array}{rcl}
+  \textsc{PSLLocation}(\textrm{Article}, \textrm{locID}) \softand \textsc{Country}(\textrm{locID}, C) & \rightarrow & \textsc{ArticleCountry}(\textrm{Article}, C) \\
+  \\
+  \textsc{PSLLocation}(\textrm{Article}, \textrm{locID}) \softand \textsc{Admin1}(\textrm{locID}, S)  & \rightarrow & \textsc{ArticleState}(\textrm{Article}, S) \\
+  \end{array}
+\end{equation*}
 
 As an example of how PSL aids in location identification,
 the protest from Fig.~\ref{pp_example} is revisited in
@@ -1163,13 +1159,13 @@ Xu, J.; Lu, T.-C.; Compton, R.; and Allen, D.
 {\bf Sathappan Muthiah} is a Ph.D student in Computer Science at
 Virginia Tech. He is a research assistant at the Discovery Analytics
 Center.His research interests include spatial and temporal event
-detection, text mining and information retrieval. He recieved his B.Tech
+detection, text mining and information retrieval. He received his B.Tech
 in Information Technology from National Institute of Technology, Bhopal,
 India.
 \par
 
 {\bf Bert Huang} is an assistant professor in the Department of Computer
-Science at Virginia Tech. Bert’s research investigates machine
+Science at Virginia Tech. Bert's research investigates machine
 learning, with a focus on topics including structured prediction,
 statistical relational learning, and computational social science. He is
 an action editor for the Journal of Machine Learning Research, and his
@@ -1179,11 +1175,11 @@ in 2011, and he was a postdoctoral research associate at the University
 of Maryland, College Park.
 \par
 
-{\bf Jaime Arredondo} is a Ph.D. candidate in global public health at UC San
-Diego. His research centers on developing more sophisticated analytical
+{\bf Jaime Arredondo} is a Ph.D. candidate in global public health at
+UCSD. His research centers on developing more sophisticated analytical
 skills and research techniques to analyze the effect of policing
 practices as a major driver of HIV transmission, particularly in the
-U.S.–Mexico border region.He is collaborating with the UC San Diego Division of Global
+U.S.-Mexico border region.He is collaborating with the UCSD Division of Global
 Public Health on its El Cuete, Phase IV project. Funded by the National
 Institute of Health, the project aims to identify how formal law
 enforcement policies can affect HIV risk behavior among injection drug
@@ -1199,23 +1195,15 @@ include international conflict, Latin American energy politics, the
 political economy of drug policy, and civil-military relations.
 \par
 
-{\bf Lise Getoor} is a professor in the Computer Science Department at the
-University of California, Santa Cruz.   Her research areas include
+{\bf Lise Getoor} is a professor in the Computer Science Department at
+the University of California, Santa Cruz.   Her research areas include
 machine learning, data integration, and reasoning under uncertainty,
-with an emphasis on graph and network data. She has over 200
-publications and extensive experience with machine learning and
-probabilistic modeling methods.  She is a Fellow of the Association for
-Artificial Intelligence, an elected board member of the International
-Machine Learning Society, serves on the board of the Computing Research
-Association (CRA), and was co-chair for ICML 2011.  She is a recipient
-of an NSF Career Award and nine best paper and best student paper
-awards.  She received her PhD from Stanford University in 2001, her MS
-from UC Berkeley, and her BS from UC Santa Barbara, and was a professor
-in the Computer Science Department at the University of Maryland,
-College Park from 2001-2013.
+with an emphasis on graph and network data. She is a Fellow of the
+Association for Artificial Intelligence, recipient of nine best paper
+and best student paper awards, and was co-chair for ICML 2011.
 \par
 
-{\bf Graham katz} earned his PhD in Linguistics and Computational Linguistics
+{\bf Graham Katz} earned his PhD in Linguistics and Computational Linguistics
 from University of Rochester before becoming a professor in the
 Department of Linguistics at Georgetown university between 2007 and
 2012.   He held the role of Applied Research Manager at CACI Inc. from
